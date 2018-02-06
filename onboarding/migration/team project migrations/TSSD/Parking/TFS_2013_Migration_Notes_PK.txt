@@ -1,0 +1,31 @@
+
+Element
+Get USAC account for temporary build service account on TFS 2013.
+Will follow up with Karl on Monday to set up.
+Current build workstation is in USAC domain.
+
+
+
+ScanNet
+Set up test team project for Kanban template.
+Ready ScanNet project
+
+
+Firmware
+Follow up with the location of the build server.
+Chris is not so concerned with the location, just that it meets the requirements.
+VM footprint would be small, but needs to be isolated.
+Chris is concerned with pulling source from SVN because of history loss and the need to rework their branching strategy in TFS VC.
+	Timely Migration would prevent history loss, but branch and merge strategy might need revision.
+	
+Chris has cron job that runs a bash script for timed deployments.  Told him that it would be easy enough to use Team Build job on a schedule.
+Chris is concerned that his migration will not fall in sync with him project release cycle.
+Chris is concerned that Arun will force his hand to migrate from SVN to TFS.
+
+Build:
+	Karl using USAC workstation initially.
+	Switch to pkbld01 to build Element.
+		Builds InstallShield packages.
+		
+		
+TFSConfig CloudImport /SQLInstance:tfs13sb /SettingsFile:"C:\Temp\Parking\settings.ini"

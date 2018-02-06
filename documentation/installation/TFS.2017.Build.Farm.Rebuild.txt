@@ -1,0 +1,1011 @@
+
+Download latest Installation Guide, review for advanced configuration.
+
+*******************************************
+Ensure AD Accounts exist for TFSSETUP, TFSSERVICE, TFSREPORTS, WSSSERVICE, SPS Farm Admin account, TFSBUILD, TFSPROXY
+(DO NOT do "Account is sensitive and cannot be delegated" in AD)
+
+Basic server prep:
+	Disable UAC
+	Add secondary drive if necessary > Move media drive to M: > set up as D:
+	Disable Indexing service, all drives
+	Disable Shutdown Event Tracker (gpedit.msc > Computer Configuration > Administrative Templates > System > Display Shutdown Event Tracker > Disable )
+	Expand Event Viewer > Application and System log size to 100 MB rolling (102400).
+	Add custom TFS event filter
+	Enable file extensions and hidden files in Windows Explorer (Need to develop a PS script to do this)
+	Use custom page file size, system memory * 1, both min and max size
+	Set Power Option to high performance
+	
+Copy latest procexp.exe / procexp64.exe > C:\Windows (Sysinternals procmon only)
+Set Compatibility mode on both .exe to always run as administrator for all users.
+	
+Add TFSBUILD service account to local administrators group.
+In Local Security Policy, grant TFSBUILD service account Log on as a Service permission.
+
+Reboot
+
+Start with .NET Framework 3.5.1 (or add 4.5 on Server 2012 R2 and above) and start from there.
+Ensure that .NET 3.5 features are installed
+Add IIS Role, see TFS Install guide for exact options to enable for the role.
+Create agent folder at *\_tfs_build_agent\lib > to be used for SDKs, etc.
+	Android SDKs, Windows SDKs, JDKs, will be here under:
+	_tfs_build_agent\lib\android (both SDK and NDK installed here)
+	_tfs_build_agent\lib\windows (can I put the Windows SDKs here?  May not be a real issue given the size)
+	_tfs_build_agent\lib\java (has Mike done this before?)
+	etc.
+
+Create agent folder at *\_tfs_build_agent\software > to be used for any installed software, etc.
+
+Restart
+
+Ninite.com:  7-zip, Notepad++, WinDirStat
+
+Configure Notepad++:
+Install XML Tools Plug-in
+Set Notepad++ to default application for .txt, .log, and .xml. (Need to develop a PS script for this)
+
+Copy necessary media to D:\_tfs_build_agent\software ( better AV OAS performance under exclusion folder in policy ).  Installs will take half the time.
+
+First patching with Windows Update:
+Set to never check for updates
+Use both check boxes to enable Microsoft Update
+Check online, not with system administrator.  There are more updates online.
+
+Select all recommended (other) updates.
+Select all optional recommended updates
+Do not install Silverlight, hide the optional update.
+Do not install additional language packs.
+
+Restart
+Check for Windows Updates again.  I'm serious.  Restart if necessary.
+
+From PS console as admin:
+
+PowerShell Console (Administrator):
+Update-Help
+Set-ExecutionPolicy RemoteSigned
+
+Rebuild the perf mon counter system backup store:
+
+.\lodctr /e:mscoree.dll
+.\lodctr /e:FrameworkPerf.dll
+.\lodctr /e:WmiApRpl.dll
+.\lodctr /e:System.dll
+.\lodctr /e:CcmFramework.dll
+.\lodctr /e:esentprf.dll
+.\lodctr /e:Secur32.dll
+.\lodctr /e:bitsperf.dll
+.\lodctr /e:Spooler
+.\lodctr /e:MOMConnectorPerformance.dll
+.\lodctr /e:HealthServicePerformance.dll
+.\lodctr /R
+
+[include the CRLF above when pasting]
+
+For Perflib errors about WmiApRpl:
+http://weblogs.asp.net/wesleybakker/Solving-WmiApRpl-and-BITS-errors-with-SharePoint-2013-on-Windows-Server-2012
+
+Event log error 1010, Print Spooler:
+https://technet.microsoft.com/en-us/library/cc727194%28v=ws.10%29.aspx
+
+Event log 1008, mscoree.dll.
+https://technet.microsoft.com/en-us/library/cc727194%28v=ws.10%29.aspx
+
+
+[Snapshot]
+
+********************************************
+
+Visual Studio installation:
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INSTALL VS...BUT BEFORE ACTUALLY CONNECTING TO TFS, APPLY TLS 1.2 remediation!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+****************************
+
+Install VS 2013 Pro:
+XDM3T-W3T3V-MGJWK-8BFVD-GVPKY 
+
+Components:
+MFC
+SSDT
+Web developer tools
+
+Open IDE, but do not try to connect.
+Apply product key.
+Go to Extensions and Updates, and apply any updates.
+
+****************************
+
+Install VS 2015 Pro:
+HB873-DNMKX-8B6QM-CD3YQ-4GDCC
+
+Components:
+
+VC++
+	All but XP support
+No F#
+No Office
+No Silverlight
+No Win 10 mobile emus
+No Win 8.1 and 8.1 mobile tools
+All xplat mobile
+No GitHub extension
+No VS Extensibility tools
+
+
+
+Open IDE, but do not try to connect.
+Apply product key.
+Go to Extensions and Updates, and apply any updates.
+
+****************************
+
+Install VS 2017 Enterprise:
+22PVC-N4BHC-34DYJ-CWRQM-7MJQF
+
+Workloads:
+UWP development
+.NET desktop development
+Desktop development
+ASP.NET / web development
+Azure development
+Python development
+Node.js development
+Data storage and processing
+Mobile dev with .NET / Xamarin
+Mobile dev with JS / Apache Cordova
+.NET Core cross-platform development
+
+Additional components:
+Components
+
+.NET 3.5 dev tools
+4.7 SDK and atrgeting pack
+Windows workflow foundation
+Azure storage AZCopy
+PowerShell tools
+VC++ runtime for UWP
+Universal CRT SDK 
+CodedUI test
+test tool core features
+web perf & load test
+apache ant
+windows universal c runtime
+
+
+
+Open IDE, but do not try to connect.
+Apply product key.
+Go to Extensions and Updates, and apply any updates.
+
+****************************
+
+Build agent installation/configuration:
+
+XAML:
+Install TFS 2015.3 binaries, but do not configure yet
+
+
+****************************
+
+Apply TLS 1.2 remediation.
+Reboot.
+Full patch run.
+Reboot.
+Open and verify connectivity for each IDE.
+
+********************************************
+
+XAML:
+Make sure that Remote Access Connection Manager service is set to Automatic and running.
+Configure XAML controller and agents
+Use TFSBUILD service account
+Do not run interactively
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/0be1aecb-b446-413c-b059-54e1f6065bec/this-implementation-is-not-part-of-the-windows-platform-fips-validated-cryptographic-algorithms?forum=netfxbcl
+
+
+For each agent, modify Working Directory from:
+$(SystemDrive)\Builds\$(BuildAgentId)\$(BuildDefinitionPath)
+D:\_tfs_build_agent\xaml\$(BuildAgentId)\$(BuildDefinitionPath)
+
+Restart build host service.
+Run a test build through the controller and agents. (Have to us VS 2017 to create the XAML definition)
+
+********************************************
+
+v2 Agent:
+Download respective v2 agent from TFS server.
+Use the version of agent that matches the TFS version and update.
+Run as service
+Use TFSBUILD service account
+Run a test build through the controller and agents.
+
+********************************************
+
+
+
+
+
+
+
+29 GB just for Xamarin
+
+Created offline installer:
+.\vs_enterprise.exe --layout "D:\_tfs_data\software\VS 2017.3 Enterprise" --all
+
+
+
+
+Fix the agent bug with VS 2017 builds:
+edit the PathFunction.ps1 file (or something like that) in the   _work/_task/VSBuild/ps_modules/ directory
+at the bottom - edit the version compare
+
+
+
+
+
+
+
+2017 Build Tools:
+https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15#
+
+Where is the multi-target pack for just 4.5 ??????????????????????????
+
+.NET 4.5.1 Developer pack (Multi-target) - install separately
+https://www.microsoft.com/en-us/download/details.aspx?id=40772
+
+.NET 4.5.2 Developer pack (Multi-target) - in VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=42637
+
+.NET 4.6 Developer pack (Multi-target) - in VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=48136
+
+.NET 4.6.1 Developer pack (Multi-target) - in VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=49978
+
+.NET 4.6.2 Developer pack (Multi-target) - in VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=53321
+
+.NET 4.7 Developer pack (Multi-target) - in VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=55168
+
+
+
+
+Install SDKs first to control the installation paths:
+
+
+
+.NET 4.6.1 SDK
+https://www.microsoft.com/en-us/download/details.aspx?id=49978
+
+>>>>>> NO option for path
+
+.NET 4.6.2 SDK
+https://www.microsoft.com/en-us/download/details.aspx?id=49978
+
+>>>>>> NO option for path
+
+.NET 4.7 SDK
+https://www.microsoft.com/en-us/download/details.aspx?id=55168
+
+>>>>>> NO option for path
+
+Windows 8.1 SDK
+https://developer.microsoft.com/en-us/windows/downloads/windows-8-1-sdk
+
+>>>>>> D:\_tfs_build_agent\lib\windows\Windows Kits\8.1
+
+Took all options > D:\_tfs_build_agent\lib\windows\Windows Kits\8.1
+C: 33.7 GB > 34.9 GB
+
+
+Windows 10 SDK (10.0.14393.0)
+https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk > 10.0.15062.468
+
+C: 34.9 GB > 36.1 GB
+
+>>>>>> D:\_tfs_build_agent\lib\windows\Windows Kits\10
+
+
+*******************************************************************
+
+Individual component installation:
+
+Git for Windows
+https://git-scm.com/download/win
+>>>>>> D:\_tfs_build_agentt\lib\git
+Add a system envinronment variable GIT_HOME > D:\_tfs_build_agent\lib\git
+Manually change %PATH% modification from installer literal path to relative: %GIT_HOME%\cmd
+
+Java JDK (8.0.1120.15)
+http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html
+Default install directory:  C:\Program Files\Java\jdk-9\
+Install JDK to different directory:  D:\_tfs_build_agent\lib\java\jdk-9
+Install JRE to different directory:  D:\_tfs_build_agent\lib\java\jre-9
+
+Have to manually add %JAVA_HOME% > D:\_tfs_build_agent\lib\java\jdk-9...the JDK uses some kind of symlink?)
+Manually add %JAVA_HOME%\bin to %PATH%
+
+?????????????????
+32-bit Java JDK 7 (only 9 in downloads now)
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+VS recommends this for Cordova, but why not x64?
+?????????????????
+
+>>>>>> _tfs_build_agent\lib\java
+
+Apache Ant (1.9.3)
+http://ant.apache.org/bindownload.cgi
+
+Add a system envinronment variable ANT_HOME > D:\_tfs_build_agent\lib\ant\apache-ant-1.9.9
+Add these to %PATH%:
+Add ;%ANT_HOME%\bin
+
+>>>>>> _tfs_build_agent\lib\ant
+
+2013 Build Tools:
+https://www.microsoft.com/en-us/download/details.aspx?id=40760
+
+2015 Build Tools:
+https://www.microsoft.com/en-us/download/details.aspx?id=48159
+
+
+Install VS 2017
+22PVC-N4BHC-34DYJ-CWRQM-7MJQF
+
+29 GB just for Xamarin
+
+Created offline installer:
+.\vs_enterprise.exe --layout "D:\_tfs_data\software\VS 2017.3 Enterprise" --all
+
+Workloads:
+.NET desktop development
+ASP.NET / web development
+Azure development
+Python development
+Node.js development
+Data storage and processing
+Mobile dev with .NET / Xamarin
+Mobile dev with JS / Apache Cordova
+.NET Core cross-platform development
+
+Additional components:
+
+.NET 3.5 dev tools
+Python 3 64-bit (3.6.2)
+
+After initial install:
+73.4 GB used on C:
+
+After relocating Android SDKs:
+
+Configure standard environment variables:  %JAVA_HOME%, %GIT_HOME%, %ANT_HOME
+
+Install agent > D:\_tfs_build_agent
+!!!!!!!!!!!!  USE TFSSETUP ACCOUNT TO CONFIGURE/REGISTER THE AGENT !!!!!!!!!!!!!!!!!!
+
+Have to fix agent internal PowerShell scripts for product detection on VS 2017, or it will fall back to VS 2015 for compilation:
+https://developercommunity.visualstudio.com/content/problem/71349/vsts-build-agent-not-finding-vs2017-anymore-after.html 
+
+
+
+
+
+
+
+
+
+
+
+**********************************************************************
+
+Individual component installation:
+
+Git for Windows
+https://git-scm.com/download/win
+>>>>>> D:\_tfs_build_agentt\lib\git
+Add a system envinronment variable GIT_HOME > D:\_tfs_build_agent\lib\git
+Manually change %PATH% modification from installer literal path to relative: %GIT_HOME%\cmd
+
+Java JDK (8.0.1120.15)
+http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html
+Default install directory:  C:\Program Files\Java\jdk-9\
+Have to manually add %JAVA_HOME% > D:\_tfs_build_agent\lib\java\jdk-9...the JDK uses some kind of symlink?)
+Manually add %JAVA_HOME%\bin to %PATH%
+
+?????????????????
+32-bit Java JDK 7 (only 9 in downloads now)
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+VS recommends this for Cordova, but why not x64?
+?????????????????
+
+>>>>>> _tfs_build_agent\lib\java
+
+Apache Ant (1.9.3)
+http://ant.apache.org/bindownload.cgi
+
+Add a system envinronment variable ANT_HOME > D:\_tfs_build_agent\lib\ant\apache-ant-1.9.9
+Add these to %PATH%:
+Add ;%ANT_HOME%\bin
+
+>>>>>> _tfs_build_agent\lib\ant
+
+
+
+
+
+
+
+
+Visual Studio Android Emulator (API Level 23)
+https://www.visualstudio.com/vs/msft-android-emulator/
+C: 36 GB > 
+D: 5.63 GB > 
+
+Android Studio
+https://developer.android.com/studio/index.html#command-tools
+Install:  C:\Program Files\Android\Android Studio
+SDK Installation location: D:\_tfs_build_agentt\lib\android\sdk
+At Android Studio new project, go to configure settings, point to sdk location.
+
+SDK Tools tab > Added NDK
+Added 23.x SDKs
+
+Add a system envinronment variable ANDROID_HOME > D:\_tfs_build_agent\lib\android\sdk
+Add these to %PATH%:
+;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools
+
+https://github.com/simnova/webdevdocs/wiki/Installing-PhoneGap-and-Android-Studio-on-Windows
+https://marketplace.visualstudio.com/items?itemName=Xamarin.XamarinAndroidSDKManager
+
+Android NDKs (R13B)
+https://developer.android.com/ndk/downloads/index.html
+
+Android SDKs (API level 23)
+https://developer.android.com/studio/index.html
+(at the very bottom)
+
+
+Prep for Cordova:
+
+Set the ADT_HOME environment variable to the SDK installation location.
+Add a system envinronment variable ADT_HOME > %ANDROID_HOME%
+Add these to %PATH%:
+;%ADT_HOME%\tools;%ADT_HOME%\platform-tools
+
+Joyent Node.js
+
+Azure Mobile Apps SDK (Node.js)
+https://www.npmjs.com/package/azure-mobile-apps
+
+https://developer.xamarin.com/guides/android/application_fundamentals/using-the-sdk-manager/
+https://developer.xamarin.com/guides/android/application_fundamentals/understanding_android_api_levels/
+
+Apache Cordova 6.3.1 toolset
+
+https://taco.visualstudio.com/en-us/docs/configure-vs-tools-apache-cordova/#ThirdParty
+
+Chrome
+https://www.google.com/intl/en/chrome/browser/desktop/index.html
+
+Joyent Node.js
+https://taco.visualstudio.com/en-us/docs/change-node-version/
+https://nodejs.org/en/download/
+
+TypeScript 2.3 SDK
+
+TypeScript SDK for VS 2017
+https://www.microsoft.com/en-us/download/details.aspx?id=55258
+
+https://github.com/Microsoft/TypeScript/wiki/Updating-TypeScript-in-Visual-Studio-2017
+
+UWP:
+https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide
+
+Windows Universal C Runtime
+https://www.microsoft.com/en-us/download/details.aspx?id=48234
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Python development
+https://www.visualstudio.com/vs/python/
+
+
+Mobile dev with .NET / Xamarin
+
+Xamarin for Visual Studio:
+https://www.xamarin.com/visual-studio
+https://developer.xamarin.com/guides/android/application_fundamentals/using-the-sdk-manager/
+
+
+		
+Check for Windows Updates.
+Restart
+
+Address TLS issues.
+
+
+
+
+Corporate IT Tasks:
+
+Update/Verify the CIRM entry http://gsm/
+    Resource Details: Verify the server is assigned to the correct Resource Group
+    Support Contacts: Add additional Application Contacts, verify the WW_CHBS-Support is listed
+    Maintenance: Confirm a patch push group is defined and is correct
+    Monitoring: Setup additional monitoring as needed
+    Backup and Recovery: Ensure the server is being backed up if requested
+
+	Add server entry into DNS:
+	http://ithelp.mmm.com/Request.aspx?ID=MC-DNSChange 
+	
+	For archon-tech servers:
+		Go to Active Directory computer account:
+		Find extensionAttribute2, set to actual text for CIRM push group name for the server
+	
+	Submit AREQ in Lotus to add US-ETFS-Admin to local administrators group.
+	
+AV Notes:
+Agent install location:  "\\integration.mmm.com\production\software\mcafee\Current Agent and VSE package"
+Host Intrustion Protection Password:  McHIPSis4u
+Manual installation location:  "\\usfile01.mmm.com\mcafee\Products\MA"
+
+To open UpdaterUI:
+c:\Program Files (x86)\McAfee\Common Framework>cmdagent /s
+
+Add these files to the eeFF bypass:
+vs_installershell.exe
+vs_installer.exe
+devenv.exe
+msiexec.exe
+TiWorker.exe
+TrustedInstaller.exe
+VSIXInstaller.exe
+
+
+
+Ensure that .NET 3.5 features are installed
+Create agent folder at *\_tfs_build_agent
+
+Added text.
+
+ 
+TLS 1.2 hotfixes:
+
+
+
+
+
+tfsbuild02 capabilities
+
+ 
+AWSPowershell
+
+C:\Program Files (x86)\AWS Tools\PowerShell\AWSPowerShell
+ 
+AWSSDK
+
+C:\Program Files (x86)\AWS SDK for .NET
+ 
+AzureSDK
+
+C:\Program Files\Microsoft SDKs\Azure\.NET SDK\v2.8
+
+
+SYSTEM CAPABILITIES
+
+Agent.ComputerName
+
+TFSBUILD02
+
+Agent.Name
+
+Agent-TFSBUILD02
+
+Agent.OS
+
+Windows_NT
+
+Agent.OSVersion
+
+6.3.9600
+
+Agent.Version
+
+1.105.6
+
+AndroidSDK
+
+C:\Program Files (x86)\Android\android-sdk
+
+AndroidSDK_23
+
+C:\Program Files (x86)\Android\android-sdk\platforms\android-23
+
+AzurePS
+
+2.1.0
+
+Cmd
+
+C:\windows\system32\cmd.exe
+
+ComSpec
+
+C:\windows\system32\cmd.exe
+
+DEFLOGDIR
+
+C:\ProgramData\McAfee\DesktopProtection
+
+devmgr_show_nonpresent_devices
+
+1
+
+DotNetFramework
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+
+DotNetFramework_2.0
+
+C:\Windows\Microsoft.NET\Framework\v2.0.50727
+
+DotNetFramework_2.0_x64
+
+C:\Windows\Microsoft.NET\Framework64\v2.0.50727
+
+DotNetFramework_3.0
+
+C:\Windows\Microsoft.NET\Framework\v3.0
+
+DotNetFramework_3.0_x64
+
+C:\Windows\Microsoft.NET\Framework64\v3.0
+
+DotNetFramework_3.5
+
+C:\Windows\Microsoft.NET\Framework\v3.5
+
+DotNetFramework_3.5_x64
+
+C:\Windows\Microsoft.NET\Framework64\v3.5
+
+DotNetFramework_4.5.3
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319
+
+DotNetFramework_4.5.3_x64
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+
+FP_NO_HOST_CHECK
+
+NO
+
+FSHARPINSTALLDIR
+
+C:\Program Files (x86)\Microsoft SDKs\F#\4.1\Framework\v4.0\
+
+JDK
+
+C:\Program Files\Java\jdk1.8.0_131
+
+jdk_8
+
+C:\Program Files (x86)\Java\jdk1.8.0_131
+
+jdk_8_x64
+
+C:\Program Files\Java\jdk1.8.0_131
+
+MSBuild
+
+C:\Program Files (x86)\MSBuild\14.0\bin
+
+MSBuild_12.0
+
+C:\Program Files (x86)\MSBuild\12.0\bin
+
+MSBuild_12.0_x64
+
+C:\Program Files (x86)\MSBuild\12.0\bin\amd64
+
+MSBuild_14.0
+
+C:\Program Files (x86)\MSBuild\14.0\bin
+
+MSBuild_14.0_x64
+
+C:\Program Files (x86)\MSBuild\14.0\bin\amd64
+
+MSBuild_2.0
+
+C:\windows\Microsoft.NET\Framework\v2.0.50727
+
+MSBuild_2.0_x64
+
+C:\windows\Microsoft.NET\Framework64\v2.0.50727
+
+MSBuild_3.5
+
+C:\windows\Microsoft.NET\Framework\v3.5
+
+MSBuild_3.5_x64
+
+C:\windows\Microsoft.NET\Framework64\v3.5
+
+MSBuild_4.0
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319
+
+MSBuild_4.0_x64
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+
+MSBuild_x64
+
+C:\Program Files (x86)\MSBuild\14.0\bin\amd64
+
+NUMBER_OF_PROCESSORS
+
+4
+
+OS
+
+Windows_NT
+
+Path
+
+C:\Users\USFSETFSB\.dnx\bin
+
+PATHEXT
+
+.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+
+PowerShell
+
+4.0
+
+PROCESSOR_ARCHITECTURE
+
+AMD64
+
+PROCESSOR_IDENTIFIER
+
+Intel64 Family 6 Model 15 Stepping 1, GenuineIntel
+
+PROCESSOR_LEVEL
+
+6
+
+PROCESSOR_REVISION
+
+0f01
+
+PSModulePath
+
+C:\windows\system32\WindowsPowerShell\v1.0\Modules\;C:\Program Files\Microsoft Monitoring Agent\Agent\PowerShell\;C:\Program Files (x86)\AWS Tools\PowerShell\;C:\Program Files\WindowsPowerShell\Modules\;C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\;C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\;C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Storage\
+
+TEMP
+
+C:\Users\USFSETFSB\AppData\Local\Temp
+
+TMP
+
+C:\Users\USFSETFSB\AppData\Local\Temp
+
+UATDATA
+
+C:\windows\CCM\UATData\D9F8C395-CAB8-491d-B8AC-179A1FE1BE77
+
+USERNAME
+
+SYSTEM
+
+VisualStudio
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0
+
+VisualStudio_11.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 11.0
+
+VisualStudio_12.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 12.0
+
+VisualStudio_14.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0
+
+VisualStudio_IDE
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
+
+VisualStudio_IDE_11.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE
+
+VisualStudio_IDE_12.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE
+
+VisualStudio_IDE_14.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
+
+VisualStudioVersion
+
+12.0
+
+VS110COMNTOOLS
+
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+
+VS120COMNTOOLS
+
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+
+VS140COMNTOOLS
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+
+VSEDEFLOGDIR
+
+C:\ProgramData\McAfee\DesktopProtection
+
+VSTest
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow
+
+VSTest_12.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow
+
+VSTest_14.0
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow
+
+windir
+
+C:\windows
+
+WindowsKit
+
+C:\Program Files (x86)\Windows Kits\8.1
+
+WindowsKit_8.1
+
+C:\Program Files (x86)\Windows Kits\8.1
+
+WindowsSdk
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A
+
+WindowsSdk_7.1
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A
+
+WindowsSdk_8.0
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A
+
+WindowsSdk_8.0_NetFx35Tools
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin
+
+WindowsSdk_8.0_NetFx35Tools_x64
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\x64
+
+WindowsSdk_8.0_NetFx40Tools
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools
+
+WindowsSdk_8.0_NetFx40Tools_x64
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\x64
+
+WindowsSdk_8.1
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A
+
+WindowsSdk_8.1_NetFx40Tools
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
+
+WindowsSdk_8.1_NetFx40Tools_x64
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\x64
+
+
+
+https://tfs.mmm.com/tfs/DefaultCollection/_admin/_AgentPool
+
+VS140COMNTOOLS
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+
+VS150COMNTOOLS
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools
+
+
+Like this:
+Log on as TFSBUILD
+Install VS 2017 Build Tools
+Install VS 2015 Enterprise (for all the Azure SDKs, etc.)
+Restart
+Log on as TFSSETUP
+Configure build agent
+Check capabilities
+NO !!!!!!!!!!!!!!!!!!!!!!!
+
+Exempted processes:
+wuauclt.exe
+TrustedInstaller.exe
+TiWorker.exe
+
+169.14.8.137
+
+VS 2013.5 Ultimate
+Install to D:\Microsoft Visual Studio\2013
+MFC for C++
+SQL Server Data Tools
+Web Developer Tools
+YDJWM-3WVQ7-JXMKW-DTHV3-2KXPG
+
+(Rebooted)
+
+VS 2015.3 Enterprise
+MFC for C++
+ClickOnce
+Python Tools
+SQL Server Data Tools
+Web Developer Tools
+PowerShell
+Xamarin
+VS Emulator for Android
+Apache Cordova
+C++ mobile development
+Default Android SDKs (R10E, 32 bit) (API Level 19-23)
+Git for Windows (left out to see if it would detect GIT_HOME
+Ant
+Node.js
+
+
+
+tfsbuild04 - User capabilities
+	
+ClickOnce
+2017
+ 	
+fortifysca
+C:\Program Files\HPE_Security\Fortify_SCA_and_Apps_17.10
+ 	
+InstallShield
+C:\Program Files (x86)\InstallShield\2015LE
+ 	
+VSInstaller
+2017
+
+
+12/15/17 - server migration
+
+
+
+
+Action items:
+
+xServe machines - VMWare ESX 5.5 (6.5 latest version?) - E talk to Mitka
+How to host VSTS agent to support multiple VSTS accounts?
+Who can update tfslinuxbld01 to match capabilities with older tfslinuxbuild01?
+Request new RHEL linux agent for VSTS agent - Momo
+
+Add 
+
+
+
+

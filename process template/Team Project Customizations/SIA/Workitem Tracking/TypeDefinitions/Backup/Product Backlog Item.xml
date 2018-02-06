@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<witd:WITD application="Work item type editor" version="1.0" xmlns:witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="Product Backlog Item">
+    <DESCRIPTION>Includes information about a particular Product Backlog Item</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="Iteration Path" refname="System.IterationPath" type="TreePath" reportable="dimension">
+        <HELPTEXT>Choose an appropriate Release and/or Sprint / Team</HELPTEXT>
+      </FIELD>
+      <FIELD name="Iteration ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="External Link Count" refname="System.ExternalLinkCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Team Project" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="Hyperlink Count" refname="System.HyperLinkCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Attached File Count" refname="System.AttachedFileCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Node Name" refname="System.NodeName" type="String" />
+      <FIELD name="Area Path" refname="System.AreaPath" type="TreePath" reportable="dimension">
+        <HELPTEXT>The AreaPath can be used to categorise or theme Product Backlog Items</HELPTEXT>
+      </FIELD>
+      <FIELD name="Revised Date" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="Changed Date" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension">
+        <HELPTEXT>Human readable, auto-populated numeric Id</HELPTEXT>
+      </FIELD>
+      <FIELD name="Area ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="Authorized As" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="Title" refname="System.Title" type="String" reportable="dimension">
+        <HELPTEXT>Name or short description that clearly identifies the Product Backlog Item</HELPTEXT>
+        <REQUIRED />
+        <CANNOTLOSEVALUE />
+      </FIELD>
+      <FIELD name="State" refname="System.State" type="String" reportable="dimension">
+        <HELPTEXT>This is the status of the Product Backlog Item as selected by a team member</HELPTEXT>
+      </FIELD>
+      <FIELD name="Authorized Date" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="Watermark" refname="System.Watermark" type="Integer" />
+      <FIELD name="Rev" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="Changed By" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Reason" refname="System.Reason" type="String" reportable="dimension" />
+      <FIELD name="Assigned To" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="[project]\Project Administrators" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Work Item Type" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="Created Date" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Created By" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Description" refname="System.Description" type="HTML">
+        <HELPTEXT>A description of the Product Backlog Item ideally in User Story format</HELPTEXT>
+        <DEFAULT from="value" value="As a &lt;role&gt; I want &lt;ability&gt; so that &lt;benefit&gt;." />
+      </FIELD>
+      <FIELD name="History" refname="System.History" type="History">
+        <HELPTEXT>Discussion thread and other historical information including fields that have changed, by whom and when.</HELPTEXT>
+      </FIELD>
+      <FIELD name="Related Link Count" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="Tags" refname="System.Tags" type="PlainText" />
+      <FIELD name="Backlog Priority" refname="Microsoft.VSTS.Common.BacklogPriority" type="Double" reportable="detail" />
+      <FIELD name="Effort" refname="Microsoft.VSTS.Scheduling.Effort" type="Double" reportable="measure" formula="sum">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1" />
+          <LISTITEM value="2" />
+          <LISTITEM value="0" />
+          <LISTITEM value="3" />
+          <LISTITEM value="5" />
+          <LISTITEM value="8" />
+          <LISTITEM value="13" />
+          <LISTITEM value="21" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Story Points" refname="Microsoft.VSTS.Scheduling.StoryPoints" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>Set by the team, this is a high level estimate of the effort required to complete this Product Backlog Item. This is in units of story points.</HELPTEXT>
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="1" />
+          <LISTITEM value="2" />
+          <LISTITEM value="0" />
+          <LISTITEM value="3" />
+          <LISTITEM value="5" />
+          <LISTITEM value="8" />
+          <LISTITEM value="13" />
+          <LISTITEM value="0.5" />
+          <LISTITEM value="20" />
+          <LISTITEM value="40" />
+          <LISTITEM value="100" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="History Date (Scrum v3)" refname="Scrum.v3.HistoryDate" type="DateTime" reportable="dimension">
+        <DEFAULT from="clock" />
+        <COPY from="clock" />
+      </FIELD>
+      <FIELD name="Work Remaining (Scrum v3)" refname="Scrum.v3.WorkRemaining" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>(Calculated) This field shows the current total of all the work remaining (hours) from all linked Sprint Tasks required to deliver this Product Backlog Item</HELPTEXT>
+      </FIELD>
+      <FIELD name="Return On Investment (Scrum v3)" refname="Scrum.v3.ReturnOnInvestment" type="Double" reportable="dimension">
+        <HELPTEXT>(Calculated) The return on investment value for this item.</HELPTEXT>
+      </FIELD>
+      <FIELD name="Business Value (Scrum v3)" refname="Scrum.v3.BusinessValue" type="Integer" reportable="dimension">
+        <HELPTEXT>Normally set by the product Owner, this is the relative business value of this Product Backlog Item in arbitrary units ? the higher the number the greater the priority</HELPTEXT>
+      </FIELD>
+      <FIELD name="Delivery Order (Scrum v3)" refname="Scrum.v3.DeliveryOrder" type="Integer" reportable="dimension">
+        <HELPTEXT>Order in which backlog items will be delivered accounting for dependencies and technical considerations as decided by the team whilst prioritising the highest ROI backlog items.</HELPTEXT>
+      </FIELD>
+      <FIELD name="IsComingFromMarketing" refname="Scrum.v3.IsComingFromMarketing" type="String">
+        <HELPTEXT>Will show if the item was coming from Marketing</HELPTEXT>
+        <DEFAULT from="value" value="false" />
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="false" />
+          <LISTITEM value="true" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="ItemOwner" refname="Scrum.v3.ItemOwner" type="String" reportable="dimension">
+        <HELPTEXT>ItemOwner</HELPTEXT>
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="[project]\Project Administrators" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Documentation" refname="OSI.Documentation" type="String" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Yes" />
+          <LISTITEM value="No" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Training" refname="HIS.Training" type="String" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES for="[global]\Project Collection Valid Users" expanditems="true">
+          <LISTITEM value="Yes" />
+          <LISTITEM value="No" />
+        </ALLOWEDVALUES>
+      </FIELD>
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="In Progress" />
+        <STATE value="Done" />
+        <STATE value="Not Started" />
+        <STATE value="Deleted" />
+        <STATE value="Descoped" />
+        <STATE value="Broken" />
+        <STATE value="Deprecated" />
+        <STATE value="Ready for QA" />
+        <STATE value="Ready for UI Design" />
+        <STATE value="Ready for Development Implementation" />
+        <STATE value="Awaiting Marketing Review" />
+        <STATE value="Ready for PA" />
+        <STATE value="Initial Design" />
+        <STATE value="Ready for Peer Review" />
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="In Progress" to="Ready for Peer Review">
+          <REASONS>
+            <DEFAULTREASON value="Ready for Peer Review" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Initial Design">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Initial Design" to="Ready for PA">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Ready for PA">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for PA" to="Awaiting Marketing Review">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Awaiting Marketing Review">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for UI Design" to="Ready for Development Implementation">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Ready for Development Implementation">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Awaiting Marketing Review" to="Ready for UI Design">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Ready for UI Design">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for Development Implementation" to="Ready for QA">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Ready for QA">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Broken" to="Deprecated">
+          <REASONS>
+            <DEFAULTREASON value="Invalid work marked as irrelevant" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Descoped" to="Deprecated">
+          <REASONS>
+            <DEFAULTREASON value="Item is marked irrelevant" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="Broken">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item restored" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Broken">
+          <REASONS>
+            <DEFAULTREASON value="Finished work has become invalid" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="Descoped">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item restored" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Not Started" to="Descoped">
+          <REASONS>
+            <DEFAULTREASON value="Item has been removed from scope" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Descoped">
+          <REASONS>
+            <DEFAULTREASON value="Item has been removed from scope" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deprecated" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Broken" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Descoped" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Not Started" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked as deleted" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Descoped" to="Not Started">
+          <REASONS>
+            <DEFAULTREASON value="Item moved back into scope" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="Not Started">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item restored" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="" to="Not Started">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for Peer Review" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="The work needs to be redone" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Initial Design" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for PA" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Awaiting Marketing Review" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for Development Implementation" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for UI Design" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for QA" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Descoped" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Item moved back into scope" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item restored" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Not Started" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Work has commenced" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Change state to In Progress" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for Peer Review" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Testing successfully completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Ready for QA" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Broken" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Invalid work marked as completed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item restored" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="In Progress" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Work has been completed" />
+          </REASONS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout>
+        <Group>
+          <Column PercentWidth="100">
+            <Control FieldName="System.Title" Type="FieldControl" Label="Title" LabelPosition="Left" />
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="33">
+            <Group Label="Fundamentals">
+              <Column PercentWidth="100">
+                <Control FieldName="Scrum.v3.BusinessValue" Type="FieldControl" Label="Business Value" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Scheduling.StoryPoints" Type="FieldControl" Label="Story Points" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.ReturnOnInvestment" Type="FieldControl" Label="ROI" LabelPosition="Left" ReadOnly="True" />
+                <Control FieldName="System.AreaPath" Type="WorkItemClassificationControl" Label="Feature Scope" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.IsComingFromMarketing" Type="FieldControl" Label="From Marketing" LabelPosition="Left" />
+                <Control FieldName="OSI.Documentation" Type="FieldControl" Label="Documentation" LabelPosition="Left" Name="Documentation" />
+                <Control FieldName="HIS.Training" Type="FieldControl" Label="Training" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="33">
+            <Group Label="Scheduling">
+              <Column PercentWidth="100">
+                <Control FieldName="Scrum.v3.DeliveryOrder" Type="FieldControl" Label="Delivery Order" LabelPosition="Left" />
+                <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="Planning Scope" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="33">
+            <Group Label="Tracking">
+              <Column PercentWidth="100">
+                <Control FieldName="System.State" Type="FieldControl" Label="Current Status" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.WorkRemaining" Type="FieldControl" Label="Work Remaining (hours)" LabelPosition="Left" ReadOnly="True" />
+                <Control FieldName="System.AssignedTo" Type="FieldControl" Label="Assigned to" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.ItemOwner" Type="FieldControl" Label="Item Owner" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <TabGroup>
+          <Tab Label="Description">
+            <Control FieldName="System.Description" Type="HtmlFieldControl" Label="User Story or Detailed Description:" LabelPosition="Top" Dock="Fill" />
+          </Tab>
+          <Tab Label="History">
+            <Control FieldName="System.History" Type="WorkItemLogControl" Label="History:" LabelPosition="Top" Dock="Fill" />
+          </Tab>
+          <Tab Label="Impeded By">
+            <Control Type="LinksControl" Label="Impediments for this Product Backlog Item:" LabelPosition="Top" Name="Impediments">
+              <LinksControlOptions>
+                <LinkColumns>
+                  <LinkColumn RefName="System.ID" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.Title" />
+                  <LinkColumn RefName="System.Description" />
+                  <LinkColumn RefName="System.State" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+                <WorkItemLinkFilters FilterType="include">
+                  <Filter LinkType="Scrum.ImpededBy" FilterOn="forwardname" />
+                </WorkItemLinkFilters>
+                <ExternalLinkFilters FilterType="excludeAll" />
+                <WorkItemTypeFilters FilterType="include">
+                  <Filter WorkItemType="Impediment" />
+                </WorkItemTypeFilters>
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="Tested By">
+            <Control Type="LinksControl" Label="Acceptance Tests for this Product Backlog Item:" LabelPosition="Top" Name="LinkedAcceptanceTests">
+              <LinksControlOptions>
+                <LinkColumns>
+                  <LinkColumn RefName="System.ID" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.Title" />
+                  <LinkColumn RefName="System.AssignedTo" />
+                  <LinkColumn RefName="System.State" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+                <WorkItemLinkFilters FilterType="include">
+                  <Filter LinkType="Microsoft.VSTS.Common.TestedBy" FilterOn="forwardname" />
+                </WorkItemLinkFilters>
+                <ExternalLinkFilters FilterType="excludeAll" />
+                <WorkItemTypeFilters FilterType="include">
+                  <Filter WorkItemType="Acceptance Test" />
+                </WorkItemTypeFilters>
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="Implemented By">
+            <Control Type="LinksControl" Label="Sprint Backlog Tasks that implement this Product Backlog Item:" LabelPosition="Top" Name="LinkedTasks">
+              <LinksControlOptions>
+                <LinkColumns>
+                  <LinkColumn RefName="System.ID" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.Title" />
+                  <LinkColumn RefName="System.AssignedTo" />
+                  <LinkColumn RefName="System.State" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+                <WorkItemLinkFilters FilterType="include">
+                  <Filter LinkType="Scrum.ImplementedBy" FilterOn="forwardname" />
+                </WorkItemLinkFilters>
+                <ExternalLinkFilters FilterType="excludeAll" />
+                <WorkItemTypeFilters FilterType="include">
+                  <Filter WorkItemType="Sprint Backlog Task" />
+                </WorkItemTypeFilters>
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="All Links">
+            <Control Type="LinksControl" LabelPosition="Top" Name="OtherLinks">
+              <LinksControlOptions>
+                <LinkColumns>
+                  <LinkColumn RefName="System.ID" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.Title" />
+                  <LinkColumn RefName="System.AssignedTo" />
+                  <LinkColumn RefName="System.State" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+                <WorkItemLinkFilters FilterType="includeAll" />
+                <ExternalLinkFilters FilterType="includeAll" />
+                <WorkItemTypeFilters FilterType="includeAll" />
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="File Attachments">
+            <Control Type="AttachmentsControl" LabelPosition="Top" />
+          </Tab>
+          <Tab Label="Process Guidance">
+            <Control Type="WebpageControl" LabelPosition="Top" Dock="Fill">
+              <WebpageControlOptions AllowScript="false" ReloadOnParamChange="false">
+                <Link UrlRoot="http://www.scrumforteamsystem.com" UrlPath="processguidance/v3/{0}/{1}">
+                  <Param Index="0" Value="System.WorkItemType" Type="Current" />
+                  <Param Index="1" Value="System.State" Type="Current" />
+                </Link>
+              </WebpageControlOptions>
+            </Control>
+          </Tab>
+        </TabGroup>
+      </Layout>
+    </FORM>
+  </WORKITEMTYPE>
+</witd:WITD>

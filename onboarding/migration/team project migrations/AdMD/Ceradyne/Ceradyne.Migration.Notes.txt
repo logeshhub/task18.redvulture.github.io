@@ -1,0 +1,18 @@
+
+Ricardo Gallegos
+Fred Kantner
+
+11/23/15:  Review project plan
+All projects will go to TPC on EC instance.
+
+A450WZZ A44XBZZ
+
+
+
+For best results provide as much detail as possible.
+
+The (%) or (*) can be used as wildcards
+Example: *DOCS
+
+
+  

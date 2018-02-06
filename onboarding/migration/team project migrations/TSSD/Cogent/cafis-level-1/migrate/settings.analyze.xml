@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceControlConverter>
+<ConverterSpecificSetting>
+     <Source name="VSS">
+          <VSSDatabase name="D:\VSS\Cogent\cafis\cafis-level-1"></VSSDatabase>
+          <UserMap name="D:\VSS\Cogent\cafis\cafis-level-1\migrate\Usermap.xml"></UserMap>
+          <SQL Server="tfsmigration"></SQL>
+     </Source>
+     <ProjectMap>
+          <Project Source="$/AEI_Product"></Project>
+		  <Project Source="$/AiT"></Project>
+		  <Project Source="$/BioGateSTSolution"></Project>
+		  <Project Source="$/BMS"></Project>
+		  <Project Source="$/branch"></Project>
+		  <Project Source="$/cafis"></Project>
+		  <Project Source="$/Cafis for Window CE Mobile"></Project>
+		  <Project Source="$/Cafis Installations"></Project>
+		  <Project Source="$/cafis.net version"></Project>
+		  <Project Source="$/cafis.rt"></Project>
+		  <Project Source="$/cafis.rt302"></Project>
+		  <Project Source="$/Cafis.Solution.VS"></Project>
+		  <Project Source="$/cafis.version"></Project>
+		  <Project Source="$/cafis.version for C++.NET"></Project>
+		  <Project Source="$/cafis.version for VC++ 6.0"></Project>
+		  <Project Source="$/CAFIS60"></Project>
+		  <Project Source="$/CAFIS60.20061003Freeze"></Project>
+		  <Project Source="$/CAFIS60.20080414"></Project>
+		  <Project Source="$/CAFIS60Backup"></Project>
+		  <Project Source="$/CAFIS61"></Project>
+		  <Project Source="$/CafisProduct"></Project>
+		  <Project Source="$/cch20"></Project>
+		  <Project Source="$/CNE_Installation"></Project>
+		  <Project Source="$/CogentGuiApplications"></Project>
+		  <Project Source="$/CogentLiveID"></Project>
+		  <Project Source="$/CogentLiveScan"></Project>
+		  <Project Source="$/CogentMugshot"></Project>
+		  <Project Source="$/CogentUtil"></Project>
+		  <Project Source="$/eCitation"></Project>
+		  <Project Source="$/FoundationComponent"></Project>
+		  <Project Source="$/ias"></Project>
+		  <Project Source="$/installer"></Project>
+		  <Project Source="$/Logon and ID Programs"></Project>
+		  <Project Source="$/MobileApplications"></Project>
+		  <Project Source="$/MobileFoundationComponent"></Project>
+		  <Project Source="$/MobileToolSuite"></Project>
+		  <Project Source="$/NwcProduct"></Project>
+		  <Project Source="$/PCDLLs"></Project>
+		  <Project Source="$/ProjectSettings"></Project>
+		  <Project Source="$/WinCELogon"></Project>
+     </ProjectMap>
+</ConverterSpecificSetting>
+<Settings>
+     <Output file="D:\VSS\Cogent\cafis\cafis-level-1\migrate\logs\CogentVSSAnalyze.cafis-level-1.xml"></Output>
+</Settings>
+</SourceControlConverter>

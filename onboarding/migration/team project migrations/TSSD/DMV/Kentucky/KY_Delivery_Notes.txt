@@ -1,0 +1,30 @@
+
+Schema changes, Part I:		http://www.socha.com/blogs/john/2009/05/upgrading-visual-studio-team-foundation.html
+Schema changes, Part II:	http://www.socha.com/blogs/john/2009/10/upgrading-team-foundation-server-2008.html
+Schema changes, Part III:	http://blogs.msdn.com/b/sunder/archive/2009/05/16/team-foundation-server-2010-relational-warehouse-and-cube-schema-changes.aspx - has section on breaking schema on custom reports
+Default report upgrades:	http://blogs.msdn.com/b/aaronbjork/archive/2009/05/18/team-foundation-server-2010-where-are-my-reports.aspx
+
+So, what’s the effect on new projects? Any new project created in TFS 2010 using one of the new process templates will work fine without any modification as the reports included in the template have been authored against the new warehouse and cube. However, any new projects using a process template built prior to TFS 2010 (ex: MSF Agile/CMMI 4.2) will need report updates just like an existing Team Project.
+To get your existing reports working against the new updated warehouse and cube you’ll need to modify the reports and apply the necessary changes. I’d recommend reading the blog posts below as they describe in detail the changes made to the warehouse and cube and how you can apply them to existing reports.
+John Socha-Leialoha has authored a detailed blog post entitled Upgrading Visual Studio Team Foundation Server 2008 Reports to 2010 that describes the steps to upgrade your reports. 
+Sunder Raman has written a post describing the changes to the warehouse and cube entitled Relational Warehouse and Cube Schema Changes.
+
+Server 2008:  Q6VYQ-7CB4D-TGB7K-4JKB9-V77XT
+
+Server 2008 R2:	DYQXG-GRJ9F-KHW9H-FGXTY-7HYYM
+
+169.14.8.130
+tfs08archive
+
+http://www.microsoft.com/en-us/download/details.aspx?id=6887&fa43d42b-25b5-4a42-fe9b-1634f450f5ee=True&751be11f-ede8-5a0c-058c-2ee190a24fa6=True
+
+
+169.14.62.203
+vm47
+
+169.14.62.206
+vm46
+
+Ryan Sunquist - MFA
+
+

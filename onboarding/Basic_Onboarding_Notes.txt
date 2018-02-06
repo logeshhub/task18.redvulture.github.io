@@ -1,0 +1,310 @@
+
+*********************************************
+
+Before initial meeting:
+
+ETFS SharePoint site:
+	http://tfs.mmm.com
+ETFS Team Project request:
+	http://tfs.mmm.com/_layouts/15/start.aspx#/Lists/Team%20Project%20Requests/NewForm.aspx?Source=http%3A%2F%2Ftfs%2Emmm%2Ecom%2FLists%2FTeam%2520Project%2520Requests%2FAllItems%2Easpx&RootFolder=
+
+Review Team Project request in SharePoint.
+
+*********************************************
+
+Overview:
+
+1.  Basic questions
+
+2.  Cost
+
+3.  Set up
+
+4.  Worksheet
+
+5.  Project creation
+
+
+Initial meeting with customer:
+
+Have you used ETFS before?  If so, what Team Project?
+
+If not used before, provide a quick 10 min demo if you are comfortable doing it.
+
+Do you have data from another system that needs to be migrated?
+
+Estimated number of users?  What roles?
+
+Who is the actual business contact.  Verify that this is the person that will actually be working with the Team Project.
+Need to explain the responsibilites for the business contact:  Security groups, notifications.
+It may not be the manager, it may be a lead.  You have to ask.
+
+Which Team Project template?  Explain the differences, but push them towards Scrum.
+
+No SharePoint sites integrated with TFS.  If they want to create a basic SharePoint site via SharePoint Online, they can wire the Team Project to that URL.
+Link to request a new SharePoint online site:
+Request a Site (RAS)
+https://skydrive3m.sharepoint.com/sites/3MAdm/RAS/SitePages/Home.aspx
+
+
+Discuss cost.
+
+Discuss stakeholder access.
+
+*********************************************
+
+Send user worksheet for details.
+
+Get a list of all the members they need.
+	Send spreadsheet (needs rework)
+	Add spreadsheet to response folder in $/etfs/onboarding
+	
+	A.  Name and 3M user pin (A...ZZ, etc.)
+	B.	Department number
+	C.	Does this user have any retail versions of Visual Studio, Visual Studio subscriptions, or MSDN subscriptions?
+	D.	If so, what level of product do they have?  Examples:  Visual Studio 2017 Enterprise vs. Professional, Visual Studio Enterprise vs. Dev Essentials subscription, etc.
+	E.  If the user does not have a qualifying product, they will need an Azure account in the EA for the CAL.  We can discuss pricing for them.
+	F.	If you have any users that are "sometimes users", like product managers, leadership team, etc.?  We can give them a Stakeholder access level license at no cost, but there is limited functionality.
+		Limited functionality for Stakeholder:  https://www.visualstudio.com/en-us/docs/work/connect/work-as-a-stakeholder
+	
+*********************************************
+
+
+Add the users to AD groups.
+
+Determine licensing requirements.
+Based on the need for stakeholder/basic/enterprise for each user, add them to the AD groups for AccessLevel.
+Add necessary users to US-ETFS-AccessLevel-*
+(If you add them to nothing, it's basic access)
+
+Create Team Project in TFS.
+	Will need to use TFSSETUP account on tfsmigration to create Team Project.
+
+Flip the security permissions to our configuration.
+(We need a document explaining how the permissions are maintained)
+
+Go to Notes, add the users to the email distribution list.
+
+Send the business contact the getting started resources email.
+
+Update the SPS list item.
+
+Set up a release folder on \\tfsbuildlab\etfs, if necessary
+
+**********************************************
+
+Licensing comparison:
+https://www.visualstudio.com/vs/compare/ 
+
+**********************************************
+
+Getting Started
+
+Start here:
+https://www.visualstudio.com/en-us/docs/devops-alm-overview
+
+
+Documentation
+
+General feature overview:
+https://www.visualstudio.com/en-us/docs/alm-devops-features
+
+Work Items:
+https://www.visualstudio.com/en-us/docs/work/overview
+
+Code:
+https://www.visualstudio.com/en-us/docs/git/overview
+https://www.visualstudio.com/en-us/docs/tfvc/overview
+
+Build:
+https://www.visualstudio.com/en-us/docs/build/overview
+
+Test:
+https://www.visualstudio.com/en-us/docs/test/index
+
+Reporting:
+https://www.visualstudio.com/en-us/docs/report/overview
+
+Security:
+https://www.visualstudio.com/en-us/docs/setup-admin/permissions
+
+Collaborate:
+https://www.visualstudio.com/en-us/docs/collaborate/overview
+
+Backlogs and sprints:
+https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning
+
+Teams:
+https://www.visualstudio.com/en-us/docs/work/scale/manage-team-assets
+
+News:
+https://blogs.msdn.microsoft.com/visualstudioalm/tag/team-foundation-server/
+
+
+Tutorials and Videos
+
+DevOps with Visual Studio Team Services and Team Foundation Server
+(Microsoft Virtual Academy free course):
+https://mva.microsoft.com/en-US/training-courses/16779
+
+Channel 9:
+https://channel9.msdn.com/
+
+
+Help
+
+ETFS SharePoint site:
+http://tfs.mmm.com
+
+Support:
+http://ithelp.mmm.com/Request.aspx?Id=CHBS-SR
+
+
+
+Tasks:
+
+Email template onboarding worksheet:
+
+****************************************************************
+
+Hello,
+
+We are currently in progress on creating your requested Team Project.  We need specific permission/role and licensing information about your team.
+Attached you will find a spreadsheet.  Please fill out the Team Members sheet in the workbook, and return to me.
+
+In the licensing column, you will see a value in the drop down for stakeholder access.
+This level of access to various features and functionality is limited, but does not require purchasing a TFS client access license.
+Stakeholders are generally “fringe users” like directors, department managers, etc. that only need limited visibility and capability in the Team Project.
+For more information, please see this:  https://www.visualstudio.com/en-us/docs/work/connect/work-as-a-stakeholder
+
+Once we have the returned spreadsheet, we can finalize your Team Project setup and provide a list of useful links to get you started.
+Please let me know if you have any questions.
+
+!!!!!!!!!!!!! NEED EMAIL TEMPLATES !!!!!!!!!!!!!!!!!!!
+
+
+New Team Project ready:
+
+******************************************************************
+
+Hello,
+
+Your new Team Project is ready!  You can access your content here:
+
+IE/Edge/Chrome/Firefox:	https://tfs.mmm.com/tfs/DefaultCollection/[TeamProjectName]
+Visual Studio/Eclipse:	https://tfs.mmm.com/tfs/DefaultCollection > [Team Project Name]
+
+For self-service with security access requests, go here:
+http://securityexpress.mmm.com > (top menu) Group > Request Group Access
+
+Here is a list of useful links to get you started.
+
+Start here:
+https://www.visualstudio.com/en-us/docs/devops-alm-overview
+
+
+Documentation
+
+General feature overview:
+https://www.visualstudio.com/en-us/docs/alm-devops-features
+
+Work Items:
+https://www.visualstudio.com/en-us/docs/work/overview
+
+Code:
+https://www.visualstudio.com/en-us/docs/git/overview
+https://www.visualstudio.com/en-us/docs/tfvc/overview
+
+Build:
+https://www.visualstudio.com/en-us/docs/build/overview
+
+Test:
+https://www.visualstudio.com/en-us/docs/test/index
+
+Reporting:
+https://www.visualstudio.com/en-us/docs/report/overview
+
+Security:
+https://www.visualstudio.com/en-us/docs/setup-admin/permissions
+
+Collaborate:
+https://www.visualstudio.com/en-us/docs/collaborate/overview
+
+Backlogs and sprints:
+https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning
+
+Teams:
+https://www.visualstudio.com/en-us/docs/work/scale/manage-team-assets
+
+News:
+https://blogs.msdn.microsoft.com/visualstudioalm/tag/team-foundation-server/
+
+
+Tutorials and Videos
+
+DevOps with Visual Studio Team Services and Team Foundation Server
+(Microsoft Virtual Academy free course):
+https://mva.microsoft.com/en-US/training-courses/16779
+
+Channel 9:
+https://channel9.msdn.com/
+
+
+Help
+
+ETFS SharePoint site:
+http://tfs.mmm.com
+
+Support:
+http://ithelp.mmm.com/Request.aspx?Id=CHBS-SR
+
+
+*************************************************************************
+
+ETFS Administrators for the Ambrosia Team Project.
+Business contact is Jake Swensen.
+
+ETFS Read/write for the Ambrosia Team Project.
+Business contact is Jake Swensen.
+
+ETFS DevOps members for the Ambrosia Team Project.
+Business contact is Jake Swensen.
+
+ETFS Read only for the Ambrosia Team Project.
+Business contact is Jake Swensen.
+
+US-ETFS-Ambrosia-Admin
+US-ETFS-Ambrosia-Contributors
+US-ETFS-Ambrosia-DevOps
+US-ETFS-Ambrosia-Readers
+
+Custodians:
+[Business Contact]
+
+
+
+For self-service with security access requests, go here:
+http://securityexpress.mmm.com > (top menu) Group > Request Group Access.
+Search for your Team Project groups.  Your groups will be named something like US-ETFS-Ambrosia-*.
+DO NOT USE THE GROUPS THAT HAVE ADAM\, ADAMQA\, ETC.  THOSE ARE USED FOR EXCHANGE.  THE GROUP NAME WILL START WITH EITHER USAC\ OR MMM\.
+The group name should be evident about what level of access that user will receive after approval.
+
+****************************************************************************
+
+Licensing:
+
+https://www.visualstudio.com/vs/compare/
+https://www.visualstudio.com/vs/pricing/
+https://www.visualstudio.com/en-us/docs/setup-admin/team-services/buy-basic-access-add-team-services-users
+https://www.visualstudio.com/en-us/docs/marketplace/get-vsts-extensions
+https://www.visualstudio.com/en-us/docs/work/connect/change-access-levels
+https://www.visualstudio.com/en-us/docs/work/connect/work-as-a-stakeholder
+https://www.visualstudio.com/en-us/docs/marketplace/marketplace-billing-qa
+https://www.visualstudio.com/team-services/compare-features/
+
+
+
+
+
+
+

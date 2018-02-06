@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>6CAFC0C6-A428-4d30-A9F9-700E829FEA51</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>
+    <Name>PowerShellTools</Name>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AllTeamProjectsWorkItemsValidation.ps1" />
+    <Compile Include="Clear_Folder.ps1" />
+    <Compile Include="CopyAreas.ps1" />
+    <Compile Include="CopyIterations.ps1" />
+    <Compile Include="CopyTests.ps1" />
+    <Compile Include="CopyVHDs.ps1" />
+    <Compile Include="Correct_Service_Hook_Permissions.ps1" />
+    <Compile Include="CreateTeamProject.ps1" />
+    <Compile Include="DestroyWorkItems.ps1" />
+    <Compile Include="Death_Star.ps1" />
+    <Compile Include="FindAssemblyInfoFiles.ps1" />
+    <Compile Include="GetTPC_VersionControl_Info_Deleted_Files_Only.ps1" />
+    <Compile Include="Get_Connected_Services.ps1" />
+    <Compile Include="Get_Service_Hooks.ps1" />
+    <Compile Include="Get_Git_Repo_Consumption.ps1" />
+    <Compile Include="Get_Subscriptions.ps1" />
+    <Compile Include="XAML_Build_Server_Status.ps1" />
+    <Compile Include="Get-TFS_TPC_GUID.ps1" />
+    <Compile Include="GetTPC_VersionControl_Info.ps1" />
+    <Compile Include="GetTPC_VersionControl_Info_old.ps1" />
+    <Compile Include="GIT_Clone_FileSize.ps1" />
+    <Compile Include="IncrementAssemblyFileVersion.ps1" />
+    <Compile Include="Manage_TFS_Access_Level_Groups.ps1" />
+    <Compile Include="Native_TFS_APIs.ps1" />
+    <Compile Include="Refresh_TFS_Proxy_Cache.ps1" />
+    <Compile Include="RemoveDisabledUsersFromTFSGroup.ps1" />
+    <Compile Include="RemoveLocalFiles.ps1" />
+    <Compile Include="RemoveUsersFromTFSGroup.ps1" />
+    <Compile Include="RemoveVSSFiles.ps1" />
+    <Compile Include="IIS.Log.Retention.ps1" />
+    <Compile Include="TFVC_vs_GIT.ps1" />
+    <Compile Include="UpdateAssemblyInfoAttributes.ps1" />
+    <Compile Include="UpdateCacheService.ps1" />
+    <Compile Include="User_Extract_DisplayNameMapping.ps1" />
+    <Compile Include="User_Extract_ValueMap.ps1" />
+    <Compile Include="ValidateWorkItems.ps1" />
+    <Compile Include="WorkItemsBulkUpdate.ps1" />
+    <Compile Include="Workspace_Cleanup.ps1" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+</Project>

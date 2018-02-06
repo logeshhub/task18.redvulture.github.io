@@ -1,0 +1,59 @@
+﻿<Window x:Class="TeamProjectManager.Shell.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://www.codeplex.com/prism"
+        xmlns:c="clr-namespace:TeamProjectManager.Common;assembly=TeamProjectManager.Common"
+        xmlns:s="clr-namespace:TeamProjectManager.Shell"
+        Title="{Binding Path=WindowTitle}"
+        WindowStartupLocation="CenterScreen"
+        Height="768"
+        Width="1024"
+        Icon="/App.ico"
+        TaskbarItemInfo="{Binding TaskbarItemInfo}">
+    <Grid Margin="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="55" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="0,0,0,1" Margin="5,0,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static s:InternalConstants.RegionNameLogo}" />
+                <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static s:InternalConstants.RegionNameStatusPanel}" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static s:InternalConstants.RegionNameTeamProjects}" />
+
+            <GridSplitter Grid.Column="1" Width="3" Margin="3,0,3,0" HorizontalAlignment="Stretch" ResizeDirection="Columns" />
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TabControl Grid.Row="0" ItemContainerStyle="{StaticResource ShellTabItemStyle}" prism:RegionManager.RegionName="{x:Static c:RegionNames.Modules}" SelectedIndex="0" />
+
+                <Border Grid.Row="1" BorderThickness="0,1,0,0" Margin="0,5,0,0" BorderBrush="{StaticResource AccentBrush}">
+                    <Expander Header="Info" IsExpanded="True" Foreground="{StaticResource UserMessageFontBrush}" Margin="0,2,0,0">
+                        <ContentPresenter Content="{Binding HelpContent, Mode=OneWay, Converter={StaticResource helpContentConverter}}" />
+                    </Expander>
+                </Border>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--
+This file is automatically created by VSS Upgrade. You can optionally use the file to map
+a VSS user to a Team Foundation user. For example, <UserMap From="Jane" To="MyDomain\Janep"></UserMap> 
+This mapping causes all actions logged by VSS user “Jane” to be changed to Team
+Foundation user “ MyDomain\Janep ” during migration. 
+-->
+  <UserMap From="Smpei" To="USAC\A2VARZZ" /> <!-- Simon Pei -->
+  <UserMap From="Htu" To="USAC\A2VCJZZ " />
+  <UserMap From="Plam" To="USAC\A2V8YZZ" />
+  <UserMap From="Itang" To="USAC\A2VCBZZ" />
+  <UserMap From="Slaw" To="USAC\A2V98ZZ" />
+  <UserMap From="Fxu" To="USAC\A2VDJZZ" />
+  <UserMap From="ADMIN" To="USAC\A2VARZZ" /> <!-- Simon Pei -->
+</UserMappings>

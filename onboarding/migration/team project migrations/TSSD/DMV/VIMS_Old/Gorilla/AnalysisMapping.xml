@@ -1,0 +1,11 @@
+<!--Replace the WorkItemTypes node and FieldMaps node in the TFS Integration Platform mapping file with the content of this file-->
+<WorkItemTypes>
+  <WorkItemType LeftWorkItemTypeName="BusinessRule" RightWorkItemTypeName="User Story" fieldMap="BusinessRuleToUserStoryFieldMap" />
+</WorkItemTypes>
+<FieldMaps>
+  <FieldMap name="BusinessRuleToUserStoryFieldMap">
+    <MappedFields>
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.CMMI.Analysis" RightName="MMM.Common.AnalystComments" />
+    </MappedFields>
+  </FieldMap>
+</FieldMaps>

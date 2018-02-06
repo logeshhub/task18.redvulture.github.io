@@ -1,0 +1,106 @@
+
+Montana
+Agile template
+Source code with history
+Try to get the bugs out
+10-12 hours
+
+delete 61370
+
+
+Need artifact extract for Montana
+
+10/06
+Tarvin
+Jordan
+
+Source code - latest only
+VIMS VP5000 - latest to tfs13
+
+tfs13 - Montana TSSD - documentation only - from VP5000 (Montana folder only)
+Gary Copeland and Sherry will pull source and load into tfs13
+Move MERLIN materials to tfs13 under separate folder
+Only new work items in tfs13
+
+tfs13 - VIMS Legacy
+All source from VP5000 into VIMS Legacy
+
+Gary: 520-465-7119
+
+3:10:13 PM: Gary Copeland: C:\TFS\VIMS VP5000 = C:\TFS13\VIMS VP5000
+3:25:46 PM: Gary Copeland: Don't need the following under VIMS VP5000\Code: Bar Code Project, VIMS Rewrite
+
+
+VIMS Legacy - VP5000 - Montana VIMS development
+Montana TSSD - MERLIN > MERLIN_MOVRS for now, work items from vm214 eventually
+
+7:00pm CST - Clear off checkouts, migrate code
+
+vm47 - Delete Montana after MERLIN
+
+TFS 2010:
+Montana 2010 > Montana TSSD 2013
+
+Work items and version control > $/Montana TSSD/MERLIN_Drivers
+SOW 3 & 4 > child folders
+
+Pull Tasks and User Stories from Master and Child Stories - TFS 2013 Migration Items
++ version control + linkage
+
+Task *******************
+
+Activity:
+
+[Add new custom ALLOWEDVALUES]
+
+Analysis > Design
+Data > Configuration (new)
+Development > Development
+OCM > OCM (new)
+Operations > Operations (new)
+Project Management > (new)
+Support > Deployment
+Test > Testing
+Training > (new)
+
+Committed hours > Original Estimate
+
+User Story *************
+
+Ignore Release Notes
+Drop Activity
+Ignore Planned Start
+Ignore Planned Finish
+
+Version Control ********
+
+SOW 3 > $/Montana TSSD/MERLIN_DRIVS/SOW_3
+SOW 4 > $/Montana TSSD/MERLIN_DRIVS/DRIVS
+
+
+Pull all User Stories and Tasks
+Export to Excel
+Update the Areas
+Publish from Excel
+Run flat list query to get the right work items based on Areas
+
+
+TFS to TFS Version Control and Work Item Tracking with Links - MT v1.0
+TFS to TFS Version Control and Work Item Tracking with Links - MT v2.0
+
+
+Time reporting issues?
+
+TFS to TFS Version Control and Work Item Tracking with Links - MT v2.0
+
+
+
+
+
+
+
+
+
+
+
+

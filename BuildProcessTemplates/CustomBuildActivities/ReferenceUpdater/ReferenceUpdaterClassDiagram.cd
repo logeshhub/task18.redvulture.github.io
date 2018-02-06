@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="mmmHIS.ALM.Build.Activities.ReferenceUpdaterBase">
+    <Position X="7.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAABAAAAAAAAAAIAAAAAAAAABQAAEABAACAAA=</HashCode>
+      <FileName>ReferenceUpdaterBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mmmHIS.ALM.Build.Activities.ConfigFileUpdater">
+    <Position X="3.25" Y="1.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="mmmHIS.ALM.Build.Activities.ConfigFileUpdater.Update" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ConfigFileUpdater.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="mmmHIS.ALM.Build.Activities.ConfigFileUpdater.LookIn" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ConfigFileUpdater.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAAQAgCgAIgAAAAQcAABAQABQAAAACAACAAE=</HashCode>
+      <FileName>ConfigFileUpdater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mmmHIS.ALM.Build.Activities.ProjectFileUpdater">
+    <Position X="6.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABCAAABAAAAAAAAAAAAAAAAgAAABUAAAAAAACAAA=</HashCode>
+      <FileName>ProjectFileUpdater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mmmHIS.ALM.Build.Activities.ReferenceUpdateManager" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ReferenceUpdateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mmmHIS.ALM.Build.Activities.Util">
+    <Position X="0.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAQAAAAEBIAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

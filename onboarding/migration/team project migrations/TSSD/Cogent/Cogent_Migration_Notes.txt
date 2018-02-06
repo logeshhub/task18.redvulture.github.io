@@ -1,0 +1,402 @@
+
+Cogent:
+
+Export control clarification
+	What exactly is under export control?
+
+Start export control instance build
+	Contact Heather
+
+VSS repo
+	We need access to their machine
+	
+31cb6f5cbb0b3edcff5be19faaa43b57 ls-level-1.7z
+31cb6f5cbb0b3edcff5be19faaa43b57
+
+
+Archive password:  			mZb979$t8Iu6#5c9
+VSS repo admin password:	girl$serena OR girlserena
+
+Repo Migration:
+01.	Pack repo
+	1.	Add folder to archive using .7z format. (Right click on desired folder > 7-Zip > Add to archive)  Create a segmented archive using "Split to volumes, bytes".  A good segment size would be 8128 MB.
+	2.	Use password (provided separately) for the encryption.  Leave all other settings to defaults.
+	
+02.	Generate checksum using FCIV
+	http://www.microsoft.com/en-us/download/details.aspx?id=11533
+	
+03.	Upload to FTP
+	FTP:  		ftp.3m.com
+	User:		z13vss
+	Password:	w1ndyy909@
+	Archive:	mZb979$t8Iu6#5c9
+	
+	1.	Use FileZilla, connect to 3M FTP server.
+	2.	Upload segmented archive files to FTP site.
+	3.	Use FCIV to generate hashes for each of the segment files that you uploaded.  Provide the list of generated checksums to me for verfication.
+	
+04.	Download from FTP
+
+05.	Validate checksum - FCIV
+
+06.	Unpack repo.
+
+07.	Disable AV on-access scanner
+
+08.	Open VSS repo, find and undo any pending changes.
+
+07. Purge deleted files from the VSS repo.
+	https://msdn.microsoft.com/en-US/library/h2bd48cc%28v=vs.80%29.aspx
+
+09.	Upgrade repo to VSS 2005 using DDCONV.
+	https://msdn.microsoft.com/en-US/library/20zb00xd%28v=vs.80%29.aspx
+	ddconv.exe D:\_tfs_data\algm\algm-level-1\data
+	
+08.	Run ANALYZE on the repo, DO NOT repair any errors on first run.
+	https://msdn.microsoft.com/en-US/library/ysxsfw4x(v=vs.80).asp
+	
+	analyze.exe -v4 D:\_tfs_data\algm\algm-level-1\data
+		
+08. Review analysis logs, take appropriate action.
+	
+08.	Run ANALYZE again on the repo, REPAIR any issues
+	https://msdn.microsoft.com/en-US/library/ysxsfw4x(v=vs.80).aspx
+
+	analyze.exe -fp -v4 -d D:\_tfs_data\algm\algm-level-1\data
+	analyze.exe -fl -v4 -c -d -db D:\_tfs_data\algm\algm-level-1\data
+	
+09.	Apply performance enhancements using DDUPD.
+	https://msdn.microsoft.com/library/etsa8efb(en-US,VS.80).aspx
+	
+10.	Create an analysis settings file for VSSUpgrade, step 1.
+	Example here:  https://msdn.microsoft.com/en-US/library/ms253090.aspx#analyze
+	
+11.	Run VSSUpgrade Analyze on the repo.  Address any issues that arise.
+	C:\Program Files (x86)\Microsoft Visual SourceSafe Upgrade >>> .\VSSUpgrade.exe analyze D:\_tfs_data\[app]\[level]\migrate\settings.analyze.xml
+	VSSUpgrade.exe analyze D:\_tfs_data\algm\algm-level-1\migrate\settings.analyze.xml
+
+12.	Send the generated UserMapping.xml file to Alex Rea.  He fills in the USAC pins for the known users.
+
+13.	Create empty Team Project for Cogent on production, if not already.
+
+14.	Add Everyone to the Contributors group on the project to avoid resolution issues with the USAC pins during import.
+
+15.	Create a migrate settings file for VSSUpgrade, step 2.
+	Example here:  https://msdn.microsoft.com/en-US/library/ms253090.aspx#migrate
+	
+16.	Run VSSUpgrade Migrate on the repo.  Address any issues that arise.
+	"C:\Program Files (x86)\Microsoft Visual SourceSafe Upgrade\VSSUpgrade.exe" migrate D:\_tfs_data\[app]\[project]\migrate\settings.migrate.xml
+	"C:\Program Files (x86)\Microsoft Visual SourceSafe Upgrade\VSSUpgrade.exe" migrate D:\_tfs_data\algm\algm-level-1\migrate\settings.migrate.xml
+	
+17.	Inspect upgrade results.  Notify Cogent team to inspect upgrade results.
+
+18.	Remove Everyone from Contributors group.
+
+
+
+Resources:
+
+Prepare to upgrade from Visual SourceSafe:
+https://msdn.microsoft.com/en-US/library/ms253127.aspx#vss
+
+Understand how VSS upgrade tools convert your data
+https://msdn.microsoft.com/en-US/library/ms253166.aspx
+
+DDUPD Utility:
+https://msdn.microsoft.com/library/etsa8efb(en-US,VS.80).aspx
+
+ANALYZE Utility:
+https://msdn.microsoft.com/en-US/library/ysxsfw4x(v=vs.80).aspx
+
+Upgrade from Visual SourceSafe using the VSSUpgrade command-prompt tool:
+https://msdn.microsoft.com/en-US/library/ms253090.aspx
+
+sourcesafe01.cogentinternal.com
+sourcesafe02.cogentinternal.com	> a4ya4zz
+
+
+First large repo run:
+11:30	pack
+
+?????	transfer?
+
+3896f33c6f7bccfc644945d1c671d11b customercfg.7z
+3896f33c6f7bccfc644945d1c671d11b
+
+?????	unpack
+		1:09pm start unpack
+		3:00pm? unpack
+		
+
+The parent project name was corrupt $/Canada/RCMP/SystemConfiguration/FAT/PAFISSRV02/cafis/SYSPATH/LLS1 the real name should be $/Canada/RCMP/RTID_AFIS/SystemConfiguration/FAT/PAFISSRV02/cafis/SYSPATH/LLS1.
+"C:\Program Files (x86)\Microsoft Visual SourceSafe\analyze.exe" -F -V3 -D "d:\vss\cogent\customercfg\data"
+"C:\Program Files (x86)\Microsoft Visual SourceSafe\ddupd.exe" "d:\vss\cogent\customercfg\data"
+
+analyze.exe -v4 D:\_tfs_data\algm\algm-level-1\data
+analyze.exe -fp -v4 -d D:\_tfs_data\algm\algm-level-1\data
+analyze.exe -fl -v4 -c -d -db D:\_tfs_data\algm\algm-level-1\data
+ddconv.exe D:\_tfs_data\algm\algm-level-1\data
+ddupd.exe D:\_tfs_data\algm\algm-level-1\data
+VssUpgrade analyze D:\_tfs_data\algm\algm-level-1\migrate\settings.analyze.xml
+VssUpgrade migrate D:\_tfs_data\algm\algm-level-1\migrate\settings.migrate.xml
+
+analyze.exe -f -v3 -c -d "D:\VSS\Cogent\cafis\cafis-level-1\data"
+ddconv.exe -MD:\_tfs_data\algm\algm-level-1\srcsafe.ini D:\_tfs_data\algm\algm-level-1\data
+ddupd.exe "D:\VSS\Cogent\cafis\cafis-level-1\data"
+
+"C:\Program Files (x86)\Microsoft Visual SourceSafe\ddconv.exe" D:\_tfs_data\algm\algm-level-1\data
+
+
+VssUpgrade analyze D:\VSS\Cogent\Customercfg\migrate\settings.migrate.xml
+VssUpgrade migrate D:\VSS\Cogent\Customercfg\migrate\settings.migrate.xml
+
+
+
+60GB:
+	Initial analyze -f:	3:24
+	ddupd start 2:18pm end 4:30pm 2:12
+	VSSUpgrade analyze start 5:30pm end 8:45 3:15
+	8:51 Analysis
+	VSSUpgrade migrate start 12:09pm end 7:40am
+	
+	
+10/21/15 - Alex - Upgrade discussion
+
+1.	Alex - Grant remote access for Everett to these 2 servers:
+	A.	sourcesafe01
+	B.	sourcesafe02
+2.	Alex - Verify backup integrity.
+3.	Alex - Contact Howard to determine which VSS repos are to be migrated.
+4.	Alex + Everett - Schedule downtime on weekends for analyze -f and DDUPD upgrade.
+5.	Everett - Alex needs specs for proxy server.  Proxy server will be required based on repo size, St. Paul bandwidth, and user load.
+6.	After upgrade in Pasadena, Alex will FTP repos to Everett for import testing.
+
+
+10/22/15 - SVN Import Requirements
+
+[‎10/‎26/‎2015 3:53 PM] Alex Rea: 
+Hi Everett, here's the disk space info for the SVN server in Pasadena.
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda3              54G   23G   29G  44% /
+udev                  1.9G  140K  1.9G   1% /dev
+/dev/sda1              99M   20M   74M  22% /boot
+/dev/mapper/vg01-svnrepos
+                       77G   47G   28G  64% /srv/svn/repos
+/dev/mapper/idisvg-idislv
+                      168G   23G  137G  15% /srv/svn/repos/idis-bms-level-1
+/dev/mapper/svnbackupvg-svnbackuplv
+                      197G  133G   55G  71% /srv/svn/backup
+most of the repos are in /vg01-svnrepos
+
+Determine what development platforms are being used.
+How many people for developer, tester, manager?
+How much training required for each role?
+Integrate SVN repo import into project plan.
+Provide overview of Scrum process, compare to current development methodology
+Determine best contact for resolving user mapping to AD accounts
+Both EC and non-EC will be stored on EC instance
+What is the project delineation, is it by repo?
+Ensure that FTP transfer site is still available.
+Check for backups of both VSS and SVN repos before upgrading
+Identify Java developer to POC TEE
+What build services are currently in place for both .NET and Java?
+Is it acceptable for Vishwa to use Notes to maintain DL list
+Resolve issue for build drop for Kumara
+Locate codex for Cortana
+Where should we start putting onboarding documentation for support?
+Can I train tier 1 support resources with brown bags?
+Is there a project viewer to view MPP files?
+What are average transfer times to estimate overall durations?
+
+12/01/15 - Kickoff meeting
+Piin - needs to identify individual users
+Platforms:
+	VC6, VS2008, VS2010, Eclipse-spring
+	
+	
+Questions:
+	Offshore vs onshore accessing EC instance?  Most offshore uses SVN.
+	More information about how exactly the chargebacks will be done.
+	
+	Offshore team gets a code drop.
+	
+	
+	
+	
+EastCoast:
+Adomingues = users\adomingu\ss.ini
+Cgobs = users\cgobs\ss.ini
+Jhu = users\jhu\ss.ini
+Kkipferl = users\kkipferl\ss.ini
+Krusso = users\krusso\ss.ini
+Spei = users\spei\ss.ini
+Speiux = users\speiux\ss.ini
+Ayjin = users\ayjin\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+
+hw-pma-level-1:
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Hxue = users\hxue\ss.ini
+Llu = users\llu\ss.ini
+Rsong = users\rsong\ss.ini
+Jxiong = users\jxiong\ss.ini
+Tzheng = users\tzheng\ss.ini
+Jliu = users\jliu\ss.ini
+Smpei = users\smpei\ss.ini
+Awang = users\awang\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Qliu = users\qliu\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+Stsui = users\stsui\ss.ini
+Wross = users\wross\ss.ini
+Choff = users\choff\ss.ini
+Hli = users\hli\ss.ini
+Wchu = users\wchu\ss.ini
+Mmoon = users\mmoon\ss.ini
+Carleen = users\carleen\ss.ini
+Autobld = users\autobld\ss.ini
+Wcebuild = users\wcebuild\ss.ini
+Stan = users\stan\ss.ini
+Kli = users\kli\ss.ini
+Ghe = users\ghe\ss.ini
+Sng8 = users\sng8\ss.ini
+Fxu = users\fxu\ss.ini
+Hdong = users\hdong\ss.ini
+
+us-ca-pasadena-Hw-pma-level-1:
+A2V6GZZ Carleen Chen Ping Chen     
+A2V8WZZ Jinwook Kim Jinwook Kim     
+A2V9FZZ Ken Li Rukun Li     
+A2V9GZZ Harry Li Hanqing Li     
+A2V9WZZ Charley Lu Charley C. Lu     
+A2VBYZZ Ran Song Ran Song     
+A2VC5ZZ Simon Tan Simon H. Tan     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VDVZZ Tao Zheng Tao Zheng     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A5QYDZZ yi cui yi cui 
+
+
+3aa52bd690df0685b9144d3ed8264a23
+ba2859ac6e404232eb546a50078b24e4
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-run-a-node-js-app-on-centos-6-4-64bit 
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server 
+
+https://www.npmjs.com/package/vsoagent-installer  
+
+https://support.microsoft.com/en-us/kb/951195
+
+VSS SC provider issues:
+https://social.msdn.microsoft.com/Forums/en-US/57c79933-4574-48a8-8b79-25063fc4d82d/how-do-i-unistall-team-foundation-server-msscci-provider-12?forum=tfspowertools
+http://blogs.msdn.com/b/michalma/archive/2006/03/01/541255.aspx
+
+
+Proxy server:
+http://serverexpress.mmm.com/Hardware/Request_Detail.aspx?ID=8450
+2 - C13 > C14 power cables
+OS Build out in St. Paul
+Requested Feb 25
+
+Server build out request:
+http://serverexpress/Request/Request.aspx?Type=Existing&Request_ID=12004&Client_PID=01419883&OS=Windows&Site=US-CA-Pasadena&Super_PID=01343122
+
+
+Workstation build out:
+
+Add storage server to hosts file.
+Set up Windows Credential for pass through authentication
+
+Make sure that VS 6 - SP6 is applied
+If not:  https://www.microsoft.com/en-us/download/details.aspx?id=9183
+
+Install 7-zip (remove WinZip if installed)
+http://www.7-zip.org
+
+Upgrade IE to 11.
+http://wwww.microsoft.com/ie
+
+Install Team Explorer 2013
+https://www.microsoft.com/en-us/download/details.aspx?id=40776
+
+Patch VS 2013 to latest update
+Install MSSCCI provider
+https://visualstudiogallery.msdn.microsoft.com/06c8e056-7f77-4a5c-9b8b-49318c143df8
+
+Change TFS workspace to server side
+Test connection
+
+Make sure you select the MSSCCI source control provider under tools, options, Source Control
+Do not use the Team Explorer tab or the Team sub menu to connect to TFS, instead use File, Source Control.
+Connect using the http://server:port/tfs/ProjectCollection url format for on premise servers
+
+http://blogs.msdn.com/b/tfssetup/archive/2014/01/23/connecting-to-team-foundation-server-2013-using-visual-studio-2005-thru-msscci-provider.aspx
+
+*********************************************************
+
+Attempt 2 ....
+
+Workstation build out:
+
+
+Set up Windows Credential for pass through authentication
+PCGTMIYPACS.usac.mmm.com
+
+Create working folders:
+C:\Src\TFS
+C:\Src\VSS
+
+Make sure that VS 6 - SP6 is applied
+If not:  https://www.microsoft.com/en-us/download/details.aspx?id=9183
+
+Install 7-zip (remove WinZip first)
+http://www.7-zip.org
+
+Upgrade IE to 11.
+http://wwww.microsoft.com/ie
+
+Install Visual Studio 2013 Team Explorer
+Update VS 2013
+Install MSSCCI provider
+
+Patch workstation all the way up.
+
+Change TFS workspace to server side
+Test connection to TFS
+
+Make sure you select the MSSCCI source control provider under tools, options, Source Control
+Do not use the Team Explorer tab or the Team sub menu to connect to TFS, instead use File, Source Control.
+Connect using the http://server:port/tfs/ProjectCollection url format for on premise servers
+
+Win Server 2008 R2 MAK
+6KCY7-RBRXM-WPVDD-XK8BD-M6V8Y
+
+pcgtmiypacs.usac.mmm.com
+169.15.17.2005
+Software:	\\pcgtmiypacs.usac.mmm.com\e$\Media
+VSS:  	\\pcgtmiypacs.usac.mmm.com\cafis-level-1
+TFS:	https://tfsec.mmm.com/tfs/Cogent_Test/TestProject
+
+http://ithelp.mmm.com/Request.aspx?ID=ITC-PASADENA-DIRECT
+
+Art Lathrop - Black belt
+Art Ortega - Site Manager
+
+03/24/16 - Sync meeting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Migration>
+	<WorkItemTypes>
+		<WorkItemType LeftWorkItemTypeName="Feature" RightWorkItemTypeName="Feature" fieldMap="FeatureToFeatureFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="User Story" RightWorkItemTypeName="User Story" fieldMap="UserStoryToUserStoryFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Task" RightWorkItemTypeName="Task" fieldMap="TaskToTaskFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Bug" RightWorkItemTypeName="Bug" fieldMap="BugToBugFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Issue" RightWorkItemTypeName="Issue" fieldMap="IssueToIssueFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Test Plan" RightWorkItemTypeName="Test Plan" fieldMap="TestPlanToTestPlanFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Test Suite" RightWorkItemTypeName="Test Suite" fieldMap="TestSuiteToTestSuiteFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Test Case" RightWorkItemTypeName="Test Case" fieldMap="TestCaseToTestCaseFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Shared Steps" RightWorkItemTypeName="Shared Steps" fieldMap="SharedStepsToSharedStepsFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Shared Parameter" RightWorkItemTypeName="Shared Parameter" fieldMap="SharedParameterToSharedParameterFieldMap" />
+	</WorkItemTypes>
+	<FieldMaps>
+		<FieldMap name="FeatureToFeatureFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.BusinessValue" RightName="Microsoft.VSTS.Common.BusinessValue" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedReason" RightName="Microsoft.VSTS.Common.ResolvedReason" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Risk" RightName="Microsoft.VSTS.Common.Risk" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.TargetDate" RightName="Microsoft.VSTS.Scheduling.TargetDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="UserStoryToUserStoryFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.FinishDate" RightName="Microsoft.VSTS.Scheduling.FinishDate" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedReason" RightName="Microsoft.VSTS.Common.ResolvedReason" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Risk" RightName="Microsoft.VSTS.Common.Risk" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StartDate" RightName="Microsoft.VSTS.Scheduling.StartDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StoryPoints" RightName="Microsoft.VSTS.Scheduling.StoryPoints" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="TaskToTaskFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Activity" RightName="Microsoft.VSTS.Common.Activity" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.CompletedWork" RightName="Microsoft.VSTS.Scheduling.CompletedWork" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.FinishDate" RightName="Microsoft.VSTS.Scheduling.FinishDate" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.RemainingWork" RightName="Microsoft.VSTS.Scheduling.RemainingWork" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StartDate" RightName="Microsoft.VSTS.Scheduling.StartDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.OriginalEstimate" RightName="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="BugToBugFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Build.FoundIn" RightName="Microsoft.VSTS.Build.FoundIn" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.ReproSteps" RightName="Microsoft.VSTS.TCM.ReproSteps" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedReason" RightName="Microsoft.VSTS.Common.ResolvedReason" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Severity" RightName="Microsoft.VSTS.Common.Severity" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.SystemInfo" RightName="Microsoft.VSTS.TCM.SystemInfo" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="IssueToIssueFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.DueDate" RightName="Microsoft.VSTS.Scheduling.DueDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="TestPlanToTestPlanFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.FinishDate" RightName="Microsoft.VSTS.Scheduling.FinishDate" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StartDate" RightName="Microsoft.VSTS.Scheduling.StartDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="TestSuiteToTestSuiteFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.QueryText" RightName="Microsoft.VSTS.TCM.QueryText" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.TestSuiteAudit" RightName="Microsoft.VSTS.TCM.TestSuiteAudit" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.TestSuiteType" RightName="Microsoft.VSTS.TCM.TestSuiteType" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.TestSuiteTypeId" RightName="Microsoft.VSTS.TCM.TestSuiteTypeId" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="TestCaseToTestCaseFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomatedTestId" RightName="Microsoft.VSTS.TCM.AutomatedTestId" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomatedTestName" RightName="Microsoft.VSTS.TCM.AutomatedTestName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomatedTestStorage" RightName="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomatedTestType" RightName="Microsoft.VSTS.TCM.AutomatedTestType" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomationStatus" RightName="Microsoft.VSTS.TCM.AutomationStatus" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.LocalDataSource" RightName="Microsoft.VSTS.TCM.LocalDataSource" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Parameters" RightName="Microsoft.VSTS.TCM.Parameters" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Steps" RightName="Microsoft.VSTS.TCM.Steps" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="SharedStepsToSharedStepsFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Issue" RightName="Microsoft.VSTS.Common.Issue" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Parameters" RightName="Microsoft.VSTS.TCM.Parameters" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Steps" RightName="Microsoft.VSTS.TCM.Steps" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+		<FieldMap name="SharedParameterToSharedParameterFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Parameters" RightName="Microsoft.VSTS.TCM.Parameters" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+	</FieldMaps>
+	<ValueMaps />
+</Migration>

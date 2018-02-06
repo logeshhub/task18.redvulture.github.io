@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Migration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Providers>
+    <Provider id="SVNVCProvider">
+      <AssemblyQualifiedName>TimelyDevelopment.TimelyMigration.Converter.SVNToTFS.SVNProviderFactory, TimelyDevelopment.TimelyMigration.Converter.SVNToTFS, Culture=neutral</AssemblyQualifiedName>
+    </Provider>
+  </Providers>
+  <Servers>
+    <Tfs id="tfsdev01.usac.mmm.com_DefaultCollection">
+      <Server>http://tfsdev01.usac.mmm.com:8080/tfs/defaultcollection</Server>
+    </Tfs>
+  </Servers>
+  <Settings>
+    <Setting name="ShowMethodDetails" value="true" />
+    <Setting name="Mode" value="SourceToTfs" />
+  </Settings>
+  <VC>
+    <Settings />
+    <Sessions>
+      <Session id="LPCS_v2.1" provider="SVNVCProvider">
+        <Settings>
+          <Setting name="StartingChangeset" value="0" />
+          <Setting name="EndingChangeset" value="0" />
+          <Setting name="OptimizeFolderScan" value="true" />
+          <Setting name="IgnoreKeywordSubstitution" value="true" />
+          <Setting name="ExternalsHandler" value="Ignore" />
+          <Setting name="FileDownloadTimeout" value="600" />
+          <Setting name="TagFolders" value="" />
+          <Setting name="IncludeTagPathInLabelName" value="false" />
+          <Setting name="PrefetchChangesetCacheSize" value="250" />
+          <Setting name="ConvertedChangesetCacheSize" value="250" />
+          <Setting name="SkipAnalysis" value="false" />
+          <Setting name="SkipMigration" value="false" />
+          <Setting name="LoggingMode" value="Normal" />
+          <Setting name="ConfirmCheckins" value="false" />
+          <Setting name="PrefixLabels" value="" />
+          <Setting name="PrefixLabelsWithSessionId" value="false" />
+          <Setting name="IncludeLabels" value="" />
+          <Setting name="ExcludeLabels" value="" />
+          <Setting name="RenameLabels" value="" />
+          <Setting name="MigrationChangeCommentModifier" value="{$(DateTime) r$(Name)} $(Comment)" />
+          <Setting name="UserMappingFile" value="" />
+          <Setting name="MigrationLogFile" value="" />
+          <Setting name="MigrationStopChangeGroup" value="" />
+          <Setting name="ItemExistsHandler" value="ChangeToEdit" />
+          <Setting name="SessionContinuationWarning" value="true" />
+          <Setting name="DuplicateDestinationPathWarning" value="true" />
+          <Setting name="VerifyWorkspaceMappings" value="true" />
+          <Setting name="DropLongPaths" value="false" />
+          <Setting name="BackDateTimestamps" value="false" />
+          <Setting name="ChangeToAddOnBranchSourceNotFound" value="true" />
+          <Setting name="SkipFileDownloadFailures" value="true" />
+          <Setting name="SkipLabelFailures" value="true" />
+          <Setting name="FileDownloadRetryCount" value="3" />
+          <Setting name="ScannedPaths" value="" />
+        </Settings>
+        <Mappings>
+          <Mapping src="/3rd Party Tools" tgt="$/LPCS_Migration/3rd Party Tools" cloak="false" />
+          <Mapping src="/Build Tools" tgt="$/LPCS_Migration/Build Tools" cloak="false" />
+          <Mapping src="/Documentation" tgt="$/LPCS_Migration/Documentation" cloak="false" />
+          <Mapping src="/Cruise Control" tgt="$/LPCS_Migration/Archive/Cruise Control" cloak="false" />
+          <Mapping src="/MLPI" tgt="$/LPCS_Migration/Archive/MLPI" cloak="false" />
+        </Mappings>
+        <Source>
+          <SVN server="SVN">
+            <Server>http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety</Server>
+            <User>a4ya4zz</User>
+            <Password>R2 h@s been wr0ng</Password>
+            <WorkingDirectory>D:\SVN\LPCS\Working\LPC_Else</WorkingDirectory>
+            <DownloadCacheDirectory>D:\SVN\LPCS\Cache</DownloadCacheDirectory>
+          </SVN>
+        </Source>
+        <EventSinks />
+        <Tfs server="tfsdev01.usac.mmm.com_DefaultCollection">
+          <Workspace>SVN_Import</Workspace>
+          <WorkspaceRoot>D:\SVN\LPCS\Src\LPCS_Else</WorkspaceRoot>
+        </Tfs>
+      </Session>
+    </Sessions>
+  </VC>
+  <Sql>
+    <ConnectionString>Data Source=localhost;Initial Catalog=TfsMigration;Integrated Security=True;Connect Timeout=300</ConnectionString>
+    <Database>TfsMigration</Database>
+    <Server>localhost</Server>
+  </Sql>
+</Migration>

@@ -1,0 +1,13 @@
+USE [Tfs_Configuration]
+
+SELECT   d.JobName, q.QueueTime as NextRunTimeUTC, DATEDIFF(SECOND,GETUTCDATE(), q.QueueTime)AS NextRun,
+JobState, ExecutionStartTime as ExecutionStartTimeUTC, StateChangeTime, q.QueuedReasons, q.QueueFlags, shp.MachineName as AgentName,
+shp.StartTime as AgentStartTimeUTC,jh.ResultMessage
+
+FROM  tbl_jobqueue q
+JOIN  tbl_JobDefinition d ON d.JobId=q.JobId
+JOIN  tbl_JobHistory jh ON JH.JobId = q.JobId
+LEFT JOIN tbl_ServiceHostProcess shp ON q.AgentId=shp.ProcessId
+
+WHERE Result <> 0
+ORDER BY jh.StartTime DESC

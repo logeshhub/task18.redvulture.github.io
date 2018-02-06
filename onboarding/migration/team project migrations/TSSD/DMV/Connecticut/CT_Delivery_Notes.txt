@@ -1,0 +1,13 @@
+
+Initial meeting:
+11/12/15:
+
+Scope:
+ATMM, MOVRS, DLRS - not DRIVS
+
+Meeting:
+11/17/15:
+
+No delivery of TPC
+Guidance for manual build
+

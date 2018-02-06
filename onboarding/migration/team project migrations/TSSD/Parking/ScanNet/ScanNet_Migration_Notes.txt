@@ -1,0 +1,23 @@
+
+Verify database backups
+Create new Team Project
+Set permissions on new Team Project to include Domain Users
+Take ParkingTemp offline and back online to disconnect users
+Run Migration Tools > ParkingTemp\ScanNet >>> Parking\ScanNet
+Take ParkingTemp offline, provide servicing message with information on the relocation
+Reset permissions on new ScanNet to standard permissions
+Inspect version control
+Inspect work items
+Import work item queries
+Broadcast results in email, distribute workstation client setup document again
+
+
+ScanNet has been migrated to http://tfs13.archon-tech.com:8080/tfs > Parking > ScanNet.  If you have issues connecting to the new project, please submit a Salesforce ticket at: https://www.clicktools.com/survey?iv=30guqed2bwa2w
+
+TFS to TFS Version Control and Work Item Tracking with Links - ScanNet v4.0
+
+Iteration backlog
+Active ScanNet Bugs
+All ScanNet Bugs
+All ScanNet Tasks
+Product Backlog

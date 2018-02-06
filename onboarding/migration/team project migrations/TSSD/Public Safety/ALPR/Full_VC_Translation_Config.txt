@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" UniqueId="d5e89d4f-598c-4fd0-aacc-5cede8aa363a" FriendlyName="TFS to TFS Version Control - ALPR v1.1">
+  <Providers>
+    <Provider ReferenceName="4cc33b2b-4b76-451f-8c2c-d86a3846d6d2" FriendlyName="TFS 11 Migration VC Provider" />
+  </Providers>
+  <Addins />
+  <SessionGroup FriendlyName="TFS to TFS Version Control - ALPR v1.1" SessionGroupGUID="61783fd1-1921-4d30-a7ce-8bdd4cc1bae2" Creator="ARCHON-TECH\TFS2012SETUP" SyncIntervalInSeconds="0" SyncDurationInMinutes="0">
+    <MigrationSources>
+      <MigrationSource InternalUniqueId="4bf7f54d-9faa-4cd2-9767-d534a38444e5" FriendlyName="3m-tys.visualstudio.com (VC)" ServerIdentifier="b7242655-a378-4a7d-9f4c-e51b14b57eb8" ServerUrl="https://3m-tys.visualstudio.com/defaultcollection" SourceIdentifier="ALPR" ProviderReferenceName="4cc33b2b-4b76-451f-8c2c-d86a3846d6d2" EndpointSystemName="TFS">
+        <Settings>
+          <Addins />
+          <UserIdentityLookup />
+          <DefaultUserIdProperty UserIdPropertyName="DisplayName" />
+        </Settings>
+        <CustomSettings />
+        <StoredCredential />
+      </MigrationSource>
+      <MigrationSource InternalUniqueId="687a2283-eea1-4fac-8e54-453174e0e709" FriendlyName="tfssb (VC)" ServerIdentifier="6a655ace-f882-4c1b-b701-001017ce4e63" ServerUrl="http://tfssb:8080/tfs/publicsafety" SourceIdentifier="ALPR-VersionControl" ProviderReferenceName="4cc33b2b-4b76-451f-8c2c-d86a3846d6d2" EndpointSystemName="TFS">
+        <Settings>
+          <Addins />
+          <UserIdentityLookup />
+          <DefaultUserIdProperty UserIdPropertyName="DisplayName" />
+        </Settings>
+        <CustomSettings />
+        <StoredCredential />
+      </MigrationSource>
+    </MigrationSources>
+    <Sessions>
+      <Session SessionUniqueId="e67f887f-6716-47e7-b74f-27ea6dedc5ac" FriendlyName="Version Control Session" LeftMigrationSourceUniqueId="4bf7f54d-9faa-4cd2-9767-d534a38444e5" RightMigrationSourceUniqueId="687a2283-eea1-4fac-8e54-453174e0e709" SessionType="VersionControl">
+        <EventSinks />
+        <CustomSettings>
+          <SettingXml />
+          <SettingXmlSchema />
+        </CustomSettings>
+        <Filters>
+          <FilterPair Neglect="false">
+            <FilterItem MigrationSourceUniqueId="4bf7f54d-9faa-4cd2-9767-d534a38444e5" FilterString="$/ALPR" />
+            <FilterItem MigrationSourceUniqueId="687a2283-eea1-4fac-8e54-453174e0e709" FilterString="$/ALPR-VersionControl/TFS" />
+          </FilterPair>
+        </Filters>
+      </Session>
+    </Sessions>
+    <Linking>
+      <CustomSettings />
+      <LinkTypeMappings />
+    </Linking>
+    <WorkFlowType Frequency="ContinuousManual" DirectionOfFlow="Unidirectional" SyncContext="Disabled" />
+    <CustomSettings />
+    <UserIdentityMappings EnableValidation="false">
+      <UserIdentityLookupAddins />
+      <DisplayNameMappings DirectionOfMapping="LeftToRight">
+        <DisplayNameMapping Left="araja@mmm.com" Right="ARCHON-TECH\araja" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="crhodes@mmm.com" Right="ARCHON-TECH\araja" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="LOCAL AUTHORITY\Elastic Build (3M-TYS)" Right="ARCHON-TECH\TFS2012BUILD" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="eschmidt@mmm.com" Right="ARCHON-TECH\eschmidt" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="hcoats@mmm.com" Right="ARCHON-TECH\hcoats" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="mcardwell@mmm.com" Right="ARCHON-TECH\mcardwell" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="mwells2@mmm.com" Right="ARCHON-TECH\mwells" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="praval@mmm.com" Right="ARCHON-TECH\praval" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="rroberts@mmm.com" Right="ARCHON-TECH\rroberts" MappingRule="SimpleReplacement" />
+	<DisplayNameMapping Left="scstelzman@mmm.com" Right="ARCHON-TECH\sstelzman" MappingRule="SimpleReplacement" />
+      </DisplayNameMappings>
+    </UserIdentityMappings>
+    <ErrorManagement>
+      <ErrorRouters />
+      <ReportingSettings />
+    </ErrorManagement>
+  </SessionGroup>
+</Configuration>

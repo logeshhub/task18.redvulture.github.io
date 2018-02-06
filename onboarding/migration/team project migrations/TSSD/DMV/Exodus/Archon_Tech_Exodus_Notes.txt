@@ -1,0 +1,38 @@
+
+
+Scope:
+All archon-tech TFS projects
+Excluding CT, cannot move them yet
+
+Move before EOY
+Hardware migration to St. Paul.
+
+
+Challenges:
+Schedule
+Test content
+Builds
+Build drop location
+archon-tech > USAC account translation
+Archive server
+VIMS legacy
+
+
+11/14/16:
+Initial meeting with Kumara, Nicolle, and QA
+
+Testing move now
+
+Current release schedule:
+Early January customer release
+QA release for next version immediately after that
+
+QA:
+Sue Nelson
+
+
+
+Initial meeting with all people - 11/21 - 1:30pm
+Meetings after with particular people
+
+

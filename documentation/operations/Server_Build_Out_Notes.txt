@@ -1,0 +1,52 @@
+
+All:
+	Disable UAC
+	Disable indexing
+	Label drives
+	Create C:\Temp
+	7-zip
+	Notepad++
+		XML Tools
+	Sysinternals installation
+		Set PATH
+		Replace Task Manager
+	Configure page file
+	Set display to best performance
+	Configure DEP programs only
+	PowerShell admin setup
+		Get-Help
+	Disable ShutDownEventTracker:
+		gpedit.msc > Computer Configuration > Administrative Templates > System
+	Move secondary drive to D:
+	Move _tfs_data to secondary drive
+	Antivirus install:
+		Patch 4:	\\integration\production\Software\McAfee\VSE88P4InstallPackages\MDT package
+		Hotfix:		ETFS:  $/etfs/config/antivirus
+	Add application pool recycling event log filter
+	Windows Explorer:
+		Show file extensions
+		Show hidden files
+	Ensure that usfetfssetup is in local Administrators group
+	Windows patching
+			
+Proxy:
+	
+	Modify proxy.config
+	Ensure that usfsetfsp is in local Administrators group
+	Set proxy service to run as USFSETFSP
+	Correct application pool recycling
+	
+	
+Build:
+	Ensure that usfsetfsb is in local Administrators group
+	Set build service to run as USFSETFSB
+	Add D:\Builds
+	Set all agents to use D:\Builds instead of ($SourceDir)
+	Test builds with new changes
+	
+	
+	
+	
+
+	
+	

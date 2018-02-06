@@ -1,0 +1,68 @@
+Ceradyne
+
+Ricardo Gallegos - manager
+Fred Kanter - dev lead
+
+Git repo in KY
+No version control in CA
+
+MS Project
+Spreadsheets for bug tracking
+
+
+08/21/15 - Initial:
+
+•	Currently do not have a source code repository tool.
+•	Currently have a Git repo in Lexington, MA
+•	Bug tracking is handled in spreadsheets
+•	Project mgmt. in MS Project or spreadsheets
+•	Investigating corporately supported options.
+•	Ceradyne has ITAR requirements
+•	Stash currently does not meet export control requirements
+•	TFS costs come through user’s dept recharge
+•	Nobody has MSDN licenses in the group
+•	They have a license for visual studio 2013
+•	TFS sharepoint site for more info - http://tfs.mmm.com
+
+Action Items
+•	For testing use apps that don’t have ITAR requirements, our current dev environment is not Export Control
+•	Everett – Setup a repo on dev with Fred and Ricardo access - COMPLETE
+o	https://tfsdev.mmm.com/tfs/DefaultCollection/Ceradyne_Evaluation 
+•	Ricardo/Fred –Determine purchase for MSDN license
+
+
+
+09/01/15 - Follow up:
+
+Agenda – 
+•	Testing status
+•	Is TFS a solution you want to move forward with?
+•	Export Control requirements statusbio
+•	Support discussion
+o	EC support SLA
+o	How to engage support
+•	Licensing for MSDN
+
+Use EC instance for all Team Projects?  Split out.
+Create EC Team Project eval
+Create EC TP AD groups
+	Make sure these EC groups are in the EC OU - Jason Stanley
+Update SPS site to include new Team Project workflow
+
+US-ETFS-EC-Ceradyne-Admin
+US-ETFS-EC-Ceradyne-Contributors
+US-ETFS-EC-Ceradyne-Readers
+
+US-ETFS-Ceradyne-Admin
+US-ETFS-Ceradyne-Contributors
+US-ETFS-Ceradyne-Readers
+
+ETFS Ceradyne standard 
+
+12/08/16 - Team Project discussion
+Ricardo, Fred, Mike
+
+
+
+
+

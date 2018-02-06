@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Migration>
+	<WorkItemTypes>
+		<WorkItemType LeftWorkItemTypeName="Requirement" RightWorkItemTypeName="Feature" fieldMap="RequirementToFeatureFieldMap" />
+		<WorkItemType LeftWorkItemTypeName="Task" RightWorkItemTypeName="Task" fieldMap="TaskToTaskFieldMap" />
+	</WorkItemTypes>
+	<FieldMaps>
+		<FieldMap name="RequirementToFeatureFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" valueMap="RequirementReasonValueMap" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" valueMap="RequirementStateValueMap" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+			</MappedFields>
+		</FieldMap>
+
+		<FieldMap name="TaskToTaskFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaId" RightName="System.AreaId" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.CompletedWork" RightName="Microsoft.VSTS.Scheduling.CompletedWork" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.FinishDate" RightName="Microsoft.VSTS.Scheduling.FinishDate" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationId" RightName="System.IterationId" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" valueMap="TaskReasonValueMap" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.RemainingWork" RightName="Microsoft.VSTS.Scheduling.RemainingWork" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StartDate" RightName="Microsoft.VSTS.Scheduling.StartDate" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" valueMap="TaskStateValueMap" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+			</MappedFields>
+		</FieldMap>
+	</FieldMaps>
+	<ValueMaps>
+		<ValueMap name="RequirementStateValueMap">
+			<Value LeftValue="Proposed" RightValue="New" />
+			<Value LeftValue="Active" RightValue="Active" />
+			<Value LeftValue="Resolved" RightValue="Resolved" />
+			<Value LeftValue="Closed" RightValue="Closed" />
+		</ValueMap>
+		<ValueMap name="RequirementReasonValueMap">
+			<Value LeftValue="New" RightValue="New" /> <!-- null > Proposed -->
+			<Value LeftValue="Investigate" RightValue="New" /> <!-- Proposed > Active -->
+			<Value LeftValue="Accepted" RightValue="New" /> <!-- Proposed > Active -->
+			<Value LeftValue="Investigation Complete" RightValue="Moved to the backlog" />  <!-- Active > Proposed -->
+			<Value LeftValue="Postponed" RightValue="Implementation halted" />  <!-- Active > Proposed -->
+			<Value LeftValue="Code Complete and System Test Passed" RightValue="Stories complete" />  <!-- Active > Resolved -->
+			<Value LeftValue="Split" RightValue="Out of scope" /> <!-- Active > Closed -->
+			<Value LeftValue="Out-of-scope" RightValue="Out of scope" /> <!-- Active > Closed -->
+			<Value LeftValue="Abandoned" RightValue="Abandoned" /> <!-- Active > Closed -->
+			<Value LeftValue="Validation Test Failed" RightValue="Acceptance tests fail" /> <!-- Resolved > Active -->
+			<Value LeftValue="Validation Test Passed" RightValue="Acceptance tests pass" /> <!-- Resolved > Closed -->
+			<Value LeftValue="Rejected" RightValue="Rejected" /> <!-- Proposed > Closed -->
+			<Value LeftValue="Closed in error" RightValue="Reactivated" /> <!-- Closed > Active -->
+			<Value LeftValue="Reintroduced in Scope" RightValue="Reactivated" /> <!-- Closed > Active -->
+		</ValueMap>
+		<ValueMap name="TaskStateValueMap">
+			<Value LeftValue="New" RightValue="New" />
+			<Value LeftValue="Active" RightValue="Active" />
+			<Value LeftValue="Closed" RightValue="Closed" />
+			<Value LeftValue="Proposed" RightValue="Active" />
+			<Value LeftValue="Resolved" RightValue="Active" />
+		</ValueMap>
+		<ValueMap name="TaskReasonValueMap">
+			<Value LeftValue="New" RightValue="New" /> <!-- null > Proposed -->
+			<Value LeftValue="Investigate" RightValue="New" /> <!-- Proposed > Active -->
+			<Value LeftValue="Accepted" RightValue="New" /> <!-- Proposed > Active -->
+			<Value LeftValue="Investigation Complete" RightValue="Work started" />  <!-- Active > Proposed -->
+			<Value LeftValue="Complete and Requires Review/Test" RightValue="Completed" />  <!-- Active > Resolved -->
+			<Value LeftValue="Complete and Does Not Require Review/Test" RightValue="Completed" /> <!-- Active > Closed -->
+			<Value LeftValue="Deferred" RightValue="Deferred" /> <!-- Active > Closed -->
+			<Value LeftValue="Cut" RightValue="Cut" /> <!-- Active > Closed -->
+			<Value LeftValue="Overtaken by events" RightValue="Cut" /> <!-- Active > Closed -->
+			<Value LeftValue="Cancelled" RightValue="Cut" /> <!-- Active > Closed -->
+			<Value LeftValue="Review/Test Failed" RightValue="Reactivated" /> <!-- Resolved > Active -->
+			<Value LeftValue="Review/Test Passed" RightValue="Completed" /> <!-- Resolved > Closed -->
+			<Value LeftValue="Rejected" RightValue="Cut" /> <!-- Proposed > Closed -->
+			<Value LeftValue="Reactivated" RightValue="Reactivated" /> <!-- Closed > Active -->
+			<Value LeftValue="Closed in error" RightValue="Reactivated" /> <!-- Closed > Active -->
+		</ValueMap>
+	</ValueMaps>
+</Migration>

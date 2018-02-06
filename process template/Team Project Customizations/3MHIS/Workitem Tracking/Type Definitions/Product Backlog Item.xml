@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Witd:WITD application="Work item type editor" version="1.0" xmlns:Witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="Product Backlog Item">
+    <DESCRIPTION>Tracks an activity the user will be able to perform with the product</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="Iteration Path" refname="System.IterationPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Iteration ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="External Link Count" refname="System.ExternalLinkCount" type="Integer" reportable="measure" />
+      <FIELD name="Team Project" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="Hyperlink Count" refname="System.HyperLinkCount" type="Integer" reportable="measure" />
+      <FIELD name="Attached File Count" refname="System.AttachedFileCount" type="Integer" reportable="measure" />
+      <FIELD name="Node Name" refname="System.NodeName" type="String" />
+      <FIELD name="Area Path" refname="System.AreaPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Revised Date" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="Changed Date" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension" />
+      <FIELD name="Area ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="Authorized As" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="Title" refname="System.Title" type="String" reportable="dimension">
+        <REQUIRED />
+      </FIELD>
+      <FIELD name="State" refname="System.State" type="String" reportable="dimension" />
+      <FIELD name="Authorized Date" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="Watermark" refname="System.Watermark" type="Integer" />
+      <FIELD name="Rev" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="Changed By" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Reason" refname="System.Reason" type="String" reportable="dimension" />
+      <FIELD name="Assigned To" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+        <HELPTEXT>The person currently owning this backlog item</HELPTEXT>
+      </FIELD>
+      <FIELD name="Work Item Type" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="Created Date" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Created By" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Description" refname="System.Description" type="HTML" />
+      <FIELD name="History" refname="System.History" type="History" />
+      <FIELD name="Related Link Count" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="Tags" refname="System.Tags" type="PlainText" />
+      <FIELD name="Board Column" refname="System.BoardColumn" type="String" reportable="dimension" />
+      <FIELD name="Board Column Done" refname="System.BoardColumnDone" type="Boolean" reportable="dimension" />
+      <FIELD name="Board Lane" refname="System.BoardLane" type="String" reportable="dimension" />
+      <FIELD name="Remaining Work" refname="Microsoft.VSTS.Scheduling.RemainingWork" type="Double" reportable="measure">
+        <HELPTEXT>An estimate of the number of units of work remaining to complete this task</HELPTEXT>
+      </FIELD>
+      <FIELD name="Backlog Priority" refname="Microsoft.VSTS.Common.BacklogPriority" type="Double" reportable="detail" />
+      <FIELD name="Integration Build" refname="Microsoft.VSTS.Build.IntegrationBuild" type="String" reportable="dimension">
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="&lt;None&gt;" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="Closed Date" refname="Microsoft.VSTS.Common.ClosedDate" type="DateTime" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="Effort" refname="Microsoft.VSTS.Scheduling.Effort" type="Double" reportable="measure">
+        <HELPTEXT>The estimated effort to implemented the backlog item</HELPTEXT>
+      </FIELD>
+      <FIELD name="Acceptance Criteria" refname="Microsoft.VSTS.Common.AcceptanceCriteria" type="HTML" />
+      <FIELD name="Priority" refname="Microsoft.VSTS.Common.Priority" type="Integer" reportable="dimension">
+        <HELPTEXT>Priority for completing the backlog item, based on business goals</HELPTEXT>
+      </FIELD>
+      <FIELD name="Business Value" refname="Microsoft.VSTS.Common.BusinessValue" type="Integer" reportable="measure">
+        <HELPTEXT>The business value for the customer when the backlog item is released</HELPTEXT>
+      </FIELD>
+      <FIELD name="Country" refname="Microsoft.VSTS.Common.Country" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="All (Core)" />
+          <LISTITEM value="All (Core) ICD-10-AM" />
+          <LISTITEM value="Australia" />
+          <LISTITEM value="Belgium" />
+          <LISTITEM value="Brazil" />
+          <LISTITEM value="Canada" />
+          <LISTITEM value="Chile" />
+          <LISTITEM value="Hong Kong" />
+          <LISTITEM value="Italy" />
+          <LISTITEM value="New Zealand" />
+          <LISTITEM value="Portugal" />
+          <LISTITEM value="Qatar" />
+          <LISTITEM value="Researchers Kit" />
+          <LISTITEM value="Saudi Arabia" />
+          <LISTITEM value="Singapore" />
+          <LISTITEM value="Spain" />
+          <LISTITEM value="UAE" />
+          <LISTITEM value="United States" />
+          <LISTITEM value="Ireland" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="TargetRelease" refname="Microsoft.VSTS.Common.TargetRelease" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="2016_Apr_Gen" />
+          <LISTITEM value="2016_Apr_SP1" />
+          <LISTITEM value="2016_Apr_SP2" />
+          <LISTITEM value="2016_Jan_Gen" />
+          <LISTITEM value="2016_Jan_SP1" />
+          <LISTITEM value="2016_Jan_SP2" />
+          <LISTITEM value="2016_Jul_Gen" />
+          <LISTITEM value="2016_Jul_SP1" />
+          <LISTITEM value="2016_Jul_SP2" />
+          <LISTITEM value="2016_Oct_Gen" />
+          <LISTITEM value="2016_Oct_SP1" />
+          <LISTITEM value="2016_Oct_SP2" />
+          <LISTITEM value="2017_Apr_Gen" />
+          <LISTITEM value="2017_Apr_SP1" />
+          <LISTITEM value="2017_Apr_SP2" />
+          <LISTITEM value="2017_Jan_Gen" />
+          <LISTITEM value="2017_Jan_SP1" />
+          <LISTITEM value="2017_Jan_SP2" />
+          <LISTITEM value="2017_Jul_Gen" />
+          <LISTITEM value="2017_Jul_SP1" />
+          <LISTITEM value="2017_Jul_SP2" />
+          <LISTITEM value="2017_Oct_Gen" />
+          <LISTITEM value="2017_Oct_SP1" />
+          <LISTITEM value="2017_Oct_SP2" />
+          <LISTITEM value="2018_Apr_Gen" />
+          <LISTITEM value="2018_Apr_SP1" />
+          <LISTITEM value="2018_Apr_SP2" />
+          <LISTITEM value="2018_Jan_Gen" />
+          <LISTITEM value="2018_Jan_SP1" />
+          <LISTITEM value="2018_Jan_SP2" />
+          <LISTITEM value="2018_Jul_Gen" />
+          <LISTITEM value="2018_Jul_SP1" />
+          <LISTITEM value="2018_Jul_SP2" />
+          <LISTITEM value="2018_Oct_Gen" />
+          <LISTITEM value="2018_Oct_SP1" />
+          <LISTITEM value="2018_Oct_SP2" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Customer" refname="Microsoft.VSTS.Common.Customer" type="String" reportable="dimension" />
+      <FIELD name="Documentation Required" refname="Microsoft.VSTS.Common.DocumentationRequired" type="String">
+        <DEFAULT from="value" value="None" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="External" />
+          <LISTITEM value="Internal" />
+          <LISTITEM value="Internal &amp; External" />
+          <LISTITEM value="None" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="API Change" refname="Microsoft.VSTS.Common.APIChange" type="String">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Yes" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="ExternalID" refname="Microsoft.VSTS.Common.ExternalID" type="String" />
+      <FIELD name="Product" refname="Microsoft.VSTS.Common.Product" type="String">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="360 ChartRelease" />
+          <LISTITEM value="360 to Cloud Connector" />
+          <LISTITEM value="360R1" />
+          <LISTITEM value="360R1 &amp; 360R2" />
+          <LISTITEM value="360R2" />
+          <LISTITEM value="360R2 ProFee" />
+          <LISTITEM value="AHRQ Batch Grouper" />
+          <LISTITEM value="ClinTrac" />
+          <LISTITEM value="Compliance Analytics" />
+          <LISTITEM value="Connections Plus" />
+          <LISTITEM value="CRS" />
+          <LISTITEM value="Ensemble" />
+          <LISTITEM value="GA-CGS" />
+          <LISTITEM value="GA-Edit Engine" />
+          <LISTITEM value="GA-GPCS" />
+          <LISTITEM value="GA-GPS" />
+          <LISTITEM value="GA-Mainframe" />
+          <LISTITEM value="GA-Regulatory" />
+          <LISTITEM value="HDM Audit Expert" />
+          <LISTITEM value="HDM Care Enhance" />
+          <LISTITEM value="HDM CDIS" />
+          <LISTITEM value="HDM HRM ARMS" />
+          <LISTITEM value="HDM Quarterly Update" />
+          <LISTITEM value="HDM Toolset" />
+          <LISTITEM value="Risk Manager" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Value Area" refname="Microsoft.VSTS.Common.ValueArea" type="String">
+        <REQUIRED />
+        <DEFAULT from="value" value="Business" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Architectural" />
+          <LISTITEM value="Business" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Business = delivers value to a user or another system; Architectural = work to support other stories or components</HELPTEXT>
+      </FIELD>
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="Done">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Scheduling.Effort">
+              <READONLY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Scheduling.RemainingWork">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Backlog">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Doing">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Do">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Removed" />
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="Backlog" to="Removed">
+          <REASONS>
+            <REASON value="Duplicate" />
+            <REASON value="Not a Bug" />
+            <DEFAULTREASON value="Removed from the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Doing" to="Removed">
+          <REASONS>
+            <REASON value="Duplicate" />
+            <REASON value="Not a Bug" />
+            <DEFAULTREASON value="Removed from the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Do" to="Removed">
+          <REASONS>
+            <REASON value="Duplicate" />
+            <REASON value="Not a Bug" />
+            <DEFAULTREASON value="Removed from the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Backlog">
+          <REASONS>
+            <DEFAULTREASON value="Reconsidering backlog item" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Backlog">
+          <REASONS>
+            <DEFAULTREASON value="Moved to the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Doing" to="Backlog">
+          <REASONS>
+            <DEFAULTREASON value="Moved to the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Do" to="Backlog">
+          <REASONS>
+            <DEFAULTREASON value="Moved to the backlog" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="" to="Backlog">
+          <REASONS>
+            <REASON value="Build Failure" />
+            <DEFAULTREASON value="New defect reported" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Backlog" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Work finished" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="Doing" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Work finished" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="Do" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Work finished" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="Backlog" to="Doing">
+          <REASONS>
+            <DEFAULTREASON value="Commitment made by the team" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Doing">
+          <REASONS>
+            <DEFAULTREASON value="Additional work found" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Do" to="Doing">
+          <REASONS>
+            <DEFAULTREASON value="Commitment made by the team" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Backlog" to="Do">
+          <REASONS>
+            <DEFAULTREASON value="Approved by the Product Owner" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Do">
+          <REASONS>
+            <DEFAULTREASON value="Additional work found" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Doing" to="Do">
+          <REASONS>
+            <DEFAULTREASON value="Work stopped" />
+          </REASONS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout HideControlBorders="true" HideReadOnlyEmptyFields="true">
+        <Group Margin="(4,0,0,0)">
+          <Column PercentWidth="90">
+            <Control FieldName="System.Title" Type="FieldControl" LabelPosition="Top" ControlFontSize="large" EmptyText="&lt;Enter title here&gt;" />
+          </Column>
+          <Column PercentWidth="10">
+            <Control FieldName="System.ID" Type="FieldControl" LabelPosition="Top" ControlFontSize="large" />
+          </Column>
+        </Group>
+        <Group Margin="(10,0,0,0)">
+          <Column PercentWidth="100">
+            <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="Ite&amp;ration" LabelPosition="Left" />
+            <Control FieldName="System.AreaPath" Type="WorkItemClassificationControl" Label="&amp;Area" LabelPosition="Left" />
+            <Control FieldName="Microsoft.VSTS.Common.Product" Type="FieldControl" Label="Product" LabelPosition="Left" />
+            <Control FieldName="Microsoft.VSTS.Common.TargetRelease" Type="FieldControl" Label="Target Release" LabelPosition="Left" />
+            <Control FieldName="Microsoft.VSTS.Common.Country" Type="FieldControl" Label="Country" LabelPosition="Left" />
+          </Column>
+        </Group>
+        <Group Margin="(10,0,0,0)">
+          <Column PercentWidth="50">
+            <Group Label="Status">
+              <Column PercentWidth="100">
+                <Control FieldName="System.State" Type="FieldControl" Label="Stat&amp;e" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.DocumentationRequired" Type="FieldControl" Label="Documentation Required" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.ExternalID" Type="FieldControl" Label="External ID" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="50">
+            <Group Label="Details">
+              <Column PercentWidth="100">
+                <Control FieldName="Microsoft.VSTS.Scheduling.Effort" Type="FieldControl" Label="Story Points" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.BusinessValue" Type="FieldControl" Label="Business Value (%)" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.APIChange" Type="FieldControl" Label="API Change" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="50">
+            <TabGroup>
+              <Tab Label="Description">
+                <Control FieldName="System.Description" Type="HtmlFieldControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Storyboards">
+                <Control Type="LinksControl" LabelPosition="Top" Name="StoryboardsControl">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="excludeAll" />
+                    <ExternalLinkFilters FilterType="include">
+                      <Filter LinkType="Storyboard" />
+                    </ExternalLinkFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Test Cases">
+                <Control Type="LinksControl" Label="" LabelPosition="Top" Name="TestedBy">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="Microsoft.VSTS.Common.TestedBy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Test Case" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Tasks">
+                <Control Type="LinksControl" Label="" LabelPosition="Top" Name="Hierarchy">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.Title" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="System.LinkTypes.Hierarchy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Task" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+            </TabGroup>
+          </Column>
+          <Column PercentWidth="50">
+            <TabGroup Margin="(5,0,0,0)">
+              <Tab Label="Acceptance Criteria">
+                <Control FieldName="Microsoft.VSTS.Common.AcceptanceCriteria" Type="HtmlFieldControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="History">
+                <Control FieldName="System.History" Type="WorkItemLogControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Links">
+                <Control Type="LinksControl" LabelPosition="Top" Name="GeneralLinks">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="includeAll" />
+                    <ExternalLinkFilters FilterType="includeAll" />
+                    <WorkItemTypeFilters FilterType="includeAll" />
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Attachments">
+                <Control Type="AttachmentsControl" Label="" LabelPosition="Top" />
+              </Tab>
+            </TabGroup>
+          </Column>
+        </Group>
+      </Layout>
+      <WebLayout>
+        <!--**********************Work Item Extensions**********************
+
+Extension:
+	Name: specmap
+	Id: techtalk.specmap
+
+Note: For more information on work item extensions use the following topic:
+http://go.microsoft.com/fwlink/?LinkId=816513
+-->
+        <SystemControls>
+          <Control Type="FieldControl" FieldName="System.Title" EmptyText="&lt;Enter title here&gt;" />
+          <Control Label="Ite&amp;ration" Type="WorkItemClassificationControl" FieldName="System.IterationPath" />
+          <Control Label="&amp;Area" Type="WorkItemClassificationControl" FieldName="System.AreaPath" />
+          <Control Label="Stat&amp;e" Type="FieldControl" FieldName="System.State" />
+          <Control Label="Links" Type="LinksControl" Name="Links" />
+          <Control Label="History" Type="WorkItemLogControl" FieldName="System.History" />
+          <Control Label="Attachments" Type="AttachmentsControl" Name="Attachments" />
+        </SystemControls>
+        <Page Label="Details" LayoutMode="FirstColumnWide">
+          <Section>
+            <Group Label="Description">
+              <Control Label="Description" Type="HtmlFieldControl" FieldName="System.Description" />
+            </Group>
+            <Group Label="Acceptance Criteria">
+              <Control Label="Acceptance Criteria" Type="HtmlFieldControl" FieldName="Microsoft.VSTS.Common.AcceptanceCriteria" />
+            </Group>
+          </Section>
+          <Section>
+            <Group Label="Other">
+              <Control Label="Product" Type="FieldControl" FieldName="Microsoft.VSTS.Common.Product" />
+              <Control Label="Target Release" Type="FieldControl" FieldName="Microsoft.VSTS.Common.TargetRelease" />
+              <Control Label="Country" Type="FieldControl" FieldName="Microsoft.VSTS.Common.Country" />
+            </Group>
+            <Group Label="Details">
+              <Control Label="Story Points" Type="FieldControl" FieldName="Microsoft.VSTS.Scheduling.Effort" />
+              <Control Label="Business Value (%)" Type="FieldControl" FieldName="Microsoft.VSTS.Common.BusinessValue" />
+              <Control Label="API Change" Type="FieldControl" FieldName="Microsoft.VSTS.Common.APIChange" />
+            </Group>
+          </Section>
+          <Section>
+            <Group Label="Status">
+              <Control Label="Documentation Required" Type="FieldControl" FieldName="Microsoft.VSTS.Common.DocumentationRequired" />
+              <Control Label="External ID" Type="FieldControl" FieldName="Microsoft.VSTS.Common.ExternalID" />
+            </Group>
+          </Section>
+        </Page>
+      </WebLayout>
+    </FORM>
+  </WORKITEMTYPE>
+</Witd:WITD>

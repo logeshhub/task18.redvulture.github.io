@@ -1,0 +1,23 @@
+
+vm47 (for the existing work items, anyway):
+
+States / Reasons:
+
+State:  Active >> New
+	Analyst Working On Rule >> New
+	
+State:  Closed >> Removed
+	QA Verified Rule >> Acceptance tests pass
+	Resolution Verified and Accepted >> Acceptance tests pass
+	Rule Not Implemented >> Removed from the backlog
+
+State:  Ready >> New
+	Ready For Development >> Moved to the backlog
+
+State:  Resolved >> Resolved
+	Code Complete and System Test Passed >> Code complete and unit tests pass	
+	Resolved >> Acceptance tests pass
+	Development is Complete >> Code complete and unit tests pass
+	Erroneous State Change >> Closed in error
+	
+	

@@ -1,0 +1,960 @@
+
+2017 Upgrade Notes
+*******************************************
+
+Ensure solid backups for all TFS databases
+Shut down AV OAS
+Clean out old proxy cache folder at root of D:\_tfs_data
+Code Search:  D:\_tfs_data\Search
+IIS:  Stop Health Check site, Stop Health Check application pool
+	* Replace HC site contents
+	* Reset default document to HealthCheck.aspx
+	* Modify hosts file to resolve tfs.mmm.com to 127.0.0.1
+Disable PowerShell UserSync.ps1 scheduled task.
+	
+TfsServiceControl QUIESCE on both nodes, make sure to close PowerShell prompt
+
+Install TFS 2017 on node 01 (takes a long time to apply since only bootstrapper)
+	Upgrade an existing installation	
+	Production Upgrade
+	Use existing service accounts
+	Web site settings:  enable HTTP > HTTPS redirect
+	
+	!!!!!!!!!!! NO CODE SEARCH YET !!!!!!!!!!!!!!!!!!
+	Search Service:  Install to D:\_tfs_data\Search\IndexStore
+		Run as TFSSERVICE
+		Install for all existing TPCs
+		Install Code Search extension for new TPCs
+		
+	Reporting:
+		Use existing values
+		Make sure to set to run as TFSREPORTS 
+	SharePoint:
+		Use current settings
+	
+	Verify:
+		Public URL:  Continue anyway
+		Agree to install JDK on AT node - NOT YET
+		Search:  Accept Oracle Java SE install - NOT YET
+		
+	[Warning@11:04:27.305] ms.feed extension install failed with exception System.ArgumentNullException: Value cannot be null.
+Parameter name: extensionManifest
+   at Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckForNull(Object var, String varName, String expectedServiceArea)
+   at Microsoft.VisualStudio.Services.ExtensionManagement.Sdk.Server.ExtensionDemandsResolutionService.<>c__DisplayClass5_0.<ResolveDemands>b__0()
+   at Microsoft.TeamFoundation.Framework.Server.VssRequestContextExtensions.TraceBlock[T](IVssRequestContext requestContext, Int32 enterTracepoint, Int32 leaveTracepoint, Int32 exceptionTracepoint, String area, String layer, String methodName, Func`1 action)
+   at Microsoft.VisualStudio.Services.ExtensionManagement.Sdk.Server.ExtensionDemandsResolutionService.ResolveDemands(IVssRequestContext requestContext, String publisherName, String extensionName, ExtensionManifest extensionManifest, DemandsResolutionType resolutionType)
+   at Microsoft.VisualStudio.Services.ExtensionManagement.Server.InstalledExtensionService.ValidateDemands(IVssRequestContext requestContext, String publisherName, String extensionName, ExtensionManifest extensionManifest, Boolean throwOnError)
+   at Microsoft.VisualStudio.Services.ExtensionManagement.Server.InstalledExtensionService.InstallExtension(IVssRequestContext requestContext, String publisherName, String extensionName, String version)
+   at Microsoft.VisualStudio.Services.ExtensionManagement.Extensions.ExtensionOperationStepPerformer.Install(IVssRequestContext requestContext, ServicingContext servicingContext, InstallExtenstensionStepData stepData)
+	
+
+Install TFS 2017 on node 02 as application tier only
+	Server Configuration Wizard:  AT Only - Advanced
+	Warning about connecting to SharePoint site?
+	Same configuration as node 01
+
+Restart both nodes, 01 first.  Wait for the AT node to come back up and settle out before restarting node 02.
+
+IIS:  
+Replace HC with new version
+Set web.config to point to 
+Start Health Check site
+
+Test basic functionality using Health Check site on both nodes
+
+Allow AT to settle out (30 min)
+
+Set access level for VS Enterprise to US-ETFS-AccessLevel-Advanced
+Install Code Search extension for all TPCs
+Test full functionality
+Set up and configure dev build server, both XAML and vNext agents
+Test SCOM monitoring against 2017 instance
+Check for updated Sidekicks
+Install 2017 Power Tools
+
+***********************************************
+
+Initial meeting with new DBA 01/31/17:
+
+Jim Peabody
+	Was on SQL team for 6 years, moved over to supply chain.
+	
+How they would upgrade
+	Same machines - prodsql220\sql2016
+	Upgrade in place - No name change necessary, but it's a low risk to have multiple versions of SQL on the cluster (they have done it before)
+		We could upgrade 219 (QA) to 2014 on the cluster and co-exist with the instance 220 running SQL 2012.
+		
+	Migrate to new cluster - Connection strings would need to be changed.  Buy new hardware, wait 2 months.
+	
+Minimum OS requirements on SQL 2016 is Windows Server 2012 R2
+Would have to build new cluster with Server 2012 R2 with SQL 2016 - would need a complete rebuild
+
+
+TFS 2017 Upgrade
+	
+	For TFS 2017, in place upgrade on SQL cluster prodsql219/220 to 2014.  This would not require going to Windows Server 2012+.
+	Going to Server 2012 R2+ would require rebuilding a new cluster
+		
+		1.	In place upgrade to SQL 2014 during Feb maintenance window
+		
+		2.	Start new cluster requisition process now, relocate in 3 months.
+
+		
+Overall Plan
+	
+	1.	QA: SQL 2014 SP2 CU3 upgrade - Feb 18
+		* Full backup test before then - Need disk space ASAP
+		* TFS QA will be taken completely offline before upgrade
+		* If anything happens to DB between 18-19, go for snaps first
+
+	2.	QA TFS 2017 RTM upgrade - Feb 19
+	
+	3.	Prod SQL 2014 SP2 CU3 upgrade - Feb 25
+		* Full backup set aside, repeat same as during QA upgrade
+		* TFS prod will be taken completely offline before upgrade
+	
+	4.	Prod TFS 2017 RTM upgrade - Feb 26
+		* Code Search will not be installed right away, need to have separate server for indexing
+		
+	
+Risk Mitigation
+	
+	Need full backup of production TPC database for ultimate parachute, not just snaps (even though it would only be QA instance first, and not actually production)
+	\\semsnas.mmm.com - disk space - maybe?
+	
+	Rely on snaps for restore from last backup first, then full .bak in the event of ultimate catastrophe
+	Rely on snaps for restore if necessary on SSRS servers
+	
+	!!!  Need to run full backup of production DBs once before Feb 17 to get estimate on time required.  !!!
+	
+	Everett will work more on risk mitigation and back out plan. (i.e. uninstalling TFS 2017 and going back to TFS 2015)
+
+Timeline
+	
+	01.	Feb 13 (Mon):	QA - CR for upgrade submitted
+	
+	02.	Feb 15 (Wed):	Email broadcast for possible outage for production during QA upgrade (in case we need reboot entire cluster, etc.)
+	
+	03.	Feb 17 (Fri):	Friday evening - full backup of 16 production databases, drop .bak files on secondary server (make a note of time required)
+	
+	04.	Feb 18 (Sat):	QA - TFS offline for SQL upgrade.  Prod will stay online. (Make sure to stop SharePoint services as well)
+	
+	05.	Feb 18 (Sat):	QA - SQL instance upgrade - prodsql219 - ?? What time to start ??
+
+	06.	Feb 18 (Sat):	QA - Secondary services upgrade - qasqlrs06  (SSRS, SSAS, SQL client connectivity on TFS servers)
+
+	07.	Feb 18 (Sat):	QA - Bring TFS back online on SQL 2014 (wait overnight to start TFS upgrade)
+	
+	08.	Feb 19 (Sun):	QA - TFS upgrade (AM) - (post-upgrade...need to enable SCOM on QA to see how the management pack functions against TFS 2017)
+	
+	*********************************************************
+
+	09.	Feb 20 (Mon):	Prod - CR for upgrade submitted
+	
+	10.	Feb 22 (Wed):	Email broadcast for outage for production during upgrade (users need to check as much as possible into version control by COB Friday)
+	
+	11.	Feb 22 (Wed):	Email broadcast for TFS 2017 (what's new, new web interface, major changes, no Code Search yet, etc.)
+	
+	12.	Feb 24 (Fri):	Email reminder broadcast for outage (again, check in if possible, etc.) (Make sure to set OOS window to disable SCOM and LB alerts)
+	
+	13.	Feb 24 (Fri):	Friday PM - full backup of production, drop .bak files on secondary server (should know time required from QA upgrade)
+	
+	14.	Feb 25 (Sat):	Prod - TFS offline for SQL upgrade (Make sure to stop SharePoint services as well)
+	
+	15.	Feb 25 (Sat):	Prod - SQL instance upgrade - prodsql220 - ?? What time to start ??
+
+	16.	Feb 25 (Sat):	Prod - Secondary services upgrade - prodsqlrs09  (SSRS, SSAS, SQL client connectivity on TFS servers)
+	
+	17.	Feb 25 (Sat):	Prod - Bring TFS back online on SQL 2014, give 2 hours to quiesce
+	
+	18.	Feb 25 (Sat):	Prod - TFS upgrade ( have to start upgrade as soon as the SQL upgrade is done and TFS has settled down; don't know how long TFS upgrade process will actually take )
+	
+	19.	Feb 26 (Sun):	Prod - Extensive testing on TFS (no Code Search configured yet) - may need to disable SCOM monitoring for some time since the monitor pack is for 2015, not 2017.
+					
+	20.	Feb 26 (Sun):	Email broadcast for all clear
+
+	
+	Other items to address post-upgrade:
+	
+		Locate server and install Code Search.  New server request will probably be needed (500 GB drive to handle the index for massive repos) - tfscode01?
+		
+	
+New cluster plan
+	
+	CSHS would cover the cost of hardware
+		Jim/Heather will to talk to Andy Bennett about the hardware procurement process
+	
+	Everett presents estimate to management
+	
+	DBA team makes actual ServerExpress request for cluster
+	
+Database Request (02/14/17):
+	
+Need to upgrade the TFS instance on prodsql219 to SQL 2014 to support upgrade of TFS 2015 to 2017.  This will be in-place upgrade of TFS QA instance to SQL 2014 SP2 CU3.  This upgrade will actually have SQL 2012 and SQL 2014 instances running simultaneously on the same cluster prodsql219/220.  Prodsql220 is the TFS production instance.  Will also need to upgrade SSRS and SSAS running on qasqlrs06, as well as client connectivity APIs on tfsqa01/02.  Everett can handle upgrade of client connectivity components on tfsqa01/02, but will need upgrade assistance from DBA on qasqlrs06.
+TFS 2017 minimum database requirements are for SQL 2014 SP2.  TFS 2017 upgrade cannot done without the SQL upgrade.
+
+01.  Stop both TFS production and QA instances - Everett
+02.  Take full backup of all user databases on both QA and production instances.  Backup location will be an off-cluster location. - Jim and Everett
+03.  Restart TFS production instance. - Everett
+04.  Verify that TFS production is functional on prodsql220. - Everett
+05.  Upgrade QA SQL instance prodsql220 to SQL 2014 SP2 CU3. - Jim
+06.  Upgrade QA TFS > SSRS/SSAS instances on qasqlrs06 to SQL 2014 SP2 CU3. - Jim
+07.  Upgrade SQL client connectivity components on TFS QA farm nodes tfsqa01/02 to SQL 2014 SP2 CU3. - Everett
+08.  Bring TFS QA instance back online. - Everett
+09.  Verify that TFS 2015 QA is operating correctly on SQL 2014 now. - Everett
+10.  Verify that TFS production is operating correctly on SQL 2012 now. - Everett
+11.  Full patch run on TFS QA farm nodes tfsqa01/02. - Everett
+12.  Upgrade TFS 2015 to TFS 2017 on QA. - Everett
+13.  Verify that TFS 2017 QA is operating correctly. - Everett
+14.  Retain off-cluster backup for at least 7 days in case of unexpected issues developing post-upgrade.
+
+[SQL instance upgrade failure, only prodsql219]
+01.  Roll prodsql219 instance back down to SQL 2012. - Jim
+02.  Restore user databases from off-cluster full backup. - Jim
+03.  Clear TFS QA instance caches on tfsqa01/02. - Everett
+04.  Restart TFS QA instance. - Everett
+05.  Verify that TFS QA instance is operating correctly. - Everett
+06.  Verify that TFS production instance is still operating correctly. - Everett
+07.  Dump and rebuild data warehouse database and SSAS cube on qasqlrs06.
+
+[Complete SQL cluster failure]
+01.  Open Microsoft support case, Severity A. - Everett
+02.  Recover prodsql219/220 instance. - Jim
+03.  Restore both TFS QA and production databases. - Jim
+04.  Rollback protocol for TFS recovery, both QA and production instances - Everett (Microsoft assistance)
+
+[TFS 2017 upgrade failure, full rollback]
+01.  Uninstall TFS 2017, reinstall TFS 2015.  No VM snapshots will be available for application tier recovery.  Would be incredibly difficult.  May require complete rebuild of TFS QA instance - Everett
+02.  Restore pre-upgrade TFS databases over top of existing databases - Jim
+03.  Restart TFS QA instance. - Everett
+04.  Verify that TFS QA instance is operating correctly. - Everett
+05.  Dump and rebuild data warehouse database and SSAS cube on qasqlrs06.
+
+01.  Backup all user databases from both TFS QA and production instances for prodsql219/220 to off-cluster location. - Jim
+02.  Determine backup time necessary for actual implementation. - Jim, Everett
+03.  Get rough estimate of how long the actual upgrade will take. Backup will take the longest time. - Jim, Everett
+04.  Go ahead and prepare to open Microsoft support case in the event of catastrophe. - Everett
+
+
+Network storage:
+\\semsnas.mmm.com\backup\database\TFS_2017_Upgrade
+
+Jim's cell:
+612-297-0553
+
+tfsprod01
+tfsprod02
+tfsqa01
+tfsqa02
+prodsqlcl219
+prodsqlcl220
+qasqlrs06
+prodsqlrs09
+tfsrm01
+tfsbuild01
+tfsbuild02
+tfsbuild03
+tfsbuild04
+tfsproxy01
+tfstssdbld01 - no CI defined
+atxtfsproxy - no CI defined
+
+
+Virtual machine qasqlrs06.usac.mmm.com is out of disk space on C: (3 GB open).
+Please expand C: from 64 GB to at least 100 GB ASAP.  Preferably 120 GB.
+While this is technically a QA-level server, this issue affects and is directly blocking a production SQL upgrade that we are in progress on right now.
+Service manager, Carla Marshall, is currently on route to assist with working the incident.
+IMPORTANT:  This is blocking completion of the production SQL upgrade, so affected service TFS - Team Foundation Server will be down until this is resolved.
+
+EXEC prc_QueryWhatsRunning
+
+************ Production Upgrade Tasks *******************
+
+Clean out TPC database - in progress
+
+Determine build server compatibility - done
+	Follow up with Drew, did he get the entire inventory (compare to registered build servers)
+
+Determine proxy server compatibility - done
+
+Determine release management server compatibility - done
+
+Determine Code Search server requirements
+	Will need heavy security lockdown to prevent open access
+
+Request Code Search server - done - server ready
+	
+Update or extract broadcast list
+	Need to look in SharePoint for the accounts
+	
+Update proxy servers to use HTTPS
+	Follow up with Drew, did he switch all to HTTPS
+	
+Catalog all VSO agents, add sheet to inventory sheet
+
+Write CR
+Write detailed upgrade plan
+
+Get correct SSL cert for sandbox - done
+Get updated SSL cert for QA - done
+Investigate HTTP/HTTPS redirect - done
+Investigate OAuth and PAT tokens
+Investigate REST API and Anonymous access
+
+Upgrade QA - done
+
+Disable SCOM monitoring - remove the monitor sets
+Manually unset maintenance windows
+
+Check disk space on SSRS/SSAS server
+
+Hotfix for admin permissions
+https://developercommunity.visualstudio.com/content/problem/10661/permission-problems-since-upgrading-to-tfs-2017.html
+
+
+LB calls Health Check - 8088
+Health Check calls http://localhost:8080/tfs
+HTTPS option redirect Health Check to https://tfs.mmm.com/tfs
+
+TODO: Add URL parameter to web.config for Health Check site - done - Mike
+
+SOLUTION 1:
+Add 127.0.0.1 tfs.mmm.com to hosts file
+	1.	First call can be <appSetting> http://tfsprod01.usac.mmm.com:8080/tfs.  Cert's good, will go through.
+	2.	TFS gets the call down in the application. Sorry that's tfsprod01, not tfs.mmm.com.
+	3.	Redirect to tfs.mmm.com
+	4.	Server tfsprod01 use hosts file to override tfs.mmm.com > NOT VIP > 127.0.0.1
+
+SOLUTION 2:
+	1.	Don't modify hosts file.
+	2.	Update SSL cert to include QA and dev nodes.
+	3.	Set Health Check site to https://tfsqa01.usac.mmm.com/tfs to use SSL and not redirect via hosts file to get 400 Bad Request.
+	
+!!!!!!!!!!!! WENT WITH SOLUTION 2 !!!!!!!!!!!!!!!!!!
+	
+Needed to install SharePoint extensions on tfsqa02.
+
+Had to reset permissions on the SPS log folder, and D:\_sharepoint_data
+
+Used for 3M Enterprise Team Foundation Server (TFS) production servers.
+Has already been reviewed.  Just need renewal certificate with additional subject alternative names.
+tfs.mmm.com,tfsqa.mmm.com,tfsdev.mmm.com,tfsprod01.usac.mmm.com,tfsprod02.usac.mmm.com,tfsqa01.usac.mmm.com,tfsqa02.usac.mmm.com,tfsdev01.usac.mmm.com,tfsdev02.usac.mmm.com
+
+
+Requesting internal CA certificate for upgrade testing with SSL clients.
+tfsdev.mmm.com,tfsdev01.usac.mmm.com,tfsdev02.usac.mmm.com
+
+
+$/Public/Test
+SET NOCOUNT ON 
+SELECT size / 128.0 as fileSize, 
+ FILEPROPERTY(name, 'SpaceUsed') / 128.0 as fileUsed,
+ CASE WHEN max_size = -1 OR max_size = 268435456 THEN -1 ELSE max_size / 128 END as fileMaxSize,
+ CASE WHEN growth = 0 THEN 0 ELSE 1 END as IsAutoG
+ 
+ SELECT size / 128.0 as fileSize, 
+ FILEPROPERTY(name, 'SpaceUsed') / 128.0 as fileUsed,
+ CASE WHEN max_size = -1 OR max_size = 268435456 THEN -1 ELSE max_size / 128 END as fileMaxSize,
+ CASE WHEN growth = 0 THEN 0 ELSE 1 END as IsAutoGrow, 
+ is_percen
+
+
+http://ithelp.mmm.com/Request.aspx?ID=ITC-DIGITALCERTIFICATEREQUEST
+
+	Take node 2 offline.
+	Run the upgrade.
+	Bring node 2 back online, run the application tier only with redirect option
+	Disable sslOnly
+	
+	Need to use TFS 2017.1 for upgrade on production
+	Resolve SSL certificate issues
+	Upgrade dev and QA to UP 1.
+	
+	https://www.visualstudio.com/en-us/docs/setup-admin/tfs/admin/setup-secure-sockets-layer 
+	
+!!!!!!!!!!!!!!! DO NOT FORGET TO RUN A FULL PATCH RUN AFTER UPGRADE !!!!!!!!!!!!!!!!!!!!!!!!!
+
+Change Request (4/1/17):
+
+***********************
+Details
+Ready to upgrade the TFS production instance on prodsql220 to SQL 2014 to support upgrade of TFS 2015 to 2017.1.
+This will be both:
+	In-place upgrade of TFS production instance from SQL 2012 to SQL 2014 SP2 CU3. - Jim Peabody, Everett
+	In-place upgrade of TFS production instance from TFS 2015.3 to TFS 2017.1. - Everett
+	
+At present, SQL 2012 and SQL 2014 instances are running simultaneously on the same cluster prodsql219/220.  Prodsql220\sql220 is the TFS production instance.
+Will also need to upgrade SSRS and SSAS running on prodsqlrs09, as well as client connectivity APIs on tfsprod01/02.
+Everett can handle upgrade of client connectivity components on tfsprod01/02 and SSAS/SSRS on prodsqlrs09.
+***********************
+
+Effects of not implementing:
+TFS 2017 minimum database requirements are for SQL 2014 SP2.  TFS 2017 upgrade cannot done without the SQL upgrade.
+
+01.  Stop both TFS production and QA instances - Everett
+02.  Take full backup of all user databases on both QA and production instances.  Backup location will be an off-cluster location. - Jim and Everett
+03.  Upgrade SQL instance prodsql220\sql220 to SQL 2014 SP2 CU3. - Jim
+04.  Upgrade TFS > SSRS/SSAS instance on prodsqlrs09 to SQL 2014 SP2 CU3. - Everett
+05.  Upgrade SQL client connectivity components on TFS farm nodes tfsprod01/02 to SQL 2014 SP2 CU3. - Everett
+06.  Bring TFS back online. - Everett
+07.  Verify that TFS 2015 is operating correctly on SQL 2014 now. - Everett
+08.  Full patch run on TFS farm nodes tfsprod01/02. - Everett
+09.  Upgrade TFS 2015 to TFS 2017. - Everett
+10.  Verify that TFS 2017 is operating correctly. - Everett
+11.  Check all secondary services for TFS production instance. - Everett
+12.  Retain off-cluster backup for at least 7 days in case of unexpected issues developing post-upgrade.
+
+
+[SQL instance upgrade failure, only prodsql220\sql220]
+01.  Roll prodsql220\sql220 instance back down to SQL 2012. - Jim
+02.  Restore user databases from off-cluster full backup. - Jim
+03.  Clear TFS instance caches on tfsprod01/02. - Everett
+04.  Restart TFS instance. - Everett
+05.  Verify that TFS instance is operating correctly. - Everett
+06.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+
+[Complete SQL cluster failure]
+01.  Open Microsoft support case, Severity A. - Everett
+02.  Recover prodsql219/220 instance. - Jim
+03.  Restore both TFS QA and production databases. - Jim
+04.  Rollback protocol for TFS recovery, both QA and production instances - Everett (Microsoft assistance)
+
+[TFS 2017 upgrade failure, full rollback]
+01.  Uninstall TFS 2017, reinstall TFS 2015.  No VM snapshots will be available for application tier recovery.  Would be incredibly difficult.  May require complete rebuild of TFS instance - Everett
+02.  Restore pre-upgrade TFS databases over top of existing databases - Jim
+03.  Restart TFS instance. - Everett
+04.  Verify that TFS instance is operating correctly. - Everett
+05.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+
+Build and test plan.
+
+
+01.  Backup all user databases for TFS production instances for prodsql219/220 to off-cluster location. - Jim
+02.  Go ahead and prepare to open Microsoft support case in the event of catastrophe. - Everett
+
+
+03/27:
+
+Submit CR
+Broadcast for outage
+
+Remove SCOM monitors ***********************
+
+Re-add BaseMonitoring.NonOSservices.Group
+
+Primary servers:
+tfsprod01 - done
+tfsprod02 - done
+tfsqa01 - N/A
+tfsqa02 - N/A
+prodsqlcl219 - N/A
+prodsqlcl220 - N/A
+qasqlrs06 - N/A
+prodsqlrs09 - N/A
+tfsrm01 - done
+sonarqube - N/A
+
+Build servers:
+tfsbuild01 - done
+tfsbuild02 - done
+tfsbuild03 - done
+tfsbuild04 - done
+
+utdev31.usac.mmm.com
+utap32.usac.mmm.com
+utdev33.usac.mmm.com
+utdev34.usac.mmm.com
+utdev47.usac.mmm.com
+utdev70.usac.mmm.com
+utdev71.usac.mmm.com
+utbuilddb01.usac.mmm.com
+slc-himdev5.usac.mmm.com
+ut360dev01.usac.mmm.com
+ut360tfs01.usac.mmm.com
+utsec01.usac.mmm.com
+utsec05.usac.mmm.com
+JNRDV2R-BUILD02.mmm.com
+uswfdapqaci.usac.mmm.com
+uswfdap054d.usac.mmm.com
+tfstssdbld01.usac.mmm.com - no monitoring defined
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - done
+atxtfsproxy.usac.mmm.com - done
+usjnridap02.usac.mmm.com - unconfigured
+utap34.usac.mmm.com - done
+usjnrap02.usac.mmm.com - done
+uswfdap025p.usac.mmm.com - done
+
+Push groups *****************************
+
+Primary servers:
+tfsprod01 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsprod02 - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+prodsqlcl219 - N/A
+prodsqlcl220 - N/A
+qasqlrs06 - N/A
+prodsqlrs09 - N/A
+tfsrm01 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+sonarqube - SRV-PATCH-Sat0600Local-Reboot - can't edit
+
+Build servers:
+tfsbuild01 - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+tfsbuild02 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsbuild03 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsbuild04 - N/A
+
+utdev31.usac.mmm.com
+utap32.usac.mmm.com
+utdev33.usac.mmm.com
+utdev34.usac.mmm.com
+utdev47.usac.mmm.com
+utdev70.usac.mmm.com
+utdev71.usac.mmm.com
+utbuilddb01.usac.mmm.com
+slc-himdev5.usac.mmm.com
+ut360dev01.usac.mmm.com
+ut360tfs01.usac.mmm.com
+utsec01.usac.mmm.com
+utsec05.usac.mmm.com
+JNRDV2R-BUILD02.mmm.com
+uswfdapqaci.usac.mmm.com
+uswfdap054d.usac.mmm.com
+tfstssdbld01.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+atxtfsproxy.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+usjnridap02.usac.mmm.com - skipped
+utap34.usac.mmm.com - skipped
+usjnrap02.usac.mmm.com - skipped
+uswfdap025p.usac.mmm.com - skipped
+
+OOS Windows *****************************
+
+Remove SCOM monitors ***********************
+
+Primary servers:
+tfsprod01 - done
+tfsprod02 - done
+tfsqa01 - done
+tfsqa02 - done
+prodsqlcl219 - done
+prodsqlcl220 - done
+qasqlrs06 - done
+prodsqlrs09 - done
+tfsrm01 - done
+sonarqube - done
+
+Build servers:
+tfsbuild01 - done
+tfsbuild02 - done
+tfsbuild03 - done
+tfsbuild04 - done
+
+utdev31.usac.mmm.com - skipped
+utap32.usac.mmm.com - skipped
+utdev33.usac.mmm.com - skipped
+utdev34.usac.mmm.com - skipped
+utdev47.usac.mmm.com - skipped
+utdev70.usac.mmm.com - skipped
+utdev71.usac.mmm.com - skipped
+utbuilddb01.usac.mmm.com - skipped
+slc-himdev5.usac.mmm.com - skipped
+ut360dev01.usac.mmm.com - skipped
+ut360tfs01.usac.mmm.com - skipped
+utsec01.usac.mmm.com - skipped
+utsec05.usac.mmm.com - skipped
+JNRDV2R-BUILD02.mmm.com - skipped
+uswfdapqaci.usac.mmm.com - skipped
+uswfdap054d.usac.mmm.com - skipped
+tfstssdbld01.usac.mmm.com - done
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - done
+atxtfsproxy.usac.mmm.com - done
+utap34.usac.mmm.com - done
+usjnrap02.usac.mmm.com - done
+uswfdap025p.usac.mmm.com - done
+
+
+"C:\Program Files (x86)\McAfee\Common Framework\cmdagent.exe /s"
+
+
+Shutdown ***********************
+
+Primary servers:
+tfsprod01 - done
+tfsprod02 - done
+tfsqa01 - done
+tfsqa02 - done
+tfsrm01 - done
+sonarqube - done
+
+Build servers:
+tfsbuild01 - done
+tfsbuild02 - done
+tfsbuild03 - done
+tfsbuild04 - done
+
+utdev31.usac.mmm.com - done
+utap32.usac.mmm.com - ???
+utdev33.usac.mmm.com - ???
+utdev34.usac.mmm.com - ???
+utdev47.usac.mmm.com - done
+utdev70.usac.mmm.com - done
+utdev71.usac.mmm.com - done
+utbuilddb01.usac.mmm.com - done
+slc-himdev5.usac.mmm.com - done
+ut360dev01.usac.mmm.com - done
+ut360tfs01.usac.mmm.com - done
+utsec01.usac.mmm.com - done
+utsec05.usac.mmm.com - done
+JNRDV2R-BUILD02.mmm.com - done
+uswfdapqaci.usac.mmm.com - done
+uswfdap054d.usac.mmm.com - done
+tfstssdbld01.usac.mmm.com - done
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - done
+atxtfsproxy.usac.mmm.com - done
+utap34.usac.mmm.com - done
+usjnrap02.usac.mmm.com - done
+uswfdap025p.usac.mmm.com - done
+
+
+Git permissions prior to TFS 2017.1:
+https://www.visualstudio.com/en-us/docs/setup-admin/git-permissions-before-2017
+
+Git permissions with TFS 2017.1:
+https://www.visualstudio.com/en-us/docs/setup-admin/permissions#git-repository
+
+Issues with F5 load balancer and HTTPS after TFS 2017 upgrade
+
+After upgrading TFS from 2015 to 2017, the load balancer no longer routes HTTPS through the load balancer.  The servers are tfsprod01 and tfsprod02.  I get "Connection reset" when trying to connect via browser.
+However, HTTP to http://tfs.mmm.com passes through the load balancer.  Also, if I use a node-direct URL like https://tfsprod01.usac.mmm.com/tfs, it works correctly.  Just not the VIP name.
+I need to know exactly what URL is set for tfsprod01 and tfsprod02 health checks, and help with troubleshooting.
+There have been several reboots during the upgrade, and the servers were completely offline for about 4 hours.  Perhaps they've been permanently removed from the node pool behind the load balancer?
+Also, there is an out of service window currently in place for tfsprod01/02, could that be affecting things?  I've re-enabled the GEMSR event mapping for the load balancer alerts, but see no change.
+
+ww_it-telecom-loadbal
+
+
+Startup ***********************
+
+Primary servers:
+tfsprod01 - done
+tfsprod02 - done
+tfsrm01 - done
+sonarqube - done
+
+Build servers:
+tfsbuild01 - done
+tfsbuild02 - done
+tfsbuild03 - done
+tfsbuild04 - done
+
+utdev31.usac.mmm.com - done
+utap32.usac.mmm.com - ???
+utdev33.usac.mmm.com - ???
+utdev34.usac.mmm.com - ???
+utdev47.usac.mmm.com - done - queued builds?
+utdev70.usac.mmm.com - done
+utdev71.usac.mmm.com - done - hacked notepad++
+utbuilddb01.usac.mmm.com - done
+slc-himdev5.usac.mmm.com - done
+ut360dev01.usac.mmm.com - done
+ut360tfs01.usac.mmm.com - done - hacked notepad++
+utsec01.usac.mmm.com - done - hacked notepad++
+utsec05.usac.mmm.com - done
+JNRDV2R-BUILD02.mmm.com - done
+uswfdapqaci.usac.mmm.com - done
+uswfdap054d.usac.mmm.com - need password for USAC\USFAPricertables
+tfstssdbld01.usac.mmm.com - done
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - done
+atxtfsproxy.usac.mmm.com - done
+utap34.usac.mmm.com - done
+usjnrap02.usac.mmm.com - done
+uswfdap025p.usac.mmm.com - done
+
+
+
+Reset Push groups and maintenance windows *****************************
+
+Primary servers:
+tfsprod01 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsprod02 - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+tfsrm01 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+sonarqube - SRV-PATCH-Sat0600Local-Reboot - can't edit
+
+Build servers:
+tfsbuild01 - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+tfsbuild02 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsbuild03 - SRV-PATCH-Sat0600Local-Reboot - Saturday morning
+tfsbuild04 - N/A
+
+tfstssdbld01.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+
+Proxy servers:
+tfsproxy01.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+atxtfsproxy.usac.mmm.com - SRV-PATCH-Sat0800Local-Reboot - Saturday morning
+usjnridap02.usac.mmm.com - skipped
+utap34.usac.mmm.com - skipped
+usjnrap02.usac.mmm.com - skipped
+uswfdap025p.usac.mmm.com - skipped
+
+
+IM3483275  - Vishwa and Lotus
+
+
+Those with Git 1.9 (or older) were no longer working.
+Must go to Git 1.10 or later.
+
+Jamie Olson - 1.95.msysgit.0
+
+Fatal: Authentication failed for https://tfs.mmm.com/DefaultCollection...
+
+Remove Sonya Little
+
+https://support.microsoft.com/en-us/help/2953452/performance-decreases-in-tfs-2013-update-2-after-you-upgrade-to-sql-server-2014
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/768e3d04-618c-4758-8602-8014b26966a0/tfs-2013-and-sql-2014-performance-issues?forum=tfsgeneral
+
+
+
+01.  Ensure backups on all user databases with focus on Tfs_Warehouse.
+02.  Ensure system database backups on prodsqlrs09.
+03.  Export SSRS encryption key for backup.
+04.  Change database compatibility mode back to 110 for Tfs_Warehouse.
+05.  Make sure that the SQL minimum and maximum memory settings are set explicitly to leave at least 2 GB of free physical memory for the system. ( Will cap SQL engine memory consumption at 12 GB out of 16 GB physical memory)
+06.  Enable locked pages for the account that is running the SQL service.
+07.  Enable SQL trace flag 8032.
+08.  Restart SQL engine.
+09.  Rebuld indices.
+10.  Update statistics.
+
+Low risk configuration change.  Server is standalone, not a shared SQL instance.  Tfs_Warehouse database can be rebuilt by TFS admin console from scratch if something goes wrong.  No non-TFS related services on the machine.
+
+See MSFT KB article:  https://support.microsoft.com/en-us/help/2953452/performance-decreases-in-tfs-2013-update-2-after-you-upgrade-to-sql-server-2014
+
+Undo listed changes in implementation plan.  Restore database from backup in the event of catastrophe.
+
+ALTER DATABASE Tfs_Warehouse  
+SET COMPATIBILITY_LEVEL = 120;  
+GO
+
+Memory cap = 10/6
+
+To rebuild all indexes on a table
+In Object Explorer, connect to an instance of the SQL Server Database Engine and then expand that instance.
+Expand Databases, expand the database that contains the table with the specified indexes, and then expand Tables.
+Expand the table in which the indexes belong.
+Right-click Indexes and then click Rebuild All.
+To start the rebuild operation, click OK.
+
+********************************************
+(Rebuild all indices in Tfs_Warehouse)
+
+USE Tfs_Warehouse 
+ 
+DECLARE @TableName varchar(255) 
+ 
+DECLARE TableCursor CURSOR FOR 
+SELECT table_name FROM information_schema.tables 
+WHERE table_type = 'base table' 
+ 
+OPEN TableCursor 
+ 
+FETCH NEXT FROM TableCursor INTO @TableName 
+WHILE @@FETCH_STATUS = 0 
+	BEGIN 
+	DBCC DBREINDEX(@TableName,' ',90) 
+FETCH NEXT FROM TableCursor INTO @TableName 
+END 
+ 
+CLOSE TableCursor 
+ 
+DEALLOCATE TableCursor
+
+********************************************
+(Update statistics)
+
+EXEC sp_updatestats;
+GO
+
+********************************************
+	
+		
+	
+TFS 2017.2 Update:
+
+Previous CR - C256589
+
+***********************
+Details
+Ready to upgrade the TFS production instance on prodsql220 to SQL 2014 to support upgrade of TFS 2015 to 2017.1.
+This will be both:
+	In-place upgrade of TFS production SQL instance from SQL 2012 to SQL 2014 SP2 CU3. - Jim Peabody, Everett
+	In-place upgrade of TFS production instance from TFS 2015.3 to TFS 2017.1. - Everett
+At present, SQL 2012 and SQL 2014 instances are running simultaneously on the same cluster prodsql219/220.  Prodsql220\sql220 is the TFS production instance.
+Will also need to upgrade SSRS and SSAS running on prodsqlrs09, as well as client connectivity APIs on tfsprod01/02.
+Everett can handle upgrade of client connectivity components on tfsprod01/02 and SSAS/SSRS on prodsqlrs09.
+***********************
+
+Implement
+01.  Stop both TFS production and QA instances - Everett
+02.  Take full backup of all user databases on both QA and production instances.  Backup location will be an off-cluster location. - Jim and Everett
+03.  Upgrade SQL instance prodsql220\sql220 to SQL 2014 SP2 CU3. - Jim
+04.  Upgrade TFS > SSRS/SSAS instance on prodsqlrs09 to SQL 2014 SP2 CU3. - Everett
+05.  Upgrade SQL client connectivity components on TFS farm nodes tfsprod01/02 to SQL 2014 SP2 CU3. - Everett
+06.  Bring TFS back online. - Everett
+07.  Verify that TFS 2015 is operating correctly on SQL 2014 now. - Everett
+08.  Full patch run on TFS farm nodes tfsprod01/02. - Everett
+09.  Upgrade TFS 2015 to TFS 2017. - Everett
+10.  Verify that TFS 2017 is operating correctly. - Everett
+11.  Check all secondary services for TFS production instance. - Everett
+12.  Retain off-cluster backup for at least 7 days in case of unexpected issues developing post-upgrade.
+
+Backout
+[SQL instance upgrade failure, only prodsql220\sql220]
+01.  Roll prodsql220\sql220 instance back down to SQL 2012. - Jim
+02.  Restore user databases from off-cluster full backup. - Jim
+03.  Clear TFS instance caches on tfsprod01/02. - Everett
+04.  Restart TFS instance. - Everett
+05.  Verify that TFS instance is operating correctly. - Everett
+06.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+
+[Complete SQL cluster failure]
+01.  Open Microsoft support case, Severity A. - Everett
+02.  Recover prodsql219/220 instance. - Jim
+03.  Restore both TFS QA and production databases. - Jim
+04.  Rollback protocol for TFS recovery, both QA and production instances - Everett (Microsoft assistance)
+
+[TFS 2017 upgrade failure, full rollback]
+01.  Uninstall TFS 2017, reinstall TFS 2015.  No VM snapshots will be available for application tier recovery.  Would be incredibly difficult.  May require complete rebuild of TFS instance - Everett
+02.  Restore pre-upgrade TFS databases over top of existing databases - Jim
+03.  Restart TFS instance. - Everett
+04.  Verify that TFS instance is operating correctly. - Everett
+05.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+
+Build and test
+Already tested upgrade on QA environment
+
+Build and test result
+All successful
+
+
+********************************************
+	
+		
+	
+TFS 2017.3 Update:
+
+Previous CR - C256589
+
+Title:
+TFS production upgrade from TFS 2017.1 to 2017.3.
+
+***********************
+Details
+In-place upgrade of TFS production instance from TFS 2017.1 to TFS 2017.3. - Everett, DBA Peabody
+***********************
+
+Implement
+01.  Stop TFS production secondary services - Everett
+02.  Stop TFS production instance - Everett
+03.  Take full backup of all user databases on prodsql220\sql220. Snap manager backups with the production instance down should be sufficient. - DBA
+04.  Bring TFS production instance back online. - Everett
+05.  Full patch run on TFS farm nodes tfsprod01/02. - Everett
+06.  Upgrade TFS 2017.1 to TFS 2017.3. - Everett
+07.  Verify that production instance is operating correctly. - Everett
+08.  Check all secondary services for TFS production instance. - Everett
+09.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+
+Backout
+
+[TFS 2017 upgrade failure, full rollback]
+01.  Restart TFS instance. - Everett
+02.  Attempt to reapply TFS 2017 Update 3.  No VM snapshots will be available for application tier recovery.  Would be incredibly difficult.  May require complete rebuild of TFS instance - Everett
+03.  Open MSFT case, Severity A to address the issue, if permitted. - Everett
+04.  Restore pre-upgrade TFS databases over top of existing databases - DBA
+05.  Verify that TFS instance is operating correctly. - Everett
+06.  Dump and rebuild data warehouse database and SSAS cube on prodsqlrs09. - Everett
+07.  Dump all server-side caches. - Everett
+
+Build and test
+Already tested upgrade in dev and QA environments
+
+Build and test result
+All successful
+
+tfsprod01
+tfsprod02
+tfssearch01
+tfsscan01
+tfsrm01
+tfsbuild01
+tfsbuild02
+tfsbuild03
+tfsbuild04
+tfsxaml01
+tfsproxy01
+
+Implementation
+
+******************************************************************************************
+
+05/21/16
+Upgrade to TFS 2015.2.1
+
+
+
+Pre-work:
+Update CHBS calendar.
+Do any TCAB work.
+Check SQL logs for successful backup of TPC.
+Add OOS windows.
+Disable Event Mapping for load balancer
+Broadcast email for outage (if necessary)
+
+Use TfsServiceControl quiesce on both nodes to stop activity (02 first, then 01).
+	"C:\Program Files\Microsoft Team Foundation Server 14.0\tools\TfsServiceControl.exe" QUIESCE
+Check for pending server patches, patch all the way up. (126 patches)
+Stop health check site and application pool on both nodes.
+Reboot both nodes
+Wait for instance to quiesce (about 30 min)
+Remove application tier features from node 02.
+Wait for configuration update in Tfs_Configuration to be picked up by tfsprod01.
+Run upgrade on node 01.
+Configure node 01 using Upgrade Wizard.
+Start Health Check website.
+Reboot node 01.
+Run upgrade on node 02.
+Configure node 02 as AT only.
+Reboot node 02.
+Wait for instance to quiesce, watch event logs. (about 30 min)
+Check for pending server patches, patch all the way up again. (in case any updates are available post-upgrade)
+
+Test:
+Work items
+Version Control
+Reports
+SharePoint
+Web portal
+Builds
+
+Finalize:
+Broadcast that service is back online.
+
+Post steps:
+(Later) Check that post-upgrade backups have run.
+Add task for Vishwa to reset the log locations and reconfigure any PS maintenance scripts
+Check SCCM configuration for both nodes to make sure they are patching on schedule.  (126 updates, not since 10/22/15)
+Register DNS alias for tfsnuget.mmm.com
+Check tfsarchive for disk capacity for NuGet repo
+
+
+******************************************************************************************
+
+

@@ -1,0 +1,43 @@
+
+SELECT
+	   --'ARCHON-TECH\' +
+	   CASE
+			WHEN (RIGHT((UPPER(RTRIM([Username]))),2) != 'ZZ'
+					AND LEFT((UPPER(LTRIM([Username]))),2) != 'US')
+			THEN LOWER([Username])
+			ELSE LOWER([MMMUserPIN])
+	    END AS ArchonLogin
+	  ,
+	   --'USAC\' +
+	   CASE
+			WHEN ((RIGHT((UPPER(RTRIM([Username]))),2) = 'ZZ')
+				OR (LEFT(UPPER(LTRIM([Username])),2) = 'US'))
+				THEN UPPER([Username])
+			ELSE UPPER([MMMUserPIN])
+		END AS MMMLogin
+	,*
+  FROM [TimeReporting].[dbo].[Resource]
+  WHERE MMMUserPIN NOT IN('x','unavailable','notavailable')
+		AND	[Username] != [MMMUserPIN]
+		/*AND NOT(
+				((RIGHT((UPPER(RTRIM([Username]))),2) = 'ZZ')
+					AND (RIGHT(UPPER(RTRIM([MMMUserPIN])),2) <> 'ZZ'))
+								OR
+				((LEFT((UPPER(LTRIM([Username]))),2) = 'US')
+					AND (LEFT(UPPER(LTRIM([MMMUserPIN])),2) <> 'US'))
+			)*/
+			
+ORDER BY FirstName
+--FOR XML AUTO
+
+
+<UserIdentityMappings EnableValidation="false">
+   <UserIdentityLookupAddins />
+   <DisplayNameMappings DirectionOfMapping="LeftToRight">
+      <DisplayNameMapping Left="ARCHON-TECH\user1" Right="USAC\user1" MappingRule="SimpleReplacement" />
+      <DisplayNameMapping Left="svnuser2" Right="domain\user2" MappingRule="SimpleReplacement" />
+   </DisplayNameMappings>
+</UserIdentityMappings>
+
+
+https://www.simple-talk.com/sysadmin/powershell/powershell-data-basics-xml/#third

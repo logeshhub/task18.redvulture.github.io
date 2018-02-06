@@ -1,0 +1,166 @@
+  <SettingXml>
+    <WITSessionCustomSetting>
+      <Settings />
+      <WorkItemTypes>
+        <WorkItemType LeftWorkItemTypeName="Requirement" RightWorkItemTypeName="Feature" fieldMap="RequirementToFeatureFieldMap" />
+        <WorkItemType LeftWorkItemTypeName="BusinessRule" RightWorkItemTypeName="User Story" fieldMap="BusinessRuleToUserStoryFieldMap" />
+        <WorkItemType LeftWorkItemTypeName="Bug" RightWorkItemTypeName="Bug" fieldMap="BugToBugFieldMap" />
+      </WorkItemTypes>
+      <FieldMaps>
+        <FieldMap name="RequirementToFeatureFieldMap">
+          <MappedFields>
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+            <MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+            <MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+            <MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+            <MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+            <MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" valueMap="RequirementReasonValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+            <MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" valueMap="RequirementStateValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+            <MappedField MapFromSide="Left" LeftName="System.TeamProject" RightName="System.TeamProject" />
+            <MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+            <MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+            <MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+          </MappedFields>
+        </FieldMap>
+        <FieldMap name="BusinessRuleToUserStoryFieldMap">
+          <MappedFields>
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+            <MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+            <MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+            <MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+            <MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+            <MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" valueMap="BusinessRuleReasonValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+            <MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" valueMap="BusinessRuleStateValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+            <MappedField MapFromSide="Left" LeftName="System.TeamProject" RightName="System.TeamProject" />
+            <MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+            <MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+            <MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.CMMI.Analysis" RightName="MMM.Common.AnalystComments" />
+          </MappedFields>
+        </FieldMap>
+        <FieldMap name="BugToBugFieldMap">
+          <MappedFields>
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+            <MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+            <MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+            <MappedField MapFromSide="Left" LeftName="MMM.Bug.ExpectedBehavior" RightName="MMM.Bug.ExpectedBehavior" />
+            <MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+            <MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+            <MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+            <MappedField MapFromSide="Left" LeftName="MMM.Bug.ObservedBehavior" RightName="MMM.Bug.ObservedBehavior" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+            <MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" valueMap="BugReasonValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedBy" RightName="Microsoft.VSTS.Common.ResolvedBy" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ResolvedDate" RightName="Microsoft.VSTS.Common.ResolvedDate" />
+            <MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+            <MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.CMMI.RootCause" RightName="Microsoft.VSTS.CMMI.RootCause" valueMap="RootCauseValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Severity" RightName="Microsoft.VSTS.Common.Severity" valueMap="SeverityValueMap" />
+            <MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" valueMap="BugStateValueMap" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.CMMI.Symptom" RightName="Microsoft.VSTS.CMMI.Symptom" />
+            <MappedField MapFromSide="Left" LeftName="System.TeamProject" RightName="System.TeamProject" />
+            <MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+            <MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+            <MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+            <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.CMMI.StepsToReproduce" RightName="Microsoft.VSTS.TCM.ReproSteps" />
+          </MappedFields>
+        </FieldMap>
+      </FieldMaps>
+      <ValueMaps>
+        <ValueMap name="SeverityValueMap">
+          <Value LeftValue="Critical" RightValue="1 - Critical" />
+          <Value LeftValue="High" RightValue="2 - High" />
+          <Value LeftValue="Medium" RightValue="3 - Medium" />
+          <Value LeftValue="Low" RightValue="4 - Low" />
+        </ValueMap>
+        <ValueMap name="RootCauseValueMap">
+          <Value LeftValue="Coding Error" RightValue="Source Code" />
+          <Value LeftValue="Cosmetic" RightValue="Cosmetic" />
+          <Value LeftValue="Design Error" RightValue="Missed Requirement" />
+          <Value LeftValue="Specification Error" RightValue="Requirements Need Revision" />
+          <Value LeftValue="Unknown" RightValue="Unknown" />
+          <Value LeftValue="Configuration" RightValue="Configuration Data" />
+          <Value LeftValue="Conversion" RightValue="Conversion Data" />
+        </ValueMap>
+        <ValueMap name="RequirementStateValueMap">
+          <Value LeftValue="Active" RightValue="New" />
+          <Value LeftValue="Closed" RightValue="Closed" />
+          <Value LeftValue="Ready" RightValue="New" />
+          <Value LeftValue="Resolved" RightValue="Resolved" />
+        </ValueMap>
+        <ValueMap name="RequirementReasonValueMap">
+          <Value LeftValue="More Analysis Required" RightValue="Moved to the backlog" />
+          <Value LeftValue="Requirement Rejected" RightValue="Rejected" />
+          <Value LeftValue="Coding Can Begin" RightValue="New" />
+          <Value LeftValue="Ready For UAT" RightValue="Stories complete" />
+        </ValueMap>
+        <ValueMap name="BusinessRuleStateValueMap">
+          <Value LeftValue="Closed" RightValue="Closed" />
+        </ValueMap>
+        <ValueMap name="BusinessRuleReasonValueMap">
+          <Value LeftValue="QA Verified Rule" RightValue="Acceptance tests pass" />
+        </ValueMap>
+        <ValueMap name="BugStateValueMap">
+          <Value LeftValue="Active" RightValue="Active" />
+          <Value LeftValue="Closed" RightValue="Closed" />
+          <Value LeftValue="Proposed" RightValue="Active" />
+          <Value LeftValue="Resolved" RightValue="Closed" />
+        </ValueMap>
+        <ValueMap name="BugReasonValueMap">
+          <Value LeftValue="Incomplete" RightValue="Test Failed" />
+          <Value LeftValue="Accepted" RightValue="New" />
+          <Value LeftValue="Working as Designed" RightValue="Verified" />
+          <Value LeftValue="Fixed" RightValue="Verified" />
+          <Value LeftValue="Rejected" RightValue="Verified" />
+          <Value LeftValue="Not a Bug" RightValue="Verified" />
+          <Value LeftValue="Duplicate/Mistake" RightValue="Verified" />
+          <Value LeftValue="Cannot Reproduce" RightValue="Verified" />
+          <Value LeftValue="Configuration" RightValue="Verified" />
+          <Value LeftValue="Not Delivered Yet" RightValue="Verified" />
+          <Value LeftValue="Training" RightValue="Verified" />
+          <Value LeftValue="New" RightValue="New" />
+          <Value LeftValue="Investigation Needed" RightValue="Reactivated" />
+          <Value LeftValue="Fixed" RightValue="Fixed" />
+        </ValueMap>
+      </ValueMaps>
+    </WITSessionCustomSetting>
+  </SettingXml>
+  <SettingXmlSchema />

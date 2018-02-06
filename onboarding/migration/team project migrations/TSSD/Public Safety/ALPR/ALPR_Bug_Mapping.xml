@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Replace the WorkItemTypes node and FieldMaps node in the TFS Integration Platform mapping file with the content of this file-->
+<Code>
+	<WorkItemTypes>
+		<WorkItemType LeftWorkItemTypeName="Bug" RightWorkItemTypeName="Bug" fieldMap="BugToBugFieldMap" />
+	</WorkItemTypes>
+	<FieldMaps>
+		<FieldMap name="BugToBugFieldMap">
+			<MappedFields>
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.AcceptanceCriteria" RightName="Microsoft.VSTS.Common.AcceptanceCriteria" />
+				<MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+				<MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+				<MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+				<MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.BacklogPriority" RightName="Microsoft.VSTS.Common.BacklogPriority" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+				<MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+				<MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.Effort" RightName="Microsoft.VSTS.Scheduling.Effort" />
+				<MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+				<MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+				<MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+				<MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+				<MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.ReproSteps" RightName="Microsoft.VSTS.TCM.ReproSteps" />
+				<MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+				<MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Severity" RightName="Microsoft.VSTS.Common.Severity" />
+				<MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+				<MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.SystemInfo" RightName="Microsoft.VSTS.TCM.SystemInfo" />
+				<MappedField MapFromSide="Left" LeftName="System.TeamProject" RightName="System.TeamProject" />
+				<MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+				<MappedField MapFromSide="Left" LeftName="System.Watermark" RightName="System.Watermark" />
+				<MappedField MapFromSide="Left" LeftName="System.WorkItemType" RightName="System.WorkItemType" />
+			</MappedFields>
+		</FieldMap>
+	</FieldMaps>
+</Code>

@@ -1,0 +1,172 @@
+
+
+
+Primary contact:
+	
+	Fred
+		Project manager
+		Office phone
+		Email
+		Cell phone
+		Fred schedule during engagement
+			Fairly open schedule
+			Fred's backups, Brad Smith, Terry Vandershell
+
+Expectations (just for on-site engagement):
+
+	1.	Darren and Everett on-site week of 8/24.
+	
+	2.	Do as much work remotely ahead of time. (inspection)
+			4 jump boxes to access TFS instance via DMZ
+		
+	3.	Deliver IP.
+			Speak with Dominik
+	
+	4.	Set up and configure environment for validation.
+			How to get dedicated build server?
+			
+
+Determine primary objectives:
+
+	1.	Set up and configure TFS instance with pertinent materials.
+			
+		
+	2.	Review deliverables.
+			TPC delivered, no code drop necessary
+	
+	3.	Will this be deployed on their QA environment for validation?
+			Deploy to existing 3M development environment.
+			Run high level use cases to verify.
+			Need a change list since Nov 3.  Verify that bug fixes are present in the build.
+			
+
+Review specific on-site activities:
+	
+	1.	Review itinerary.
+	
+	2.	Possibility of only being on-site Tue-Fri.
+	
+	
+	
+Pre-engagement work:
+
+	1.	How much work can be done beforehand?
+
+	2.	How to connect remotely?
+	
+		A.	Use existing logins for DMZ and remote access. (David Wilson, Bhaskara)
+
+	
+Engagement Logistics:
+
+	1.	What are available working hours?
+			8:00 - 4:30
+	
+	2.	Make sure no one is on vacation.
+			DTI
+	
+	3.	Who's the TFS contact?
+			Dominik
+	
+	4.	Who's the infrastructure admin contact?
+			DTI
+	
+	5.	Who's the DBA contact?
+			Bhaskara will be backup
+	
+	6.	Who's the development contact?
+			Darren, Jason, Jim
+	
+	7.	Do we have all the necessary equipment for the engagement?
+		
+		A.	External network access
+		
+		B.	Meeting / work room
+		
+		C.	Projector
+	
+		D.	Building access
+		
+
+Additional needs *********************************************
+
+1:1 session with TFS admin
+	New TFS instance, or existing?
+	Why is the TFS instance in the DMZ?
+	BPA run
+	Current status of TFS instance and build server
+	
+
+Action items **************************************************
+
+DTI is Ops group
+TFS admin is in DTI - Dominic J Carretto
+Upgrade TPC to TFS 2013 before attach
+
+
+Maguigan, Michael (DTI) <Michael.Maguigan@state.de.us>
+Carretto, Dominic J (DTI) <Dominic.Carretto@state.de.us>
+
+08/13/15
+@Fred 
+@Michael Maguigan
+@Dominic
+
+@Jim Bodamer
+
+What version of TFS are they running?
+TFS 2013 UP4
+
+Current TPC has 4 Team Projects
+
+Currently no build servers.
+Average turnaround at least one month for build server
+
+Action items:
+Provide demo on what we currently have
+
+
+09/23/15:
+Final scoping
+
+Review itinerary
+	Priority on first actions of the onsite visit.
+	Database restore, TPC attach
+	
+Onsite logisitics:
+
+1.	Everett meets Dominic at DTI, 8:00am.
+	A.	Dominic will register for Everett as visitor before arrival. - Did not happen
+	
+2.	Dominic performs file copy of TPC .bak file to datacenter.
+	A.	Transfer estimate is 30 minutes.
+	
+3.	Everett and Dominic perform database restore and TPC import.
+	A.	Both source and destination TFS environments match on TFS 2013.4 and SQL Standard Edition.
+	B.	In the event that there are any TPC attach issues, we will fall back to the secondary raw code drop to start work on desktop build.
+	C.	If there are TFS issues, Everett will immediately open an escalated case with Microsoft to resolve the issue. (Amit Uppal)
+
+4.	Everett and Dominic contact Fred to verify connectivity from DelDOT to the imported TPC.
+	A.	After connectivity is verified, the TFS workspace is set up and the Get Latest operation is started to pull the workspace to DelDOT.
+
+(Completed in 2 hours)
+	
+5.	Everett goes to DelDOT and meets with Fred.  Jason is at DelDOT during that time.
+	A.	Everett takes photos or any other security requirements.
+	
+6.	Everett, Jason, Fred work to pull source from TFS and get desktop build to work. (Start 10:00am)
+7.	Jason (+remote 3M team) runs through manual deployment steps. (Finish 3:30pm)
+8.	Jason (+remote 3M team) starts smoke testing. (Start 4:00pm)
+9.	
+
+
+Deliverables:
+.bak file with TPC
+Separate copy of version control, latest version.
+
+DBA work for deployment:
+Fred can do any restore necessary into the deployment environment.
+
+
+
+

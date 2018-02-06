@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Witd:WITD application="Work item type editor" version="1.0" xmlns:Witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="Bug">
+    <DESCRIPTION>Describes a divergence between required and actual behavior, and tracks the work done to correct the defect and verify the correction.</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="Iteration Path" refname="System.IterationPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Iteration ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="External Link Count" refname="System.ExternalLinkCount" type="Integer" reportable="measure" />
+      <FIELD name="Team Project" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="Hyperlink Count" refname="System.HyperLinkCount" type="Integer" reportable="measure" />
+      <FIELD name="Attached File Count" refname="System.AttachedFileCount" type="Integer" reportable="measure" />
+      <FIELD name="Node Name" refname="System.NodeName" type="String" />
+      <FIELD name="Area Path" refname="System.AreaPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Revised Date" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="Changed Date" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension" />
+      <FIELD name="Area ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="Authorized As" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="Title" refname="System.Title" type="String" reportable="dimension">
+        <REQUIRED />
+      </FIELD>
+      <FIELD name="State" refname="System.State" type="String" reportable="dimension" />
+      <FIELD name="Authorized Date" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="Watermark" refname="System.Watermark" type="Integer" />
+      <FIELD name="Rev" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="Changed By" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Reason" refname="System.Reason" type="String" reportable="dimension" />
+      <FIELD name="Assigned To" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="[project]\Project Valid Users" />
+        </SUGGESTEDVALUES>
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="Work Item Type" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="Created Date" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Created By" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Description" refname="System.Description" type="HTML" />
+      <FIELD name="History" refname="System.History" type="History" />
+      <FIELD name="Related Link Count" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="Tags" refname="System.Tags" type="PlainText" />
+      <FIELD name="Backlog Priority" refname="Microsoft.VSTS.Common.BacklogPriority" type="Double" reportable="detail" />
+      <FIELD name="Integration Build" refname="Microsoft.VSTS.Build.IntegrationBuild" type="String" reportable="dimension">
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="&lt;None&gt;" />
+        </SUGGESTEDVALUES>
+        <SUGGESTEDVALUES expanditems="true" filteritems="excludegroups">
+          <GLOBALLIST name="Builds - GrouperApplications" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="Closed Date" refname="Microsoft.VSTS.Common.ClosedDate" type="DateTime" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+        <HELPTEXT>Date when work item was marked as Done</HELPTEXT>
+      </FIELD>
+      <FIELD name="System Info" refname="Microsoft.VSTS.TCM.SystemInfo" type="HTML" />
+      <FIELD name="Repro Steps" refname="Microsoft.VSTS.TCM.ReproSteps" type="HTML" />
+      <FIELD name="Effort" refname="Microsoft.VSTS.Scheduling.Effort" type="Double" reportable="measure" />
+      <FIELD name="Acceptance Criteria" refname="Microsoft.VSTS.Common.AcceptanceCriteria" type="HTML" />
+      <FIELD name="Severity" refname="Microsoft.VSTS.Common.Severity" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1 - Critical - Data loss, data corruption or system unavailable" />
+          <LISTITEM value="2 - High - Important functionality is unavailable with no workaround" />
+          <LISTITEM value="3 - Medium - Important functionality is unavailable but has a reasonable workaround" />
+          <LISTITEM value="4 - Low - Secondary functionality is unavailable but has a reasonable workaround" />
+        </ALLOWEDVALUES>
+        <DEFAULT from="value" value="3 - Medium - Important functionality is unavailable but has a reasonable workaround" />
+      </FIELD>
+      <FIELD name="Found In" refname="Microsoft.VSTS.Build.FoundIn" type="String" reportable="dimension">
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="&lt;None&gt;" />
+        </SUGGESTEDVALUES>
+        <SUGGESTEDVALUES expanditems="true" filteritems="excludegroups">
+          <GLOBALLIST name="Builds - GrouperApplications" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="Closed By" refname="Microsoft.VSTS.Common.ClosedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <HELPTEXT>Person that marked work item as Done</HELPTEXT>
+      </FIELD>
+      <FIELD name="Comments" refname="Microsoft.VSTS.Common.Comments" type="HTML" />
+      <FIELD name="Country" refname="Microsoft.VSTS.Common.Country" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="All [Core]" />
+          <LISTITEM value="United States" />
+          <LISTITEM value="Puerto Rico" />
+          <LISTITEM value="New Zealand" />
+          <LISTITEM value="Italy" />
+          <LISTITEM value="Brazil" />
+          <LISTITEM value="Columbia" />
+          <LISTITEM value="Hong Kong" />
+          <LISTITEM value="Malaysia" />
+          <LISTITEM value="Indonesia" />
+          <LISTITEM value="Germany" />
+          <LISTITEM value="Lithuania" />
+          <LISTITEM value="Switzerland" />
+          <LISTITEM value="All [Core] Intl" />
+          <LISTITEM value="Saudi Arabia" />
+          <LISTITEM value="Australia" />
+          <LISTITEM value="United Kingdom" />
+          <LISTITEM value="Mexico" />
+          <LISTITEM value="Researchers Kit" />
+          <LISTITEM value="All [Core] ICD-10-AM" />
+          <LISTITEM value="Qatar" />
+          <LISTITEM value="Canada" />
+          <LISTITEM value="Tunisia" />
+          <LISTITEM value="Ireland" />
+          <LISTITEM value="Belgium" />
+          <LISTITEM value="Spain" />
+          <LISTITEM value="Portugal MOH" />
+          <LISTITEM value="Singapore" />
+          <LISTITEM value="Chile" />
+          <LISTITEM value="South Africa" />
+          <LISTITEM value="Portugal" />
+          <LISTITEM value="UAE" />
+        </ALLOWEDVALUES>
+        <REQUIRED />
+        <DEFAULT from="value" value="All [Core]" />
+      </FIELD>
+      <FIELD name="DetectedInIterationPath" refname="Microsoft.VSTS.Common.DetectedInIterationPath" type="String" reportable="dimension" />
+      <FIELD name="CustomerSite" refname="Microsoft.VSTS.Common.CustomerSite" type="String" />
+      <FIELD name="CustomerState" refname="Microsoft.VSTS.Common.CustomerState" type="String">
+        <WHEN field="Microsoft.VSTS.Common.Country" value="Australia">
+          <ALLOWEDVALUES expanditems="true">
+            <LISTITEM value="NT" />
+            <LISTITEM value="NZ" />
+            <LISTITEM value="VIC" />
+            <LISTITEM value="WA" />
+            <LISTITEM value="SA" />
+            <LISTITEM value="TAS" />
+            <LISTITEM value="QLD" />
+            <LISTITEM value="ACT" />
+            <LISTITEM value="NSW" />
+          </ALLOWEDVALUES>
+        </WHEN>
+        <WHEN field="Microsoft.VSTS.Common.Country" value="Canada">
+          <ALLOWEDVALUES expanditems="true">
+            <LISTITEM value="NB" />
+            <LISTITEM value="AB" />
+            <LISTITEM value="BC" />
+            <LISTITEM value="NL" />
+            <LISTITEM value="YT" />
+            <LISTITEM value="ON" />
+            <LISTITEM value="NS" />
+            <LISTITEM value="SK" />
+          </ALLOWEDVALUES>
+        </WHEN>
+      </FIELD>
+      <FIELD name="PrimaryContact" refname="Microsoft.VSTS.Common.PrimaryContact" type="String" />
+      <FIELD name="CustomerDefect" refname="Microsoft.VSTS.Common.CustomerDefect" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="N" />
+          <LISTITEM value="Y" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="NumberTimeReported" refname="Microsoft.VSTS.Common.NumberTimeReported" type="String" />
+      <FIELD name="CustomerBugList" refname="Microsoft.VSTS.Common.CustomerBugList" type="HTML" />
+      <FIELD name="TargetRelease" refname="Microsoft.VSTS.Common.TargetRelease" type="String" reportable="dimension">
+        <HELPTEXT>Please enter the target release for this bug.</HELPTEXT>
+      </FIELD>
+      <FIELD name="Commonwealth Defect" refname="Microsoft.VSTS.Common.CommonwealthDefectHtml" type="String" reportable="dimension" />
+      <FIELD name="Pri Financial" refname="Microsoft.VSTS.Common.Priority_Financial" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="0 = No financial impact" />
+          <LISTITEM value="9 = More than $500k" />
+          <LISTITEM value="1 = Up to $100k" />
+          <LISTITEM value="3 = $100-$500k" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Revenue generated or cost savings for overall strategy or contributing to overall strategy</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Customer Benefit" refname="Microsoft.VSTS.Common.Priority_CustomerBenefit" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="9 = Most/All" />
+          <LISTITEM value="1 = Few" />
+          <LISTITEM value="3 = Some" />
+          <LISTITEM value="0 = No" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>What percentage of customers will be positively impacted across ALL of our customer base?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Strategic" refname="Microsoft.VSTS.Common.Priority_Strategic" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="9 = Yes" />
+          <LISTITEM value="0 = No" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Is the enhancement critical to the business strategy?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Customer Commitment" refname="Microsoft.VSTS.Common.Priority_CustomerCommitment" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1 = Internal customer, not time critical" />
+          <LISTITEM value="3 = External, or both Internal and External" />
+          <LISTITEM value="0 = No" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Was this enhancement requested by a customer?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Customer Impact" refname="Microsoft.VSTS.Common.Priority_CustomerImpact" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="3 = High priority/Low # customers" />
+          <LISTITEM value="9 = High priority/High # customers" />
+          <LISTITEM value="1 = Low priority/High # of customers" />
+          <LISTITEM value="0 = Low priority/Low # of customers" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>For customer specific requests, where does this enhancement fall within their priorities?(Within the specific product/component it affects)</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Compliance" refname="Microsoft.VSTS.Common.Priority_Compliance" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="3 = No longer supported; minor security issue" />
+          <LISTITEM value="1 = Falling behind on 3rd party versioning" />
+          <LISTITEM value="9 = Major security or legal issue; or regulatory enhancement" />
+          <LISTITEM value="0 = No impact" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Does this address legal, security or internal compliance, contractual issues?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Customer Commitment Date" refname="Microsoft.VSTS.Common.Priority_CustomerCommitmentDate" type="DateTime" reportable="dimension">
+        <HELPTEXT>What was the earliest date that was communicated to the requesting customer(s)?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri Customer Commitment Date Weight" refname="Microsoft.VSTS.Common.Priority_CustomerCommitmentDateWeight" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="9 = Up to 3 months" />
+          <LISTITEM value="1 = Up to 9 months" />
+          <LISTITEM value="3 = Up to 6 months" />
+          <LISTITEM value="0 = Blank or more than 9 months" />
+        </ALLOWEDVALUES>
+        <HELPTEXT>Customer commitment date calculated value</HELPTEXT>
+      </FIELD>
+      <FIELD name="Pri ScoreInt" refname="Microsoft.VSTS.Common.Priority_ScoreInt" type="Integer" reportable="dimension">
+        <HELPTEXT>Total Priority Score</HELPTEXT>
+      </FIELD>
+      <FIELD name="PostReleaseDefect" refname="Microsoft.VSTS.Common.PostReleaseDefect" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Yes" />
+          <LISTITEM value="No" />
+        </ALLOWEDVALUES>
+        <REQUIRED />
+        <HELPTEXT>Is this a post release defect?</HELPTEXT>
+      </FIELD>
+      <FIELD name="Priority Order" refname="Microsoft.VSTS.Common.PriorityOrder" type="Integer" />
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="Done">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Scheduling.Effort">
+              <READONLY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <COPY from="field" field="System.ChangedDate" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <COPY from="field" field="System.ChangedBy" />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Removed" />
+        <STATE value="New" />
+        <STATE value="Approved" />
+        <STATE value="Committed">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Reviewed" />
+        <STATE value="Pending" />
+        <STATE value="SuperScoped" />
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="New" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.BacklogPriority">
+              <DEFAULT from="value" value="1000" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Done">
+          <REASONS>
+            <DEFAULTREASON value="Done" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Removed">
+          <REASONS>
+            <DEFAULTREASON value="Removed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="New">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Approved">
+          <REASONS>
+            <DEFAULTREASON value="Approved" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Committed">
+          <REASONS>
+            <DEFAULTREASON value="Committed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Done" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Removed" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="New" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Approved" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Committed" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout HideReadOnlyEmptyFields="true" HideControlBorders="true">
+        <Group Margin="(4,0,0,0)">
+          <Column PercentWidth="100">
+            <Control FieldName="System.Title" Type="FieldControl" ControlFontSize="large" EmptyText="&lt;Enter title here&gt;" LabelPosition="Top" />
+          </Column>
+        </Group>
+        <Group Margin="(10,0,0,0)">
+          <Column PercentWidth="100">
+            <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="Ite&amp;ration:" LabelPosition="Left" />
+            <Control FieldName="Microsoft.VSTS.Common.PostReleaseDefect" Type="FieldControl" Label="Post Release Defect:" LabelPosition="Left" />
+          </Column>
+        </Group>
+        <Group Margin="(10,0,0,0)">
+          <Column PercentWidth="50">
+            <Group Label="Status">
+              <Column PercentWidth="100">
+                <Control FieldName="System.AssignedTo" Type="FieldControl" Label="Assi&amp;gned To" LabelPosition="Left" />
+                <Control FieldName="System.State" Type="FieldControl" Label="Stat&amp;e" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Scheduling.Effort" Type="FieldControl" Label="Effort:" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="50">
+            <Group Label="Details">
+              <Column PercentWidth="100">
+                <Control FieldName="Microsoft.VSTS.Common.BacklogPriority" Type="FieldControl" Label="Backlog Priority:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.PriorityOrder" Type="FieldControl" Label="Priority Order:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Severity" Type="FieldControl" Label="Severity:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Country" Type="FieldControl" Label="Country:" LabelPosition="Left" />
+                <Control FieldName="System.AreaPath" Type="WorkItemClassificationControl" Label="Area:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.TargetRelease" Type="FieldControl" Label="Target Release:" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="50">
+            <TabGroup>
+              <Tab Label="Steps to Reproduce">
+                <Control FieldName="Microsoft.VSTS.TCM.ReproSteps" Type="HtmlFieldControl" Label="" LabelPosition="Top" MinimumSize="(100,200)" Dock="Fill" />
+              </Tab>
+              <Tab Label="System">
+                <Group Label="Build">
+                  <Column PercentWidth="100">
+                    <Control FieldName="Microsoft.VSTS.Build.FoundIn" Type="FieldControl" Label="Found In Build" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.Build.IntegrationBuild" Type="FieldControl" Label="Integrated in Build" LabelPosition="Left" />
+                  </Column>
+                </Group>
+                <Control FieldName="Microsoft.VSTS.TCM.SystemInfo" Type="HtmlFieldControl" Label="System Info" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Test Cases">
+                <Control Type="LinksControl" Name="TestedBy" Label="" LabelPosition="Top">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="Microsoft.VSTS.Common.TestedBy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Test Case" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Tasks">
+                <Control Type="LinksControl" Label="" LabelPosition="Top" Name="TaskLinks">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="System.LinkTypes.Hierarchy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Task" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Comments">
+                <Control FieldName="Microsoft.VSTS.Common.Comments" Type="HtmlFieldControl" Label="" LabelPosition="Left" MinimumSize="(100,200)" />
+              </Tab>
+              <Tab Label="Description">
+                <Control FieldName="System.Description" Type="HtmlFieldControl" Label="" LabelPosition="Left" />
+              </Tab>
+            </TabGroup>
+          </Column>
+          <Column PercentWidth="50">
+            <TabGroup>
+              <Tab Label="Acceptance Criteria">
+                <Control FieldName="Microsoft.VSTS.Common.AcceptanceCriteria" Type="HtmlFieldControl" Label="" LabelPosition="Top" Dock="Fill" MinimumSize="(100,200)" />
+              </Tab>
+              <Tab Label="History">
+                <Control FieldName="System.History" Type="WorkItemLogControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Links">
+                <Control Type="LinksControl" LabelPosition="Top" Name="GeneralLinks">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="includeAll" />
+                    <ExternalLinkFilters FilterType="includeAll" />
+                    <WorkItemTypeFilters FilterType="includeAll" />
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Attachments">
+                <Control Type="AttachmentsControl" LabelPosition="Top" />
+              </Tab>
+              <Tab Label="Customer Info">
+                <Control FieldName="Microsoft.VSTS.Common.CustomerSite" Type="FieldControl" Label="Customer Site:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.CustomerState" Type="FieldControl" Label="Customer State:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.PrimaryContact" Type="FieldControl" Label="Primay Contact:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.CustomerDefect" Type="FieldControl" Label="Customer Defect:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.NumberTimeReported" Type="FieldControl" Label="No times reported:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.CommonwealthDefectHtml" Type="HtmlFieldControl" Label="Commonwealth Defect/Solution Text:" LabelPosition="Left" Dock="Fill" Width="50" />
+              </Tab>
+              <Tab Label="Customer Bug List">
+                <Control FieldName="Microsoft.VSTS.Common.CustomerBugList" Type="HtmlFieldControl" Label="New Control:" LabelPosition="Left" Dock="Fill" />
+              </Tab>
+              <Tab Label="Priority Info">
+                <Control FieldName="Microsoft.VSTS.Common.Priority_CustomerCommitment" Type="FieldControl" Label="Customer Commitment:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_CustomerCommitmentDate" Type="FieldControl" Label="Customer Commitment Date:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_CustomerCommitmentDateWeight" Type="FieldControl" Label="Customer Commitment Date Weight (Calculated, do not edit):" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_Financial" Type="FieldControl" Label="Financial:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_Compliance" Type="FieldControl" Label="Compliance:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_CustomerBenefit" Type="FieldControl" Label="Customer Benefit:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_Strategic" Type="FieldControl" Label="Strategic for overall business:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_CustomerImpact" Type="FieldControl" Label="Customer Impact:" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Common.Priority_ScoreInt" Type="FieldControl" Label="Score (Calculated, do not edit):" LabelPosition="Left" />
+              </Tab>
+            </TabGroup>
+          </Column>
+        </Group>
+      </Layout>
+    </FORM>
+  </WORKITEMTYPE>
+</Witd:WITD>

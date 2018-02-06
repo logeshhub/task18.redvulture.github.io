@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<witd:WITD application="Work item type editor" version="1.0" xmlns:witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="Release">
+    <DESCRIPTION>Includes information about a particular Release</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="Iteration Path" refname="System.IterationPath" type="TreePath" reportable="dimension">
+        <HELPTEXT>The appropriate Release path</HELPTEXT>
+      </FIELD>
+      <FIELD name="Iteration ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="External Link Count" refname="System.ExternalLinkCount" type="Integer" />
+      <FIELD name="Team Project" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="Hyperlink Count" refname="System.HyperLinkCount" type="Integer" />
+      <FIELD name="Attached File Count" refname="System.AttachedFileCount" type="Integer" />
+      <FIELD name="Node Name" refname="System.NodeName" type="String" />
+      <FIELD name="Area Path" refname="System.AreaPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Revised Date" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="Changed Date" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension">
+        <HELPTEXT>Human readable, auto-populated numeric Id</HELPTEXT>
+      </FIELD>
+      <FIELD name="Area ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="Authorized As" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="Title" refname="System.Title" type="String" reportable="dimension">
+        <HELPTEXT>The scheduling path</HELPTEXT>
+      </FIELD>
+      <FIELD name="State" refname="System.State" type="String" reportable="dimension">
+        <HELPTEXT>This is the status of the Release as selected by a team member</HELPTEXT>
+      </FIELD>
+      <FIELD name="Authorized Date" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="Watermark" refname="System.Watermark" type="Integer" />
+      <FIELD name="Rev" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="Changed By" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Reason" refname="System.Reason" type="String" reportable="dimension" />
+      <FIELD name="Assigned To" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Work Item Type" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="Created Date" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Created By" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Description" refname="System.Description" type="HTML">
+        <HELPTEXT>Enter the description of the Release</HELPTEXT>
+      </FIELD>
+      <FIELD name="History" refname="System.History" type="History">
+        <HELPTEXT>Discussion thread and other historical information including fields that have changed, by whom and when.</HELPTEXT>
+      </FIELD>
+      <FIELD name="Related Link Count" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="Tags" refname="System.Tags" type="PlainText" />
+      <FIELD name="Sprint Start (Scrum v3)" refname="Scrum.v3.SprintStart" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Calculated) The date on which the Sprint is due to start, calculated by the system from the linked Team Sprints included in this Sprint</HELPTEXT>
+      </FIELD>
+      <FIELD name="Sprint End (Scrum v3)" refname="Scrum.v3.SprintEnd" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Calculated) The date on which the Sprint is due to end, calculated by the system from the linked Team Sprints included in this Sprint</HELPTEXT>
+      </FIELD>
+      <FIELD name="Capacity (Scrum v3)" refname="Scrum.v3.Capacity" type="Integer" reportable="measure" formula="sum">
+        <HELPTEXT>(Calculated) Number of capacity work hours available for this Sprint</HELPTEXT>
+      </FIELD>
+      <FIELD name="History Date (Scrum v3)" refname="Scrum.v3.HistoryDate" type="DateTime" reportable="dimension">
+        <COPY from="clock" />
+        <DEFAULT from="clock" />
+      </FIELD>
+      <FIELD name="Actual Work Starts (Scrum v3)" refname="Scrum.v3.ActualWorkStarts" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Calculated) The actual date on which the Release work starts</HELPTEXT>
+      </FIELD>
+      <FIELD name="Actual Work Ends (Scrum v3)" refname="Scrum.v3.ActualWorkEnds" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Calculated) The actual date on which the Release work ends</HELPTEXT>
+      </FIELD>
+      <FIELD name="Planned Work Starts (Scrum v3)" refname="Scrum.v3.PlannedWorkStarts" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Optional) The planned date on which this Release starts</HELPTEXT>
+      </FIELD>
+      <FIELD name="Planned Work Ends (Scrum v3)" refname="Scrum.v3.PlannedWorkEnds" type="DateTime" reportable="dimension">
+        <HELPTEXT>(Optional) The planned date on which this Release ends</HELPTEXT>
+      </FIELD>
+      <FIELD name="Go Live (Scrum v3)" refname="Scrum.v3.GoLive" type="DateTime" reportable="detail">
+        <HELPTEXT>(Optional) The planned date on which this Release goes live</HELPTEXT>
+      </FIELD>
+      <FIELD name="Estimated Velocity (Scrum v3)" refname="Scrum.v3.EstimatedVelocity" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>Estimated capacity for this release (measured in story points)</HELPTEXT>
+      </FIELD>
+      <FIELD name="Actual Cumulative Velocity (Scrum v3)" refname="Scrum.v3.ActualCumulativeVelocity" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>(Calculated) The amount of completed work assigned to this release (measured in story points)</HELPTEXT>
+      </FIELD>
+      <FIELD name="Planned Velocity (Scrum v3)" refname="Scrum.v3.PlannedVelocity" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>(Calculated) The amount of product backlog assigned to this release (measured in story points)</HELPTEXT>
+      </FIELD>
+      <FIELD name="Release Audience (Scrum v3)" refname="Scrum.v3.ReleaseAudience" type="String" reportable="detail">
+        <HELPTEXT>The intended release audience</HELPTEXT>
+        <DEFAULT from="value" value="Internal" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Internal" />
+          <LISTITEM value="Public" />
+        </ALLOWEDVALUES>
+      </FIELD>
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="Deleted" />
+        <STATE value="Viable" />
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="" to="Viable">
+          <REASONS>
+            <DEFAULTREASON value="New" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Viable" to="Deleted">
+          <REASONS>
+            <DEFAULTREASON value="Item marked for deletion" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Deleted" to="Viable">
+          <REASONS>
+            <DEFAULTREASON value="Deleted item marked for restoration" />
+          </REASONS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout>
+        <Group>
+          <Column PercentWidth="100">
+            <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="Release Name" LabelPosition="Left" />
+            <Control FieldName="System.State" Type="FieldControl" Label="Current Status" LabelPosition="Left" />
+            <Control FieldName="Scrum.v3.ReleaseAudience" Type="FieldControl" Label="Release Audience" LabelPosition="Left" />
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="33">
+            <Group Label="Velocity Tracking">
+              <Column PercentWidth="100">
+                <Control FieldName="Scrum.v3.EstimatedVelocity" Type="FieldControl" Label="Estimated Capacity" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.PlannedVelocity" Type="FieldControl" Label="Planned Work (points)" LabelPosition="Left" ReadOnly="True" />
+                <Control FieldName="Scrum.v3.ActualCumulativeVelocity" Type="FieldControl" Label="Burned Work (points)" LabelPosition="Left" ReadOnly="True" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="33">
+            <Group Label="Planned Duration">
+              <Column PercentWidth="100">
+                <Control FieldName="Scrum.v3.PlannedWorkStarts" Type="DateTimeControl" Label="Work Starts" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.PlannedWorkEnds" Type="DateTimeControl" Label="Work Ends" LabelPosition="Left" />
+                <Control FieldName="Scrum.v3.GoLive" Type="DateTimeControl" Label="Go Live Date" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column PercentWidth="33">
+            <Group Label="Actual Duration">
+              <Column PercentWidth="100">
+                <Control FieldName="Scrum.v3.ActualWorkStarts" Type="DateTimeControl" Label="Work Starts" LabelPosition="Left" ReadOnly="True" />
+                <Control FieldName="Scrum.v3.ActualWorkEnds" Type="DateTimeControl" Label="Work Ends" LabelPosition="Left" ReadOnly="True" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <TabGroup>
+          <Tab Label="Release Goal">
+            <Control FieldName="System.Description" Type="HtmlFieldControl" Label="The Goal of the Release:" LabelPosition="Top" Dock="Fill" />
+          </Tab>
+          <Tab Label="History">
+            <Control FieldName="System.History" Type="WorkItemLogControl" Label="History:" LabelPosition="Top" Dock="Fill" />
+          </Tab>
+          <Tab Label="Implemented By">
+            <Control Type="LinksControl" Name="LinkedSprint" Label="Sprints implementing this release:" LabelPosition="Top">
+              <LinksControlOptions>
+                <WorkItemLinkFilters FilterType="include">
+                  <Filter LinkType="Scrum.ImplementedBy" FilterOn="forwardname" />
+                </WorkItemLinkFilters>
+                <WorkItemTypeFilters FilterType="include">
+                  <Filter WorkItemType="Sprint" />
+                </WorkItemTypeFilters>
+                <ExternalLinkFilters FilterType="excludeAll" />
+                <LinkColumns>
+                  <LinkColumn RefName="System.Id" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.IterationPath" />
+                  <LinkColumn RefName="System.Description" />
+                  <LinkColumn RefName="Scrum.v3.Capacity" />
+                  <LinkColumn RefName="Scrum.v3.SprintStart" />
+                  <LinkColumn RefName="Scrum.v3.SprintEnd" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="All Links">
+            <Control Type="LinksControl" Name="OtherLinks">
+              <LinksControlOptions>
+                <LinkColumns>
+                  <LinkColumn RefName="System.ID" />
+                  <LinkColumn RefName="System.Links.LinkType" />
+                  <LinkColumn RefName="System.WorkItemType" />
+                  <LinkColumn RefName="System.Title" />
+                  <LinkColumn RefName="System.AssignedTo" />
+                  <LinkColumn RefName="System.State" />
+                  <LinkColumn LinkAttribute="System.Links.Comment" />
+                </LinkColumns>
+              </LinksControlOptions>
+            </Control>
+          </Tab>
+          <Tab Label="Process Guidance">
+            <Control Type="WebpageControl" LabelPosition="Top" Dock="Fill">
+              <WebpageControlOptions AllowScript="false">
+                <Link UrlRoot="http://www.scrumforteamsystem.com/" UrlPath="/processguidance/v3/{0}/{1}">
+                  <Param Index="0" Value="System.WorkItemType" Type="Current" />
+                  <Param Index="1" Value="System.State" Type="Current" />
+                </Link>
+              </WebpageControlOptions>
+            </Control>
+          </Tab>
+        </TabGroup>
+      </Layout>
+    </FORM>
+  </WORKITEMTYPE>
+</witd:WITD>

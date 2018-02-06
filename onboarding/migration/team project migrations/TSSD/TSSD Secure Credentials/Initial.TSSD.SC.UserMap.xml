@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--
+This file is automatically created by VSS Upgrade. You can optionally use the file to map
+a VSS user to a Team Foundation user. For example, <UserMap From="Jane" To="MyDomain\Janep"></UserMap> 
+This mapping causes all actions logged by VSS user “Jane” to be changed to Team
+Foundation user “ MyDomain\Janep ” during migration. 
+-->
+
+  <!-- Users that do not map to a USAC account -->
+  <UserMap From="ADMIN" To="" />
+  <UserMap From="Kfisher" To="" />
+  <UserMap From="Rmays" To="" />
+  <UserMap From="Jbeker" To="" />
+
+  <!-- Users already in TFS -->  
+  <UserMap From="Mjones" To="USAC\A2V8NZZ" />
+  <UserMap From="Rsettle" To="USAC\A2VBJZZ" />
+  <UserMap From="Bsopchak" To="USAC\A2VC0ZZ" />
+  <UserMap From="Jsherry" To="USAC\A2VBLZZ" />
+  <UserMap From="Josier" To="USAC\A4V6QZZ" />
+  <UserMap From="Fwalls" To="USAC\A2VBLZZ" />
+  
+  <!-- Domain Users NOT in TFS -->  
+  <UserMap From="Ckyte" To="USAC\A2V90ZZ" />
+  <UserMap From="Rscott" To="USAC\A2VBHZZ" />
+  <UserMap From="Choff" To="USAC\A2V7YZZ" />
+  <UserMap From="Mmoon" To="USAC\A2VAAZZ" />
+  <UserMap From="Cpride" To="USAC\A2VAVZZ" />
+  <UserMap From="Cware" To="USAC\A2VD2ZZ" />
+  <UserMap From="Wcross" To="USAC\A2VB7ZZ" />  
+  <UserMap From="Lallen" To="USAC\A3AFBZZ" />
+
+</UserMappings>

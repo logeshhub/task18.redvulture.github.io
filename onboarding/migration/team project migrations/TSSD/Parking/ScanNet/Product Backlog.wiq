@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkItemQuery Version="1">
+	<TeamFoundationServer>http://tfs13.archon-tech.com:8080/tfs/parking</TeamFoundationServer>
+	<TeamProject>ScanNet</TeamProject>
+	<Wiql>SELECT [System.Id], [Microsoft.VSTS.Common.StackRank], [Microsoft.VSTS.Scheduling.StoryPoints], [System.Title], [System.State], [System.IterationPath], [System.AreaPath], [System.WorkItemType] FROM WorkItemLinks WHERE Source.[System.TeamProject] = @project and Source.[System.WorkItemType] in group 'Microsoft.RequirementCategory' and ((Source.[System.IterationPath] = @project and Source.[System.State] in ('New', 'Active', 'Resolved')) or (Source.[System.IterationPath] under @project and Source.[System.State] in ('New'))) and Source.[System.AreaPath] under @project and Target.[System.WorkItemType] in group 'Microsoft.RequirementCategory' and ((Target.[System.IterationPath] = @project and Target.[System.State] in ('New', 'Active', 'Resolved')) or (Target.[System.IterationPath] under @project and Target.[System.State] in ('New'))) and Target.[System.AreaPath] under @project and [System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward' ORDER BY [Microsoft.VSTS.Common.StackRank], [System.Id] mode(Recursive)</Wiql>
+</WorkItemQuery>

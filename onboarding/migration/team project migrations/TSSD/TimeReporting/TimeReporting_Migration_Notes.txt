@@ -1,0 +1,7 @@
+
+Migrate entire 3M Tools and Framework to TFS 2013
+
+TFS to TFS Version Control - 3M Tools and Framework > vm47 > tfs13 - v1.0
+Cloak out TeamBuildTypes
+
+Originally migrated from TFS 2008 (vm47.archon-tech.com).  Contains current Time Reporting code.

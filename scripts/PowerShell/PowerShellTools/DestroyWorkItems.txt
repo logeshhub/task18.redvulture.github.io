@@ -1,0 +1,64 @@
+﻿Clear-Host
+
+# Referencing Assemblies in PowerShell Script
+$pathToAss2 = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\ReferenceAssemblies\v2.0"
+$pathToAss4 = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\ReferenceAssemblies\v4.5"
+Add-Type -Path "$pathToAss2\Microsoft.TeamFoundation.Client.dll"
+Add-Type -Path "$pathToAss2\Microsoft.TeamFoundation.Common.dll"
+Add-Type -Path "$pathToAss2\Microsoft.TeamFoundation.WorkItemTracking.Client.dll"
+Add-Type -Path "$pathToAss2\Microsoft.TeamFoundation.VersionControl.Client.dll"
+Add-Type -Path "$pathToAss4\Microsoft.TeamFoundation.ProjectManagement.dll"
+
+# Connect to TFS
+
+$tfsCollectionUrl = "http://ct-tfs.ct.local:8080/tfs/Connecticut"
+$teamProjectName = "Connecticut";
+$TFS = [Microsoft.TeamFoundation.Client.TeamFoundationServerFactory]::GetServer($tfsCollectionUrl)
+               
+$TFS.EnsureAuthenticated()
+
+if (!$TFS.HasAuthenticated)
+{
+  Write-Host "Failed to authenticate to TFS"
+  exit
+} 
+Write-Host "Connected to Team Foundation Server [" $tfsCollectionUrl "]"
+
+$server = new-object Microsoft.TeamFoundation.Client.TfsTeamProjectCollection(New-Object Uri($tfsCollectionUrl))
+
+# Create WorkItemStore
+$workItemStore = $server.GetService([Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore])
+$getProjectName = $workItemStore.Projects.Name
+
+foreach ($proj in $getProjectName)
+{
+    write-host "The Project Name is : " $proj
+}
+
+#Get single Team Project
+$singleProj = $workItemStore.Projects[$teamProjectName]
+
+$WIQL = @"
+SELECT [System.Id], [System.WorkItemType], [System.State], [System.AssignedTo], [System.Title] 
+FROM WorkItems 
+where [System.TeamProject] = '$teamProjectName' 
+ORDER BY [System.WorkItemType], [System.Id] 
+"@
+
+#$workitemcollection = $server.GetService([Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemCollection])
+
+$workitemcollection = $workItemStore.Query($WIQL)
+
+# create Ienumerable of type Int
+$IdToDestroy = new-object System.Collections.Generic.List[int]
+
+foreach ($Witem in $workitemcollection)
+{
+    Write-Host "The ID is : " $Witem.Id
+    
+    $IdToDestroy.Add($Witem.Id)
+    
+}
+
+#Destroy all the work items of the team Project.
+$workItemStore.DestroyWorkItems($IdToDestroy)

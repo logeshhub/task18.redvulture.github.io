@@ -1,0 +1,38 @@
+
+Habanero - Initial - 06/05/15
+
+New effort
+	Public Safety
+	QA no experience - will be taking on testing later
+	
+Release date in October
+
+Users:	Start with 10, less than 15.
+
+Habanero greenfield
+	
+BOSS - one or two - not a concern - sunset
+LPCS - ongoing - long term
+	Needs overhaul
+	
+
+Second meeting - 06/30/15
+
+Have to track separately
+All requirements, bugs, and test cases in HP QC
+15 users
+
+Requirements:  	HP QC
+Bugs:			HP QC
+Test cases:		HP QC
+Code:			TFS
+
+
+
+
+
+
+
+
+
+

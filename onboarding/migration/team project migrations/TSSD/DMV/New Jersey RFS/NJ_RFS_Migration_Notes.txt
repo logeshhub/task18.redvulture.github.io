@@ -1,0 +1,43 @@
+
+Process template transform:
+
+CMMI to Agile
+
+Requirement > Feature
+Task > Task
+
+Team:
+Gary
+Sherry
+Julie
+Nicolle
+Tarvin
+Jordan
+
+(Sharmila)
+
+Check with Sherry on VB 6 connectivity
+Check to determine client
+Send email with setup to Jordan
+Undo Gary pending edits, provide details
+Broadcast, start at 9:00pm.
+
+
+Capture last migration run log, review.														done
+Export and store test run configuration														done
+Verify database backups																		done
+Create new Team Project																		done
+Set permissions on new Team Project to include Domain Users									done
+Take TPC offline and back online to disconnect users										done
+Release all pending edits																	done
+Run Migration Tools > vm214\3M MVSS\New Jersey RFS >>> tfs13\DMV\New Jersey RFS				done
+Reset permissions on new project to standard permissions									done
+Lock down old project permissions															done
+Inspect version control																		done
+Inspect work items																			done
+Determine if any custom WIQs, manually export+import							
+Broadcast results in email																	
+
+
+
+

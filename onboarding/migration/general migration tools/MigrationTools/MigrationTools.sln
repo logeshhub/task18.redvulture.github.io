@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrateTests", "MigrateTests\MigrateTests.csproj", "{BF4017C8-E701-4999-B665-EE6EF029A9DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrateIterations", "MigrateIterations\MigrateIterations.csproj", "{9DBE862D-5428-44FB-B878-2C8D76370BF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrateAreas", "MigrateAreas\MigrateAreas.csproj", "{D4D5EEA9-61E9-4314-9AEC-01F14C81E00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangesetLinkage", "ChangesetLinkage\ChangesetLinkage.csproj", "{0E3CB3EB-7E24-48CE-B7F5-C090B70833A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanShelvesets", "CleanShelvesets\CleanShelvesets.csproj", "{8C22EC31-6309-457C-8C61-239E2508E67F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanWorkspaces", "CleanWorkspaces\CleanWorkspaces.csproj", "{092B1337-ECAB-4625-A4C1-3713BED3325D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryTestArtifacts", "QueryTestArtifacts\QueryTestArtifacts.csproj", "{8AD2299A-FE60-4835-BEA1-635E02DF3B99}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.mmm.com/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MigrateTests\\MigrateTests.csproj
+		SccProjectName1 = MigrateTests
+		SccLocalPath1 = MigrateTests
+		SccProjectUniqueName2 = MigrateIterations\\MigrateIterations.csproj
+		SccProjectName2 = MigrateIterations
+		SccLocalPath2 = MigrateIterations
+		SccProjectUniqueName3 = MigrateAreas\\MigrateAreas.csproj
+		SccProjectName3 = MigrateAreas
+		SccLocalPath3 = MigrateAreas
+		SccProjectUniqueName4 = ChangesetLinkage\\ChangesetLinkage.csproj
+		SccProjectName4 = ChangesetLinkage
+		SccLocalPath4 = ChangesetLinkage
+		SccProjectUniqueName5 = CleanShelvesets\\CleanShelvesets.csproj
+		SccProjectName5 = CleanShelvesets
+		SccLocalPath5 = CleanShelvesets
+		SccProjectUniqueName6 = CleanWorkspaces\\CleanWorkspaces.csproj
+		SccProjectName6 = CleanWorkspaces
+		SccLocalPath6 = CleanWorkspaces
+		SccProjectUniqueName7 = QueryTestArtifacts\\QueryTestArtifacts.csproj
+		SccProjectName7 = QueryTestArtifacts
+		SccLocalPath7 = QueryTestArtifacts
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF4017C8-E701-4999-B665-EE6EF029A9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4017C8-E701-4999-B665-EE6EF029A9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4017C8-E701-4999-B665-EE6EF029A9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4017C8-E701-4999-B665-EE6EF029A9DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBE862D-5428-44FB-B878-2C8D76370BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBE862D-5428-44FB-B878-2C8D76370BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBE862D-5428-44FB-B878-2C8D76370BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBE862D-5428-44FB-B878-2C8D76370BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4D5EEA9-61E9-4314-9AEC-01F14C81E00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4D5EEA9-61E9-4314-9AEC-01F14C81E00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4D5EEA9-61E9-4314-9AEC-01F14C81E00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4D5EEA9-61E9-4314-9AEC-01F14C81E00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3CB3EB-7E24-48CE-B7F5-C090B70833A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3CB3EB-7E24-48CE-B7F5-C090B70833A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3CB3EB-7E24-48CE-B7F5-C090B70833A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3CB3EB-7E24-48CE-B7F5-C090B70833A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C22EC31-6309-457C-8C61-239E2508E67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C22EC31-6309-457C-8C61-239E2508E67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C22EC31-6309-457C-8C61-239E2508E67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C22EC31-6309-457C-8C61-239E2508E67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092B1337-ECAB-4625-A4C1-3713BED3325D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092B1337-ECAB-4625-A4C1-3713BED3325D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092B1337-ECAB-4625-A4C1-3713BED3325D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092B1337-ECAB-4625-A4C1-3713BED3325D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD2299A-FE60-4835-BEA1-635E02DF3B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD2299A-FE60-4835-BEA1-635E02DF3B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD2299A-FE60-4835-BEA1-635E02DF3B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD2299A-FE60-4835-BEA1-635E02DF3B99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

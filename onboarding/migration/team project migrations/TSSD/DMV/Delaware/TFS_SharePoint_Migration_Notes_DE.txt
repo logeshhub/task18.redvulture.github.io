@@ -1,0 +1,22 @@
+
+DE SharePoint:
+Issues with links to other documents within
+Can we do relative paths to other documents via hyperlinks
+
+Bamboo?
+
+Plan:
+1. Move existing DE MVSS site under /MVSS/DMV/Delaware
+2. Manually move documents
+	TFS /Documentation > MVSS/DMV/Delaware/Shared Documents
+	
+3. Everyone will update their bookmarks, DO NOT worry about relative paths
+4. Worry about calendars and other list items last.
+
+Timeframe:  Post-Thanksgiving, first week of December?  Will schedule the outage after Dec 3 meeting.
+
+ET Tasks:
+Consult corporate support about options for moving complete list artifacts (calendars, Go-Live Tasks, etc.)
+
+
+

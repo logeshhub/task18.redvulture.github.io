@@ -1,0 +1,44 @@
+<!--Replace the WorkItemTypes node and FieldMaps node in the TFS Integration Platform mapping file with the content of this file-->
+<WorkItemTypes>
+  <WorkItemType LeftWorkItemTypeName="Task" RightWorkItemTypeName="Task" fieldMap="TaskToTaskFieldMap" />
+</WorkItemTypes>
+<FieldMaps>
+  <FieldMap name="TaskToTaskFieldMap">
+    <MappedFields>
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+      <MappedField MapFromSide="Left" LeftName="System.AreaId" RightName="System.AreaId" />
+      <MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+      <MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" />
+      <MappedField MapFromSide="Left" LeftName="System.AttachedFileCount" RightName="System.AttachedFileCount" />
+      <MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" />
+      <MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" />
+      <MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.CompletedWork" RightName="Microsoft.VSTS.Scheduling.CompletedWork" />
+      <MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" />
+      <MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+      <MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+      <MappedField MapFromSide="Left" LeftName="System.ExternalLinkCount" RightName="System.ExternalLinkCount" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.FinishDate" RightName="Microsoft.VSTS.Scheduling.FinishDate" />
+      <MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+      <MappedField MapFromSide="Left" LeftName="System.HyperLinkCount" RightName="System.HyperLinkCount" />
+      <MappedField MapFromSide="Left" LeftName="System.IterationId" RightName="System.IterationId" />
+      <MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+      <MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+      <MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+      <MappedField MapFromSide="Left" LeftName="System.RelatedLinkCount" RightName="System.RelatedLinkCount" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.RemainingWork" RightName="Microsoft.VSTS.Scheduling.RemainingWork" />
+      <MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+      <MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StackRank" RightName="Microsoft.VSTS.Common.StackRank" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Scheduling.StartDate" RightName="Microsoft.VSTS.Scheduling.StartDate" />
+      <MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+      <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+      <MappedField MapFromSide="Left" LeftName="System.TeamProject" RightName="System.TeamProject" />
+      <MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+    </MappedFields>
+  </FieldMap>
+</FieldMaps>

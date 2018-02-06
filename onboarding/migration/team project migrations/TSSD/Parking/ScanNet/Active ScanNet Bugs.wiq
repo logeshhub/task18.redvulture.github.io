@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkItemQuery Version="1">
+	<TeamFoundationServer>http://tfs13.archon-tech.com:8080/tfs/parking</TeamFoundationServer>
+	<TeamProject>ScanNet</TeamProject>
+	<Wiql>SELECT [System.Id], [System.WorkItemType], [System.Title], [System.AssignedTo], [System.State] FROM WorkItems WHERE [System.TeamProject] = 'ScanNet' and [System.WorkItemType] = 'Bug' and [System.State] = 'Active' ORDER BY [System.Id] </Wiql>
+</WorkItemQuery>

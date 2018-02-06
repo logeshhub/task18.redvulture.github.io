@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workItemType xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="12.0.0.0" Name="Requirement" source="D:\projects\tfs.mmm.com\defaultcollection\etfs\process template\Streamline SDLC Process Template\WorkItem Tracking\TypeDefinitions\Requirement-orig.xml" xmlns="http://schemas.microsoft.com/dsltools/WITDesigner">
+  <States>
+    <state Name="Closed">
+      <Source>
+        <transitionMoniker Name="/Requirement/Closed~Active" />
+      </Source>
+      <fields>
+        <stateFieldConstraint Id="37129c6f-3ac6-4596-8461-41aec71d9f8d" ruleTag="+ ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="b39cb716-e8d3-4cca-b73e-53236bc3d19d" ruleTag="+* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </stateFieldConstraint>
+      </fields>
+    </state>
+    <state Name="Active">
+      <Source>
+        <transitionMoniker Name="/Requirement/Active~Closed" />
+        <transitionMoniker Name="/Requirement/Active~Resolved" />
+        <transitionMoniker Name="/Requirement/Active~Proposed" />
+      </Source>
+      <fields>
+        <stateFieldConstraint Id="7156423b-5dab-49ff-bede-0e71f46ec7b5" ruleTag="+* ">
+          <fieldMoniker Name="/Requirement/Assigned To" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="f9fa5552-1786-4ac9-8561-b8eaddd3816e" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="45dfa632-c126-4d12-8c37-e76db4e3dd7c" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="f50ed617-2991-4943-b31d-a6fb6e85d686" ruleTag="+ ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="a531247e-8cc1-4d59-8980-9c5a3f08f09f" ruleTag="+* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="011287e8-f54c-45d2-b849-9ecb482569c3" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="a2bcaf0d-6c68-40fe-b15d-8cbd033e1e3e" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="1541c7e9-272c-4bf0-91e4-ec4c82d05c79" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Resolved Reason" />
+        </stateFieldConstraint>
+      </fields>
+    </state>
+    <state Name="Resolved">
+      <Source>
+        <transitionMoniker Name="/Requirement/Resolved~Closed" />
+        <transitionMoniker Name="/Requirement/Resolved~Active" />
+      </Source>
+      <fields>
+        <stateFieldConstraint Id="18e082fa-17df-4ca6-aabd-fac6c78433cb" ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved Reason" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="79746d54-687d-4c6d-b977-7ac7cff6dfec" ruleTag="+* ">
+          <fieldMoniker Name="/Requirement/Assigned To" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="931d8782-3678-4552-aa9f-2069e49c5747" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="cca6c5ac-7c0d-4695-848b-33ee7e7bcc47" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="2da622d5-a791-4ab9-9aa7-8558513b464a" ruleTag="+ ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="42779907-8dba-4e80-a8b4-e1e4eaac8ca6" ruleTag="+* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </stateFieldConstraint>
+      </fields>
+    </state>
+    <state Name="Proposed">
+      <Source>
+        <transitionMoniker Name="/Requirement/Proposed~Closed" />
+        <transitionMoniker Name="/Requirement/Proposed~Active" />
+      </Source>
+      <fields>
+        <stateFieldConstraint Id="c38b803e-dba6-4f90-9120-744618253028" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="ecaf3706-6baf-4816-b4bf-08ce735b40d7" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="6ec2fcff-599a-4a41-83bf-2da85d381bc9" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="2a41684d-2846-45e5-bd0e-53ddbdd3bec1" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="a94719e0-1d79-4f38-855b-4fe8d15e983f" ruleTag="- ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </stateFieldConstraint>
+        <stateFieldConstraint Id="c88d77c6-02dc-4c84-ad40-d096a99caee5" ruleTag="-* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </stateFieldConstraint>
+      </fields>
+    </state>
+  </States>
+  <Fields>
+    <field Name="Closed By" referenceName="Microsoft.VSTS.Common.ClosedBy" />
+    <field Name="Closed Date" referenceName="Microsoft.VSTS.Common.ClosedDate" />
+    <field Name="Resolved Date" referenceName="Microsoft.VSTS.Common.ResolvedDate" />
+    <field Name="Resolved By" referenceName="Microsoft.VSTS.Common.ResolvedBy" />
+    <field Name="Activated Date" referenceName="Microsoft.VSTS.Common.ActivatedDate" />
+    <field Name="Activated By" referenceName="Microsoft.VSTS.Common.ActivatedBy" />
+    <field Name="Assigned To" referenceName="System.AssignedTo" />
+    <field Name="Resolved Reason" referenceName="Microsoft.VSTS.Common.ResolvedReason" />
+  </Fields>
+  <Transitions>
+    <transition Id="f249d98d-4c32-4f5d-9878-6b3427b9f32f" Name="Active~Closed">
+      <Target>
+        <stateMoniker Name="/Requirement/Closed" />
+      </Target>
+      <Reasons>
+        <reason Name="Abandoned" />
+        <reason Name="Out-of-scope" />
+        <reason Name="Split" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="49b21716-7507-43b7-a0c2-4129238b62bc" Name="Resolved~Closed">
+      <Target>
+        <stateMoniker Name="/Requirement/Closed" />
+      </Target>
+      <Reasons>
+        <reason Name="Validation Test Passed" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="141c5e71-fc42-49e5-a8fe-da9942bd4160" Name="Proposed~Closed">
+      <Target>
+        <stateMoniker Name="/Requirement/Closed" />
+      </Target>
+      <Reasons>
+        <reason Name="Rejected" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Closed Date" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="072601fe-69af-4129-9e93-1472116b2ec6" Name="Closed~Active">
+      <Target>
+        <stateMoniker Name="/Requirement/Active" />
+      </Target>
+      <Reasons>
+        <reason Name="Reintroduced in Scope" />
+        <reason Name="Closed in error" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Assigned To" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="629c9fa4-fc1b-4794-b2a1-be41cdfad5fb" Name="Resolved~Active">
+      <Target>
+        <stateMoniker Name="/Requirement/Active" />
+      </Target>
+      <Reasons>
+        <reason Name="Validation Test Failed" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="56aef96c-1da4-45a1-bf6d-186727792b18" Name="Proposed~Active">
+      <Target>
+        <stateMoniker Name="/Requirement/Active" />
+      </Target>
+      <Reasons>
+        <reason Name="Investigate" />
+        <reason Name="Accepted" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Activated Date" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="c2f19f81-ef26-4b34-871a-3906e0d19392" Name="Active~Resolved">
+      <Target>
+        <stateMoniker Name="/Requirement/Resolved" />
+      </Target>
+      <Reasons>
+        <reason Name="Code Complete and System Test Passed" />
+      </Reasons>
+      <actions>
+        <action Name="Microsoft.VSTS.Actions.Checkin" />
+      </actions>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved By" />
+        </transitionFieldConstraint>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Resolved Date" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="913159cc-c44b-492c-952d-57ec81aae379" Name="~Proposed">
+      <Target>
+        <stateMoniker Name="/Requirement/Proposed" />
+      </Target>
+      <Reasons>
+        <reason Name="New" />
+      </Reasons>
+      <fields>
+        <transitionFieldConstraint ruleTag="* ">
+          <fieldMoniker Name="/Requirement/Assigned To" />
+        </transitionFieldConstraint>
+      </fields>
+    </transition>
+    <transition Id="b75f4cc4-5b58-4a2a-ab7d-35db70315436" Name="Active~Proposed">
+      <Target>
+        <stateMoniker Name="/Requirement/Proposed" />
+      </Target>
+      <Reasons>
+        <reason Name="Postponed" />
+        <reason Name="Investigation Complete" />
+      </Reasons>
+    </transition>
+  </Transitions>
+</workItemType>

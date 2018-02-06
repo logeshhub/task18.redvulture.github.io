@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemsOpes", "SemsOpes\SemsOpes.csproj", "{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DACPAC", "DACPAC\DACPAC.sqlproj", "{9448B1E6-9401-4566-9DF4-FD799BC21311}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC} = {BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appium", "Appium\Appium.csproj", "{3E897470-E9A5-4C15-8073-C3226ABCD7BC}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://169.10.239.24:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SemsOpes\\SemsOpes.csproj
+		SccProjectName1 = SemsOpes
+		SccLocalPath1 = SemsOpes
+		SccProjectUniqueName2 = DACPAC\\DACPAC.sqlproj
+		SccProjectName2 = DACPAC
+		SccLocalPath2 = DACPAC
+		SccProjectUniqueName3 = Appium\\Appium.csproj
+		SccProjectName3 = Appium
+		SccLocalPath3 = Appium
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0B162D-08F3-49D0-A73F-DD57CD59BBDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9448B1E6-9401-4566-9DF4-FD799BC21311}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3E897470-E9A5-4C15-8073-C3226ABCD7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E897470-E9A5-4C15-8073-C3226ABCD7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E897470-E9A5-4C15-8073-C3226ABCD7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E897470-E9A5-4C15-8073-C3226ABCD7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

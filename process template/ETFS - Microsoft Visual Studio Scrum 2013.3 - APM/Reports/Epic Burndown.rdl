@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <Description>How much work is left and when will it be done, based on work items in each state?</Description>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="TfsOlapReportDS">
+      <DataSourceReference>/Tfs2010OlapReportDS</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>baeebc11-b9e6-4047-9cf7-20618ab669ca</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="TfsReportDS">
+      <DataSourceReference>/Tfs2010ReportDS</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>bf43407d-595e-470d-a71e-cf0289cd391a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsTest">
+      <Query>
+        <DataSourceName>TfsOlapReportDS</DataSourceName>
+        <CommandText> SELECT NON EMPTY { [Measures].[Microsoft_VSTS_Scheduling_Effort] } ON COLUMNS, NON EMPTY { ([Date].[Date].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Work Item].[Area Path].&amp;[\3MHIS\Old Gang] } ) ON COLUMNS FROM ( SELECT ( { [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}] } ) ON COLUMNS FROM [Team System])) WHERE ( [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}], [Work Item].[Area Path].&amp;[\3MHIS\Old Gang] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState><QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition"><CommandType>MDX</CommandType><QuerySpecification xsi:type="MDXQuerySpecification"><Select><Items><Item><ID xsi:type="Level"><DimensionName>Date</DimensionName><HierarchyName>Date</HierarchyName><HierarchyUniqueName>[Date].[Date]</HierarchyUniqueName><LevelName>Date</LevelName><UniqueName>[Date].[Date].[Date]</UniqueName></ID><ItemCaption>Date</ItemCaption><UniqueName>true</UniqueName></Item><Item><ID xsi:type="Measure"><MeasureName>Microsoft_VSTS_Scheduling_Effort</MeasureName><UniqueName>[Measures].[Microsoft_VSTS_Scheduling_Effort]</UniqueName></ID><ItemCaption>Microsoft_VSTS_Scheduling_Effort</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item></Items></Select><From>Team System</From><Filter><FilterItems><FilterItem><HierarchyUniqueName>[Team Project].[Team Project Hierarchy]</HierarchyUniqueName><Condition xsi:type="EqualTo"><Members><Member><MemberUniqueName>[Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}]</MemberUniqueName></Member></Members></Condition></FilterItem><FilterItem><HierarchyUniqueName>[Work Item].[Area Path]</HierarchyUniqueName><Condition xsi:type="EqualTo"><Members><Member><MemberUniqueName>[Work Item].[Area Path].&amp;[\3MHIS\Old Gang]</MemberUniqueName></Member></Members></Condition></FilterItem></FilterItems></Filter><Calculations /><Aggregates /><QueryProperties /></QuerySpecification><Query><Statement> SELECT NON EMPTY { [Measures].[Microsoft_VSTS_Scheduling_Effort] } ON COLUMNS, NON EMPTY { ([Date].[Date].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Work Item].[Area Path].&amp;[\3MHIS\Old Gang] } ) ON COLUMNS FROM ( SELECT ( { [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}] } ) ON COLUMNS FROM [Team System])) WHERE ( [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}], [Work Item].[Area Path].&amp;[\3MHIS\Old Gang] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement><ParameterDefinitions /></Query></QueryDefinition></rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Date].[Date].[Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Microsoft_VSTS_Scheduling_Effort">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Microsoft_VSTS_Scheduling_Effort]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsOLAPAPMTree">
+      <Query>
+        <DataSourceName>TfsOlapReportDS</DataSourceName>
+        <CommandText> SELECT NON EMPTY { [Measures].[Work Item Count], [Measures].[Microsoft_VSTS_Scheduling_Effort] } ON COLUMNS, NON EMPTY { ([Date].[Date].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Work Item].[System_WorkItemType].&amp;[Bug], [Work Item].[System_WorkItemType].&amp;[Product Backlog Item] } ) ON COLUMNS FROM ( SELECT ( -{ [Work Item].[System_State].&amp;[Removed], [Work Item].[System_State].&amp;[Done] } ) ON COLUMNS FROM ( SELECT ( { [Work Item Tree].[Work Item Tree Hierarchy].&amp;[665110] } ) ON COLUMNS FROM ( SELECT ( { [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}] } ) ON COLUMNS FROM [Team System])))) WHERE ( [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}], [Work Item Tree].[Work Item Tree Hierarchy].&amp;[665110], [Work Item].[System_WorkItemType].CurrentMember ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState><QueryDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition"><CommandType>MDX</CommandType><QuerySpecification xsi:type="MDXQuerySpecification"><Select><Items><Item><ID xsi:type="Level"><DimensionName>Date</DimensionName><HierarchyName>Date</HierarchyName><HierarchyUniqueName>[Date].[Date]</HierarchyUniqueName><LevelName>Date</LevelName><UniqueName>[Date].[Date].[Date]</UniqueName></ID><ItemCaption>Date</ItemCaption><UniqueName>true</UniqueName></Item><Item><ID xsi:type="Measure"><MeasureName>Microsoft_VSTS_Scheduling_Effort</MeasureName><UniqueName>[Measures].[Microsoft_VSTS_Scheduling_Effort]</UniqueName></ID><ItemCaption>Microsoft_VSTS_Scheduling_Effort</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item><Item><ID xsi:type="Measure"><MeasureName>Work Item Count</MeasureName><UniqueName>[Measures].[Work Item Count]</UniqueName></ID><ItemCaption>Work Item Count</ItemCaption><BackColor>true</BackColor><ForeColor>true</ForeColor><FontFamily>true</FontFamily><FontSize>true</FontSize><FontWeight>true</FontWeight><FontStyle>true</FontStyle><FontDecoration>true</FontDecoration><FormattedValue>true</FormattedValue><FormatString>true</FormatString></Item></Items></Select><From>Team System</From><Filter><FilterItems><FilterItem><HierarchyUniqueName>[Team Project].[Team Project Hierarchy]</HierarchyUniqueName><Condition xsi:type="EqualTo"><Members><Member><MemberUniqueName>[Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}]</MemberUniqueName></Member></Members></Condition></FilterItem><FilterItem><HierarchyUniqueName>[Work Item Tree].[Work Item Tree Hierarchy]</HierarchyUniqueName><Condition xsi:type="EqualTo"><Members><Member><MemberUniqueName>[Work Item Tree].[Work Item Tree Hierarchy].&amp;[665110]</MemberUniqueName></Member></Members></Condition></FilterItem><FilterItem><HierarchyUniqueName>[Work Item].[System_State]</HierarchyUniqueName><Condition xsi:type="NotEqualTo"><Members><Member><MemberUniqueName>[Work Item].[System_State].&amp;[Removed]</MemberUniqueName></Member><Member><MemberUniqueName>[Work Item].[System_State].&amp;[Done]</MemberUniqueName></Member></Members></Condition></FilterItem><FilterItem><HierarchyUniqueName>[Work Item].[System_WorkItemType]</HierarchyUniqueName><Condition xsi:type="EqualTo"><Members><Member><MemberUniqueName>[Work Item].[System_WorkItemType].&amp;[Bug]</MemberUniqueName></Member><Member><MemberUniqueName>[Work Item].[System_WorkItemType].&amp;[Product Backlog Item]</MemberUniqueName></Member></Members></Condition></FilterItem></FilterItems></Filter><Calculations /><Aggregates /><QueryProperties /></QuerySpecification><Query><Statement> SELECT NON EMPTY { [Measures].[Work Item Count], [Measures].[Microsoft_VSTS_Scheduling_Effort] } ON COLUMNS, NON EMPTY { ([Date].[Date].[Date].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Work Item].[System_WorkItemType].&amp;[Bug], [Work Item].[System_WorkItemType].&amp;[Product Backlog Item] } ) ON COLUMNS FROM ( SELECT ( -{ [Work Item].[System_State].&amp;[Removed], [Work Item].[System_State].&amp;[Done] } ) ON COLUMNS FROM ( SELECT ( { [Work Item Tree].[Work Item Tree Hierarchy].&amp;[665110] } ) ON COLUMNS FROM ( SELECT ( { [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}] } ) ON COLUMNS FROM [Team System])))) WHERE ( [Team Project].[Team Project Hierarchy].&amp;[{49BC576B-92EA-47C4-A019-68F815C16201}], [Work Item Tree].[Work Item Tree Hierarchy].&amp;[665110], [Work Item].[System_WorkItemType].CurrentMember ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement><ParameterDefinitions /></Query></QueryDefinition></rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Date].[Date].[Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Work_Item_Count">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Work Item Count]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Microsoft_VSTS_Scheduling_Effort">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Microsoft_VSTS_Scheduling_Effort]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsEpicBurndown">
+      <Query>
+        <DataSourceName>TfsReportDS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@StartDate">
+            <Value>=Parameters!StartDate.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+          <QueryParameter Name="@Epic">
+            <Value>=Parameters!Epic.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@EndDate">
+            <Value>=Parameters!EndDate.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+          <QueryParameter Name="@AvgDailyBurn">
+            <Value>=Parameters!AvgDailyBurn.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SET ANSI_WARNINGS ON -- Specifies SQL-92 standard behaviour for several error conditions
+SET XACT_ABORT ON -- If a Transact-SQL statement raises a run-time error, the entire transaction is terminated
+SET NOCOUNT ON -- Stops the message that shows the count of the number of rows affected by a Transact-SQL statement
+SET DATEFIRST 7 -- Sunday is first day of week -- this is actually the default
+
+-------------------------------------------------------------------------------------------
+-- Epic Burndown Report Data
+-------------------------------------------------------------------------------------------
+DECLARE @vDataSetStartDate AS DATE
+DECLARE @vDataSetEndDate AS DATE
+DECLARE @Features TABLE(IDs NVARCHAR(128))
+DECLARE @PBIs TABLE(IDs NVARCHAR(128))
+ 
+-- Get list of FEATURE IDs
+INSERT INTO @Features (IDs)
+SELECT System_Id
+FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI
+INNER JOIN [Tfs_Warehouse].[dbo].[FactWorkItemLinkHistory] FWILH 
+	ON DWI.System_Id = FWILH.TargetWorkItemID
+WHERE FWILH.WorkItemLinkTypeSK IN			-- Returns WorkItemLinkTypeSK
+	(SELECT DWILT.WorkItemLinkTypeSK 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItemLinkType] DWILT 
+	 WHERE DWILT.LinkName = N'Child')
+AND DWI.System_Rev =						-- Returns most recent history record
+	(SELECT MAX(DWI1.System_Rev) 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI1 
+	 WHERE DWI1.System_Id = DWI.System_Id)
+AND FWILH.SourceWorkItemID IN				
+	(SELECT DWI2.System_Id 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI2	 
+	 WHERE DWI2.System_ID IN (@Epic))
+AND FWILH.RemovedByPersonSK IS NULL	
+
+-- Get list of PBIs for each parent feature
+INSERT INTO @PBIs (IDs)
+SELECT System_Id
+FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI
+INNER JOIN [Tfs_Warehouse].[dbo].[FactWorkItemLinkHistory] FWILH 
+	ON DWI.System_Id = FWILH.TargetWorkItemID
+WHERE FWILH.WorkItemLinkTypeSK IN			-- Returns WorkItemLinkTypeSK
+	(SELECT DWILT.WorkItemLinkTypeSK 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItemLinkType] DWILT 
+	 WHERE DWILT.LinkName = N'Child')
+AND DWI.System_Rev =						-- Returns most recent history record
+	(SELECT MAX(DWI1.System_Rev) 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI1 
+	 WHERE DWI1.System_Id = DWI.System_Id)
+AND FWILH.SourceWorkItemID IN (SELECT IDs from @Features)	
+AND FWILH.RemovedByPersonSK IS NULL	
+ORDER BY FWILH.SourceWorkItemID			
+
+SELECT @vDataSetStartDate = CONVERT(DATE, MIN(dwi.System_ChangedDate), 112)
+    --,@vDataSetEndDate = CONVERT(DATE, MAX(dwi.System_ChangedDate), 112)
+	,@vDataSetEndDate = CONVERT(DATE, GetDate(), 112)
+FROM [Tfs_Warehouse].[dbo].[DimWorkItem] dwi
+WHERE dwi.System_WorkItemType IN ('Product Backlog Item', 'Bug')
+AND	dwi.System_Id IN (SELECT IDs FROM @PBIs)
+
+-------------------------------------------------------------------------------------------
+-- DATE ARRAY - Create an array of dates; this will be the basis of the report x axis
+-- into @tblDates
+-------------------------------------------------------------------------------------------
+DECLARE @tblDates AS TABLE (DayDate DATE NOT NULL);
+
+WITH ReleaseDates (ReleaseDate)
+AS (
+    SELECT ISNULL(@vDataSetStartDate, GETDATE()) AS ReleaseDate
+    
+    UNION ALL
+    
+    SELECT DATEADD(d, 1, ReleaseDate) AS ReleaseDate
+    FROM ReleaseDates
+    WHERE DATEADD(d, 1, ReleaseDate) &lt;= ISNULL(@vDataSetEndDate, GETDATE())
+    )
+INSERT INTO @tblDates (DayDate)
+SELECT CONVERT(DATE, rd.[ReleaseDate], 112)
+FROM ReleaseDates rd
+WHERE ReleaseDate &gt;= @StartDate
+OPTION (MAXRECURSION 0)
+
+-------------------------------------------------------------------------------------------    
+-- DAILY LATEST REVISION - Join the last revision of each workitem under the DayDate into the dates
+-------------------------------------------------------------------------------------------
+DECLARE @tblDatesWithWorkitems AS TABLE (
+    DayDate DATE NOT NULL
+    ,System_ID INT
+    ,System_Rev INT
+    ,WorkItemBK NVARCHAR(128)
+    ,System_State NVARCHAR(256)
+    )
+
+INSERT INTO @tblDatesWithWorkitems (
+    DayDate
+    ,System_ID
+    ,System_Rev
+    ,WorkItemBK
+    ,System_State
+    )
+SELECT datesArray.DayDate
+    ,dwi.System_ID
+    ,dwi.System_Rev
+    ,dwi.WorkItemBK
+    ,dwi.System_State
+FROM @tblDates datesArray
+    ,[Tfs_Warehouse].[dbo].[DimWorkItem] dwi
+WHERE dwi.System_Rev IN (
+        SELECT MAX(System_Rev) -- we want the last revision of each workitem under the DayDate
+        FROM [Tfs_Warehouse].[dbo].[DimWorkItem] wil
+        WHERE wil.System_ID = dwi.System_ID AND wil.TeamProjectCollectionSK = dwi.TeamProjectCollectionSK
+            AND (CONVERT(DATE, wil.System_ChangedDate, 112) &lt;= datesArray.DayDate)
+        )
+    -- capture max rev
+    -- so the last change up to that day for each of those Product Backlog Items
+    -- keep any data that we will be filtering by in the next stage; so in this case System_State
+    AND dwi.System_WorkItemType IN ('Product Backlog Item', 'Bug')
+	AND	dwi.System_Id IN (SELECT IDs from @PBIs)
+ORDER BY DayDate
+-------------------------------------------------------------------------------------------    
+-- TOTAL STORY POINTS - Populate temp table with daily story point sum for all child PBIs related to an Epic
+-------------------------------------------------------------------------------------------
+DECLARE @DailyStoryPoints TABLE(DayDate DATE NOT NULL, StoryPoints INTEGER)
+
+-- Populate the @DailyStoryPoint Table of Total Story Points
+INSERT INTO @DailyStoryPoints (DayDate, StoryPoints)
+SELECT datesArray.DayDate
+    ,ISNULL(SUM(fwih.Microsoft_VSTS_Scheduling_Effort), 0) AS Effort
+FROM @tblDatesWithWorkitems datesArray
+INNER JOIN [Tfs_Warehouse].[dbo].[FactWorkItemHistory] fwih ON datesArray.WorkItemBK + '|1' = fwih.WorkItemHistoryBK
+WHERE
+    -- filter by system state to get the 'not done' effort for that date
+    (
+        datesArray.System_State &lt;&gt; 'Done'
+        AND datesArray.System_State &lt;&gt; 'Removed'        
+    )
+GROUP BY DayDate -- we sum up the filtered effort for each day
+ORDER BY DayDate DESC
+
+-------------------------------------------------------------------------------------------    
+-- FORECASTING --- Enter forecasting entries into @DailyStoryPoints subtracting average daily burn each day
+-------------------------------------------------------------------------------------------
+DECLARE @CurrentDayDate AS DATE
+DECLARE @CurrentStoryPoints AS FLOAT
+DECLARE @AvgBurn AS FLOAT
+
+SELECT @AvgBurn = (SELECT (@AvgDailyBurn))
+
+SELECT @CurrentDayDate = (
+	SELECT TOP 1 DayDate
+	FROM @DailyStoryPoints
+	ORDER BY DayDate DESC)
+
+SELECT @CurrentStoryPoints = (
+	SELECT TOP 1 ISNULL(StoryPoints, 0)
+	FROM @DailyStoryPoints
+	ORDER BY DayDate DESC)
+
+-- Make sure the amount to burn is a negative number
+IF @AvgBurn &gt; 0
+BEGIN
+	SELECT @AvgBurn = @AvgBurn * -1
+END
+
+-- Enter daily forecasted outstanding story points
+IF @AvgBurn &lt; 0
+WHILE (@CurrentStoryPoints &gt; 0)
+BEGIN
+	SELECT @CurrentDayDate = DateAdd(dd, 1, Convert(DATE, @CurrentDayDate))
+	SELECT @CurrentStoryPoints = CAST(@CurrentStoryPoints AS FLOAT) + CAST(@AvgBurn AS FLOAT)
+
+	INSERT INTO @DailyStoryPoints (DayDate, StoryPoints) SELECT @CurrentDayDate, @CurrentStoryPoints	
+END
+
+SELECT DATEADD(dd, @@DATEFIRST - DATEPART(dw, DayDate), DayDate) AS DayDate, MAX(StoryPoints) AS PessimisticPoints, AVG(StoryPoints) AS StoryPoints, MIN(StoryPoints) AS OptimisticPoints
+FROM @DailyStoryPoints
+GROUP BY DATEADD(dd, @@DATEFIRST - DATEPART(dw, DayDate), DayDate)
+ORDER BY DATEADD(dd, @@DATEFIRST - DATEPART(dw, DayDate), DayDate)</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DayDate">
+          <DataField>DayDate</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="PessimisticPoints">
+          <DataField>PessimisticPoints</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="StoryPoints">
+          <DataField>StoryPoints</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="OptimisticPoints">
+          <DataField>OptimisticPoints</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsEpics">
+      <Query>
+        <DataSourceName>TfsReportDS</DataSourceName>
+        <CommandText>SELECT DWI.System_Id, System_Title
+FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI	
+INNER JOIN [Tfs_Warehouse].[dbo].[DimTeamProject] DTP ON DTP.ProjectNodeSK = DWI.TeamProjectSK
+WHERE DWI.System_Rev =	
+	(SELECT MAX(DWI1.System_Rev) 
+	 FROM [Tfs_Warehouse].[dbo].[DimWorkItem] DWI1 
+	 WHERE DWI1.System_Id = DWI.System_Id)
+AND dwi.System_WorkItemType = N'Epic'
+AND dwi.System_State NOT IN ('Done', 'Removed')
+AND DTP.ProjectNodeName = '3MHIS'
+ORDER BY DWI.System_Title</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="System_Id">
+          <DataField>System_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="System_Title">
+          <DataField>System_Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Version 1.3 - 8/10/2016</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>6.5925in</Top>
+            <Left>10.45708in</Left>
+            <Height>0.25in</Height>
+            <Width>1.6875in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Chart Name="Chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!DayDate.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!DayDate.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!DayDate.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Label>Story Points</Label>
+                </ChartMember>
+                <ChartMember>
+                  <Label>Optimistic Points</Label>
+                </ChartMember>
+                <ChartMember>
+                  <Label>Pessimistic Points</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="StoryPoints">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Fields!StoryPoints.Value</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style />
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <ToolTip>Story Points Remaining</ToolTip>
+                      <Style>
+                        <Border>
+                          <Color>SeaGreen</Color>
+                          <Width>2pt</Width>
+                        </Border>
+                        <Color>=IIF(CDate(Fields!DayDate.Value) &gt; CDate(Now), "Silver", "SeaGreen")</Color>
+                      </Style>
+                      <ChartMarker>
+                        <Type>Auto</Type>
+                        <Size>3.5pt</Size>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Line</Type>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+                <ChartSeries Name="OptimisticPoints">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!OptimisticPoints.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style />
+                      </ChartDataLabel>
+                      <Style>
+                        <Border>
+                          <Color>Gold</Color>
+                          <Width>2pt</Width>
+                        </Border>
+                        <Color>=IIF(CDate(Fields!DayDate.Value) &gt; CDate(Now), "Silver", "Gold")</Color>
+                      </Style>
+                      <ChartMarker>
+                        <Type>Auto</Type>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Line</Type>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+                <ChartSeries Name="PessimisticPoints">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=Sum(Fields!PessimisticPoints.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style />
+                      </ChartDataLabel>
+                      <Style>
+                        <Border>
+                          <Color>Red</Color>
+                          <Width>2pt</Width>
+                        </Border>
+                        <Color>=IIF(CDate(Fields!DayDate.Value) &gt; CDate(Now), "Silver", "IndianRed")</Color>
+                      </Style>
+                      <ChartMarker>
+                        <Type>Auto</Type>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Type>Line</Type>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                      </Border>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Format>d</Format>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>14pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <Interval>3</Interval>
+                    <IntervalType>Days</IntervalType>
+                    <ChartMajorGridLines>
+                      <Enabled>True</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Enabled>True</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Scalar>true</Scalar>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <Angle>-45</Angle>
+                    <AllowLabelRotation>Rotate45</AllowLabelRotation>
+                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                      </Border>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption>Axis Title</Caption>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                      </Border>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption>Story Points Remaining</Caption>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>14pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                      </Border>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption>Axis Title</Caption>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <ChartThreeDProperties>
+                  <WallThickness>0</WallThickness>
+                </ChartThreeDProperties>
+                <Style>
+                  <BackgroundColor>White</BackgroundColor>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartLegends>
+              <ChartLegend Name="Default">
+                <Style>
+                  <Border>
+                    <Color>#748caa</Color>
+                  </Border>
+                  <BackgroundColor>White</BackgroundColor>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                  <BackgroundGradientEndColor>OldLace</BackgroundGradientEndColor>
+                  <FontFamily>Tahoma</FontFamily>
+                </Style>
+                <Position>BottomLeft</Position>
+                <DockToChartArea>Default</DockToChartArea>
+                <ChartLegendTitle>
+                  <Caption />
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </ChartLegendTitle>
+                <AutoFitTextDisabled>true</AutoFitTextDisabled>
+                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+              </ChartLegend>
+            </ChartLegends>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>=Join(Parameters!Epic.Label, VbCrLf)</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextAlign>General</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+                <DockOutsideChartArea>true</DockOutsideChartArea>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>Custom</Palette>
+            <ChartCustomPaletteColors>
+              <ChartCustomPaletteColor>#748baa</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#d5cea2</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#aab6c4</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#b3d4d6</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#bec8ce</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#717b9f</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#96a4b2</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#caafaf</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#7c8692</ChartCustomPaletteColor>
+              <ChartCustomPaletteColor>#aeb898</ChartCustomPaletteColor>
+            </ChartCustomPaletteColors>
+            <ChartBorderSkin>
+              <ChartBorderSkinType>Emboss</ChartBorderSkinType>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <FontFamily>Tahoma</FontFamily>
+                <FontSize>8pt</FontSize>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>dsEpicBurndown</DataSetName>
+            <Height>6.39584in</Height>
+            <Width>12.30208in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>#748caa</Color>
+                <Style>Solid</Style>
+                <Width>2pt</Width>
+              </Border>
+              <BackgroundColor>OldLace</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <BackgroundGradientEndColor>LightGrey</BackgroundGradientEndColor>
+            </Style>
+          </Chart>
+        </ReportItems>
+        <Height>7.34375in</Height>
+        <Style />
+      </Body>
+      <Width>12.30208in</Width>
+      <Page>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ExplicitProject">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>All</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ProjectName">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="[" + IIF(LEN(Globals!ReportFolder) &gt; 0,
+	SPLIT(Globals!ReportFolder, "/").GetValue(IIF(split(Globals!ReportFolder, "/").Length &gt; 1, 1, 0)),
+	Parameters!ExplicitProject.Value
+ ) + "]"</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="TeamProjectTeamProject">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="[Team Project].[Team Project]." +Parameters!ProjectName.Value</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>TeamProjectTeamProject</Prompt>
+      <Hidden>true</Hidden>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="StartDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=DateAdd("m",-1,today())</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Start Date</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EndDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=CDate(Today())</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>EndDate</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="FromDateDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="[Date].[Date].&amp;[" + CDate(Parameters!StartDate.Value).ToString("s") + "]"</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ToDateDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="[Date].[Date].&amp;[" + CDate(Parameters!EndDate.Value).ToString("s") + "]"</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ReportPath">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=IIF(LEN(Globals!ReportFolder) &gt; 0,
+            Globals!ReportFolder,
+            Parameters!ExplicitProject.Value
+            )</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="AllNoFilter">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>All (No Filter)</Value>
+        </Values>
+      </DefaultValue>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Epic">
+      <DataType>String</DataType>
+      <Prompt>Epic</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>dsEpics</DataSetName>
+          <ValueField>System_Id</ValueField>
+          <LabelField>System_Title</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AvgDailyBurn">
+      <DataType>Float</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>5</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Average Daily Burn (Story Points)</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://prodsqlrs09/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>ebe22b6a-0929-4f0a-9ba5-0aabbe5b421a</rd:ReportID>
+</Report>

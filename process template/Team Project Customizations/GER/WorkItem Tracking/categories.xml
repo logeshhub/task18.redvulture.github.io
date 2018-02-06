@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cat:CATEGORIES xmlns:cat="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/categories">
+  <CATEGORY refname="Microsoft.BugCategory" name="Bug Category">
+    <DEFAULTWORKITEMTYPE name="Bug" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.CodeReviewRequestCategory" name="Code Review Request Category">
+    <DEFAULTWORKITEMTYPE name="Code Review Request" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.CodeReviewResponseCategory" name="Code Review Response Category">
+    <DEFAULTWORKITEMTYPE name="Code Review Response" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.FeatureCategory" name="Feature Category">
+    <DEFAULTWORKITEMTYPE name="Feature" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.FeedbackRequestCategory" name="Feedback Request Category">
+    <DEFAULTWORKITEMTYPE name="Feedback Request" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.FeedbackResponseCategory" name="Feedback Response Category">
+    <DEFAULTWORKITEMTYPE name="Feedback Response" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.HiddenCategory" name="Hidden Types Category">
+    <DEFAULTWORKITEMTYPE name="Code Review Request" />
+    <WORKITEMTYPE name="Code Review Response" />
+    <WORKITEMTYPE name="Feedback Request" />
+    <WORKITEMTYPE name="Feedback Response" />
+    <WORKITEMTYPE name="Shared Steps" />
+    <WORKITEMTYPE name="Shared Parameter" />
+    <WORKITEMTYPE name="Test Plan" />
+    <WORKITEMTYPE name="Test Suite" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.RequirementCategory" name="Requirement Category">
+    <DEFAULTWORKITEMTYPE name="Product Backlog Item" />
+    <WORKITEMTYPE name="Bug" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.SharedParameterCategory" name="Shared Parameter Category">
+    <DEFAULTWORKITEMTYPE name="Shared Parameter" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.SharedStepCategory" name="Shared Step Category">
+    <DEFAULTWORKITEMTYPE name="Shared Steps" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.TaskCategory" name="Task Category">
+    <DEFAULTWORKITEMTYPE name="Task" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.TestCaseCategory" name="Test Case Category">
+    <DEFAULTWORKITEMTYPE name="Test Case" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.TestPlanCategory" name="Test Plan Category">
+    <DEFAULTWORKITEMTYPE name="Test Plan" />
+  </CATEGORY>
+  <CATEGORY refname="Microsoft.TestSuiteCategory" name="Test Suite Category">
+    <DEFAULTWORKITEMTYPE name="Test Suite" />
+  </CATEGORY>
+</cat:CATEGORIES>

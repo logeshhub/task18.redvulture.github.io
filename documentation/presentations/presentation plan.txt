@@ -1,0 +1,25 @@
+the plan
+
+intro
+
+Current status - and request for devops/solutions team
+
+opportunity
+	- HIS - 700 users
+	- SEMS - 100 users
+	- DOC - 50 Users
+	- TSSD - ?
+	- IPD - 30 users
+	- SOSD - ?
+	- IT - 50 users
+	- Corportate Security - 3
+
+Setup Investment
+
+Onboarding - SEMS DevOps/Solutions team
+	- develop solution for onboard teams
+	- perform devops function for SEMS teams (automate everything - build, test, deploy)
+
+Timeline
+
+Vision - future - tfs -> process -> enterprise process

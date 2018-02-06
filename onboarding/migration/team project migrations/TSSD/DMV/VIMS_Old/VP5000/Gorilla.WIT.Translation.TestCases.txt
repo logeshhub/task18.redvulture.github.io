@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" UniqueId="597ad521-4c4e-470f-970e-53bfb7d43cf2" FriendlyName="TFS to TFS Work Item Tracking with Explicit Field Map - VIMS vm249 Test Cases Prod">
+  <Providers>
+    <Provider ReferenceName="b84b30dd-1496-462a-bd9d-5a078a617779" FriendlyName="TFS 11 Migration WIT Provider" />
+  </Providers>
+  <Addins />
+  <SessionGroup CreationTime="2014-08-04T21:13:26.187-05:00" FriendlyName="TFS to TFS Work Item Tracking with Explicit Field Map - VIMS vm249 Test Cases Prod" SessionGroupGUID="30ce1d84-a1ab-4f3f-b9d6-74c75b49efff" Creator="ARCHON-TECH\TFSSETUP" SyncIntervalInSeconds="0" SyncDurationInMinutes="0">
+    <MigrationSources>
+      <MigrationSource InternalUniqueId="c88c86cd-71b8-4468-bae3-af375d7b0962" FriendlyName="vm249.archondev.com (WIT)" ServerIdentifier="8d65047a-f349-4405-b040-7d9a11fd0e2f" ServerUrl="http://vm249.archondev.com:8080/tfs/defaultcollection" SourceIdentifier="VIMS 2.0" ProviderReferenceName="b84b30dd-1496-462a-bd9d-5a078a617779">
+        <Settings>
+          <Addins />
+          <UserIdentityLookup />
+          <DefaultUserIdProperty UserIdPropertyName="DisplayName" />
+        </Settings>
+        <CustomSettings />
+        <StoredCredential />
+      </MigrationSource>
+      <MigrationSource InternalUniqueId="19feefe7-6d81-472a-bc45-346d5ab94ef0" FriendlyName="tfs13 (WIT)" ServerIdentifier="0760d4e2-836d-4aeb-9efe-b4cd6556cd4b" ServerUrl="http://tfs13:8080/tfs/dmv" SourceIdentifier="Gorilla" ProviderReferenceName="b84b30dd-1496-462a-bd9d-5a078a617779">
+        <Settings>
+          <Addins />
+          <UserIdentityLookup />
+          <DefaultUserIdProperty UserIdPropertyName="DisplayName" />
+        </Settings>
+        <CustomSettings />
+        <StoredCredential />
+      </MigrationSource>
+    </MigrationSources>
+    <Sessions>
+      <Session CreationTime="2014-08-04T21:13:26.107-05:00" SessionUniqueId="e1552de6-9582-4fe4-a9ca-b244ac291e23" FriendlyName="Work Item Tracking Session" LeftMigrationSourceUniqueId="c88c86cd-71b8-4468-bae3-af375d7b0962" RightMigrationSourceUniqueId="19feefe7-6d81-472a-bc45-346d5ab94ef0" SessionType="WorkItemTracking">
+        <EventSinks />
+        <CustomSettings>
+          <SettingXml>
+            <WITSessionCustomSetting>
+              <Settings />
+              <WorkItemTypes>
+                <WorkItemType LeftWorkItemTypeName="Test Case" RightWorkItemTypeName="Test Case" fieldMap="TestCaseToTestCaseFieldMap" />
+              </WorkItemTypes>
+              <FieldMaps>
+                <FieldMap name="TestCaseToTestCaseFieldMap">
+                  <MappedFields>
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedBy" RightName="Microsoft.VSTS.Common.ActivatedBy" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ActivatedDate" RightName="Microsoft.VSTS.Common.ActivatedDate" />
+                    <MappedField MapFromSide="Left" LeftName="System.AreaPath" RightName="System.AreaPath" />
+                    <MappedField MapFromSide="Left" LeftName="System.AssignedTo" RightName="System.AssignedTo" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="System.AuthorizedAs" RightName="System.AuthorizedAs" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="System.AuthorizedDate" RightName="System.AuthorizedDate" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.AutomationStatus" RightName="Microsoft.VSTS.TCM.AutomationStatus" />
+                    <MappedField MapFromSide="Left" LeftName="System.ChangedBy" RightName="System.ChangedBy" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="System.ChangedDate" RightName="System.ChangedDate" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedBy" RightName="Microsoft.VSTS.Common.ClosedBy" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.ClosedDate" RightName="Microsoft.VSTS.Common.ClosedDate" />
+                    <MappedField MapFromSide="Left" LeftName="System.CreatedBy" RightName="System.CreatedBy" valueMap="UserMap" />
+                    <MappedField MapFromSide="Left" LeftName="System.CreatedDate" RightName="System.CreatedDate" />
+                    <MappedField MapFromSide="Left" LeftName="System.Description" RightName="System.Description" />
+                    <MappedField MapFromSide="Left" LeftName="System.History" RightName="System.History" />
+                    <MappedField MapFromSide="Left" LeftName="System.IterationPath" RightName="System.IterationPath" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.LocalDataSource" RightName="Microsoft.VSTS.TCM.LocalDataSource" />
+                    <MappedField MapFromSide="Left" LeftName="System.NodeName" RightName="System.NodeName" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Parameters" RightName="Microsoft.VSTS.TCM.Parameters" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.Priority" RightName="Microsoft.VSTS.Common.Priority" />
+                    <MappedField MapFromSide="Left" LeftName="System.Reason" RightName="System.Reason" />
+                    <MappedField MapFromSide="Left" LeftName="System.Rev" RightName="System.Rev" />
+                    <MappedField MapFromSide="Left" LeftName="System.RevisedDate" RightName="System.RevisedDate" />
+                    <MappedField MapFromSide="Left" LeftName="System.State" RightName="System.State" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.Common.StateChangeDate" RightName="Microsoft.VSTS.Common.StateChangeDate" />
+                    <MappedField MapFromSide="Left" LeftName="Microsoft.VSTS.TCM.Steps" RightName="Microsoft.VSTS.TCM.Steps" />
+                    <MappedField MapFromSide="Left" LeftName="System.Title" RightName="System.Title" />
+                  </MappedFields>
+                </FieldMap>
+              </FieldMaps>
+              <ValueMaps>
+                <ValueMap name="UserMap">
+                  <Value LeftValue="ARCHONDEV\jhansen" RightValue="ARCHON-TECH\jhansen" />
+                </ValueMap>
+              </ValueMaps>
+            </WITSessionCustomSetting>
+          </SettingXml>
+          <SettingXmlSchema />
+        </CustomSettings>
+        <Filters>
+          <FilterPair Neglect="false">
+            <FilterItem MigrationSourceUniqueId="c88c86cd-71b8-4468-bae3-af375d7b0962" FilterString="[System.TeamProject] = @project and [System.WorkItemType] = 'Test Case' and [System.State] &lt;&gt; '' and [System.IterationPath] under 'VIMS 2.0\Release 1'" />
+            <FilterItem MigrationSourceUniqueId="19feefe7-6d81-472a-bc45-346d5ab94ef0" FilterString="[System.Id] = 0" />
+          </FilterPair>
+        </Filters>
+      </Session>
+    </Sessions>
+    <Linking>
+      <CustomSettings />
+      <LinkTypeMappings />
+    </Linking>
+    <WorkFlowType Frequency="ContinuousManual" DirectionOfFlow="Unidirectional" SyncContext="Disabled" />
+    <CustomSettings />
+    <UserIdentityMappings EnableValidation="false">
+      <UserIdentityLookupAddins />
+    </UserIdentityMappings>
+    <ErrorManagement>
+      <ErrorRouters />
+      <ReportingSettings />
+    </ErrorManagement>
+  </SessionGroup>
+</Configuration>

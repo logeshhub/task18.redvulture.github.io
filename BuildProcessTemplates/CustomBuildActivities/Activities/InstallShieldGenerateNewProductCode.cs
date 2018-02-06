@@ -1,0 +1,127 @@
+﻿//-----------------------------------------------------------------------
+// <copyright file="InstallShieldGenerateNewProductCode.cs" company="3MHIS">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace TeamFoundation.Build.ActivityPack
+{
+    using System;
+    using System.Activities;
+    using System.Xml;
+    using Microsoft.TeamFoundation.Build.Client;
+    using Microsoft.TeamFoundation.VersionControl.Client;
+
+    /// <summary>
+    /// Custom build activity to generate a new Product Code.
+    /// </summary>
+    [BuildActivity(HostEnvironmentOption.All)]
+    public sealed class InstallShieldGenerateNewProductCode : CodeActivity
+    {
+        /// <summary>
+        /// Gets or sets InstallShield project file (*.ism).
+        /// </summary>
+        [RequiredArgument]
+        public InArgument<string> InstallShieldProjectFullPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets version of InstallShield compiler.
+        /// </summary>
+        [RequiredArgument]
+        public InArgument<string> InstallShieldVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets Workspace object.
+        /// </summary>
+        [RequiredArgument]
+        public InArgument<Workspace> Workspace { get; set; }
+
+        /// <summary>
+        /// Override Execute method for custom build activity.       
+        /// </summary>
+        /// <param name="context">CodeActivityContext context contains arguments including the InstallShieldProjectFullPath.</param>
+        protected override void Execute(CodeActivityContext context)
+        {
+            var workspace = context.GetValue(this.Workspace);
+            var isProject = context.GetValue(this.InstallShieldProjectFullPath);
+            string isVersion = context.GetValue(this.InstallShieldVersion);
+            
+            switch (isVersion)
+            {
+                case "2010":
+                    this.ChangeProductCode(isProject);
+                    break;
+                case "2011":
+                    isProject = isProject.Replace(".sln", ".ism");
+                    this.ChangeProductCode(isProject);
+                    break;
+                default:                    
+                    throw new Exception("InstallShield Version Not Specified");                                       
+            }
+
+            //// switch (isVersion)
+            ////{            
+            ////    case "2010":                    
+            ////        var ipwi2010 = new ISWiAuto16.ISWiProject();
+            ////        ipwi2010.OpenProject(isProject);
+            ////        ipwi2010.ProductCode = ipwi2010.GenerateGUID();
+            ////        ipwi2010.SaveProject();
+            ////        ipwi2010.CloseProject();
+            ////        break;
+            ////    case "2011":
+            ////        var ipwi2011 = new ISWiAuto17.ISWiProject();
+            ////        ipwi2011.OpenProject(isProject);
+            ////        ipwi2011.ProductCode = ipwi2011.GenerateGUID();
+            ////        ipwi2011.SaveProject();
+            ////        ipwi2011.CloseProject();
+            ////        break;
+            ////    default:
+            ////        var ipwiDefault = new ISWiAuto17.ISWiProject();
+            ////        ipwiDefault.OpenProject(isProject);
+            ////        ipwiDefault.ProductCode = ipwiDefault.GenerateGUID();
+            ////        ipwiDefault.SaveProject();
+            ////        ipwiDefault.CloseProject();
+            ////        break;
+            ////}
+        }
+
+        /// <summary>
+        /// Use XML to find and replace GUID in InstallShield ism project file.       
+        /// </summary>
+        /// <param name="filename">filename is the full path to the InstallShield project file (NOTE: ism, not isproj).</param>
+        private void ChangeProductCode(string filename)
+        {
+            XmlDocument document = new XmlDocument();
+            document.PreserveWhitespace = true;
+            document.Load(filename);
+
+            // Find the location in the XML that contains the ProductCode GUID
+            XmlNodeList nodes = document.SelectNodes("msi/table[@name='Property']/row[td='ProductCode']/td");
+
+            // There should be at least two <td/> nodes in here, but could be more (not our structure, so who knows).
+            // One will be <td>ProductCode</td> and another will contain a GUID. Let's not assume order, even 
+            // though it probably is consistent. Try to parse as a GUID and if it fails, it isn't a GUID.
+            foreach (XmlNode node in nodes)
+            {
+                Guid oldGuid;
+
+                if (!string.IsNullOrEmpty(node.InnerText) && (node.InnerText != "ProductCode") && Guid.TryParse(node.InnerText, out oldGuid))
+                {
+                    // We made it this far, so it must be. The sample file had the GUID in the
+                    // format generated by the "B" format code, so let's use it here.
+                    // It was also all upper case which shouldn't matter at all, but since
+                    // we don't know how their code parses it... convert to upper too.
+                    string newGuid = Guid.NewGuid().ToString("B").ToUpper();
+
+                    // Stick it in the XML
+                    node.InnerText = newGuid;
+
+                    break;
+                }
+            }
+
+            // Write it back out. Assuming they are using standard XML parsing rules,
+            // what this writes out should be valid for what they read in.
+            document.Save(filename);
+        }
+    }
+}

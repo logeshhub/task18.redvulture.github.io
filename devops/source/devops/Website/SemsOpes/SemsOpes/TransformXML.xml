@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+ <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=semsrm.usac.mmm.com\v11.0;Initial Catalog=aspnet-SemsOpes-20140317032840;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-SemsOpes-20140317032840.mdf" providerName="System.Data.SqlClient" xdt:Locator="Match(name)" xdt:Transform="Replace"/>
+  </connectionStrings>
+  <appSettings>
+    <add key="contactEmail" value="contact@cit.com" xdt:Locator="Match(key)" xdt:Transform="Replace"/>
+    <add key="siteUrl" value="http://cit.com" xdt:Locator="Match(key)" xdt:Transform="Replace"/>
+  </appSettings>
+  </configuration>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tasks>
+  <task id="UploadStructure" name="Creating project structure" plugin="Microsoft.ProjectCreationWizard.Classification" completionMessage="Team project structure created.">
+    <taskXml>
+      <Nodes>
+        <Node StructureType="ProjectLifecycle" Name="Iteration" xmlns="">
+          <Children>
+            <Node StructureType="ProjectLifecycle" Name="Iteration 0" />
+            <Node StructureType="ProjectLifecycle" Name="Iteration 1" />
+            <Node StructureType="ProjectLifecycle" Name="Iteration 2" />
+          </Children>
+        </Node>
+        <Node StructureType="ProjectModelHierarchy" Name="Area" xmlns="">
+          <Children>
+            <Node StructureType="ProjectModelHierarchy" Name="Product Design" />
+            <Node StructureType="ProjectModelHierarchy" Name="Safety" />
+            <Node StructureType="ProjectModelHierarchy" Name="Physical Ergonomic" />
+            <Node StructureType="ProjectModelHierarchy" Name="Additional Regulatory" />
+            <Node StructureType="ProjectModelHierarchy" Name="Sterilization" />
+            <Node StructureType="ProjectModelHierarchy" Name="Shelf-life Reliability" />
+            <Node StructureType="ProjectModelHierarchy" Name="Packaging Labeling" />
+            <Node StructureType="ProjectModelHierarchy" Name="Installation Service" />
+            <Node StructureType="ProjectModelHierarchy" Name="Performance" />
+            <Node StructureType="ProjectModelHierarchy" Name="Environmental" />
+            <Node StructureType="ProjectModelHierarchy" Name="Limitation" />
+          </Children>
+        </Node>
+      </Nodes>
+      <properties>
+        <property name="MSPROJ" value="Classification\FieldMapping.xml" isFile="true" />
+        <property name="Process Template" value="MSF for CMMI Process Improvement 2013.4" />
+      </properties>
+    </taskXml>
+  </task>
+</tasks>

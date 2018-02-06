@@ -1,0 +1,68 @@
+
+*******************************************
+AD Accounts created
+Basic server prep, UAC, indexing, page file
+Local Security Policy
+.NET 3.5.1
+IIS Role
+7-zip
+
+Notepad++
+http://notepad-plus-plus.org/
+Install XML Tools Plug-in
+
+First patching
+[Snapshot]
+
+********************************************
+SQL 2012 SP1 Install
+SSAS Service fix
+SSRS Service delay
+Verify services
+Manually add TFSSERVICE to the Content Manager role on SSRS
+Second patching 
+[Snapshot]
+
+********************************************
+SPS 2013 Foundation Install
+Verify services
+Third patching
+Timer Service delay
+Set modify permissions on Hive\Logs folder for WSS_WPG
+[Snapshot]
+
+********************************************
+TFS 2013 Initial Install
+Configure application tier (Advanced Configuration)
+
+VS 2013 Team Explorer
+TFS 2013 Updates (if any)
+VS 2013 Updates (if any)
+
+VS 2013 Power Tools
+http://visualstudiogallery.msdn.microsoft.com/f017b10c-02b4-4d6d-9845-58a06545627f
+
+VS 2013 Side Kicks
+http://www.attrice.info
+
+TFS Administration Tool (2.3)
+http://tfsadmin.codeplex.com/
+
+Fourth patching
+Restart
+
+Create DefaultCollection
+Verify TFS
+Verify SSRS
+Verify TFS Admin Tool
+Verify Sidekicks
+
+Office?
+
+[Snapshot]
+
+IntegrationPlatformMappingTool
+http://tfsintegrationmapper.codeplex.com/
+
+
+tf destroy $/EFMS-Version-Control/BuildProcessTemplates /collection:http://tfs13:8080/tfs/Parking

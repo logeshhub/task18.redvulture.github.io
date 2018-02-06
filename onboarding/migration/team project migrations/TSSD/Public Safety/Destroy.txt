@@ -1,0 +1,4 @@
+tf destroy $/ALPR/BuildProcessTemplates /collection:http://tfssb:8080/tfs/PublicSafety
+
+tf destroy $/EFMS-Version-Control/BuildProcessTemplates /collection:http://tfssb:8080/tfs/Parking
+tf destroy $/EFMS-Full/BuildProcessTemplates /collection:http://tfssb:8080/tfs/Parking

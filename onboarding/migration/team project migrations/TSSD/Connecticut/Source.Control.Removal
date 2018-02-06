@@ -1,0 +1,84 @@
+
+$/3M Tools and Framework/Code/Main/3M Framework/3.5.1 - keep
+(destroy everything else)
+
+$/Connecticut/BuildProcessTemplates/*
+$/Connecticut/Confidential Disclosure Agreements/*
+$/Connecticut/Conversion/*
+????????????????????????????????$/Connecticut/Database/* ?????????????????????????????????????
+$/Connecticut/Development/*
+$/Connecticut/Interfaces/*
+$/Connecticut/Performance Testing/*
+$/Connecticut/Product Management/*
+$/Connecticut/Project Management/*
+$/Connecticut/R3DataConversion/*
+$/Connecticut/Reports/*
+$/Connecticut/Requirements/*
+$/Connecticut/ScreenShots/*
+$/Connecticut/Settings/*
+$/Connecticut/Standard Operating Procedures/*
+$/Connecticut/Support/*
+$/Connecticut/TeamProjectConfig/*
+$/Connecticut/Tech Specs/*
+$/Connecticut/Technical/*
+$/Connecticut/Templates/*
+$/Connecticut/Test Plans/*
+$/Connecticut/Travel/*
+
+$/Connecticut/Code/Main - keep only Main
+$/Connecticut/Code/Main/Lib/1.0 - destroy
+$/Connecticut/Code/Main/Lib/1.1 - destroy
+$/Connecticut/Code/Main/Lib/2.0 - destroy
+$/Connecticut/Code/Main/Lib/Kentucky - destroy
+$/Connecticut/Code/Main/Lib/Idaho - destroy
+$/Connecticut/Code/Main/Lib/Rebex - destroy
+(Destroy everything other than Main)
+
+[ FOR BOTH CONNECTICUT AND 3M TOOLS AND FRAMEWORK PROJECTS ]
+*** Destroy all work items in Team Project
+*** Delete all WIQs in Team Project
+*** Delete build history
+		Delete Details, Test Results, Label.
+		Uncheck Drop and Symbols, TFS cannot communicate with vm259 or the drop server
+*** Delete all build definitions
+*** Unregister all build controllers and agents
+*** Undo all pending checkouts
+*** Delete all workspaces
+*** Reset TPC instance GUID
+	
+*** Strip down internal group permissions on source control
+
+*** Connecticut-Deployment - destroy entire Team Project
+
+On CT:
+Install Sidekicks
+
+Plan:
+
+Cut from instance currently on instance in CT
+After code cut off @ 3M, push TPC to lab.
+
+Reset TPC instance ID
+	TFSConfig ChangeServerID /SQLInstance:idtfs01 /DatabaseName:Tfs_Configuration /ProjectCollectionsOnly
+
+Clean out necessary artifacts from TPC.
+
+Remove all workspaces
+Shrink database, reclaim space
+Pack up .7z
+Transfer to CT
+Attach to CT TFS
+Test connectivity and contents
+
+
+
+
+
+
+
+
+
+
+
+
+

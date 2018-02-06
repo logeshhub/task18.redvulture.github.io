@@ -1,0 +1,190 @@
+
+07/21/15:
+
+Darren Steinke - Ops lead
+Gayle Akins - Customer Liason
+Jim Bodamer - Technical Lead
+
+Need to provide DE source code for production.
+
+Fred - DE lead contact
+
+Action items:
+Send Gayle Akins available dates
+Identify gaps in activities
+
+What are the specific requirements?
+
+Need difficulty rating for each activities.
+Identify risks for each day
+
+Project Code:
+0071507.002
+
+Can I install remotely?
+What was given to Idaho?  Contact Ola Jobi.
+Do they have an existing TFS instance?
+
+VS 2012 Projects > TFS 2013
+
+Q:	Phase 1, what could be done ahead of time?
+Q:	What resources need to be on standby?
+Q:	Can we pull the Idaho project into archive?  Ask Ola Jobi.
+Q:	What is our stance on eyes and ears vs. hands on?  Liability?
+Q:	Can we build the blind forest for mockup?
+ 
+
+*******************************************
+AD Accounts created
+Basic server prep, UAC, indexing, page file
+Local Security Policy
+.NET 3.5.1
+IIS Role
+7-zip
+
+Notepad++
+http://notepad-plus-plus.org/
+Install XML Tools Plug-in
+
+First patching
+[Snapshot]
+
+********************************************
+SQL 2012 SP1 Install
+SSAS Service fix
+SSRS Service delay
+Verify services
+Manually add TFSSERVICE to the Content Manager role on SSRS
+Second patching 
+[Snapshot]
+
+********************************************
+SPS 2013 Foundation Install
+Verify services
+Third patching
+Timer Service delay
+Set modify permissions on Hive\Logs folder for WSS_WPG
+[Snapshot]
+
+********************************************
+TFS 2013 Initial Install
+Configure application tier (Advanced Configuration)
+
+VS 2013 Team Explorer
+TFS 2013 Updates (if any)
+VS 2013 Updates (if any)
+
+VS 2013 Power Tools
+http://visualstudiogallery.msdn.microsoft.com/f017b10c-02b4-4d6d-9845-58a06545627f
+
+VS 2013 Side Kicks
+http://www.attrice.info
+
+TFS Administration Tool (2.3)
+http://tfsadmin.codeplex.com/
+
+Fourth patching
+Restart
+
+Create DefaultCollection
+Verify TFS
+Verify SSRS
+Verify TFS Admin Tool
+Verify Sidekicks
+
+https://msdn.microsoft.com/en-us/jj650015	SSDT
+https://support.microsoft.com/en-us/kb/2712111		SQL DB changes
+
+
+08/12/15:
+Quick update
+
+Fred will provide contact for TFS and build server
+TFS server set up in DMZ?
+Will use David Wilson's ID to gain remote access
+
+Changes
+
+08/14/15:
+Want to have alternative to a build server.
+
+No involvement with Java builds
+
+May need a document to break down the build activities in the build definition
+	Jim feels that this document would be a deliverable
+	Make sure that there are technology experience prerequisites listed
+
+No PowerShell alternative
+
+08/25/15:
+Sept 28 - Oct 2
+
+Action items:
+Developer workstation
+Snapshot!
+VS 2013 first, then go to 2012.
+SQL 2012 Developer
+	desqldev.archondev.com
+	delsqlqa.archondev.com
+
+DE-WS:
+169.14.8.79
+Windows:
+2Q3YP-JY6D7-TX3D7-YBC4C-KHFXX
+Visual Studio 2013.5 Pro:
+XDM3T-W3T3V-MGJWK-8BFVD-GVPKY
+
+
+
+09/21/15 - Status:
+
+Fred
+Mike
+Dominic
+
+Need itinerary
+Changes in R5 branch
+TFS 2012 Cutoff - Thursday by noon
+
+Move today, again on Thursday
+Need list of tf destroy folders from Jim
+
+Onsite activity:
+
+1.	Everett met Dominic at DTI, 8:00am.
+2.	Dominic performs file copy of TPC .bak file to datacenter.
+3.	Everett and Dominic perform database restore and TPC import.
+	A.	Both source and destination TFS environments match on TFS 2013.4 and SQL Standard Edition.
+	B.	In the event that there are any TPC attach issues, we will fall back to the secondary raw code drop to start work on desktop build.
+	C.	If there are TFS issues, Everett will immediately open an escalated case with Microsoft to resolve the issue. (Amit Uppal)
+
+4.	Everett and Dominic contact Fred to verify connectivity from DelDOT to the imported TPC.
+	A.	After connectivity is verified, the TFS workspace is set up and the Get Latest operation is started to pull the workspace to DelDOT.
+
+(Completed in 2 hours)
+	
+5.	Everett goes to DelDOT and meets with Fred.  Jason is at DelDOT during that time.
+	A.	Everett takes photos or any other security requirements.
+	
+6.	Everett, Jason, Fred work to pull source from TFS and get desktop build to work. (Start 10:00am)
+7.	Jason (+remote 3M team) runs through manual deployment steps. (Finish 3:30pm)
+8.	Jason (+remote 3M team) starts smoke testing. (Start 4:00pm)
+
+
+SQL Issues
+
+http://www.codewrecks.com/blog/index.php/2015/05/13/limit-maximum-memory-of-sql-server-in-tfs-environment/
+
+Private:
+zP9l#RxT3CqUJ%Ixr9K!
+
+Public:
+zP9l#RT3CqUJ%Ixr9KOw
+
+
+
+
+
+
+
+

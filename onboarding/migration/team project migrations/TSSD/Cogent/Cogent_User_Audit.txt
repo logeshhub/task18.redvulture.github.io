@@ -1,0 +1,940 @@
+SOURCESAFE USER TRANSLATION *****************************
+
+EastCoast:
+
+Adomingues = users\adomingu\ss.ini
+Cgobs = users\cgobs\ss.ini
+Jhu = users\jhu\ss.ini
+Kkipferl = users\kkipferl\ss.ini
+Krusso = users\krusso\ss.ini
+Spei = users\spei\ss.ini
+Speiux = users\speiux\ss.ini
+Ayjin = users\ayjin\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+
+***********************************************
+
+SourceSafe01:
+hw-pma-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Hxue = users\hxue\ss.ini
+Llu = users\llu\ss.ini
+Rsong = users\rsong\ss.ini
+Jxiong = users\jxiong\ss.ini
+Tzheng = users\tzheng\ss.ini
+Jliu = users\jliu\ss.ini
+Smpei = users\smpei\ss.ini
+Awang = users\awang\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Qliu = users\qliu\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+Stsui = users\stsui\ss.ini
+Wross = users\wross\ss.ini
+Choff = users\choff\ss.ini
+Hli = users\hli\ss.ini
+Wchu = users\wchu\ss.ini
+Mmoon = users\mmoon\ss.ini
+Carleen = users\carleen\ss.ini
+Autobld = users\autobld\ss.ini
+Wcebuild = users\wcebuild\ss.ini
+Stan = users\stan\ss.ini
+Kli = users\kli\ss.ini
+Ghe = users\ghe\ss.ini
+Sng8 = users\sng8\ss.ini
+Fxu = users\fxu\ss.ini
+Hdong = users\hdong\ss.ini
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(from sourcesafe02 - which repo is the active one?)
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Hxue = users\hxue\ss.ini
+Rsong = users\rsong\ss.ini
+Syang = users\syang\ss.ini
+Zxiang = users\zxiang\ss.ini
+Rli = users\rli\ss.ini
+Cchen = users\cchen\ss.ini
+Jkim = users\jkim\ss.ini
+Llu = users\llu\ss.ini
+Tzheng = users\tzheng\ss.ini
+Stan = users\stan\ss.ini
+Hli = users\hli\ss.ini
+Xzhang = users\xzhang\ss.ini
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+A2V6GZZ Carleen Chen Ping Chen     
+A2V8WZZ Jinwook Kim Jinwook Kim     
+A2V9FZZ Ken Li Rukun Li     
+A2V9GZZ Harry Li Hanqing Li     
+A2V9WZZ Charley Lu Charley C. Lu     
+A2VBYZZ Ran Song Ran Song     
+A2VC5ZZ Simon Tan Simon H. Tan     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VDVZZ Tao Zheng Tao Zheng     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A5QYDZZ yi cui yi cui
+
+**********************************************
+
+SourceSafe01:
+bio-level-1:
+
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+Ptang = users\ptana\ss.ini
+Ayjin = users\ayjin\ss.ini
+Patrick = users\patrick\ss.ini
+Jxie = users\jxie\ss.ini
+Kang = users\kang\ss.ini
+Kangux = users\kangux\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+Smpeiux = users\smpeiua\ss.ini
+Patrickux = users\patricku\ss.ini
+Mwyangux = users\mwyangux\ss.ini
+Mwyang = users\mwyang\ss.ini
+Nxu = users\nxu\ss.ini
+Elu = users\elu\ss.ini
+Fxu = users\fxu\ss.ini
+Jmwang = users\jmwana\ss.ini
+Sliao = users\sliao\ss.ini
+Sliaoux = users\sliaoux\ss.ini
+Ewang = users\ewana\ss.ini
+Jwang = users\jwang\ss.ini
+Cwei = users\cwea\ss.ini
+Xswei = users\xswei\ss.ini
+Jxieux = users\jxieux\ss.ini
+xzhang = users\xzhang\ss.ini
+Eluux = users\eluux\ss.ini
+Sbai = users\sbai\ss.ini
+Rsong = users\rsong\ss.ini
+Sbaiux = users\sbaiux\ss.ini
+Hkrishnaraj = users\hkrishnb\ss.ini
+Jxiong = users\jxiong\ss.ini
+Dnedelman = users\dnedelma\ss.ini
+Smpei = users\smpei\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+Bli = users\bli\ss.ini
+Bliux = users\bliux\ss.ini
+Hquan = users\hquan\ss.ini
+Hquanux = users\hquanux\ss.ini
+
+A2V9HZZ Bin Li Bin Li     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCZZZ Julia Wang Jianmin Wang     
+A2VDHZZ John Xiong Zhiguo Xiong     
+A2VDJZZ Felix Xu Feng Xu     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+bio-level-2:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Wgong = users\wgong\ss.ini
+Anne = users\anne\ss.ini
+Xtang = users\xtang\ss.ini
+
+A2VCAZZ Xian Tang Xian Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCYZZ Anne Wang Anne J. Wang     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+cafis-level-1:
+
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+Ptang = users\ptang\ss.ini
+Ayjin = users\ayjin\ss.ini
+Patrick = users\patrick\ss.ini
+James = users\james\ss.ini
+jxie=users\jxie\ss.ini
+Kang = users\kang\ss.ini
+smpei = users\smpei\ss.ini
+Kangux = users\kangux\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+Smpeiux = users\smpeiux\ss.ini
+Patrickux = users\patricku\ss.ini
+Mwyangux = users\mwyangux\ss.ini
+Mwyang = users\mwyang\ss.ini
+Elu = users\elu\ss.ini
+Slin = users\slin\ss.ini
+Fxu = users\fxu\ss.ini
+Jmwang = users\jmwang\ss.ini
+Sliao = users\sliao\ss.ini
+Sliaoux = users\sliaoux\ss.ini
+Jwang = users\jwang\ss.ini
+Cwei = users\cwei\ss.ini
+Xswei = users\xswei\ss.ini
+Jxieux = users\jxieux\ss.ini
+xzhang = users\xzhang\ss.ini
+Eluux = users\eluux\ss.ini
+Hliu = users\hliu\ss.ini
+Hdongux = users\hdongux\ss.ini
+Kkipferl = users\kkipferl\ss.ini
+Kkipferlux = users\kkipferux\ss.ini
+Adomingues = users\adomingu\ss.ini
+Adominguesux = users\adominga\ss.ini
+Jxiong = users\jxiong\ss.ini
+Bdu = users\bdu\ss.ini
+Bduux = users\bduux\ss.ini
+Qliu = users\qliu\ss.ini
+Qliuux = users\qliuux\ss.ini
+Hliuux = users\hliuux\ss.ini
+Slinux = users\slinux\ss.ini
+Mzhu = users\mzhu\ss.ini
+Mzhuux = users\mzhuux\ss.ini
+Qchen = users\qchen\ss.ini
+Plam = users\plam\ss.ini
+Mlee = users\mlee\ss.ini
+Llam = users\llam\ss.ini
+Jbromley = users\jbromley\ss.ini
+Pjrhalicky = users\pjrhalic\ss.ini
+Jliu = users\jliu\ss.ini
+Admin1 = users\admin1\ss.ini
+Admin2 = users\admin2\ss.ini
+Rjen = users\rjen\ss.ini
+Rjenux = users\rjenux\ss.ini
+Mleeux = users\mleeux\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Xwang = users\xwang\ss.ini
+Xwangux = users\xwangux\ss.ini
+Slaw = users\slaw\ss.ini
+Slawux = users\slawux\ss.ini
+Autobuild = users\autobuil\ss.ini
+Autobuildux = users\autobuia\ss.ini
+Jliuux = users\jliuux\ss.ini
+Itang = users\itang\ss.ini
+Ghughes = users\ghughes\ss.ini
+Ghughesux = users\ghughesu\ss.ini
+Hnguyen = users\hnguyen\ss.ini
+Hnguyenux = users\hnguyenu\ss.ini
+Htu = users\htu\ss.ini
+Aaa = users\aab\ss.ini
+Jma = users\jma\ss.ini
+Phalicky = users\phalicky\ss.ini
+Josephliu = users\josephli\ss.ini
+Josephliuux = users\josephla\ss.ini
+Kng = users\kng\ss.ini
+Kngux = users\kngux\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+Jcarcamo = users\jcarcamo\ss.ini
+Jcarcamoux = users\jcarcama\ss.ini
+Jhu = users\jhu\ss.ini
+Cchiu = users\cchiu\ss.ini
+Bli = users\bli\ss.ini
+Bliux = users\bliux\ss.ini
+Glac = users\glac\ss.ini
+Glacux = users\glacux\ss.ini
+Yfu = users\yfu\ss.ini
+Xsong = users\xsong\ss.ini
+Alee = users\alee\ss.ini
+Aleeux = users\aleeux\ss.ini
+Jzhou = users\jzhou\ss.ini
+Zxia = users\zxia\ss.ini
+Ltang = users\ltang\ss.ini
+Rmaris = users\rmaris\ss.ini
+Rmarisux = users\rmarisux\ss.ini
+Pwong = users\pwong\ss.ini
+Pwongux = users\pwongux\ss.ini
+Hwang = users\hwang\ss.ini
+Dgospodinov = users\dgospodi\ss.ini
+Dgospodinovux = users\dgospoda\ss.ini
+Wross = users\wross\ss.ini
+Kzhao = users\kzhao\ss.ini
+Kzhaoux = users\kzhaoux\ss.ini
+Jsmolenski = users\jsmolens\ss.ini
+Jsmolenskiux = users\jsmolena\ss.ini
+Tliu = users\tliu\ss.ini
+Ptsang = users\ptsang\ss.ini
+Ptsangux = users\ptsangux\ss.ini
+Ryeh = users\ryeh\ss.ini
+wliao = users\wliao\ss.ini
+Mdong = users\mdong\ss.ini
+Peterwang = users\peterwan\ss.ini
+Peterwangux = users\peterwaa\ss.ini
+Gfan = users\gfan\ss.ini
+Gfanux = users\gfanux\ss.ini
+Sandrayu = users\sandrayu\ss.ini
+Hdong = users\hdong\ss.ini
+Jhsiao = users\jhsiao\ss.ini
+Binzhao = users\binzhao\ss.ini
+Binzhaoux = users\binzhaou\ss.ini
+Hquan = users\hquan\ss.ini
+Hquanux = users\hquanux\ss.ini
+Dkhanaferov = users\dkhanafe\ss.ini
+Dkhanaferovux = users\dkhanafa\ss.ini
+Htuux = users\htuux\ss.ini
+Ryehux = users\ryehux\ss.ini
+Rsamson = users\rsamson\ss.ini
+Rsamsonux = users\rsamsonu\ss.ini
+Bsmazak = users\bsmazak\ss.ini
+Bsmazakux = users\bsmazaku\ss.ini
+Sbui = users\sbui\ss.ini
+Sbuiux = users\sbuiux\ss.ini
+Jwang42 = users\jwang42\ss.ini
+Itangux = users\itangux\ss.ini
+Zli5 = users\zli5\ss.ini
+Jglassman = users\jglassma\ss.ini
+Jglassmanux = users\jglassmb\ss.ini
+Xzhao = users\xzhao\ss.ini
+Xzhaoux = users\xzhaoux\ss.ini
+Rsong = users\rsong\ss.ini
+Janeliu = users\janeliu\ss.ini
+Cwu = users\cwu\ss.ini
+Cwuux = users\cwuux\ss.ini
+Dchain = users\dchain\ss.ini
+Dchainux = users\dchainux\ss.ini
+Sng = users\sng\ss.ini
+Mxtian = users\mxtian\ss.ini
+Mxtianux = users\mxtianux\ss.ini
+Fwen = users\fwen\ss.ini
+Szheng = users\szheng\ss.ini
+Tng = users\tng\ss.ini
+Byadmin = users\byadmin\ss.ini
+Kli = users\kli\ss.ini
+Kliux = users\kliux\ss.ini
+Mngan = users\mngan\ss.ini
+Sbai = users\sbai\ss.ini
+Blamond = users\blamond\ss.ini
+Byau = users\byau\ss.ini
+Savanesyan = users\savanesy\ss.ini
+Savanesyanux = users\savanesa\ss.ini
+Dwang = users\dwang\ss.ini
+Dwangux = users\dwangux\ss.ini
+Jzhang = users\jzhang\ss.ini
+Jzhangux = users\jzhangux\ss.ini
+Jchang = users\jchang\ss.ini
+Jchangux = users\jchangux\ss.ini
+Rlee = users\rlee\ss.ini
+Rleeux = users\rleeux\ss.ini
+Djanvelyan = users\djanvely\ss.ini
+Djanvelyanux = users\djanvela\ss.ini
+Wenphingl = users\wenphing\ss.ini
+Dlin = users\dlin\ss.ini
+Kleung = users\kleung\ss.ini
+Testhdong = users\testhdon\ss.ini
+
+A2V57ZZ Sean Bai Xuefeng Bai     
+a2v63zz Kang Chen Kang Chen     
+A2V6FZZ Qiren Chen Qiren Chen     
+A2V6RZZ Howard Dong Hwan Dong     
+A2V7HZZ Dimitar Gospodinov Dimitar Gospodinov     
+A2V83ZZ Jenny Hu Yan Hu     
+A2V87ZZ James Hsiao James Hsiao     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2V8FZZ Gary Hughes Gary Hughes     
+A2V8TZZ Kelly Kipferl Kelly L. Kipferl     
+A2V8YZZ Patrick Lam Patrick C. Lam     
+A2V96ZZ Michael Lee Ming Chak Lee     
+A2V98ZZ Stanley Law Siu Nin S. Law     
+A2V9CZZ Steven Liao Steven G. Liao     
+A2V9FZZ Ken Li Rukun Li     
+A2V9HZZ Bin Li Bin Li     
+A2V9TZZ Tan Liu Tan Liu     
+A2V9VZZ Joseph Liu Yong Liu     
+A2V9XZZ Jonathan Ma Jonathan G. Ma     
+A2VA2ZZ Raluca Laza Raluca L. Laza     
+A2VAGZZ Ken Ng Kwok Hei Ng     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VBYZZ Ran Song Ran Song     
+A2VC2ZZ Walt Stelz Walter G. Stelz     
+A2VC8ZZ Tom Tang Lei Tang     
+A2VC9ZZ Patrick Tang Peishun Tang     
+A2VCBZZ Ivy Tang Yu Ying Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VCZZZ Julia Wang Jianmin Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A2VD4ZZ Carl Wei Xiangyue Wei     
+A2VDAZZ Bernadette Wong Bernadette W. Wong     
+A2VDBZZ Philip Wong Philip W. Wong     
+A2VDHZZ John Xiong Zhiguo Xiong     
+A2VDJZZ Felix Xu Feng Xu     
+A2VDKZZ Chris Yang Chris S. Yang     
+A2VDLZZ Mingwei Yang Mingwei Yang     
+A2VDPZZ Richard Yeh Chi S. Yeh     
+A2VDSZZ Bin Zhao Bin Zhao     
+A2VDTZZ Kathy Zhao Kathy Z. Zhao     
+A2VDVZZ Tao Zheng Tao Zheng     
+A30TJZZ Brian Chan Kwan-Wai Chan     
+A34P9ZZ Steve Bui Steve V. Bui     
+A3836ZZ Sack Xaymountry Sack Xaymountry     
+A3AXLZZ Gordon He Gordon C. He     
+A3B3VZZ John Wang Zhongqing Wang     
+A3BC9ZZ Zinan Li Zinan Li     
+A3BRWZZ David Gwo David S. Gwo     
+A3DV4ZZ Michael Tian Michael Tian     
+A3M3YZZ Stephen Chuck Stephen K. Chuck     
+A3QJWZZ Saju George Saju George     
+A3SNZZZ Tony Ng Yan-Kam Ng     
+A4LN4ZZ Bruce Lamond Bruce J. Lamond     
+A4QZWZZ Shaun Chang Te-Hsiang Chang     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A513GZZ Bin Chan Zhuo Bin Chan Zhuo     
+A5ANXZZ Jason Zhang Jason Zhang     
+A5BPFZZ Yu Chuan Chang Yu Chuan Chang     
+A5BQBZZ Raymond Lee Raymond Lee     
+A5H98ZZ WEI WANG WEI WANG     
+A5JFQZZ Davit Janvelyan Davit Janvelyan     
+A5K6ZZZ Wenphing Lo Wenphing Lo     
+A5L14ZZ David Lin David D. Lin     
+A5LF5ZZ Ken Leung Ken K. Leung 
+
+**********************************************************
+
+SourceSafe01:
+cafis-level-2:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Kang = users\kang\ss.ini
+Kangux = users\kangux\ss.ini
+Ayjin = users\ayjin\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+Ptang = users\ptang\ss.ini
+Patrickux = users\patricku\ss.ini
+James = users\james\ss.ini
+Smpei = users\smpei\ss.ini
+Smpeiux = users\smpeiux\ss.ini
+Mwyang = users\mwyang\ss.ini
+Jxiong = users\jxiong\ss.ini
+Bli = users\bli\ss.ini
+Bliux = users\bliux\ss.ini
+Hdong = users\hdona\ss.ini
+Hdongux = users\hdongua\ss.ini
+Slaw = users\slaw\ss.ini
+Slawux = users\slawux\ss.ini
+Ptsang = users\ptsang\ss.ini
+Ptsangux = users\ptsangux\ss.ini
+
+A2V6RZZ Howard Dong Hwan Dong     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2V98ZZ Stanley Law Siu Nin S. Law     
+A2V9HZZ Bin Li Bin Li     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VDHZZ John Xiong Zhiguo Xiong     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+Documents:
+
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+Eso = users\eso\ss.ini
+Rjin = users\rjin\ss.ini
+Sboctor = users\sboctor\ss.ini
+Bvolz = users\bvolz\ss.ini
+Ghochstetter = users\ghochste\ss.ini
+Bvoltz = users\bvoltz\ss.ini
+
+A2V57ZZ Sean Bai Xuefeng Bai     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VDJZZ Felix Xu Feng Xu     
+A2VDMZZ Grace Yang Xiaobing Yang     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+ls-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Elu = users\elu\ss.ini
+Hkrishnaraj = users\hkrishna\ss.ini
+Hdong = users\hdong\ss.ini
+Htu = users\htu\ss.ini
+Llam = users\llam\ss.ini
+Qliu = users\qliu\ss.ini
+Slin = users\slin\ss.ini
+Smpei = users\smpei\ss.ini
+Plam = users\plam\ss.ini
+Jmwang = users\jmwang\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Slaw = users\slaw\ss.ini
+Xwang = users\xwang\ss.ini
+Autobuild = users\autobuil\ss.ini
+Itang = users\itang\ss.ini
+Jma = users\jma\ss.ini
+Kng = users\kng\ss.ini
+Gzhang = users\gzhang\ss.ini
+Qchen = users\qchen\ss.ini
+Fxu = users\fxu\ss.ini
+Yfu = users\yfu\ss.ini
+
+A2V6FZZ Qiren Chen Qiren Chen     
+A2V6RZZ Howard Dong Hwan Dong     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2V8YZZ Patrick Lam Patrick C. Lam     
+A2V98ZZ Stanley Law Siu Nin S. Law     
+A2V9VZZ Joseph Liu Yong Liu     
+A2V9XZZ Jonathan Ma Jonathan G. Ma     
+A2VAGZZ Ken Ng Kwok Hei Ng     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VCBZZ Ivy Tang Yu Ying Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VCZZZ Julia Wang Jianmin Wang     
+A2VDJZZ Felix Xu Feng Xu     
+A2VDPZZ Richard Yeh Chi S. Yeh     
+A34P9ZZ Steve Bui Steve V. Bui     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+ls-level-2:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+SourceSafe01:
+misc:
+
+Admin = users\admin\ss.ini
+smpei = users\smpei\ss.ini
+xzhang = users\xzhang\ss.ini
+Bli = users\bli\ss.ini
+Bliux = users\bliux\ss.ini
+Jyang = users\jyang\ss.ini
+Jyangux = users\jyangux\ss.ini
+Itang = users\itang\ss.ini
+
+A2V57ZZ Sean Bai Xuefeng Bai     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VDJZZ Felix Xu Feng Xu     
+A2VDMZZ Grace Yang Xiaobing Yang     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+web-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Sliao = users\sliaa\ss.ini
+Jmwang = users\jmwang\ss.ini
+Sliaoux = users\sliaoua\ss.ini
+Smpei = users\smpei\ss.ini
+Smpeiux = users\smpeiux\ss.ini
+Jbromley = users\jbromley\ss.ini
+Jliu = users\jliu\ss.ini
+Bdu = users\bdu\ss.ini
+Bduux = users\bduux\ss.ini
+Pjrhalicky = users\pjrhalic\ss.ini
+Pjrhalickyux = users\pjrhalia\ss.ini
+Qliu = users\qliu\ss.ini
+Qliuux = users\qliuux\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Gmassoudux = users\gmassoua\ss.ini
+Cchiu = users\cchiu\ss.ini
+Cchiuux = users\cchiuux\ss.ini
+Ltang = users\ltang\ss.ini
+Mlee = users\mlee\ss.ini
+Sandrayu = users\sandrayu\ss.ini
+Kng = users\kng\ss.ini
+Jwang42 = users\jwang42\ss.ini
+Zli5 = users\zli5\ss.ini
+Cwu = users\cwu\ss.ini
+Cwuux = users\cwuux\ss.ini
+Blamond = users\blamond\ss.ini
+Sxaymountry = users\sxaymoun\ss.ini
+Hdong = users\hdong\ss.ini
+Htu = users\htu\ss.ini
+Binchan = users\binchan\ss.ini
+Ghughes = users\ghughes\ss.ini
+Ghughesux = users\ghughesu\ss.ini
+Schang = users\schang\ss.ini
+Schangux = users\schangux\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+
+A2V6RZZ Howard Dong Hwan Dong     
+A2V8FZZ Gary Hughes Gary Hughes     
+A2V96ZZ Michael Lee Ming Chak Lee     
+A2V9CZZ Steven Liao Steven G. Liao     
+A2VAGZZ Ken Ng Kwok Hei Ng     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VC8ZZ Tom Tang Lei Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VCZZZ Julia Wang Jianmin Wang     
+A2VDKZZ Chris Yang Chris S. Yang     
+A3836ZZ Sack Xaymountry Sack Xaymountry     
+A3BC9ZZ Zinan Li Zinan Li     
+A4LN4ZZ Bruce Lamond Bruce J. Lamond     
+A4QZWZZ Shaun Chang Te-Hsiang Chang     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A513GZZ Bin Chan Zhuo Bin Chan Zhuo 
+
+
+**********************************************************
+
+algm-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Xtang = users\xtang\ss.ini
+Test = users\test\ss.ini
+Test1 = users\test1\ss.ini
+Jwang = users\jwang\ss.ini
+Wgong = users\wgong\ss.ini
+Xswei = users\xswei\ss.ini
+Anne = users\anne\ss.ini
+Anneux = users\anneux\ss.ini
+Jwangux = users\jwangux\ss.ini
+Kang = users\kang\ss.ini
+Kangux = users\kangux\ss.ini
+Ayjin = users\ayjin\ss.ini
+Ayjinux = users\ayjinux\ss.ini
+James = users\james\ss.ini
+lli = users\lli\ss.ini
+Djwang = users\djwang\ss.ini
+Ghe = users\ghe\ss.ini
+Txia = users\txia\ss.ini
+Esong = users\esong\ss.ini
+Rsong = users\rsong\ss.ini
+Sli31 = users\sli31\ss.ini
+Sharsono = users\sharsono\ss.ini
+Jkim = users\jkim\ss.ini
+Zwang = users\zwang\ss.ini
+A4ln4zz = users\a4ln4zz\ss.ini
+A5kmmzz = users\a5kmmzz\ss.ini
+
+A2V8WZZ Jinwook Kim Jinwook Kim     
+A2V9DZZ Lester Li Songtao Li     
+A2VBYZZ Ran Song Ran Song     
+A2VCAZZ Xian Tang Xian Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCYZZ Anne Wang Anne J. Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A2VDDZZ Tao Xia Tao Xia     
+A334DZZ Marcellinus Harsono Marcellinus S. Harsono     
+A35QQZZ Shan Li Shan Li     
+A4LN4ZZ Bruce Lamond Bruce J. Lamond     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A5KMMZZ Yi Ding Yi Ding 
+
+**********************************************************
+
+algm-level-2:
+
+Admin = users\admin\ss.ini
+Jwang = users\jwang\ss.ini
+Xtang = users\xtang\ss.ini
+Awang = users\awang\ss.ini
+Jxie = users\jxie\ss.ini
+Lli = users\lli\ss.ini
+
+A2V9DZZ Lester Li Songtao Li     
+A2VCAZZ Xian Tang Xian Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCYZZ Anne Wang Anne J. Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A4YA4ZZ Everett Taylor Everett Taylor   
+
+**********************************************************
+
+comr-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Xtang = users\xtang\ss.ini
+Jwang = users\jwang\ss.ini
+Wgong = users\wgong\ss.ini
+Xswei = users\xswei\ss.ini
+Anne = users\anne\ss.ini
+Clu = users\clu\ss.ini
+
+A2V9WZZ Charley Lu Charley C. Lu     
+A2VCAZZ Xian Tang Xian Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCYZZ Anne Wang Anne J. Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A4YA4ZZ Everett Taylor Everett Taylor 
+
+**********************************************************
+
+face-level-1:
+
+Admin = users\admin\ss.ini
+Jxie = users\jxie\ss.ini
+Jwang = users\jwang\ss.ini
+Sli = users\sli\ss.ini
+
+A2V9DZZ Lester Li Songtao Li     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VD0ZZ Jim Wang Jing Wang     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A5KMMZZ Yi Ding Yi Ding 
+
+**********************************************************
+
+SourceCode (research):
+
+Admin = users\admin\ss.ini
+Guest = users\guest\ss.ini
+Jwang = users\jwang\ss.ini
+Awang = users\awang\ss.ini
+Xtang = users\xtang\ss.ini
+Wgong = users\wgong\ss.ini
+Wswei = users\wswei\ss.ini
+Sli = users\sli\ss.ini
+
+A2V9DZZ Lester Li Songtao Li     
+A2V9HZZ Bin Li Bin Li     
+A2VCAZZ Xian Tang Xian Tang     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCYZZ Anne Wang Anne J. Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A2VDDZZ Tao Xia Tao Xia     
+A334DZZ Marcellinus Harsono Marcellinus S. Harsono     
+A35QQZZ Shan Li Shan Li     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A5KMMZZ Yi Ding Yi Ding 
+
+**********************************************************
+
+CustomerCfg:
+
+Admin = users\admin\ss.ini
+Ptang = users\ptang\ss.ini
+Ayjin = users\ayjin\ss.ini
+Kang = users\kang\ss.ini
+jxie = users\jxie\ss.ini
+smpei = users\smpei\ss.ini
+Mwyang = users\mwyang\ss.ini
+Elu = users\elu\ss.ini
+Fxu = users\fxu\ss.ini
+Jmwang = users\jmwang\ss.ini
+Sliao = users\sliao\ss.ini
+Cwei = users\cwei\ss.ini
+Sbai = users\sbai\ss.ini
+Test = users\test\ss.ini
+Hdong = users\hdong\ss.ini
+Bdu = users\bdu\ss.ini
+Slin = users\slin\ss.ini
+Gyang = users\gyang\ss.ini
+Plam = users\plam\ss.ini
+Llam = users\llam\ss.ini
+Qliu = users\qliu\ss.ini
+Hliu = users\hliu\ss.ini
+Htu = users\htu\ss.ini
+Jxiong = users\jxiong\ss.ini
+Mlee = users\mlee\ss.ini
+Qchen = users\qchen\ss.ini
+Adomingues = users\adomingu\ss.ini
+Kkipferl = users\kkipferl\ss.ini
+Pjrhalicky = users\pjrhalic\ss.ini
+Jliu = users\jliu\ss.ini
+Gmassoud = users\gmassoud\ss.ini
+Slaw = users\slaw\ss.ini
+Kng = users\kng\ss.ini
+Itang = users\itang\ss.ini
+Ghughes = users\ghughes\ss.ini
+Eso = users\eso\ss.ini
+Ckopcsak = users\ckopcsak\ss.ini
+Tchang = users\tchang\ss.ini
+Jwu = users\jwu\ss.ini
+Bmallo = users\bmallo\ss.ini
+Aaa = users\aaa\ss.ini
+Dxiao = users\dxiao\ss.ini
+Schen = users\schen\ss.ini
+Johnliu = users\johnliu\ss.ini
+Jness = users\jness\ss.ini
+Jma = users\jma\ss.ini
+Hnguyen = users\hnguyen\ss.ini
+Phalicky = users\phalicky\ss.ini
+Josephliu = users\josephli\ss.ini
+Chrisyang = users\chrisyan\ss.ini
+Jcarcamo = users\jcarcamo\ss.ini
+Cchiu = users\cchiu\ss.ini
+Awong = users\awong\ss.ini
+Bli = users\bli\ss.ini
+Glac = users\glac\ss.ini
+Yfu = users\yfu\ss.ini
+Alee = users\alee\ss.ini
+Ltang = users\ltang\ss.ini
+Rchung = users\rchung\ss.ini
+Rmaris = users\rmaris\ss.ini
+Pwong = users\pwong\ss.ini
+Kzhao = users\kzhao\ss.ini
+Jsmolenski = users\jsmolens\ss.ini
+Tliu = users\tliu\ss.ini
+Bwong = users\bwong\ss.ini
+Ptsang = users\ptsang\ss.ini
+Ryeh = users\ryeh\ss.ini
+Hwang = users\hwang\ss.ini
+Rsong = users\rsong\ss.ini
+Dgospodinov = users\dgospodi\ss.ini
+Wchu = users\wchu\ss.ini
+Mwu = users\mwu\ss.ini
+Mdong = users\mdong\ss.ini
+Peterwang = users\peterwan\ss.ini
+Gfan = users\gfan\ss.ini
+Sandrayu = users\sandrayu\ss.ini
+Jtroya = users\jtroya\ss.ini
+Dsong = users\dsong\ss.ini
+Jhsiao = users\jhsiao\ss.ini
+Amillican = users\amillica\ss.ini
+Preider = users\preider\ss.ini
+Binzhao = users\binzhao\ss.ini
+Bnguyen = users\bnguyen\ss.ini
+Svargas = users\svargas\ss.ini
+Hquan = users\hquan\ss.ini
+Dkhanaferov = users\dkhanafe\ss.ini
+Rsamson = users\rsamson\ss.ini
+Bsmazak = users\bsmazak\ss.ini
+Shsu = users\shsu\ss.ini
+Sbui = users\sbui\ss.ini
+Wstelz = users\wstelz\ss.ini
+Bchan = users\bchan\ss.ini
+Mhsieh2 = users\mhsieh2\ss.ini
+Sxaymountry = users\sxaymoun\ss.ini
+Dchain = users\dchain\ss.ini
+Jwang42 = users\jwang42\ss.ini
+Zli5 = users\zli5\ss.ini
+Jglassman = users\jglassma\ss.ini
+Xzhao = users\xzhao\ss.ini
+Mxtian = users\mxtian\ss.ini
+Mcovarrubias = users\mcovarru\ss.ini
+Janeliu = users\janeliu\ss.ini
+Cwu = users\cwu\ss.ini
+Tonyng = users\tonyng\ss.ini
+Fwen = users\fwen\ss.ini
+Szheng = users\szheng\ss.ini
+Byadmin = users\byadmin\ss.ini
+Byau = users\byau\ss.ini
+Jkim = users\jkim\ss.ini
+Mngan = users\mngan\ss.ini
+Pma = users\pma\ss.ini
+Schang = users\schang\ss.ini
+Blamond = users\blamond\ss.ini
+Ghe = users\ghe\ss.ini
+Binchan = users\binchaa\ss.ini
+Savanesyan = users\savanesy\ss.ini
+Dwang = users\dwang\ss.ini
+Jzhang = users\jzhang\ss.ini
+Jchang = users\jchang\ss.ini
+Rlee = users\rlee\ss.ini
+Djanvelyan = users\djanvely\ss.ini
+Dlin = users\dlin\ss.ini
+
+A2V57ZZ Sean Bai Xuefeng Bai     
+A2V6DZZ Steve Chen Steve Y. Chen     
+A2V6FZZ Qiren Chen Qiren Chen     
+A2V6GZZ Carleen Chen Ping Chen     
+A2V6RZZ Howard Dong Hwan Dong     
+A2V78ZZ Dan Fineman Daniel D. Fineman     
+A2V85ZZ Morton Hsieh Morton Hsieh     
+A2V87ZZ James Hsiao James Hsiao     
+A2V8AZZ Ron Jin Aiyou Jin     
+A2V8FZZ Gary Hughes Gary Hughes     
+A2V8TZZ Kelly Kipferl Kelly L. Kipferl     
+A2V8YZZ Patrick Lam Patrick C. Lam     
+A2V93ZZ Chris Kopcsak Christopher J. Kopcsak     
+A2V96ZZ Michael Lee Ming Chak Lee     
+A2V98ZZ Stanley Law Siu Nin S. Law     
+A2V9BZZ James Landowski James J. Landowski     
+A2V9CZZ Steven Liao Steven G. Liao     
+A2V9DZZ Lester Li Songtao Li     
+A2V9FZZ Ken Li Rukun Li     
+A2V9HZZ Bin Li Bin Li     
+A2V9RZZ John Liu John S. Liu     
+A2V9TZZ Tan Liu Tan Liu     
+A2V9VZZ Joseph Liu Yong Liu     
+A2V9WZZ Charley Lu Charley C. Lu     
+A2V9XZZ Jonathan Ma Jonathan G. Ma     
+A2VA2ZZ Raluca Laza Raluca L. Laza     
+A2VAGZZ Ken Ng Kwok Hei Ng     
+A2VARZZ Simon Pei Shumeng Pei     
+A2VB2ZZ Peter Reider Peter J. Reider     
+A2VBVZZ Edward So Edward So     
+A2VBXZZ Douglas Song Douglas D. Song     
+A2VBYZZ Ran Song Ran Song     
+A2VC2ZZ Walt Stelz Walter G. Stelz     
+A2VC8ZZ Tom Tang Lei Tang     
+A2VC9ZZ Patrick Tang Peishun Tang     
+A2VCAZZ Xian Tang Xian Tang     
+A2VCBZZ Ivy Tang Yu Ying Tang     
+A2VCDZZ John Thompson John E. Thompson     
+A2VCHZZ Piin Tsang Piin C. Tsang     
+A2VCJZZ Hongming Tu Hongming Tu     
+A2VCSZZ Silvia Vargas Silvia M. Vargas     
+A2VCYZZ Anne Wang Anne J. Wang     
+A2VCZZZ Julia Wang Jianmin Wang     
+A2VD0ZZ Jim Wang Jing Wang     
+A2VD4ZZ Carl Wei Xiangyue Wei     
+A2VDAZZ Bernadette Wong Bernadette W. Wong     
+A2VDBZZ Philip Wong Philip W. Wong     
+A2VDHZZ John Xiong Zhiguo Xiong     
+A2VDJZZ Felix Xu Feng Xu     
+A2VDKZZ Chris Yang Chris S. Yang     
+A2VDLZZ Mingwei Yang Mingwei Yang     
+A2VDMZZ Grace Yang Xiaobing Yang     
+A2VDNZZ Benjamin Yau Benjamin E. Yau     
+A2VDPZZ Richard Yeh Chi S. Yeh     
+A2VDSZZ Bin Zhao Bin Zhao     
+A2VDTZZ Kathy Zhao Kathy Z. Zhao     
+A2VDVZZ Tao Zheng Tao Zheng     
+A2VDWZZ Jim Ziska James L. Ziska     
+A30TJZZ Brian Chan Kwan-Wai Chan     
+A34P9ZZ Steve Bui Steve V. Bui     
+A3836ZZ Sack Xaymountry Sack Xaymountry     
+A39NGZZ Mike de Laine Michael C. de Laine     
+A3AXLZZ Gordon He Gordon C. He     
+A3B3VZZ John Wang Zhongqing Wang     
+A3BC9ZZ Zinan Li Zinan Li     
+A3BRWZZ David Gwo David S. Gwo     
+A3DV4ZZ Michael Tian Michael Tian     
+A3M3YZZ Stephen Chuck Stephen K. Chuck     
+A3QJWZZ Saju George Saju George     
+A3SNZZZ Tony Ng Yan-Kam Ng     
+A3VSRZZ Ping Ma Ping Ma     
+A4LN4ZZ Bruce Lamond Bruce J. Lamond     
+A4QZWZZ Shaun Chang Te-Hsiang Chang     
+A4YA4ZZ Everett Taylor Everett Taylor     
+A513GZZ Bin Chan Zhuo Bin Chan Zhuo     
+A5ANXZZ Jason Zhang Jason Zhang     
+A5BPFZZ Yu Chuan Chang Yu Chuan Chang     
+A5BQBZZ Raymond Lee Raymond Lee     
+A5JFQZZ Davit Janvelyan Davit Janvelyan     
+A5K6ZZZ Wenphing Lo Wenphing Lo     
+A5L14ZZ David Lin David D. Lin     
+A5LF5ZZ Ken Leung Ken K. Leung     
+A5NB3ZZ Caleb Sweeney Caleb W. Sweeney     
+A5NBGZZ Fred Chen Fred Chen 
+
+**********************************************************
+
+
+
+
+
+
+
+
+**********************************************************

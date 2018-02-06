@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters >
+  <parameter name="DemoEnv" description="Please enter the name of the Environment" defaultValue="Dev" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='DemoEnv']/@value" />
+  </parameter>
+  <parameter name="DefaultConnection" description="Please enter the name of the Environment" defaultValue="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-SemsOpes-20140317032840;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-SemsOpes-20140317032840.mdf" tags="">
+    <parameterEntry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='DefaultConnection']/@value" />
+  </parameter>
+</parameters>

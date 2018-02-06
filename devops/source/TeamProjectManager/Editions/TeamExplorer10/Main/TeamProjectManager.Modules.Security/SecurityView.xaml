@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="TeamProjectManager.Modules.Security.SecurityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:TeamProjectManager.Common.Infrastructure;assembly=TeamProjectManager.Common"
+             xmlns:local="clr-namespace:TeamProjectManager.Modules.Security"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <TabControl Visibility="{Binding Path=TfsSupportedVisibility}">
+
+            <TabItem Header="View / Delete Groups" i:HelpProvider.HelpContent="Allows you to view and delete the security groups that are defined for each Team Project. This can be useful when you want to get an overview of all the security groups being used.">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Retrieve Members" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5,0,0,0">
+                            <ComboBoxItem Content="None" IsSelected="{Binding Path=MembershipMode, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=None}" />
+                            <ComboBoxItem Content="Direct Members Only" IsSelected="{Binding Path=MembershipMode, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Direct}" />
+                            <ComboBoxItem Content="All Members (Expand Groups)" IsSelected="{Binding Path=MembershipMode, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Expanded}" />
+                        </ComboBox>
+                        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Get Security Groups" Margin="0,5,0,0" Command="{Binding Path=GetSecurityGroupsCommand}" />
+                    </Grid>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=SecurityGroups}" IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" x:Name="securityGroupsDataGrid" SelectionChanged="securityGroupsDataGrid_SelectionChanged" Margin="0,5,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Team Project" Binding="{Binding Path=TeamProject.Name}" />
+                            <DataGridTextColumn Header="Security Group" Binding="{Binding Path=Name}" />
+                            <DataGridTextColumn Header="Members" Binding="{Binding Path=MembersList}" />
+                            <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Row="2" Content="Delete Selected Security Groups" Margin="0,5,0,0" Command="{Binding Path=DeleteSelectedSecurityGroupsCommand}" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Add / Update Group" i:HelpProvider.HelpContent="Allows you to add or update security groups across multiple Team Projects. This can be useful when you want to have consistent security groups or when you want to import new work item types that require certain security groups to be present.">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Name" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=SecurityGroupChange.Name, UpdateSourceTrigger=PropertyChanged}" ToolTip="Enter just the name of the group, not prefixed by a project name or [Project], e.g. just &quot;Readers&quot;." Margin="5,5,0,0" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Description" Margin="0,5,0,0" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=SecurityGroupChange.Description, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,0,0" AcceptsReturn="False" MinHeight="70" MaxLength="256" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Members" Margin="0,5,0,0" />
+                    <Grid Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Users To Add" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center" Text="{Binding Path=SecurityGroupChange.UsersToAdd}" ToolTip="Enter the full name of the member, e.g. &quot;DOMAIN\user&quot;, &quot;[MyProject]\MyGroup&quot;, &quot;[MyCollection]\MyGroup&quot;, &quot;[TEAM FOUNDATION]\MyGroup&quot;. Separate multiple entries with a semicolon (;)." />
+                        <Label Grid.Row="1" Grid.Column="0" Content="Users To Remove" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center" Text="{Binding Path=SecurityGroupChange.UsersToRemove}" IsEnabled="{Binding Path=SecurityGroupChange.RemoveAllUsers, Converter={StaticResource inverseBooleanConverter}}" ToolTip="Enter the full name of the member, e.g. &quot;DOMAIN\user&quot;, &quot;[MyProject]\MyGroup&quot;, &quot;[MyCollection]\MyGroup&quot;, &quot;[TEAM FOUNDATION]\MyGroup&quot;. Separate multiple entries with a semicolon (;)." />
+                        <CheckBox Grid.Row="1" Grid.Column="2" Margin="5,0,0,0" Content="Remove all existing users" VerticalAlignment="Center" IsChecked="{Binding Path=SecurityGroupChange.RemoveAllUsers}" />
+                    </Grid>
+                    
+                    <Label Grid.Row="3" Grid.Column="0" Content="Permissions" Margin="0,5,0,0" />
+                    <Grid Grid.Row="3" Grid.Column="1" Margin="5,5,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TabControl Grid.Row="0" Grid.IsSharedSizeScope="True">
+                            <TabControl.Resources>
+                                <DataTemplate DataType="{x:Type local:PermissionChange}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="PermissionName" />
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="PermissionNone" />
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="PermissionAllow" />
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="PermissionDeny" />
+                                            <ColumnDefinition Width="Auto" SharedSizeGroup="PermissionInherit" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Path=Permission.DisplayName}" />
+                                        <RadioButton Grid.Column="1" Content="Don't Change" Margin="5,0,0,0" IsChecked="{Binding Path=Action, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=None}" ToolTip="Does not change the existing permission" />
+                                        <RadioButton Grid.Column="2" Content="Allow" Margin="5,0,0,0" IsChecked="{Binding Path=Action, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Allow}" ToolTip="Allows the permission" />
+                                        <RadioButton Grid.Column="3" Content="Deny" Margin="5,0,0,0" IsChecked="{Binding Path=Action, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Deny}" ToolTip="Denies the permission" />
+                                        <RadioButton Grid.Column="4" Content="Inherit" Margin="5,0,0,0" IsChecked="{Binding Path=Action, Mode=TwoWay, Converter={StaticResource enumConverter}, ConverterParameter=Inherit}" ToolTip="Inherits the permission" />
+                                    </Grid>
+                                </DataTemplate>
+                            </TabControl.Resources>
+                            <TabItem Header="Team Project">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Path=SecurityGroupChange.TeamProjectPermissions}" />
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Areas">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Path=SecurityGroupChange.WorkItemAreasPermissions}" />
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Iterations">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Path=SecurityGroupChange.WorkItemIterationsPermissions}" />
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Build">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Path=SecurityGroupChange.TeamBuildPermissions}" />
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Source Control">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <ItemsControl ItemsSource="{Binding Path=SecurityGroupChange.SourceControlPermissions}" />
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                        <WrapPanel Grid.Row="1" Margin="0,5,0,0">
+                            <TextBlock><Hyperlink Command="{Binding Path=ResetSecurityPermissionsCommand}" ToolTip="Rest the permissions">reset</Hyperlink></TextBlock>
+                            <TextBlock Margin="5,0,0,0"><Hyperlink Command="{Binding Path=LoadSecurityPermissionsCommand}" ToolTip="Load the permissions from a saved file">load...</Hyperlink></TextBlock>
+                            <TextBlock Margin="5,0,0,0"><Hyperlink Command="{Binding Path=SaveSecurityPermissionsCommand}" ToolTip="Save the permissions to a file">save...</Hyperlink></TextBlock>
+                        </WrapPanel>
+                    </Grid>
+
+                    <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Add / Update Security Group" Command="{Binding Path=AddOrUpdateSecurityGroupCommand}" Margin="0,5,0,0" />
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</UserControl>

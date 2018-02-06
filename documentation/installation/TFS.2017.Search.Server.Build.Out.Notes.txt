@@ -1,0 +1,88 @@
+
+Code Search server build out ********************************************
+
+Download latest Installation Guide, review for advanced configuration.
+https://docs.microsoft.com/en-us/vsts/search/code/administration
+
+*******************************************
+Use TFSSERVICE account.
+Add TFSSERVICE to Local Security Policy for Log on as a Service.
+Add TFSSERVICE to local Administrators group.
+(DO NOT do "Account is sensitive and cannot be delegated" in AD)
+
+Basic server prep:
+	Disable UAC
+	Disable Indexing service, all drives
+	Disable Shutdown Event Tracker (gpedit.msc > Computer Configuration > Administrative Templates > System > Display Shutdown Event Tracker > Disable )
+	Expand Event Viewer > Application and System log size to 100 MB rolling. (102400 KB)
+*	Add custom TFS event filter - need to add Search Service event sources to custom event view.
+	Enable file extensions and hidden files in Windows Explorer (Need to develop a PS script to do this)
+	Set Power Option to high performance
+	
+Copy latest Procmon.exe from Sysinternals Suite
+http://www.microsoft.com/sysinternals
+Copy procexp.exe and procexp64.exe to C:\Windows
+Set procexp.exe and procexp64.exe to Always Run as Administrator
+	
+Restart
+
+Ninite.com:  7-zip, Notepad++, WinDirStat
+
+Set Notepad++ to default application for .txt, .log, and .xml. (Need to develop a PS script for this)
+
+Copy necessary media to D:\_tfs_data\software ( better AV OAS performance under exclusion folder in policy ).  Installs will take half the time.
+
+First patching with Windows Update:
+Set to never check for updates
+Use both check boxes to enable Microsoft Update
+Check online, not with system administrator.  There are more updates online.
+
+Select all recommended (other) updates.
+Select all optional recommended updates.
+Do not install Silverlight, hide the optional update.
+Do not install additional language packs.
+
+Restart
+Check for Windows Updates again.  I'm serious.  Restart if necessary.
+
+[Snapshot]
+
+********************************************
+
+TFS 2017.1 service package install:
+Run the Code Search Configuration Wizard from TFS admin console.
+Get the deployment package using the link.
+Copy deployment package to search server.
+Copy PS scripts for search service administration.
+
+Install guide (to a separate server):
+https://docs.microsoft.com/en-us/vsts/search/code/administration#separate-server
+
+
+Final polish **********************************************
+
+Pin commonly used applications to taskbar:
+	???????????????????????????
+
+Corporate IT Tasks:
+
+Update/Verify the HPSM
+    Resource Details: Verify the server is assigned to the correct Resource Group
+    Support Contacts: Add additional Application Contacts, verify the WW_CHBS-Support-TFS is listed
+    Maintenance: Confirm a patch push group is defined and is correct
+    Monitoring: Setup additional monitoring as needed
+    Backup and Recovery: Ensure the server is being backed up if requested
+
+	Add server entry into DNS:
+	http://ithelp.mmm.com/Request.aspx?ID=MC-DNSChange 
+	
+		
+AV Notes:
+Agent install location:  "\\integration.mmm.com\production\software\mcafee\Current Agent and VSE package"
+Host Intrustion Protection Password:  McHIPSis4u
+Manual installation location:  "\\usfile01.mmm.com\mcafee\Products\MA"
+
+To open UpdaterUI:
+c:\Program Files (x86)\McAfee\Common Framework>cmdagent /s
+
+

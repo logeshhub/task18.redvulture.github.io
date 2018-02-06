@@ -1,0 +1,83 @@
+
+Fastman migration notes:
+
+POC:  Curt Morgan
+
+Source server:  hcmtfs2.usac.mmm.com
+TFSSecurity /g+ "[SERVER]\Team Foundation Service Accounts" n:USAC\USFETFSSETUP /server:http://hcmtfs2.usac.mmm.com:8080/tfs
+
+01.	Request new project - Added project registration
+02.	Create any necessary AD groups for the project.  - Add users directly to Team Project, no AD group creation
+03.	Add users to appropriate AccessLevel groups. - Not necessary here
+04.	Identify work items to migrate. - Some work items have invalid users...?
+05.	Create shared WIQ to filter to desired work items. - Export WIQ is present.
+06.	Export work item templates.
+07.	Build work item mappings to convert from custom WITs to 2015.1 CMMI.
+08.	Identify any user mapping or value maps.
+09.	Make sure that .\Everyone is included in Contributors group temporarily to include all valid user values for work items.
+10.	Create integration job.
+11.	Test job on dev.
+12.	Review, make corrections.
+13.	Rinse and repeat, review.  If the TP is destroyed to start over, remember to add users back to .\Everyone, or the integration job will fail.
+14.	Schedule cut over window.
+15.	Migrate to production.
+16.	After migration, remove .\Everyone
+17.	Enable features using AccessLevels groups on the project.
+18.	Review production migration results.
+19.	Add details to SharePoint site for new Team Project.
+20.	Update licensing on SharePoint list.
+21.	Add users to WW-ETFS-Everyone email DL.
+22.	Email instructions and links to ETFS SPS documents for new users.
+
+********************************************************
+Bug (deviations from base Agile template):			
+
+[Additional]
+
+	<FIELD name="Rank" refname="Microsoft.VSTS.Common.Rank" type="String" reportable="dimension">
+		<HELPTEXT>Stack rank used to prioritize work</HELPTEXT>
+	</FIELD>
+				
+	<FIELD name="Issue" refname="Microsoft.VSTS.Common.Issue" type="String" reportable="dimension">
+		<HELPTEXT>Used to highlight the bug, e.g., to mark it as an issue.</HELPTEXT>
+		<REQUIRED />
+		<ALLOWEDVALUES expanditems="true">
+			<LISTITEM value="Yes" />
+			<LISTITEM value="No" />
+		</ALLOWEDVALUES>
+		<DEFAULT from="value" value="No" />
+	</FIELD>
+
+	<FIELD name="Triage" refname="Microsoft.VSTS.Common.Triage" type="String" reportable="dimension">
+		<HELPTEXT>Status of triaging the bug</HELPTEXT>
+		<ALLOWEDVALUES expanditems="true">
+			<LISTITEM value="Approved" />
+			<LISTITEM value="Investigate" />
+		</ALLOWEDVALUES>
+	</FIELD>
+
+***********************************************************
+Task (deviations from base Agile template):
+
+[Additional]
+	<FIELD name="Issue" refname="Microsoft.VSTS.Common.Issue" type="String" reportable="dimension">
+		<HELPTEXT>Used to highlight a task, e.g., to mark it as an issue</HELPTEXT>
+		<REQUIRED />
+		<ALLOWEDVALUES expanditems="true">
+			<LISTITEM value="Yes" />
+			<LISTITEM value="No" />
+		</ALLOWEDVALUES>
+		<DEFAULT from="value" value="No" />
+	</FIELD>
+
+[Missing]
+	<FIELD name="Priority" refname="Microsoft.VSTS.Common.Priority" type="Integer" reportable="dimension">
+		<HELPTEXT>Importance to business</HELPTEXT>
+		<ALLOWEDVALUES expanditems="true">
+			<LISTITEM value="1" />
+			<LISTITEM value="2" />
+			<LISTITEM value="3" />
+			<LISTITEM value="4" />
+		</ALLOWEDVALUES>
+		<DEFAULT from="value" value="2" />
+	</FIELD>

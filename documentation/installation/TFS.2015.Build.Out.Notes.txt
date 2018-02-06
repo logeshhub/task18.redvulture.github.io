@@ -1,0 +1,550 @@
+
+Download latest Installation Guide, review for advanced configuration.
+
+*******************************************
+Ensure AD Accounts exist for TFSSETUP, TFSSERVICE, TFSREPORTS, WSSSERVICE, SPS Farm Admin account, TFSBUILD, TFSPROXY
+(DO NOT do "Account is sensitive and cannot be delegated" in AD)
+
+Basic server prep:
+	Disable UAC
+	Disable Indexing service, all drives
+	Disable Shutdown Event Tracker (gpedit.msc > Computer Configuration > Administrative Templates > System > Display Shutdown Event Tracker > Disable )
+	Expand Event Viewer > Application and System log size to 100 MB rolling.
+	Add custom TFS event filter
+	Ensure that weekly defrag is set up.
+	Enable file extensions and hidden files in Windows Explorer (Need to develop a PS script to do this)
+	Use custom page file size, system memory * 1.5, both min and max size
+	Set Power Option to high performance
+	
+Copy latest Sysinternals Suite > C:\Program Files\Sysinternals
+Add C:\Program Files\Sysinternals to %PATH%
+	
+Make Local Security Policy changes for TFSSERVICE and TFSREPORTS (See TFS installation guide)
+
+Add IIS Role, see TFS Install guide for exact options to enable for the role.
+DO NOT DO latest .NET Framework, start with 3.5.1 (or add 4.5 on Server 2012 R2 and above) and start from there.
+!!!!!! DO NOT install .NET Framework 4.6.  The SharePoint installer will not function correctly.
+
+!!!!!! Add SSL certificate to all application tier nodes, both as WebHosting AND Personal certificates.
+
+Restart
+
+Ninite.com:  7-zip, Notepad++, WinMerge, WinDirStat
+
+Configure Notepad++:
+Install XML Tools Plug-in
+Set Notepad++ to default application for .txt, .log, and .xml. (Need to develop a PS script for this)
+
+Copy necessary media to D:\_tfs_data for now, move to D:\Software later ( better AV OAS performance under exclusion folder in policy ).  Installs will take half the time.
+
+First patching with Windows Update:
+Set to never check for updates
+Use both check boxes to enable Microsoft Update
+Check online, not with system administrator.  There are more updates online.
+Select all recommended updates.
+Select all optional recommended updates (unless .NET 4.6)
+Do not install Silverlight, hide the optional update.
+Do not install additional language packs.
+
+Restart
+Check for Windows Updates again.  I'm serious.  Restart if necessary.
+
+[Snapshot]
+
+********************************************
+
+SQL 2012 (highest service pack, SP3 here)
+	!!! Make sure that the SSRS, SSAS, and SQL are all on the same service pack !!!
+	
+	Install for SSRS on single AT node (must use Standard Edition)
+	SSAS Service fix on DT (Restart the service on crash - Services > Property)
+	SSRS Service delay if single tier (Set SSRS service to Delayed Start)
+	
+	Set up for SSRS report development:
+	SSRS:  
+	
+	Configure explicit permissions for SSRS:
+		SSRS Report Manager - IE (run as administrator) > http://tfsdev02/Reports
+		SSRS Report Manager > http://tfsdev02/Reports > Site Settings (top right) > Security > USAC\US-ETFS-SQLReportBuilders > System User
+		SSRS Report Manager > http://tfsdev02/Reports > Folder Settings
+		US-ETFS-Admin > Content Manager, Team Foundation Content Manager
+		US-ETFS-DatawarehouseReaders > Browser
+		US-ETFS-SQLReportBuilders > Browser, My Reports, Publisher, Report Builder
+		USFETFSDEVS > Team Foundation Content Manager
+		USFP0001TFS1 > Team Foundation Content Manager
+		(Clean out any others)
+		
+	Verify SQL services - use SSMS for both SQL and SSAS
+	
+Check for Windows Updates.
+Restart
+
+[Snapshot]
+
+********************************************
+
+SPS 2013 SP1 Install
+	!!!!! DO NOT PATCH UNTIL COMPLETELY CONFIGURED !!!!!
+	USFETFSDEVSP1 for SPS Farm Administrator, USFETFSDEVSP2 for WSSSERVICE account.
+	Set SPS index data location to D:\_sharepoint_data
+	
+Verify services
+
+Set Timer Service Windows server to Automatic (Delayed) if single tier.
+Stop Timer Service
+Explicitly set modify permissions on Hive\Logs folder for WSS_WPG (local group)
+	Default hive installation location - C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\LOGS
+	(You may have to push through the advanced security options to set the permissions)
+Start Timer Service
+	
+!!!! ALWAYS MAKE SURE TO RUN CENTRAL ADMINISTRATION AND MANAGEMENT SHELL AS ADMINISTRATOR !!!!
+	
+Set up alternate access mapping for http://tfsdev.mmm.com
+	http://tfsdev01:17012/_admin/AlternateUrlCollections.aspx
+
+	Default:	http://tfsdev01
+	Intranet:	http://tfsdev.mmm.com
+	Internet:	http://tfsdev01.usac.mmm.com
+Leave Central Administration AAM alone.
+
+Let SharePoint run for 4 hours.
+
+Remove the empty WSS_Content database:  http://tfsdev01:17012/_admin/CNTDBADM.aspx
+Attach the original WSS_Content database.
+Verify content.
+
+For Search Server error 2159
+use [master]
+GO
+GRANT VIEW SERVER STATE TO "USAC\USFETFSPRODSP2"
+GO
+
+If Search Server throws exception about database schema needing upgrade:
+http://blog.armgasys.com/?p=206
+
+Clearing the SPS config cache (if the event log starts flooding):
+https://spcachecleaner.codeplex.com/ (Do the steps manually, don't use the tool)
+(Make sure that the SPS Timer Service is set to the WSSSERVICE account)
+
+For backwards compatibility with previous TFS webparts:
+http://blogs.msdn.com/b/dstfs/archive/2014/02/04/after-upgrade-to-tfs-2013-or-after-restoring-a-site-collection-some-web-parts-on-the-tfs-dashboard-pages-display-an-error.aspx
+
+For Perflib errors about WmiApRpl:
+http://weblogs.asp.net/wesleybakker/Solving-WmiApRpl-and-BITS-errors-with-SharePoint-2013-on-Windows-Server-2012
+
+Event log error 1010, Print Spooler:
+https://technet.microsoft.com/en-us/library/cc727194%28v=ws.10%29.aspx
+
+Event log 1008, mscoree.dll.
+https://technet.microsoft.com/en-us/library/cc727194%28v=ws.10%29.aspx
+
+Rebuild the perf mon counter system backup store:
+From PS console as admin:
+
+Update-Help
+Set-ExecutionPolicy RemoteSigned
+
+.\lodctr /e:mscoree.dll
+.\lodctr /e:FrameworkPerf.dll
+.\lodctr /e:WmiApRpl.dll
+.\lodctr /e:System.dll
+.\lodctr /e:CcmFramework.dll
+.\lodctr /e:esentprf.dll
+.\lodctr /e:Secur32.dll
+.\lodctr /e:bitsperf.dll
+.\lodctr /e:Spooler
+.\lodctr /e:MOMConnectorPerformance.dll
+.\lodctr /e:HealthServicePerformance.dll
+.\lodctr /R
+
+Event log 5586, "SharePoint_Diagnostics_*, does not exist or permissions"
+https://social.technet.microsoft.com/Forums/office/en-US/b066de94-4698-4f37-a398-5caddcd943b5/cannot-drop-the-event-session-sharepointdiagnostics-which-i-dont-have-database?forum=sharepointadmin
+
+Configure SMTP for SharePoint:
+tfs.noreply@mmm.com
+mailserv.mmm.com
+
+!!!!! DO NOT Check for Windows Updates (especially SharePoint updates) Until after TFS 2015 installation and configuration !!!!!!!!!
+Restart
+
+[Snapshot]
+
+********************************************
+
+VS 2015.1 Professional install.  Strip out all the features to just leave shell and TFS client assemblies.
+	( * VS was released first, so install it first to prevent older assemblies from stepping on the correct ones. )
+	( * Again, install SharePoint BEFORE VS 2015 install )
+N98V8-Y8H24-VTQ3R-T3B4D-8K8R2	
+
+TFS 2015.1 initial bits install
+CGXKN-MHVPF-BXRJR-KPD28-MTDWP
+
+Provide activation key for VS.
+DO NOT install any additional VS plug-ins at this point.
+
+VS 2015 addtional updates (if any)
+TFS 2015 additonal updates (if any)
+
+
+Check for Windows Updates.
+Take a moment to look through Brian Harry's blog about any recent critical patches.
+Restart
+
+Double check SQL client connectivity before configuration of AT.
+	* The installer could not make a TCP/IP connection to DT, fell back to Named Pipes for communication
+	
+Configure application tier (Advanced Configuration)
+	TFSSERVICE = USFETFSDEVS
+	TFSREPORTS = USFETFSDEVR
+	WSSSERVICE = USFETFSDEVSP2
+	SPS Farm = USFETFSDEVSP1
+
+Explicitly add TFSSERVICE account to Team Foundation Service Accounts (this is needed for health check application to be able to loopback with TFSSERVICE):
+TFSSecurity /g+ "[SERVER]\Team Foundation Service Accounts" n:USFETFSDEVS /server:http://tfsdev01.usac.mmm.com:8080/tfs
+	
+Install and configure secondary AT nodes.
+From TFS Admin Console, reset TFS Notification URL and Web Access URL to point to https://tfsdev.mmm.com/tfs
+
+Move TFS version control cache to D:\_tfs_data (if necessary, should appear in Advanced Configuration)
+Set up and configure TFS Health Check application, port 8088.
+Set DisableLoopbackCheck = 1 in registry.
+	HKLM\SYSTEM\CurrentControlSet\Control\Lsa > Add DWORD key > DisableLoopbackCheck > Set to 1
+	https://support.microsoft.com/en-us/kb/896861
+Edit HOSTS file to include 127.0.0.1 tfsdev.mmm.com (this will make the farm node loopback when calling web services that would normally go through the load balancer)
+Restart
+
+Install TFS Health Check web application.
+	* Had to recompile the project using the TFS 2015 NuGet package for API support.
+	
+Adjust TFS access level, set appropriate group membership.
+	https://tfsdev.mmm.com/tfs/_admin/_licenses
+	Stakeholder > USAC\US-ETFS-AccessLevel-Stakeholder
+	Basic > USAC\US-ETFS-AccessLevel-Basic
+	Advanced > USAC\US-ETFS-AccessLevel-Advanced
+
+Increase the AD > TFS sync interval to 30 minutes instead of default 60.
+http://blogs.msdn.com/b/vasu_sankaran/archive/2010/06/07/identity-synchronization-in-team-foundation-server-2010.aspx
+	
+VS 2015 Power Tools
+https://visualstudiogallery.msdn.microsoft.com/898a828a-af00-42c6-bbb2-530dc7b8f2e1
+	Custom installation:
+		Command line interface
+		VS integration
+		Check-in Policy Pack
+		Process Editor
+		PowerShell Cmdlets
+		
+
+VS 2015 Side Kicks
+http://www.attrice.info/downloads/index.htm#tfssidekicks2015
+
+TFS Administration Tool (2.3 is 2013, you have to run it from a workstation with 2013 APIs installed, but it can work with 2015)
+http://tfsadmin.codeplex.com/
+
+????????????????
+
+Check for Windows Updates.
+Restart
+
+Verification:
+
+Verify TFS Admin Tool
+Verify Sidekicks
+
+[Snapshot]
+
+Final polish **********************************************
+
+Pin commonly used applications to taskbar:
+	???????????????????????????
+
+IIS maintenance:
+	Set all application pools that were created during the installations to never spin down.
+	( * most of the application pool idle timeout settings are configured correctly by the installer now, just verify.)
+		Application Pools > Advanced Settings:
+			Idle Time-out (minutes):  0
+			Reycling > Regular Time Internal (minutes):  0
+	Relocate IIS Log Files.
+	Set up Scheduled Task PS scripts to maintain log files.  Can be found in TFS PowerShell project in $\etfs\Scripts\PowerShell
+	
+
+Set up TFS admin report pack.
+
+https://msdn.microsoft.com/en-us/library/dd631915.aspx
+
+********************************
+
+AV exclusions to be added:
+
+C:\Program Files\Microsoft Team Foundation Server 14.0\Application Tier\
+C:\Program Files\Microsoft Team Foundation Server 14.0\Tools\
+C:\Program Files\Microsoft Team Foundation Server 14.0\Version Control Proxy\
+
+*********************************
+
+Upgrade:
+
+Pre-work:
+Update CHBS calendar.
+Do any TCAB work.
+Add OOS windows.
+Broadcast email for outage.
+
+Call helpdesk to disable GNS alerts on the instance.
+Stop health check site and application pool on both nodes.
+Remove AT features from node 02.
+Uninstall bits on node 02.
+Uninstall bits on node 01.
+
+Licensing issue:
+https://connect.microsoft.com/VisualStudio/feedback/details/1666738/tfs-2015-rtm-download-link-still-gives-prerelease-version
+
+Universal C:
+https://www.microsoft.com/en-us/download/details.aspx?id=48234
+
+Reinstall bits.
+Run upgrade wizard.
+BEFORE upgrading the TPC, add the SSL cert binding back to the TFS web services site
+( sometimes it will rebind, sometimes it doesn't )
+!!!  This was caused by not having the cert registered as both Personal and WebHosting
+
+Broadcast that service is back online.
+Check that post-upgrade backups have run.
+
+Test:
+Work items
+Version Control
+Reports
+SharePoint
+Web portal
+Builds
+
+PowerShell (Administrator):
+Update-Help
+Set-ExecutionPolicy RemoteSigned
+
+
+Reset instance IDs on QA and tfsupgradetest.
+.\TFSConfig ChangeServerID /SQLInstance:prodsql219\sql219 /DatabaseName:Tfs_Configuration /ProjectCollectionsOnly
+
+Issue with SPS after corporate policy was applied to Local Security Policy.
+http://social.technet.microsoft.com/wiki/contents/articles/24494.sharepoint-2013-an-exception-occurred-when-trying-to-establish-endpoint-for-context-could-not-load-file-or-assembly.aspx
+
+
+Corporate IT Tasks:
+
+Update/Verify the CIRM entry http://gsm/
+    Resource Details: Verify the server is assigned to the correct Resource Group
+    Support Contacts: Add additional Application Contacts, verify the WW_CHBS-Support is listed
+    Maintenance: Confirm a patch push group is defined and is correct
+    Monitoring: Setup additional monitoring as needed
+    Backup and Recovery: Ensure the server is being backed up if requested
+
+	Add server entry into DNS:
+	http://ithelp.mmm.com/Request.aspx?ID=MC-DNSChange 
+	
+	For archon-tech servers:
+		Go to Active Directory computer account:
+		Find extensionAttribute2, set to actual text for CIRM push group name for the server
+	
+	Submit AREQ in Lotus to add US-ETFS-Admin to local administrators group.
+	
+AV Notes:
+Agent install location:  "\\integration.mmm.com\production\software\mcafee\Current Agent and VSE package"
+Host Intrustion Protection Password:  McHIPSis4u
+Manual installation location:  "\\usfile01.mmm.com\mcafee\Products\MA"
+
+To open UpdaterUI:
+c:\Program Files (x86)\McAfee\Common Framework>cmdagent /s
+
+
+
+
+QA Build Start:  	11:15am
+Stopped:  			12:15pm
+Start: 				3:30pm
+
+.\lodctr /e:WmiApRpl.dll
+.\lodctr /e:CcmFramework.dll
+.\lodctr /e:esentprf.dll
+.\lodctr /e:Secur32.dll
+.\lodctr /e:bitsperf.dll
+.\lodctr /e:Spooler
+.\lodctr /R
+
+QA01 - Last 3/23/16 2:43pm
+QA02 - Last 3/23/16 4:06pm
+
+TFVC
+Run 1 - QA02 - HOSTS not set - 4:31, 4:05, 4:24
+Run 2 - QA02 - HOSTS set - 4:21, 4:26
+
+Git
+Run 1 - QA02 - HOSTS set - 1:36, 1:37
+Run 2 - QA02 - HOSTS not set - 1:34, 1:37
+
+C:\Src\ETFS-QA\TestProjectScrumGit
+
+USSETFSHISDevOps
+USSETFS3MHISBuild
+
+
+******************************************************************************************
+
+05/21/16
+Upgrade to TFS 2015.2.1
+
+Pre-work:
+Update CHBS calendar.
+Do any TCAB work.
+Check SQL logs for successful backup of TPC.
+Add OOS windows.
+Disable Event Mapping for load balancer
+Broadcast email for outage (if necessary)
+
+Use TfsServiceControl quiesce on both nodes to stop activity (02 first, then 01).
+	"C:\Program Files\Microsoft Team Foundation Server 14.0\tools\TfsServiceControl.exe" QUIESCE
+Check for pending server patches, patch all the way up. (126 patches)
+Stop health check site and application pool on both nodes.
+Reboot both nodes
+Wait for instance to quiesce (about 30 min)
+Remove application tier features from node 02.
+Wait for configuration update in Tfs_Configuration to be picked up by tfsprod01.
+Run upgrade on node 01.
+Configure node 01 using Upgrade Wizard.
+Start Health Check website.
+Reboot node 01.
+Run upgrade on node 02.
+Configure node 02 as AT only.
+Reboot node 02.
+Wait for instance to quiesce, watch event logs. (about 30 min)
+Check for pending server patches, patch all the way up again. (in case any updates are available post-upgrade)
+
+Test:
+Work items
+Version Control
+Reports
+SharePoint
+Web portal
+Builds
+
+Finalize:
+Broadcast that service is back online.
+
+Post steps:
+(Later) Check that post-upgrade backups have run.
+Add task for Vishwa to reset the log locations and reconfigure any PS maintenance scripts
+Check SCCM configuration for both nodes to make sure they are patching on schedule.  (126 updates, not since 10/22/15)
+Register DNS alias for tfsnuget.mmm.com
+Check tfsarchive for disk capacity for NuGet repo
+
+
+******************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+******************************************************** BEGIN IGNORE *************************************************
+
+Migration Procedure:
+
+On source ********************
+
+Detach TPC
+Backup TPC
+Reattach TPC
+Quiesce TFS
+
+Remove SPS content DB
+Stop Timer
+iisreset /noforce
+Backup SPS content DB
+Re-Add SPS content DB
+
+Backup SSRS encryption key
+Stop SSRS
+Backup SSRS databases
+Start SSRS
+
+Unquiesce TFS
+Check TFS
+
+Copy necessary files to target
+
+!!!! SHUT DOWN SOURCE !!!
+
+*******************************
+
+On destination ****************
+
+Detach target empty TPC
+Backup target empty TPC
+Drop target empty TPC
+Quiesce TFS
+Delete SSAS cube
+
+Backup target SSRS encryption key
+Stop SSRS
+Backup target SSRS databases
+Delete target SSRS databases
+Restore source SSRS databases
+Start SSRS
+Change SSRS DBs to source DBs (name: ReportServer)
+
+Remove source server from Scale-out Deployment:
+C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\
+	RSKeyMgmt -l
+	Find the old server GUID, copy
+	RSKeyMgmt -r [old server GUID]
+	Reference:  https://msdn.microsoft.com/en-us/library/ms162822(v=sql.110).aspx
+	
+Restore source SSRS encryption key
+Check SSRS
+
+Stop SharePoint Timer
+Remove target SPS content DB
+Backup target SPS content DB
+Drop target SPS content DB
+Restore source SPS content DB
+Add source SPS content database (name: WSS_Content)
+Start SharePoint Timer
+Check SPS
+
+Unquiesce TFS
+Restore source TPC
+Attach and upgrade source TPC
+TPC > SharePoint Site > Edit Default Site Location > change to target
+AT > Reporting > Edit
+	Warehouse > Test Connection
+	Analysis Services > reenter TFSREPORTS account,OK 
+	Start Rebuild
+	Start Jobs
+Check TFS
+Check all application integration
+
+Reset the instance ID on source TPC ????
+
+Force clients to update their work item cache:
+https://msdn.microsoft.com/en-us/library/ms404869%28v=vs.120%29.aspx#RefreshDataCache
+
+******************************************************** END IGNORE ************************************************* 
+
+
+Build servers:
+Ensure that .NET 3.5 features are installed
+Create agent folder at *\_tfs_build_agent
+
+Added text.
+
+ 

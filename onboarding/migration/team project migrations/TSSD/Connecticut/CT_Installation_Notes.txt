@@ -1,0 +1,93 @@
+
+http://msdn.microsoft.com/en-us/library/dd936138(v=vs.100).aspx
+http://msdn.microsoft.com/en-us/library/dd386330(v=vs.100).aspx
+
+Installation Notes - ct-tfs:
+
+
+
+Windows Server 2008 R2 Standard - DYQXG-GRJ9F-KHW9H-FGXTY-7HYYM
+AD Accounts
+Basic server prep, UAC, indexing, page file
+Local Security Policy
+.NET 3.5
+IIS Role
+First patching
+[Snapshot]
+
+SQL 2008 R2 Install
+(did not install SSRS or SSAS, Client Connectivity only)
+SQL 2008 R2 SP3
+
+Verify services
+Second patching 
+[Snapshot]
+
+TFS 2010 Initial Install
+VS 2010 Team Explorer
+TFS 2010 SP1
+VS 2010 SP1
+VS 2010 Power Tools
+VS 2010 Side Kicks
+Fourth patching
+
+TFS 2010 SP1 CU2 (http://support.microsoft.com/kb/2643415/en-us)
+
+Snapshot:  ct-tfs - Initial TPC restore
+
+Make sure the data warehouse jobs are not running on ct-tfs
+Attach ct-tfs TPC
+Configure Connecticut TPC to not use SharePoint and Reporting
+
+Reset the guid on the ct-tfs TPC
+TFSConfig ChangeServerID /SQLInstance:ct-tfs /DatabaseName:Tfs_Configuration /ProjectCollectionsOnly
+
+http://msdn.microsoft.com/en-us/library/vstudio/ee349259.aspx
+
+Let ct-tfs run, check functionality, and remove any secondary service references (SSRS, SPS, etc.)
+Inspect version control and work items
+Set up namespace for $\Connecticut to C:\Projects\Connecticut
+Get latest to pre-load the local file cache
+
+Remove privileges from old Team Project
+
+Remove group restrictions in WITs
+Delete global lists
+Force removal of tfs10svc service account
+Remove TPC level groups
+Check for internal group permissions on work items, areas / iterations
+How to clean out orphaned build machines
+
+
+Find out what Bobby has recommended as hardware to Connecticut.
+Provide hardware recommendations to customer.
+
+"\\tuc027srv.archon-tech.com\Backup Staging Folder\Connecticut\TFS Delivery"
+\\tuc027srv.archon-tech.com\Backup Staging Folder\Connecticut\TFS Delivery
+
+vm-terminal.archon-tech.com
+exec\wilsondav
+WilsonDav
+Jump box 159.247.105.102
+VM MV1MTFS 159.247.105.77
+
+Pack TPC .bak > 7-zip > \\tuc027srv.archon-tech.com\Backup Staging Folder\Connecticut\TFS Delivery
+Password:  CT.2016$
+Notify Sharmila for FTP transfer.
+
+20160307_CT_Detached.7z (FCIV MD5 checksums):
+ed8630207cc2d91767419c2011f35148 - tuc027srv
+ed8630207cc2d91767419c2011f35148 - vm215
+
+20160307_CT_Detached.bak (FCIV MD5 checksums):
+ed8630207cc2d91767419c2011f35148 - tuc027srv
+ed8630207cc2d91767419c2011f35148 - vm215
+
+Source keep:
+$/3M Tools and Framework/Code/Main
+$/Connecticut/Code/Main
+
+DMVUSER
+FounDa$29
+
+EXEC\TanguayB;EXEC\EdgarB;EXEC\YaralaM;EXEC\AvalloneJ;EXEC\DeblasioJ;EXEC\FobbsO;EXEC\BhartiS;EXEC\KingS;EXEC\AlamM;EXEC\JawadB

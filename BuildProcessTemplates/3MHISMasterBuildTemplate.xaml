@@ -1,0 +1,1666 @@
+﻿<Activity mc:Ignorable="sads sap" x:Class="TfsBuild.Process" this:Process.BuildSettings="[New Microsoft.TeamFoundation.Build.Workflow.Activities.BuildSettings()]" this:Process.TestSpecs="[New Microsoft.TeamFoundation.Build.Workflow.Activities.TestSpecList(New Microsoft.TeamFoundation.Build.Workflow.Activities.TestAssemblySpec(&quot;**\*test*.dll&quot;))]" this:Process.BuildNumberFormat="[&quot;$(BuildDefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)&quot;]" this:Process.CleanWorkspace="[Microsoft.TeamFoundation.Build.Workflow.Activities.CleanWorkspaceOption.All]" this:Process.RunCodeAnalysis="[Microsoft.TeamFoundation.Build.Workflow.Activities.CodeAnalysisOption.AsConfigured]" this:Process.SourceAndSymbolServerSettings="[New Microsoft.TeamFoundation.Build.Workflow.Activities.SourceAndSymbolServerSettings(True, Nothing)]" this:Process.AgentSettings="[New Microsoft.TeamFoundation.Build.Workflow.Activities.AgentSettings(New System.TimeSpan(4, 0, 0), New System.TimeSpan(0, 0, 0))]" this:Process.AssociateChangesetsAndWorkItems="[True]" this:Process.CreateWorkItem="[True]" this:Process.DropBuild="[True]" this:Process.MSBuildPlatform="[Microsoft.TeamFoundation.Build.Workflow.Activities.ToolPlatform.Auto]" this:Process.PerformTestImpactAnalysis="[True]" this:Process.CreateLabel="[True]" this:Process.DisableTests="[False]" this:Process.Verbosity="[Microsoft.TeamFoundation.Build.Workflow.BuildVerbosity.Normal]" this:Process.SupportedReasons="All" this:Process.ProjectsToPublish="[New Microsoft.TeamFoundation.Build.Workflow.Activities.BuildSettings()]" this:Process.UpdateFrameworkReferences="True" this:Process.COMAssembliesToRegister="[New Collection(Of String)]" this:Process.AssemblyOriginatorKeyFile="\\dev\cm\secure\DigitalSignatures\mypassword.pfx" this:Process.OverrideOutDir="False" this:Process.AddSuffixToCOMProjects="False" this:Process.UpdateVersionInCOMProjects="False" this:Process.AddVersionSuffixToAssemblies="False" this:Process.InstallersToBuild="[New Microsoft.TeamFoundation.Build.Workflow.Activities.BuildSettings()]" this:Process.COMPlusAssembliesToRegister="[New Collection(Of String)]" this:Process.FoldersToDropLocation="[New Collection(Of String)]" this:Process.CustomRegistrationCommands="[New Collection(Of String)]" this:Process.DatabaseSolution="$/3MHIS/Architecture/Version-3.6/Database/Database.sln" this:Process.DeploymentServer="snw3s-devsql1%5Csql2008" this:Process.DeploymentDatabase="3MHISDatabase" this:Process.DatabaseProjectsToDeploy="[New Microsoft.TeamFoundation.Build.Workflow.Activities.BuildSettings()]" this:Process.GenerateRedgateSnapshot="False" this:Process.UpdateCppResourceFiles="False" this:Process.RunCodeMetrics="False" this:Process.CheckinDeliverables="False" this:Process.PostBuildCleanup="False" this:Process.IsCustomBuild="False" this:Process.CustomBuildArguments="[New Collection(Of String)]" this:Process.FullStyleCopCompliance="False" this:Process.BuildsToQueue="[New Collection(Of String)]" this:Process.CreateVersionedSourceBinariesFolder="False" this:Process.DeliverablesFolders="[New Collection(Of String)]" this:Process.IsNoCiBuild="True"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:maba="clr-namespace:mmmHIS.ALM.Build.Activities;assembly=ReferenceUpdater"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mt="clr-namespace:Microsoft.TeamFoundation;assembly=Microsoft.TeamFoundation.Common"
+ xmlns:mtbc="clr-namespace:Microsoft.TeamFoundation.Build.Client;assembly=Microsoft.TeamFoundation.Build.Client"
+ 
+ xmlns:mtbw="clr-namespace:Microsoft.TeamFoundation.Build.Workflow;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ 
+ xmlns:mtbwa="clr-namespace:Microsoft.TeamFoundation.Build.Workflow.Activities;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ 
+ xmlns:mtc="clr-namespace:Microsoft.TeamFoundation.Client;assembly=Microsoft.TeamFoundation"
+ xmlns:mtc1="clr-namespace:Microsoft.TeamFoundation.Client;assembly=Microsoft.TeamFoundation.Client"
+ xmlns:mtlc="clr-namespace:Microsoft.TeamFoundation.Lab.Client;assembly=Microsoft.TeamFoundation.Lab.Client"
+ xmlns:mttbb="clr-namespace:Microsoft.TeamFoundation.TestImpact.BuildIntegration.BuildActivities;assembly=Microsoft.TeamFoundation.TestImpact.BuildIntegration"
+ xmlns:mtvc="clr-namespace:Microsoft.TeamFoundation.VersionControl.Client;assembly=Microsoft.TeamFoundation.VersionControl.Client"
+ 
+ xmlns:mtvc2="clr-namespace:Microsoft.TeamFoundation.VersionControl.Client;assembly=Microsoft.TeamFoundation.VersionControl.Controls"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:s1="clr-namespace:System;assembly=System.Core"
+ xmlns:s2="clr-namespace:System;assembly=System"
+ xmlns:s3="clr-namespace:System;assembly=System.ServiceModel"
+ xmlns:s4="clr-namespace:System;assembly=System.ComponentModel.Composition"
+ xmlns:s5="clr-namespace:System;assembly=Microsoft.VisualStudio.Platform.VSEditor"
+ xmlns:s6="clr-namespace:System;assembly=System.DirectoryServices"
+ xmlns:s7="clr-namespace:System;assembly=System.Numerics"
+ xmlns:s8="clr-namespace:System;assembly=Microsoft.VisualStudio.Shell"
+ xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+ xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System"
+ xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core"
+ xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sco1="clr-namespace:System.Collections.ObjectModel;assembly=System"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:si1="clr-namespace:System.IO;assembly=System"
+ xmlns:si2="clr-namespace:System.IO;assembly=System.Core"
+ xmlns:si3="clr-namespace:System.IO;assembly=WindowsBase"
+ xmlns:si4="clr-namespace:System.IO;assembly=System.ServiceModel"
+ xmlns:sl="clr-namespace:System.Linq;assembly=System.Core"
+ xmlns:tac="clr-namespace:TfsBuildExtensions.Activities.CodeQuality;assembly=TfsBuildExtensions.Activities"
+ xmlns:tac1="clr-namespace:TfsBuildExtensions.Activities.CodeQuality;assembly=TfsBuildExtensions.Activities.StyleCop"
+ xmlns:tas="clr-namespace:TfsBuildExtensions.Activities.StyleCop;assembly=TfsBuildExtensions.Activities.StyleCop"
+ xmlns:tat="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities"
+ xmlns:tba="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack"
+ xmlns:this="clr-namespace:TfsBuild"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="BuildSettings" Type="InArgument(mtbwa:BuildSettings)" />
+    <x:Property Name="TestSpecs" Type="InArgument(mtbwa:TestSpecList)" />
+    <x:Property Name="BuildNumberFormat" Type="InArgument(x:String)" />
+    <x:Property Name="CleanWorkspace" Type="InArgument(mtbwa:CleanWorkspaceOption)" />
+    <x:Property Name="RunCodeAnalysis" Type="InArgument(mtbwa:CodeAnalysisOption)" />
+    <x:Property Name="SourceAndSymbolServerSettings" Type="InArgument(mtbwa:SourceAndSymbolServerSettings)" />
+    <x:Property Name="AgentSettings" Type="InArgument(mtbwa:AgentSettings)" />
+    <x:Property Name="AssociateChangesetsAndWorkItems" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CreateWorkItem" Type="InArgument(x:Boolean)" />
+    <x:Property Name="DropBuild" Type="InArgument(x:Boolean)" />
+    <x:Property Name="MSBuildArguments" Type="InArgument(x:String)" />
+    <x:Property Name="MSBuildPlatform" Type="InArgument(mtbwa:ToolPlatform)" />
+    <x:Property Name="PerformTestImpactAnalysis" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CreateLabel" Type="InArgument(x:Boolean)" />
+    <x:Property Name="DisableTests" Type="InArgument(x:Boolean)" />
+    <x:Property Name="GetVersion" Type="InArgument(x:String)" />
+    <x:Property Name="Verbosity" Type="InArgument(mtbw:BuildVerbosity)" />
+    <x:Property Name="Metadata" Type="mtbw:ProcessParameterMetadataCollection" />
+    <x:Property Name="SupportedReasons" Type="mtbc:BuildReason" />
+    <x:Property Name="SmartFrameworkVersion" Type="InArgument(x:String)" />
+    <x:Property Name="FrameworkBinariesToDownload" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="ProjectsToPublish" Type="InArgument(mtbwa:BuildSettings)" />
+    <x:Property Name="UpdateFrameworkReferences" Type="InArgument(x:Boolean)" />
+    <x:Property Name="COMAssembliesToRegister" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="AssemblyOriginatorKeyFile" Type="InArgument(x:String)" />
+    <x:Property Name="ManifestCertificateThumbprint" Type="InArgument(x:String)" />
+    <x:Property Name="ManifestKeyFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="SignManifests" Type="InArgument(x:String)" />
+    <x:Property Name="OverrideOutDir" Type="InArgument(x:Boolean)" />
+    <x:Property Name="SpecifiedMajorVersionNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="SpecifiedMinorVersionNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="SpecifiedTernaryVersionNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="AddSuffixToCOMProjects" Type="InArgument(x:Boolean)" />
+    <x:Property Name="UpdateVersionInCOMProjects" Type="InArgument(x:Boolean)" />
+    <x:Property Name="AddVersionSuffixToAssemblies" Type="InArgument(x:Boolean)" />
+    <x:Property Name="InstallShieldCommandLine" Type="InArgument(x:Boolean)" />
+    <x:Property Name="InstallShieldProject" Type="InArgument(x:String)" />
+    <x:Property Name="InstallShieldProjectFolder" Type="InArgument(x:String)" />
+    <x:Property Name="AssemblyInfoMask" Type="InArgument(x:String)" />
+    <x:Property Name="InstallersToBuild" Type="InArgument(mtbwa:BuildSettings)" />
+    <x:Property Name="Is2010OutDir" Type="InArgument(x:String)" />
+    <x:Property Name="COMPlusAssembliesToRegister" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="FoldersToDropLocation" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="CustomRegistrationCommands" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="DatabaseSolution" Type="InArgument(x:String)" />
+    <x:Property Name="DeploymentServer" Type="InArgument(x:String)" />
+    <x:Property Name="DeploymentDatabase" Type="InArgument(x:String)" />
+    <x:Property Name="DatabaseProjectsToDeploy" Type="InArgument(mtbwa:BuildSettings)" />
+    <x:Property Name="GenerateRedgateSnapshot" Type="InArgument(x:Boolean)" />
+    <x:Property Name="UpdateCppResourceFiles" Type="InArgument(x:Boolean)" />
+    <x:Property Name="RunCodeMetrics" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CodeMetricsFiles" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="DeliverablesFolder" Type="InArgument(x:String)" />
+    <x:Property Name="CheckinDeliverables" Type="InArgument(x:Boolean)" />
+    <x:Property Name="PostBuildCleanup" Type="InArgument(x:Boolean)" />
+    <x:Property Name="IsCustomBuild" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CustomBuildCommand" Type="InArgument(x:String)" />
+    <x:Property Name="CustomBuildArguments" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="CustomBuildWorkingDirectory" Type="InArgument(x:String)" />
+    <x:Property Name="FullStyleCopCompliance" Type="InArgument(x:Boolean)" />
+    <x:Property Name="BuildsToQueue" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="CreateVersionedSourceBinariesFolder" Type="InArgument(x:Boolean)" />
+    <x:Property Name="FileRegex" Type="InArgument(x:String)" />
+    <x:Property Name="DeliverablesFolders" Type="InArgument(sco:Collection(x:String))" />
+    <x:Property Name="IsNoCiBuild" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <this:Process.MSBuildArguments>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.MSBuildArguments>
+  <this:Process.GetVersion>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.GetVersion>
+  <this:Process.Metadata>
+    <mtbw:ProcessParameterMetadataCollection>
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Framework References" Description="Specify the version of the SmartFramework assemblies to be referenced." DisplayName="Use SmartFramework Version" ParameterName="SmartFrameworkVersion" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Never" Category="Framework References" Description="NOT WORKING YET - To have framework binaries included with build output, add those binaries as ProjectReferences" DisplayName="Framework Binaries to Download" ParameterName="FrameworkBinariesToDownload" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Publishing" DisplayName="ClickOnce Projects" ParameterName="ProjectsToPublish" />
+      <mtbw:ProcessParameterMetadata Category="Framework References" DisplayName="Update Framework References" ParameterName="UpdateFrameworkReferences" />
+      <mtbw:ProcessParameterMetadata Category="Custom Build Prerequisites" Description="A list of the paths in Source Control of Assemblies that should be registered as COM objects for the build" DisplayName="COM Assemblies To Register" ParameterName="COMAssembliesToRegister" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Signing" Description="The path to the Certificate to use for signing Assemblies being built." DisplayName="AssemblyOriginatorKeyFile" ParameterName="AssemblyOriginatorKeyFile" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Publishing" Description="The thumbprint of the certificate to use to sign the Application Manifest" DisplayName="ManifestCertificateThumbprint" ParameterName="ManifestCertificateThumbprint" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Publishing" Description="Specifies whether or not the ClickOnce Manifiests are to be signed in the build" DisplayName="Sign ClickOnce Manifiest" ParameterName="SignManifests" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Publishing" Description="The path to the manifest key file that will be used to sign the ClickOnce manifest" DisplayName="ManifestKeyFile Path" ParameterName="ManifestKeyFilePath" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Build Output" Description="Removes OutDir for solutions that have projects using TeamBuildOutDir instead." DisplayName="Override Output Directory" ParameterName="OverrideOutDir" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="The major version number to specify for the output assemblies. This used to specify the 1st number in the AssemblyVersion, the AssemblyFileVersion, and in the suffix added to the Assembly Name of each project output." DisplayName="Major Version Number" ParameterName="SpecifiedMajorVersionNumber" Required="True" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="The minor version number to specify for the output assemblies. This used to specify the 2nd number in the AssemblyVersion, the AssemblyFileVersion, and in the suffix added to the Assembly Name of each project output." DisplayName="Minor Version Number" ParameterName="SpecifiedMinorVersionNumber" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="The ternary version number to specify for the output assemblies. This used to specify the 3rd number in the AssemblyVersion, the AssemblyFileVersion, and in the suffix added to the Assembly Name of each project output." DisplayName="Ternary Version Number" ParameterName="SpecifiedTernaryVersionNumber" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="Specifies whether or not to add the suffix to the Assembly Name of the output of unsigned COM projects." DisplayName="Add Suffix to COM Project outputs" ParameterName="AddSuffixToCOMProjects" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="Specifies whether or not to update the AssemblyVersion and AssemblyFileVersion for the output of unsigned COM projects." DisplayName="Update Version In COM Projects" ParameterName="UpdateVersionInCOMProjects" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" Description="Specifies whether this is a versioned build which uses the major, minor and ternary build numbers for file information." DisplayName="Is Versioned Build" ParameterName="AddVersionSuffixToAssemblies" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Installer (IS2010)" Description="Do you want to use the Invoke Process activity to build an InstallShield project (*.ism) on the command line?" DisplayName="Build InstallShield on Command Line" ParameterName="InstallShieldCommandLine" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Installer (IS2010)" Description="The name of the installshield project (*.ism)" DisplayName="Install Shield Project Name" ParameterName="InstallShieldProject" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Installer (IS2010)" Description="The location of the InstallShield project folder" DisplayName="InstallShield Project Folder" ParameterName="InstallShieldProjectFolder" />
+      <mtbw:ProcessParameterMetadata Category="File Attributes" DisplayName="AssemblyInfoMask" ParameterName="AssemblyInfoMask" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Installers (IS2011)" Description="InstallShield 2011 Installer Projects to build" DisplayName="Installer Projects" ParameterName="InstallersToBuild" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Installer (IS2010)" Description="The output directory (relative to the ism path) where the resulting installer is placed" DisplayName="Installer Output Directory" ParameterName="Is2010OutDir" />
+      <mtbw:ProcessParameterMetadata Category="Custom Build Prerequisites" DisplayName="COM Plus Assemblies To Register" ParameterName="COMPlusAssembliesToRegister" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" Description="Copies folder(s) to the Binaries folder from the Sources folder which in turn get copied to the Drop Location" DisplayName="Folders to Copy to Drop Location" ParameterName="FolderToDropLocation" />
+      <mtbw:ProcessParameterMetadata Category="Custom Build Prerequisites" Description="Commands to register components using /regserver" DisplayName="Custom Registration Commands" ParameterName="CustomRegistrationCommands" />
+      <mtbw:ProcessParameterMetadata Category="Database" DisplayName="DeploymentDatabase" ParameterName="DeploymentDatabase" />
+      <mtbw:ProcessParameterMetadata Category="Database" DisplayName="DeploymentServer" ParameterName="DeploymentServer" />
+      <mtbw:ProcessParameterMetadata Category="Database" DisplayName="Database Projects to Deploy" ParameterName="DatabaseProjectsToDeploy" />
+      <mtbw:ProcessParameterMetadata Category="Database" DisplayName="Generate Redgate Snapshot" ParameterName="GenerateRedgateSnapshot" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="Versioning" DisplayName="Update C++ Resource File Version" ParameterName="UpdateCppResourceFiles" />
+      <mtbw:ProcessParameterMetadata Category="Code Metrics" DisplayName="Run Code Metrics" ParameterName="RunCodeMetrics" />
+      <mtbw:ProcessParameterMetadata Category="Code Metrics" DisplayName="Code Metrics Files" ParameterName="CodeMetricsFiles" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" DisplayName="Post Build Cleanup" ParameterName="PostBuildCleanup" />
+      <mtbw:ProcessParameterMetadata Category="CustomBuild" DisplayName="Is Custom Build" ParameterName="IsCustomBuild" />
+      <mtbw:ProcessParameterMetadata Category="CustomBuild" DisplayName="Custom Build Command" ParameterName="CustomBuildCommand" />
+      <mtbw:ProcessParameterMetadata Category="CustomBuild" DisplayName="Custom Build Arguments" ParameterName="CustomBuildArguments" />
+      <mtbw:ProcessParameterMetadata Category="CustomBuild" DisplayName="Custom Build Working Directory" ParameterName="CustomBuildWorkingDirectory" />
+      <mtbw:ProcessParameterMetadata Category="Misc" DisplayName="Full StyleCop Compliance" ParameterName="FullStyleCopCompliance" />
+      <mtbw:ProcessParameterMetadata Category="Queue Builds" DisplayName="Build Definition(s) to Queue" ParameterName="BuildsToQueue" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" DisplayName="Checkin Deliverables" ParameterName="CheckinDeliverables" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" Description="This parameter determines if binaires that are checked into source control are checked into versioned number sub folders." DisplayName="Create Versioned Source Binaries Folder" ParameterName="CreateVersionedSourceBinariesFolder" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" Description="A regular expression to filter files to be checked in." DisplayName="File Regular Expression" ParameterName="FileRegex" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" DisplayName="Deliverables Folders" ParameterName="DeliverablesFolders" />
+      <mtbw:ProcessParameterMetadata Category="Build Output" DisplayName="Disable Continuous Integration" ParameterName="IsNoCiBuild" />
+    </mtbw:ProcessParameterMetadataCollection>
+  </this:Process.Metadata>
+  <sap:VirtualizedContainerService.HintSize>1695,9765</sap:VirtualizedContainerService.HintSize>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Overall Build Process" sad:XamlDebuggerXmlReader.FileName="c:\3MHIS\BuildProcessTemplates\3MHISMasterBuildTemplate-Test - StyleCop.xaml" sap:VirtualizedContainerService.HintSize="1655,9725" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="mtbc:IBuildDetail" Name="BuildDetail" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <mtbwa:GetBuildDetail DisplayName="Get the Build" sap:VirtualizedContainerService.HintSize="1633,22" Result="[BuildDetail]" />
+    <Sequence DisplayName="Update Drop Location" sap:VirtualizedContainerService.HintSize="1633,51">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <mtbwa:InvokeForReason DisplayName="Update Build Number for Triggered Builds" sap:VirtualizedContainerService.HintSize="222,146" Reason="Triggered">
+        <mtbwa:UpdateBuildNumber BuildNumberFormat="[BuildNumberFormat]" DisplayName="Update Build Number" sap:VirtualizedContainerService.HintSize="200,22" />
+      </mtbwa:InvokeForReason>
+      <mtbwa:SetBuildProperties DisplayName="Set Drop Location" DropLocation="[BuildDetail.DropLocationRoot + &quot;\&quot; + BuildDetail.BuildDefinition.Name + &quot;\&quot; + BuildDetail.BuildNumber]" sap:VirtualizedContainerService.HintSize="222,22" PropertiesToSet="DropLocation" />
+      <mtbwa:CreateDirectory Directory="[BuildDetail.DropLocation]" DisplayName="Create the Drop Location" sap:VirtualizedContainerService.HintSize="222,22" />
+    </Sequence>
+    <mtbwa:AgentScope DisplayName="Run On Agent" sap:VirtualizedContainerService.HintSize="1633,9171" MaxExecutionTime="[AgentSettings.MaxExecutionTime]" MaxWaitTime="[AgentSettings.MaxWaitTime]" ReservationSpec="[AgentSettings.GetAgentReservationSpec()]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+      <mtbwa:AgentScope.Variables>
+        <Variable x:TypeArguments="mtbc:IBuildAgent" Name="BuildAgent" />
+        <Variable x:TypeArguments="mtvc:Workspace" Name="Workspace" />
+        <Variable x:TypeArguments="x:String" Name="BuildDirectory" />
+        <Variable x:TypeArguments="x:String" Default="[BuildDetail.BuildNumber]" Name="LabelName" />
+        <Variable x:TypeArguments="x:String" Name="WorkspaceName" />
+        <Variable x:TypeArguments="x:String" Name="SourcesDirectory" />
+        <Variable x:TypeArguments="x:String" Name="BinariesDirectory" />
+        <Variable x:TypeArguments="x:String" Name="TestResultsDirectory" />
+        <Variable x:TypeArguments="x:String" Name="outputDirectory" />
+        <Variable x:TypeArguments="x:Int32" Default="[Convert.ToInt32(BuildDetail.BuildNumber.Substring(BuildDetail.BuildNumber.LastIndexOf(&quot;.&quot;) + 1))]" Name="revisionNumber" />
+        <Variable x:TypeArguments="x:String" Name="dbProject" />
+        <Variable x:TypeArguments="scg:IList(mtvc:Changeset)" Name="TempAssociatedChangesets" />
+      </mtbwa:AgentScope.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Initialize Variables" sap:VirtualizedContainerService.HintSize="1611,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <mtbwa:GetBuildAgent DisplayName="Get the Agent" sap:VirtualizedContainerService.HintSize="464,22" Result="[BuildAgent]" />
+        <mtbwa:GetBuildDirectory DisplayName="Get the Build Directory" sap:VirtualizedContainerService.HintSize="464,22" Result="[BuildDirectory]" />
+        <Assign x:TypeArguments="x:String" DisplayName="Initialize Workspace Name" sap:VirtualizedContainerService.HintSize="464,22" To="[WorkspaceName]" Value="[String.Format(&quot;{0}_{1}_{2}&quot;, BuildDetail.BuildDefinition.Id, Microsoft.TeamFoundation.LinkingUtilities.DecodeUri(BuildAgent.Uri.AbsoluteUri).ToolSpecificId, BuildAgent.ServiceHost.Name)]" />
+        <Assign x:TypeArguments="x:String" DisplayName="Initialize Sources Directory" sap:VirtualizedContainerService.HintSize="464,22" To="[SourcesDirectory]" Value="[String.Format(&quot;{0}\Sources&quot;, BuildDirectory)]" />
+        <Assign x:TypeArguments="x:String" DisplayName="Initialize Binaries Directory" sap:VirtualizedContainerService.HintSize="464,22" To="[BinariesDirectory]" Value="[String.Format(&quot;{0}\Binaries&quot;, BuildDirectory)]" />
+        <Assign x:TypeArguments="x:String" DisplayName="Initialize TestResults Directory" sap:VirtualizedContainerService.HintSize="464,22" To="[TestResultsDirectory]" Value="[String.Format(&quot;{0}\TestResults&quot;, BuildDirectory)]" />
+        <If Condition="[Not BuildSettings.HasPlatformConfigurations]" DisplayName="If Not BuildSettings.HasPlatformConfigurations" sap:VirtualizedContainerService.HintSize="464,206">
+          <If.Then>
+            <Assign x:TypeArguments="mtbwa:PlatformConfigurationList" DisplayName="Use Default Platform Configuration" sap:VirtualizedContainerService.HintSize="269,100" To="[BuildSettings.PlatformConfigurations]" Value="[Microsoft.TeamFoundation.Build.Workflow.Activities.PlatformConfigurationList.Default]" />
+          </If.Then>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Initialize Workspace" sap:VirtualizedContainerService.HintSize="1611,1056">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <mtbwa:DeleteDirectory Directory="[TestResultsDirectory]" DisplayName="Delete Test Results Directory" sap:VirtualizedContainerService.HintSize="464,22" Recursive="[True]" />
+        <If Condition="[Not CleanWorkspace = Microsoft.TeamFoundation.Build.Workflow.Activities.CleanWorkspaceOption.None]" DisplayName="If Not CleanWorkspace = CleanWorkspaceOption.None" sap:VirtualizedContainerService.HintSize="464,208">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <mtbwa:DeleteDirectory Directory="[BinariesDirectory]" DisplayName="Delete Binaries Directory" sap:VirtualizedContainerService.HintSize="200,22" />
+          </If.Then>
+        </If>
+        <If Condition="[CleanWorkspace = Microsoft.TeamFoundation.Build.Workflow.Activities.CleanWorkspaceOption.All]" DisplayName="If CleanWorkspace = CleanWorkspaceOption.All" sap:VirtualizedContainerService.HintSize="464,316">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence DisplayName="Delete Workspace and Sources Directory" sap:VirtualizedContainerService.HintSize="222,208">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <mtbwa:DeleteWorkspace DeleteLocalItems="[True]" DisplayName="Delete Workspace" sap:VirtualizedContainerService.HintSize="200,22" Name="[WorkspaceName]" />
+              <mtbwa:DeleteDirectory Directory="[SourcesDirectory]" DisplayName="Delete Sources Directory" sap:VirtualizedContainerService.HintSize="200,22" />
+            </Sequence>
+          </If.Then>
+        </If>
+        <mtbwa:CreateWorkspace BuildDirectory="[BuildDirectory]" Comment="[&quot;Workspace Created by Team Build&quot;]" DisplayName="Create Workspace" sap:VirtualizedContainerService.HintSize="464,22" Name="[WorkspaceName]" Result="[Workspace]" SourcesDirectory="[SourcesDirectory]" />
+        <If Condition="[CleanWorkspace = Microsoft.TeamFoundation.Build.Workflow.Activities.CleanWorkspaceOption.Outputs]" DisplayName="If CleanWorkspace = CleanWorkspaceOption.Outputs" sap:VirtualizedContainerService.HintSize="464,51">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <ForEach x:TypeArguments="mtbwa:PlatformConfiguration" DisplayName="For Each Configuration in BuildSettings.PlatformConfigurations" sap:VirtualizedContainerService.HintSize="516,542" Values="[BuildSettings.PlatformConfigurations]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="mtbwa:PlatformConfiguration">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="mtbwa:PlatformConfiguration" Name="platformConfiguration" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Clean Configuration" sap:VirtualizedContainerService.HintSize="486,436">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[BuildSettings.HasProjectsToBuild]" DisplayName="If BuildSettings.HasProjectsToBuild" sap:VirtualizedContainerService.HintSize="464,312">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <ForEach x:TypeArguments="x:String" DisplayName="For Each Project in BuildSettings.ProjectsToBuild" sap:VirtualizedContainerService.HintSize="313,206" Values="[BuildSettings.ProjectsToBuild]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="x:String">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:String" Name="serverBuildProjectItem" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Clean Project" sap:VirtualizedContainerService.HintSize="257,100">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="localBuildProjectItem" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <mtbwa:ConvertWorkspaceItem DisplayName="Convert Server Paths to Local Paths" sap:VirtualizedContainerService.HintSize="464,22" Input="[serverBuildProjectItem]" Result="[localBuildProjectItem]" Workspace="[Workspace]" />
+                            <If Condition="[System.IO.File.Exists(localBuildProjectItem)]" DisplayName="If File.Exists(Project)" sap:VirtualizedContainerService.HintSize="464,206">
+                              <If.Then>
+                                <mtbwa:MSBuild CommandLineArguments="[String.Format(&quot;/p:SkipInvalidConfigurations=true /property:AssemblyOriginatorKeyFile=&quot;&quot;{1}&quot;&quot; {0}&quot;, MSBuildArguments, AssemblyOriginatorKeyFile)]" Configuration="[platformConfiguration.Configuration]" DisplayName="Run MSBuild for Project" GenerateVSPropsFile="[True]" sap:VirtualizedContainerService.HintSize="269,100" OutDir="[BinariesDirectory]" Platform="[platformConfiguration.Platform]" Project="[localBuildProjectItem]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" Targets="[New String() { &quot;Clean&quot; }]" TargetsNotLogged="[New String() {&quot;GetNativeManifest&quot;, &quot;GetCopyToOutputDirectoryItems&quot;, &quot;GetTargetPath&quot;}]" ToolPlatform="[MSBuildPlatform]" Verbosity="[Verbosity]" />
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ForEach>
+                    </If.Then>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+          </If.Then>
+        </If>
+        <mtbwa:SyncWorkspace DisplayName="Get Workspace" sap:VirtualizedContainerService.HintSize="464,22" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" VersionOverride="[GetVersion]" Workspace="[Workspace]" />
+        <If Condition="[System.String.IsNullOrEmpty(AssemblyInfoMask)]" DisplayName="If File Mask is not empty" sap:VirtualizedContainerService.HintSize="464,51">
+          <If.Else>
+            <local:SetReadOnlyFlag FileMask="[AssemblyInfoMask]" sap:VirtualizedContainerService.HintSize="270,100" ReadOnlyFlagValue="False" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Update C++ Resource File(s)" sap:VirtualizedContainerService.HintSize="1611,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If Condition="[UpdateCppResourceFiles = True]" DisplayName="If UpdateCppResourceFiles" sap:VirtualizedContainerService.HintSize="464,206">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <local:CPlusPlusResourceFileVersionReplace CPlusPlusRootPath="[SourcesDirectory]" sap:VirtualizedContainerService.HintSize="269,100" Major="[SpecifiedMajorVersionNumber.ToString]" Minor="[SpecifiedMinorVersionNumber.ToString]" Revision="[revisionNumber.ToString]" Ternary="[SpecifiedTernaryVersionNumber.ToString]" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+          </If.Then>
+        </If>
+      </Sequence>
+      <If Condition="[UpdateFrameworkReferences]" DisplayName="If Framework References need to be updated" sap:VirtualizedContainerService.HintSize="1611,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Update Framework References" sap:VirtualizedContainerService.HintSize="375,533">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="localSolution" />
+              <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="SolutionList" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ForEach x:TypeArguments="x:String" DisplayName="Update References for all Solution Files" sap:VirtualizedContainerService.HintSize="353,314" Values="[BuildSettings.ProjectsToBuild]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="solution" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Update Project References" sap:VirtualizedContainerService.HintSize="257,208">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <mtbwa:ConvertWorkspaceItem DisplayName="Get Local Solution File Path" sap:VirtualizedContainerService.HintSize="200,22" Input="[solution]" Result="[localSolution]" Workspace="[Workspace]" />
+                  <AddToCollection x:TypeArguments="x:String" Collection="[SolutionList]" DisplayName="Add Local File Path to Solution List" sap:VirtualizedContainerService.HintSize="200,22" Item="[localSolution]" />
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+            <maba:UpdateReferences BuildNumber="{x:Null}" sap:VirtualizedContainerService.HintSize="287,22" SmartFrameworkVersion="[SmartFrameworkVersion]" SolutionFiles="[SolutionList]" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+          </Sequence>
+        </If.Then>
+      </If>
+      <If Condition="[CreateLabel]" DisplayName="If CreateLabel" sap:VirtualizedContainerService.HintSize="1611,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <mtbwa:InvokeForReason DisplayName="Create and Set Label for non-Shelveset Builds" sap:VirtualizedContainerService.HintSize="281,208" Reason="Manual, IndividualCI, BatchedCI, Schedule, ScheduleForced, UserCreated">
+            <mtbwa:LabelSources Child="[Microsoft.TeamFoundation.VersionControl.Client.LabelChildOption.Replace]" Comment="[&quot;Label Created by Team Build&quot;]" DisplayName="Create Label" sap:VirtualizedContainerService.HintSize="200,22" Items="[New String() {&quot;$/&quot;}]" Name="[LabelName]" Recursion="[Microsoft.TeamFoundation.VersionControl.Client.RecursionType.Full]" Scope="[String.Format(&quot;$/{0}&quot;, BuildDetail.BuildDefinition.TeamProject)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" Version="[String.Format(&quot;W{0}&quot;, Workspace.Name)]" />
+            <mtbwa:SetBuildProperties DisplayName="Set Label on BuildDetail" sap:VirtualizedContainerService.HintSize="200,22" LabelName="[String.Format(&quot;{0}@$/{1}&quot;, LabelName, BuildDetail.BuildDefinition.TeamProject)]" PropertiesToSet="LabelName" />
+          </mtbwa:InvokeForReason>
+        </If.Then>
+      </If>
+      <Sequence DisplayName="Register COM and COM+ Assemblies" sap:VirtualizedContainerService.HintSize="1611,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch DisplayName="Try To Register COM+ Plus Assemblies" sap:VirtualizedContainerService.HintSize="423,596">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="405,409" Values="[COMPlusAssembliesToRegister]">
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="comAssemblyServerPath" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Register COM+ Assemblies" sap:VirtualizedContainerService.HintSize="375,303">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="comAssemblyLocalPath" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <mtbwa:ConvertWorkspaceItem DisplayName="Get COM Assembly Local Path" sap:VirtualizedContainerService.HintSize="353,22" Input="[comAssemblyServerPath]" Result="[comAssemblyLocalPath]" Workspace="[Workspace]" />
+                  <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="353,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;SERVER TO LOCAL RESULT : {0} - EXISTS: {1}&quot;, comAssemblyLocalPath, System.IO.File.Exists(comAssemblyLocalPath))]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                  <maba:COMObjectRegistration ApplicationName="{x:Null}" TLB="{x:Null}" COMAssembly="[comAssemblyLocalPath]" DisplayName="Register COM+ Assembly" sap:VirtualizedContainerService.HintSize="200,22" InstallAssembly="True" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="409,21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="403,75" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;Exception occurred Registering COM assembly: {0}&quot;, exception.ToString())]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <TryCatch DisplayName="Try To Register COM Assemblies" sap:VirtualizedContainerService.HintSize="423,725">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="400,538" Values="[COMAssembliesToRegister]">
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="comAssemblyServerPath" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Register COM Assembly" sap:VirtualizedContainerService.HintSize="257,432">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="comAssemblyLocalPath" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <mtbwa:ConvertWorkspaceItem DisplayName="Get COM Assembly Local Path" sap:VirtualizedContainerService.HintSize="200,22" Input="[comAssemblyServerPath]" Result="[comAssemblyLocalPath]" Workspace="[Workspace]" />
+                  <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="200,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;SERVER TO LOCAL RESULT : {0} - EXISTS: {1}&quot;, comAssemblyLocalPath, System.IO.File.Exists(comAssemblyLocalPath))]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                  <mtbwa:InvokeProcess Arguments="[&quot;/s &quot; + SourcesDirectory + comAssemblyServerPath]" DisplayName="Run regsvr32" FileName="c:\windows\system32\regsvr32" sap:VirtualizedContainerService.HintSize="200,184">
+                    <mtbwa:InvokeProcess.ErrorDataReceived>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="errOutput" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </mtbwa:InvokeProcess.ErrorDataReceived>
+                    <mtbwa:InvokeProcess.OutputDataReceived>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="stdOutput" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </mtbwa:InvokeProcess.OutputDataReceived>
+                  </mtbwa:InvokeProcess>
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="403,75" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;Exception occurred Registering COM assembly: {0}&quot;, exception.ToString())]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <TryCatch DisplayName="Try To Register Custom Registration Comands" sap:VirtualizedContainerService.HintSize="423,725">
+          <TryCatch.Variables>
+            <Variable x:TypeArguments="x:String" Name="customRegistrationCommandLocalPath" />
+          </TryCatch.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="400,538" Values="[CustomRegistrationCommands]">
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="customRegistrationCommandServerPath" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Run Custom Registration Command" sap:VirtualizedContainerService.HintSize="257,432">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <mtbwa:ConvertWorkspaceItem DisplayName="Get Custom Registration Local Path" sap:VirtualizedContainerService.HintSize="200,22" Input="[customRegistrationCommandServerPath]" Result="[customRegistrationCommandLocalPath]" Workspace="[Workspace]" />
+                  <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="200,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;SERVER TO LOCAL RESULT : {0} - EXISTS: {1}&quot;, customRegistrationCommandLocalPath, System.IO.File.Exists(customRegistrationCommandLocalPath))]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                  <mtbwa:InvokeProcess Arguments=" /regserver" DisplayName="Run Custom Registration Command" FileName="[SourcesDirectory + customRegistrationCommandLocalPath]" sap:VirtualizedContainerService.HintSize="200,184">
+                    <mtbwa:InvokeProcess.ErrorDataReceived>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="errOutput" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </mtbwa:InvokeProcess.ErrorDataReceived>
+                    <mtbwa:InvokeProcess.OutputDataReceived>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="stdOutput" />
+                        </ActivityAction.Argument>
+                      </ActivityAction>
+                    </mtbwa:InvokeProcess.OutputDataReceived>
+                  </mtbwa:InvokeProcess>
+                </Sequence>
+              </ActivityAction>
+            </ForEach>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="403,75" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;Exception occurred Registering COM assembly: {0}&quot;, exception.ToString())]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </Sequence>
+      <TryCatch DisplayName="Try Compile, Test, and Associate Changesets and Work Items" sap:VirtualizedContainerService.HintSize="1611,6987">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <TryCatch.Finally>
+          <Sequence DisplayName="Revert Workspace and Copy Files to Drop Location" sap:VirtualizedContainerService.HintSize="486,516">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <mtbwa:InvokeForReason DisplayName="Revert Workspace for CheckinShelveset Builds" sap:VirtualizedContainerService.HintSize="464,146" Reason="CheckInShelveset">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <mtbwa:RevertWorkspace DisplayName="Revert Workspace" sap:VirtualizedContainerService.HintSize="200,22" Workspace="[Workspace]" />
+            </mtbwa:InvokeForReason>
+            <If Condition="[DropBuild]" DisplayName="If DropBuild" sap:VirtualizedContainerService.HintSize="464,206">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <mtbwa:InvokeForReason DisplayName="Copy Files to Drop Location for Triggered Builds" sap:VirtualizedContainerService.HintSize="269,100" Reason="Triggered">
+                  <mtbwa:CopyDirectory Destination="[BuildDetail.DropLocation]" DisplayName="Copy Files to Drop Location" sap:VirtualizedContainerService.HintSize="287,22" Source="[BinariesDirectory]" />
+                  <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt; in FoldersToDropLocation" sap:VirtualizedContainerService.HintSize="287,314" Values="[FoldersToDropLocation]">
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="folderToDropLocation" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Copy Folder To Drop Location" sap:VirtualizedContainerService.HintSize="257,208">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="comAssemblyLocalPath" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <mtbwa:WriteBuildMessage DisplayName="Log Folder Copy To Drop Location" sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;Copying Folder {0} to Binaries Location {1}&quot;, SourcesDirectory + folderToDropLocation, BinariesDirectory)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                        <mtbwa:CopyDirectory Destination="[BuildDetail.DropLocation]" DisplayName="Copy Files to Drop Location" sap:VirtualizedContainerService.HintSize="200,22" Source="[SourcesDirectory + folderToDropLocation]" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ForEach>
+                </mtbwa:InvokeForReason>
+              </If.Then>
+            </If>
+          </Sequence>
+        </TryCatch.Finally>
+        <TryCatch.Try>
+          <Sequence sap:VirtualizedContainerService.HintSize="1593,6822">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="s:Exception" Name="compilationException" />
+              <Variable x:TypeArguments="x:Boolean" Name="treatTestFailureAsBuildFailure" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Parallel DisplayName="Compile, Test, and Associate Changesets and Work Items" sap:VirtualizedContainerService.HintSize="1571,4946">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="Try Compile and Test" sap:VirtualizedContainerService.HintSize="830,4900">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Compile and Test" sap:VirtualizedContainerService.HintSize="812,4713">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ForEach x:TypeArguments="mtbwa:PlatformConfiguration" DisplayName="For Each Configuration in BuildSettings.PlatformConfigurations" sap:VirtualizedContainerService.HintSize="790,3539" Values="[BuildSettings.PlatformConfigurations]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="mtbwa:PlatformConfiguration">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="mtbwa:PlatformConfiguration" Name="platformConfiguration" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Compile and Test for Configuration" sap:VirtualizedContainerService.HintSize="760,3431">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="logFileDropLocation" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Initialize Variables" sap:VirtualizedContainerService.HintSize="738,51">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign x:TypeArguments="x:String" DisplayName="Initialize OutputDirectory" sap:VirtualizedContainerService.HintSize="200,22" To="[outputDirectory]" Value="[If (platformConfiguration.IsEmpty Or BuildSettings.PlatformConfigurations.Count = 1, BinariesDirectory, If (platformConfiguration.IsPlatformEmptyOrAnyCpu, BinariesDirectory + &quot;\&quot; + platformConfiguration.Configuration, BinariesDirectory + &quot;\&quot; + platformConfiguration.Platform + &quot;\&quot; + platformConfiguration.Configuration))]" />
+                            <Assign x:TypeArguments="x:String" DisplayName="Initialize LogFile Drop Location" sap:VirtualizedContainerService.HintSize="200,22" To="[logFileDropLocation]" Value="[If (platformConfiguration.IsEmpty Or BuildSettings.PlatformConfigurations.Count = 1, BuildDetail.DropLocation + &quot;\logs&quot;, If (platformConfiguration.IsPlatformEmptyOrAnyCpu, BuildDetail.DropLocation + &quot;\logs\&quot; + platformConfiguration.Configuration, BuildDetail.DropLocation + &quot;\logs\&quot; + platformConfiguration.Platform + &quot;\&quot; + platformConfiguration.Configuration))]" />
+                          </Sequence>
+                          <If Condition="[BuildSettings.HasProjectsToBuild]" DisplayName="If BuildSettings.HasProjectsToBuild" sap:VirtualizedContainerService.HintSize="738,1548">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ForEach x:TypeArguments="x:String" DisplayName="For Each Project in BuildSettings.ProjectsToBuild" sap:VirtualizedContainerService.HintSize="613,1440" Values="[BuildSettings.ProjectsToBuild]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="x:String">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="x:String" Name="serverBuildProjectItem" />
+                                  </ActivityAction.Argument>
+                                  <TryCatch DisplayName="Try to Compile the Project" sap:VirtualizedContainerService.HintSize="583,1332">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <TryCatch.Try>
+                                      <Sequence DisplayName="Compile the Project" sap:VirtualizedContainerService.HintSize="565,1145">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="localProject" />
+                                          <Variable x:TypeArguments="x:String" Name="localPublishProject" />
+                                          <Variable x:TypeArguments="x:Int32" Name="CustomBuildResult" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <mtbwa:ConvertWorkspaceItem DisplayName="Convert Server Path to Local Path" sap:VirtualizedContainerService.HintSize="543,22" Input="[serverBuildProjectItem]" Result="[localProject]" Workspace="[Workspace]" />
+                                        <mtbwa:MSBuild CommandLineArguments="[String.Format(&quot;{10} /p:SkipInvalidConfigurations=true;TeamBuildOutDir=&quot;&quot;{0}&quot;&quot;;DeliverablesDir=&quot;&quot;{0}\Deliverables&quot;&quot;;IsVersionedBuild={1};AssemblyMajorVersion={2};AssemblyMinorVersion={3};AssemblyBuildNumber={4};AssemblyRevision={5};AssemblyBuildNumberType=NoIncrement;AssemblyRevisionType=NoIncrement;AssemblyFileMajorVersion={2};AssemblyFileMinorVersion={3};AssemblyFileBuildNumber={4};AssemblyFileRevision={5};AssemblyFileBuildNumberType=NoIncrement;AssemblyFileRevisionType=NoIncrement;AddSuffixToCOMProjects={6};UpdateVersionInCOMProjects={7};InstallShieldProductVersion={2}.{3}.{4}{5};ManifestKeyFile=&quot;&quot;{8}&quot;&quot;;ManifestCertificateThumbprint={9}&quot;, BinariesDirectory, AddVersionSuffixToAssemblies.ToString().ToLower(), SpecifiedMajorVersionNumber, SpecifiedMinorVersionNumber, SpecifiedTernaryVersionNumber, revisionNumber, AddSuffixToCOMProjects.ToString().ToLower(), UpdateVersionInCOMProjects.ToString().ToLower(), ManifestKeyFilePath, ManifestCertificateThumbprint, MSBuildArguments)]" Configuration="[platformConfiguration.Configuration]" DisplayName="Run MSBuild for Project" GenerateVSPropsFile="[True]" sap:VirtualizedContainerService.HintSize="543,22" LogFileDropLocation="[logFileDropLocation]" OutDir="[If(OverrideOutDir, &quot;&quot;, outputDirectory)]" Platform="[platformConfiguration.Platform]" Project="[localProject]" RunCodeAnalysis="[RunCodeAnalysis]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" TargetsNotLogged="[New String() {&quot;GetNativeManifest&quot;, &quot;GetCopyToOutputDirectoryItems&quot;, &quot;GetTargetPath&quot;}]" ToolPlatform="[MSBuildPlatform]" Verbosity="[Verbosity]" />
+                                        <If Condition="[IsCustomBuild]" DisplayName="If this is a Custom Build" sap:VirtualizedContainerService.HintSize="543,897">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <TryCatch sap:VirtualizedContainerService.HintSize="418,789">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <TryCatch.Try>
+                                                <Sequence DisplayName="Loop through all arguments" sap:VirtualizedContainerService.HintSize="309,602">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="287,478" Values="[CustomBuildArguments]">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ActivityAction x:TypeArguments="x:String">
+                                                      <ActivityAction.Argument>
+                                                        <DelegateInArgument x:TypeArguments="x:String" Name="argument" />
+                                                      </ActivityAction.Argument>
+                                                      <Sequence sap:VirtualizedContainerService.HintSize="222,370">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <mtbwa:InvokeProcess Arguments="[String.Format(&quot;{0} voicescr.vos&quot;, argument)]" FileName="[CustomBuildCommand]" sap:VirtualizedContainerService.HintSize="200,184" Result="[CustomBuildResult]" WorkingDirectory="[SourcesDirectory + CustomBuildWorkingDirectory]">
+                                                          <mtbwa:InvokeProcess.ErrorDataReceived>
+                                                            <ActivityAction x:TypeArguments="x:String">
+                                                              <ActivityAction.Argument>
+                                                                <DelegateInArgument x:TypeArguments="x:String" Name="errOutput" />
+                                                              </ActivityAction.Argument>
+                                                            </ActivityAction>
+                                                          </mtbwa:InvokeProcess.ErrorDataReceived>
+                                                          <mtbwa:InvokeProcess.OutputDataReceived>
+                                                            <ActivityAction x:TypeArguments="x:String">
+                                                              <ActivityAction.Argument>
+                                                                <DelegateInArgument x:TypeArguments="x:String" Name="stdOutput" />
+                                                              </ActivityAction.Argument>
+                                                            </ActivityAction>
+                                                          </mtbwa:InvokeProcess.OutputDataReceived>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </mtbwa:InvokeProcess>
+                                                        <mtbwa:WriteBuildMessage DisplayName="Write CustomBuildResult" sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;CustomBuildResult: {0}&quot;, CustomBuildResult)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                                                      </Sequence>
+                                                    </ActivityAction>
+                                                  </ForEach>
+                                                </Sequence>
+                                              </TryCatch.Try>
+                                              <TryCatch.Catches>
+                                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ActivityAction x:TypeArguments="s:Exception">
+                                                    <ActivityAction.Argument>
+                                                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                    </ActivityAction.Argument>
+                                                    <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;Custom Build Exception: {0} Return Code: {1}&quot;, exception.ToString(), CustomBuildResult.ToString())]" />
+                                                  </ActivityAction>
+                                                </Catch>
+                                              </TryCatch.Catches>
+                                            </TryCatch>
+                                          </If.Then>
+                                        </If>
+                                      </Sequence>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="569,21">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                                          </ActivityAction.Argument>
+                                          <Sequence DisplayName="Handle Exception" sap:VirtualizedContainerService.HintSize="200,51">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <mtbwa:SetBuildProperties CompilationStatus="[Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Failed]" DisplayName="Set CompilationStatus to Failed" sap:VirtualizedContainerService.HintSize="464,22" PropertiesToSet="CompilationStatus" />
+                                            <If Condition="[CreateWorkItem]" DisplayName="If CreateWorkItem" sap:VirtualizedContainerService.HintSize="464,252">
+                                              <If.Then>
+                                                <mtbwa:InvokeForReason DisplayName="Create Work Item for non-Shelveset Builds" sap:VirtualizedContainerService.HintSize="281,146" Reason="Manual, IndividualCI, BatchedCI, Schedule, ScheduleForced, UserCreated">
+                                                  <mtbwa:OpenWorkItem AssignedTo="[BuildDetail.RequestedFor]" Comment="[&quot;This work item was created by TFS Build on a build failure.&quot;]" CustomFields="[New Dictionary(Of String, String) From { {&quot;System.Reason&quot;, &quot;Build Failure&quot;}, {&quot;Scrum.v3.BugOrigin&quot;, &quot;Build&quot;},{&quot;Microsoft.VSTS.TCM.ReproSteps&quot;, &quot;Start the build using TFS Build&quot;} }]" DisplayName="Create Work Item" sap:VirtualizedContainerService.HintSize="200,22" Title="[String.Format(&quot;Build Failure in Build: {0}&quot;, BuildDetail.BuildNumber)]" Type="[&quot;Bug&quot;]" />
+                                                </mtbwa:InvokeForReason>
+                                              </If.Then>
+                                            </If>
+                                            <Rethrow DisplayName="Rethrow the exception so the build will stop" sap:VirtualizedContainerService.HintSize="464,22" />
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                </ActivityAction>
+                              </ForEach>
+                            </If.Then>
+                          </If>
+                          <Sequence DisplayName="Code Metrics" sap:VirtualizedContainerService.HintSize="738,332">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[RunCodeMetrics]" DisplayName="If RunCodeMetrics" sap:VirtualizedContainerService.HintSize="464,208">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <tac:CodeMetrics FailBuildOnError="{x:Null}" IgnoreExceptions="{x:Null}" TreatWarningsAsErrors="{x:Null}" BinariesDirectory="[BinariesDirectory]" CyclomaticComplexityErrorThreshold="50" CyclomaticComplexityWarningThreshold="50" FilesToProcess="[CodeMetricsFiles]" GeneratedFileName="[BinariesDirectory + &quot;\&quot; + &quot;CodeMetrics.xml&quot;]" sap:VirtualizedContainerService.HintSize="200,22" LogExceptionStack="True" MaintainabilityIndexErrorThreshold="5" MaintainabilityIndexWarningThreshold="10" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                          <If Condition="[ProjectsToPublish.HasProjectsToBuild]" DisplayName="If ProjectsToPublish Has Projects to Build" sap:VirtualizedContainerService.HintSize="738,51">
+                            <If.Then>
+                              <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="448,692" Values="[ProjectsToPublish.ProjectsToBuild]">
+                                <ActivityAction x:TypeArguments="x:String">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="x:String" Name="projectToPublish" />
+                                  </ActivityAction.Argument>
+                                  <TryCatch sap:VirtualizedContainerService.HintSize="418,586">
+                                    <TryCatch.Try>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="400,208">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="localProjectToPublish" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <mtbwa:ConvertWorkspaceItem sap:VirtualizedContainerService.HintSize="200,22" Input="[projectToPublish]" Result="[localProjectToPublish]" Workspace="[Workspace]" />
+                                        <mtbwa:MSBuild CommandLineArguments="[String.Format(&quot;/target:Publish /property:DeliverablesDir=&quot;&quot;{5}\Deliverables&quot;&quot; /property:TeamBuildOutDir=&quot;&quot;{5}\PublishOutPath&quot;&quot; /property:OutputPath=&quot;&quot;{5}\PublishOutPath&quot;&quot;  /property:ApplicationVersion={1}.{2}.{3}.{4} /property:ApplicationRevision={4} /property:PublishDir=&quot;&quot;{5}\Deliverables\publish\{6}\\&quot;&quot; /property:SignManifests={7} /property:ManifestKeyFile=&quot;&quot;{8}&quot;&quot; /property:ManifestCertificateThumbprint={9} /property:ManifestTimestampUrl=&quot;&quot;http://timestamp.verisign.com/scripts/timstamp.dll&quot;&quot; /property:AssemblyMajorVersion={1} /property:AssemblyMinorVersion={2} /property:AssemblyBuildNumber={3} /property:AssemblyRevision={4} /property:AssemblyBuildNumberType=NoIncrement /property:AssemblyRevisionType=NoIncrement /property:AssemblyFileMajorVersion={1} /property:AssemblyFileMinorVersion={2} /property:AssemblyFileBuildNumber={3} /property:AssemblyFileRevision={4} /property:AssemblyFileBuildNumberType=NoIncrement /property:AssemblyFileRevisionType=NoIncrement {0}&quot;, MSBuildArguments, SpecifiedMajorVersionNumber, SpecifiedMinorVersionNumber, SpecifiedTernaryVersionNumber, revisionNumber, BinariesDirectory, projectToPublish.Substring(projectToPublish.LastIndexOf(&quot;/&quot;) + 1, projectToPublish.LastIndexOf(&quot;.&quot;) - projectToPublish.LastIndexOf(&quot;/&quot;) - 1), SignManifests, ManifestKeyFilePath, ManifestCertificateThumbprint)]" Configuration="[platformConfiguration.Configuration]" DisplayName="Publish Project with MSBuild" GenerateVSPropsFile="[True]" sap:VirtualizedContainerService.HintSize="200,22" LogFileDropLocation="[logFileDropLocation]" Platform="[platformConfiguration.Platform]" Project="[localProjectToPublish]" RunCodeAnalysis="[RunCodeAnalysis]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" TargetsNotLogged="[New String() {&quot;GetNativeManifest&quot;, &quot;GetCopyToOutputDirectoryItems&quot;, &quot;GetTargetPath&quot;}]" ToolPlatform="[MSBuildPlatform]" Verbosity="[Verbosity]" />
+                                      </Sequence>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,108">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                          </ActivityAction.Argument>
+                                          <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="398,75" Message="[String.Format(&quot;Failed to Publish ClickOnce project {0}. {1}&quot;, projectToPublish, exception.Message)]" />
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                </ActivityAction>
+                              </ForEach>
+                            </If.Then>
+                          </If>
+                          <Sequence DisplayName="Database Build" sap:VirtualizedContainerService.HintSize="738,983">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <local:SystemOptionSQLVersionReplace sap:VirtualizedContainerService.HintSize="573,22" Major="[SpecifiedMajorVersionNumber.ToString()]" Minor="[SpecifiedMinorVersionNumber.ToString()]" Revision="[revisionNumber.ToString()]" RootPath="[BinariesDirectory]" Ternary="[SpecifiedTernaryVersionNumber.ToString()]" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                            <If Condition="[DatabaseProjectsToDeploy.HasProjectsToBuild]" DisplayName="If DatabaseProjectsToDeploy Has Projects to Deploy" sap:VirtualizedContainerService.HintSize="573,673">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="448,565" Values="[DatabaseProjectsToDeploy.ProjectsToBuild]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ActivityAction x:TypeArguments="x:String">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="x:String" Name="databaseProjectToDeploy" />
+                                    </ActivityAction.Argument>
+                                    <TryCatch sap:VirtualizedContainerService.HintSize="418,457">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <TryCatch.Try>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="222,270">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:String" Name="localProjectToPublish" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <mtbwa:ConvertWorkspaceItem sap:VirtualizedContainerService.HintSize="200,22" Input="[databaseProjectToDeploy]" Result="[dbProject]" Workspace="[Workspace]" />
+                                          <mtbwa:WriteBuildMessage DisplayName="Deploy Database Message" sap:VirtualizedContainerService.HintSize="200,22" Message="[&quot;Deploy database &quot; + dbProject]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                                          <mtbwa:MSBuild CommandLineArguments="[&quot;/p:TargetDatabase=&quot; + DeploymentDatabase +&#xA;&quot; /p:&quot;&quot;DefaultDataPath=e:sql2008data&quot;&quot;&quot; +&#xA;&quot; /p:&quot;&quot;TargetConnectionString=Data Source=&quot; + DeploymentServer + &quot;;Integrated Security=true&quot;&quot;&quot; +&#xA;&quot; /p:DeployToDatabase=true&quot;]" Configuration="Debug" DisplayName="Deploy Database with MSBuild" sap:VirtualizedContainerService.HintSize="200,22" LogFile="deploydatabase.log" OutDir="[BinariesDirectory]" Project="[dbProject]" RunCodeAnalysis="[CodeAnalysisOption.Never]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" Targets="[New String() {&quot;Deploy&quot;}]" />
+                                        </Sequence>
+                                      </TryCatch.Try>
+                                      <TryCatch.Catches>
+                                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ActivityAction x:TypeArguments="s:Exception">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                            </ActivityAction.Argument>
+                                            <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;Failed to Deploy Database project {0}. {1}&quot;, databaseProjectToDeploy, exception.Message)]" />
+                                          </ActivityAction>
+                                        </Catch>
+                                      </TryCatch.Catches>
+                                    </TryCatch>
+                                  </ActivityAction>
+                                </ForEach>
+                              </If.Then>
+                            </If>
+                            <If Condition="[GenerateRedgateSnapshot]" DisplayName="If Generate Redgate Snapshot" sap:VirtualizedContainerService.HintSize="573,51">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence DisplayName="RedGate Sequence" sap:VirtualizedContainerService.HintSize="222,308">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <mtbwa:InvokeProcess Arguments="[&quot;/database:&quot;&quot;&quot; + DeploymentDatabase + &quot;&quot;&quot; /server:&quot;&quot;&quot; + DeploymentServer + &quot;&quot;&quot; /snapshot:&quot;&quot;&quot; + BinariesDirectory + &quot;\&quot; + DeploymentDatabase]" DisplayName="Execute Redgate Wrapper" FileName="[&quot;&quot;&quot;&quot; + SourcesDirectory + &quot;\Architecture\Main\Tools\RedGateWrapper\RedGateWrapper\bin\Debug\RedGateWrapper.exe&quot;&quot;&quot;]" sap:VirtualizedContainerService.HintSize="200,184">
+                                    <mtbwa:InvokeProcess.ErrorDataReceived>
+                                      <ActivityAction x:TypeArguments="x:String">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:String" Name="errOutput" />
+                                        </ActivityAction.Argument>
+                                      </ActivityAction>
+                                    </mtbwa:InvokeProcess.ErrorDataReceived>
+                                    <mtbwa:InvokeProcess.OutputDataReceived>
+                                      <ActivityAction x:TypeArguments="x:String">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:String" Name="stdOutput" />
+                                        </ActivityAction.Argument>
+                                      </ActivityAction>
+                                    </mtbwa:InvokeProcess.OutputDataReceived>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </mtbwa:InvokeProcess>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                          <If Condition="[InstallersToBuild.HasProjectsToBuild]" DisplayName="If InstallersToBuild Has InstallShield 2011 Projects to Build" sap:VirtualizedContainerService.HintSize="738,51">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="444,378" Values="[InstallersToBuild.ProjectsToBuild]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="x:String">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="x:String" Name="installerProject" />
+                                  </ActivityAction.Argument>
+                                  <TryCatch DisplayName="Try Building Installer Project" sap:VirtualizedContainerService.HintSize="414,270">
+                                    <TryCatch.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="localInstallerProject" />
+                                    </TryCatch.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <TryCatch.Try>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="222,270">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <mtbwa:ConvertWorkspaceItem sap:VirtualizedContainerService.HintSize="200,22" Input="[installerProject]" Result="[localInstallerProject]" Workspace="[Workspace]" />
+                                        <local:InstallShieldGenerateNewProductCode sap:VirtualizedContainerService.HintSize="200,22" InstallShieldProjectFullPath="[localInstallerProject]" InstallShieldVersion="2011" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                                        <mtbwa:MSBuild CommandLineArguments="[String.Format(&quot;/p:SkipInvalidConfigurations=true;TeamBuildOutDir=&quot;&quot;{0}&quot;&quot;;DeliverablesDir=&quot;&quot;{0}\Deliverables&quot;&quot;;IsVersionedBuild={1};AssemblyMajorVersion={2};AssemblyMinorVersion={3};AssemblyBuildNumber={4};AssemblyBuildNumberType=NoIncrement;AssemblyFileMajorVersion={2};AssemblyFileMinorVersion={3};AssemblyFileBuildNumber={4};AssemblyFileBuildNumberType=NoIncrement;AddSuffixToCOMProjects={5};UpdateVersionInCOMProjects={6};InstallShieldProductVersion={2}.{3}.{4}{7:d3}&quot;, BinariesDirectory, AddVersionSuffixToAssemblies.ToString().ToLower(), SpecifiedMajorVersionNumber, SpecifiedMinorVersionNumber, SpecifiedTernaryVersionNumber, AddSuffixToCOMProjects.ToString().ToLower(), UpdateVersionInCOMProjects.ToString().ToLower(), revisionNumber, MSBuildArguments)]" DisplayName="Build Installer Projects" GenerateVSPropsFile="True" sap:VirtualizedContainerService.HintSize="200,22" LogFileDropLocation="[logFileDropLocation]" OutDir="[outputDirectory]" Project="[localInstallerProject]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" TargetsNotLogged="[New String() {&quot;GetNativeManifest&quot;, &quot;GetCopyToOutputDirectoryItems&quot;, &quot;GetTargetPath&quot;}]" ToolPlatform="[MSBuildPlatform]" Verbosity="[Verbosity]" />
+                                      </Sequence>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,108">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                          </ActivityAction.Argument>
+                                          <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;Failed to build installer project {0}&quot;, exception.Message)]" />
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                </ActivityAction>
+                              </ForEach>
+                            </If.Then>
+                          </If>
+                          <If Condition="[Not DisableTests]" DisplayName="If Not DisableTests" sap:VirtualizedContainerService.HintSize="738,51">
+                            <If.Then>
+                              <Sequence DisplayName="Run Tests" sap:VirtualizedContainerService.HintSize="1053,1867">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If Condition="[Not TestSpecs Is Nothing]" DisplayName="If Not TestSpecs Is Nothing" sap:VirtualizedContainerService.HintSize="1031,1743">
+                                  <If.Then>
+                                    <ForEach x:TypeArguments="mtbwa:TestSpec" DisplayName="For Each TestSpec in TestSpecs" sap:VirtualizedContainerService.HintSize="906,1637" Values="[TestSpecs]">
+                                      <ActivityAction x:TypeArguments="mtbwa:TestSpec">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="mtbwa:TestSpec" Name="spec" />
+                                        </ActivityAction.Argument>
+                                        <TryCatch DisplayName="Try Run Tests" sap:VirtualizedContainerService.HintSize="876,1531">
+                                          <TryCatch.Try>
+                                            <If Condition="[TypeOf spec Is Microsoft.TeamFoundation.Build.Workflow.Activities.TestMetadataFileSpec]" DisplayName="If spec Is TestMetadataFileSpec" sap:VirtualizedContainerService.HintSize="858,774">
+                                              <If.Then>
+                                                <Sequence DisplayName="Run MSTest for Metadata File" sap:VirtualizedContainerService.HintSize="222,668">
+                                                  <Sequence.Variables>
+                                                    <Variable x:TypeArguments="mtbwa:TestMetadataFileSpec" Name="testMetadataFile" />
+                                                    <Variable x:TypeArguments="x:String" Name="localTestMetadata" />
+                                                  </Sequence.Variables>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Assign x:TypeArguments="mtbwa:TestMetadataFileSpec" DisplayName="Assign spec to testMetadataFile" sap:VirtualizedContainerService.HintSize="200,22" To="[testMetadataFile]" Value="[DirectCast(spec, Microsoft.TeamFoundation.Build.Workflow.Activities.TestMetadataFileSpec)]" />
+                                                  <mtbwa:ConvertWorkspaceItem DisplayName="Convert Server Path to Local Path" sap:VirtualizedContainerService.HintSize="200,22" Input="[testMetadataFile.MetadataFileName]" Result="[localTestMetadata]" Workspace="[Workspace]" />
+                                                  <mtbwa:MSTest Category="[testMetadataFile.CategoryFilter]" CommandLineArguments="[testMetadataFile.MSTestCommandLineArgs]" DisplayName="Run MSTest for Metadata File" Flavor="[platformConfiguration.Configuration]" sap:VirtualizedContainerService.HintSize="200,22" MaxPriority="[testMetadataFile.MaximumPriority]" MinPriority="[testMetadataFile.MinimumPriority]" PathToResultsFilesRoot="[TestResultsDirectory]" Platform="[platformConfiguration.Platform]" SearchPathRoot="[outputDirectory]" TestLists="[testMetadataFile.TestLists]" TestMetadata="[localTestMetadata]" TestSettings="[String.Empty]" />
+                                                </Sequence>
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence DisplayName="Run MSTest for Test Assemblies" sap:VirtualizedContainerService.HintSize="611,668">
+                                                  <Sequence.Variables>
+                                                    <Variable x:TypeArguments="mtbwa:TestAssemblySpec" Name="testAssembly" />
+                                                    <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="testAssemblies" />
+                                                    <Variable x:TypeArguments="x:String" Default="[String.Empty]" Name="testFlavor" />
+                                                    <Variable x:TypeArguments="x:String" Default="[String.Empty]" Name="testPlatform" />
+                                                  </Sequence.Variables>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Assign x:TypeArguments="mtbwa:TestAssemblySpec" DisplayName="Assign spec to testAssembly" sap:VirtualizedContainerService.HintSize="589,22" To="[testAssembly]" Value="[DirectCast(spec, Microsoft.TeamFoundation.Build.Workflow.Activities.TestAssemblySpec)]" />
+                                                  <mtbwa:FindMatchingFiles DisplayName="Find Test Assemblies" sap:VirtualizedContainerService.HintSize="589,22" MatchPattern="[String.Format(&quot;{0}\{1}&quot;, outputDirectory, testAssembly.AssemblyFileSpec)]" Result="[testAssemblies]" />
+                                                  <If Condition="[testAssemblies.Count() &gt; 0]" DisplayName="If Test Assemblies Found" sap:VirtualizedContainerService.HintSize="589,420">
+                                                    <If.Then>
+                                                      <If Condition="[testAssembly.HasTestSettingsFile]" DisplayName="If testAssembly.HasTestSettingsFile" sap:VirtualizedContainerService.HintSize="464,314">
+                                                        <If.Then>
+                                                          <Sequence DisplayName="Find Test Settings File And Run MSTest" sap:VirtualizedContainerService.HintSize="231,208">
+                                                            <Sequence.Variables>
+                                                              <Variable x:TypeArguments="x:String" Name="localTestSettings" />
+                                                            </Sequence.Variables>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <mtbwa:ConvertWorkspaceItem DisplayName="Convert Server Path to Local Path" sap:VirtualizedContainerService.HintSize="200,22" Input="[testAssembly.TestSettingsFileName]" Result="[localTestSettings]" Workspace="[Workspace]" />
+                                                            <mtbwa:MSTest Category="[testAssembly.CategoryFilter]" CommandLineArguments="[testAssembly.MSTestCommandLineArgs]" DisplayName="Run MSTest for TestAssemblies" Flavor="[platformConfiguration.Configuration]" sap:VirtualizedContainerService.HintSize="200,22" MaxPriority="[testAssembly.MaximumPriority]" MinPriority="[testAssembly.MinimumPriority]" PathToResultsFilesRoot="[TestResultsDirectory]" Platform="[platformConfiguration.Platform]" SearchPathRoot="[outputDirectory]" TestContainers="[testAssemblies]" TestSettings="[localTestSettings]" />
+                                                          </Sequence>
+                                                        </If.Then>
+                                                        <If.Else>
+                                                          <mtbwa:MSTest Category="[testAssembly.CategoryFilter]" CommandLineArguments="[testAssembly.MSTestCommandLineArgs]" DisplayName="Run MSTest for TestAssemblies" Flavor="[platformConfiguration.Configuration]" sap:VirtualizedContainerService.HintSize="208,208" MaxPriority="[testAssembly.MaximumPriority]" MinPriority="[testAssembly.MinimumPriority]" PathToResultsFilesRoot="[TestResultsDirectory]" Platform="[platformConfiguration.Platform]" SearchPathRoot="[outputDirectory]" TestContainers="[testAssemblies]" />
+                                                        </If.Else>
+                                                      </If>
+                                                    </If.Then>
+                                                  </If>
+                                                </Sequence>
+                                              </If.Else>
+                                            </If>
+                                          </TryCatch.Try>
+                                          <TryCatch.Catches>
+                                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="862,487">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ActivityAction x:TypeArguments="s:Exception">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="testException" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Handle MSTest Exception" sap:VirtualizedContainerService.HintSize="856,454">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="464,22" Message="[testException.Message]" />
+                                                  <mtbwa:SetBuildProperties DisplayName="Set TestStatus to Failed" sap:VirtualizedContainerService.HintSize="464,22" PropertiesToSet="TestStatus" TestStatus="[Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Failed]" />
+                                                  <If Condition="[spec.FailBuildOnFailure]" DisplayName="If spec.FailBuildOnFailure" sap:VirtualizedContainerService.HintSize="464,206">
+                                                    <If.Then>
+                                                      <Assign x:TypeArguments="x:Boolean" DisplayName="Set treatTestFailureAsBuildFailure to True" sap:VirtualizedContainerService.HintSize="269,100" To="[treatTestFailureAsBuildFailure]" Value="[True]" />
+                                                    </If.Then>
+                                                  </If>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </Catch>
+                                          </TryCatch.Catches>
+                                        </TryCatch>
+                                      </ActivityAction>
+                                    </ForEach>
+                                  </If.Then>
+                                </If>
+                              </Sequence>
+                            </If.Then>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ForEach>
+                    <If Condition="[InstallShieldCommandLine = True]" DisplayName="If InstallShieldCommandLine = True" sap:VirtualizedContainerService.HintSize="790,580">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="Compile InstallShield and Copy to Drop Location" sap:VirtualizedContainerService.HintSize="375,472">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <local:InstallShieldGenerateNewProductCode sap:VirtualizedContainerService.HintSize="234,22" InstallShieldProjectFullPath="[SourcesDirectory + InstallShieldProjectFolder + InstallShieldProject]" InstallShieldVersion="2010" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                          <mtbwa:InvokeProcess Arguments="[String.Format(&quot;-p &quot;&quot;{0}{1}{2}&quot;&quot; -l ISProjectFolder=&quot;&quot;{0}{1}&quot;&quot; -y &quot;&quot;{3}.{4}.{5}{6:d3}&quot;&quot;&quot;, SourcesDirectory, InstallShieldProjectFolder, InstallShieldProject, SpecifiedMajorVersionNumber, SpecifiedMinorVersionNumber, SpecifiedTernaryVersionNumber, revisionNumber)]" FileName="c:\program files (x86)\InstallShield\2010\System\IsCmdBld.exe" sap:VirtualizedContainerService.HintSize="353,191" WorkingDirectory="[SourcesDirectory + InstallShieldProjectFolder]">
+                            <mtbwa:InvokeProcess.ErrorDataReceived>
+                              <ActivityAction x:TypeArguments="x:String">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:String" Name="errOutput" />
+                                </ActivityAction.Argument>
+                                <mtbwa:SetBuildProperties DisplayName="Set Status to Failed" sap:VirtualizedContainerService.HintSize="200,22" PropertiesToSet="Status" Status="[Microsoft.TeamFoundation.Build.Client.BuildStatus.Failed]" />
+                              </ActivityAction>
+                            </mtbwa:InvokeProcess.ErrorDataReceived>
+                            <mtbwa:InvokeProcess.OutputDataReceived>
+                              <ActivityAction x:TypeArguments="x:String">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:String" Name="stdOutput" />
+                                </ActivityAction.Argument>
+                              </ActivityAction>
+                            </mtbwa:InvokeProcess.OutputDataReceived>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </mtbwa:InvokeProcess>
+                          <mtbwa:CopyDirectory Destination="[BuildDetail.DropLocation]" DisplayName="Copy Installer to Drop Location" sap:VirtualizedContainerService.HintSize="353,22" Source="[SourcesDirectory + Is2010OutDir]" />
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                    <If Condition="[BuildDetail.CompilationStatus = Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Unknown]" DisplayName="If CompilationStatus = Unknown" sap:VirtualizedContainerService.HintSize="790,51">
+                      <If.Then>
+                        <mtbwa:SetBuildProperties CompilationStatus="[Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Succeeded]" DisplayName="Set CompilationStatus to Succeeded" sap:VirtualizedContainerService.HintSize="269,100" PropertiesToSet="CompilationStatus" />
+                      </If.Then>
+                    </If>
+                    <If Condition="[BuildDetail.TestStatus = Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Unknown]" DisplayName="If TestStatus = Unknown" sap:VirtualizedContainerService.HintSize="790,51">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <mtbwa:SetBuildProperties DisplayName="Set TestStatus to Succeeded" sap:VirtualizedContainerService.HintSize="269,100" PropertiesToSet="TestStatus" TestStatus="[Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Succeeded]" />
+                      </If.Then>
+                    </If>
+                    <If Condition="[treatTestFailureAsBuildFailure And (BuildDetail.TestStatus = Microsoft.TeamFoundation.Build.Client.BuildPhaseStatus.Failed)]" DisplayName="If TreatTestFailureAsBuildFailure And (TestStatus = Failed)" sap:VirtualizedContainerService.HintSize="790,208">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <mtbwa:SetBuildProperties DisplayName="Set Status to Failed" sap:VirtualizedContainerService.HintSize="200,22" PropertiesToSet="Status" Status="[Microsoft.TeamFoundation.Build.Client.BuildStatus.Failed]" />
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="816,21">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="compilationExceptionArgument" />
+                      </ActivityAction.Argument>
+                      <Assign x:TypeArguments="s:Exception" DisplayName="Save the Compilation Exception" sap:VirtualizedContainerService.HintSize="200,22" To="[compilationException]" Value="[compilationExceptionArgument]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <If Condition="[AssociateChangesetsAndWorkItems]" DisplayName="If AssociateChangesetsAndWorkItems" sap:VirtualizedContainerService.HintSize="587,4900">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <mtbwa:InvokeForReason DisplayName="Associate Changesets and Work Items for non-Shelveset Builds" sap:VirtualizedContainerService.HintSize="462,945" Reason="Manual, IndividualCI, BatchedCI, Schedule, ScheduleForced, UserCreated">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <mtbwa:AssociateChangesetsAndWorkItems DisplayName="Associate Changesets and Work Items" sap:VirtualizedContainerService.HintSize="440,22" Result="[TempAssociatedChangesets]" />
+                    <Sequence DisplayName="Run StyleCop" sap:VirtualizedContainerService.HintSize="440,759">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="StyleCopFiles" />
+                        <Variable x:TypeArguments="x:String" Name="StyleCopSettingsFile" />
+                        <Variable x:TypeArguments="x:Boolean" Name="StyleCopResults" />
+                        <Variable x:TypeArguments="x:Int32" Name="StyleCopViolations" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <mtbwa:FindMatchingFiles sap:VirtualizedContainerService.HintSize="418,22" MatchPattern="[String.Format(&quot;{0}\**\*.cs*&quot;, BuildDirectory)]" Result="[StyleCopFiles]" />
+                      <mtbwa:WriteBuildMessage DisplayName="SuppressMessage Count WriteBuildMessage" sap:VirtualizedContainerService.HintSize="418,22" Message="[String.Format(&quot;SuppressMessage Violations {0}&quot;, StyleCopViolations)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                      <Assign sap:VirtualizedContainerService.HintSize="418,60">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[StyleCopSettingsFile]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["C:\Program Files (x86)\MSBuild\StyleCop\v4.7\Settings.StyleCop"]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <mtbwa:WriteBuildMessage DisplayName="StyleCop Settings WriteBuildMessage" sap:VirtualizedContainerService.HintSize="418,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;About to run Stylecop with {0}&quot;, StyleCopSettingsFile)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                      <TryCatch sap:VirtualizedContainerService.HintSize="418,287">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch.Try>
+                          <tac1:StyleCop AdditionalAddInPaths="{x:Null}" CacheResults="{x:Null}" ForceFullAnalysis="{x:Null}" LogFile="{x:Null}" MaximumViolationCount="{x:Null}" XmlOutputFile="{x:Null}" BuildAssociatedChangesets="[TempAssociatedChangesets]" FailBuildOnError="False" sap:VirtualizedContainerService.HintSize="400,100" IgnoreExceptions="True" LogExceptionStack="True" SettingsFile="[StyleCopSettingsFile]" ShowOutput="True" SourceFiles="[StyleCopFiles.ToArray()]" Succeeded="[StyleCopResults]" TreatViolationsErrorsAsWarnings="False" TreatWarningsAsErrors="True" ViolationCount="[StyleCopViolations]" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="200,22" Message="[exception.ToString()]" />
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                      <mtbwa:WriteBuildMessage DisplayName="StyleCop Results WriteBuildMessage" sap:VirtualizedContainerService.HintSize="418,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;StyleCop Success:{0} with {1} violations&quot;, StyleCopResults, StyleCopViolations)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                    </Sequence>
+                  </mtbwa:InvokeForReason>
+                </If.Then>
+              </If>
+            </Parallel>
+            <If Condition="[Not compilationException Is Nothing]" DisplayName="If a Compilation Exception Occurred" sap:VirtualizedContainerService.HintSize="1571,689">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw DisplayName="Rethrow Compilation Exception" Exception="[compilationException]" sap:VirtualizedContainerService.HintSize="200,22" />
+              </If.Then>
+              <If.Else>
+                <If Condition="[CheckinDeliverables = True]" DisplayName="If Check-in Outputs to Deliverables" sap:VirtualizedContainerService.HintSize="552,581">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Check-In to Each Deliverables Location" sap:VirtualizedContainerService.HintSize="427,473">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="405,349" Values="[DeliverablesFolders]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="x:String">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:String" Name="folder" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Check-In to Folder" sap:VirtualizedContainerService.HintSize="375,241">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <mtbwa:WriteBuildMessage DisplayName="Write Message for Deliverables Location" sap:VirtualizedContainerService.HintSize="353,22" Message="[String.Format(&quot;Attempting Check-In of Binaries to Deliverables Folder: {0}&quot;, folder)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                            <local:CheckinBinaries BinariesFolder="[BinariesDirectory]" DeliverablesFolder="[folder]" Regexpr="[FileRegex]" IsNoCiBuild="[IsNoCiBuild]" sap:VirtualizedContainerService.HintSize="269,100" IsVersionedBuild="[CreateVersionedSourceBinariesFolder]" MajorVersion="[SpecifiedMajorVersionNumber]" MinorVersion="[SpecifiedMinorVersionNumber]" TernaryVersion="[SpecifiedTernaryVersionNumber]" Workspace="[Workspace]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ForEach>
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </If.Else>
+            </If>
+            <Parallel DisplayName="Get Impacted Tests, Index Sources and Publish Symbols" sap:VirtualizedContainerService.HintSize="1571,983">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[PerformTestImpactAnalysis]" DisplayName="If PerformTestImpactAnalysis" sap:VirtualizedContainerService.HintSize="464,937">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence DisplayName="Get Impacted Tests" sap:VirtualizedContainerService.HintSize="222,208">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="assemblies" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <mtbwa:FindMatchingFiles DisplayName="Find Build Outputs" sap:VirtualizedContainerService.HintSize="200,22" MatchPattern="[String.Format(&quot;{0}\**\*.dll;{0}\**\*.exe&quot;, BinariesDirectory)]" Result="[assemblies]" />
+                    <mttbb:GetImpactedTests AssociatedChangesets="{x:Null}" BaselineBuildDropLocation="{x:Null}" CodeChanges="{x:Null}" ImpactedTests="{x:Null}" Assemblies="[assemblies]" BinariesRoot="[BinariesDirectory]" Build="[BuildDetail]" DisplayName="Get Impacted Tests" sap:VirtualizedContainerService.HintSize="200,22" Workspace="[Workspace]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+              <If Condition="[SourceAndSymbolServerSettings.IndexSources Or SourceAndSymbolServerSettings.HasSymbolStorePath]" DisplayName="If SourceAndSymbolServerSettings.IndexSources Or SourceAndSymbolServerSettings.HasSymbolStorePath" sap:VirtualizedContainerService.HintSize="690,937">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <mtbwa:InvokeForReason DisplayName="Index Sources and Publish Symbols for Triggered Builds" sap:VirtualizedContainerService.HintSize="565,829" Reason="Triggered">
+                    <mtbwa:InvokeForReason.Variables>
+                      <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="symbolFiles" />
+                    </mtbwa:InvokeForReason.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <mtbwa:FindMatchingFiles DisplayName="Find Symbol Files" sap:VirtualizedContainerService.HintSize="543,22" MatchPattern="[String.Format(&quot;{0}\**\*.pdb&quot;, BinariesDirectory)]" Result="[symbolFiles]" />
+                    <If Condition="[SourceAndSymbolServerSettings.IndexSources]" DisplayName="If SourceAndSymbolServerSettings.IndexSources" sap:VirtualizedContainerService.HintSize="543,395">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <TryCatch DisplayName="Try Index Sources" sap:VirtualizedContainerService.HintSize="418,287">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch.Try>
+                            <mtbwa:IndexSources DisplayName="Index Sources" FileList="[symbolFiles]" sap:VirtualizedContainerService.HintSize="200,22" />
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="200,22" Message="[exception.Message]" />
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                      </If.Then>
+                    </If>
+                    <If Condition="[SourceAndSymbolServerSettings.HasSymbolStorePath]" DisplayName="If SourceAndSymbolServerSettings.HasSymbolStorePath" sap:VirtualizedContainerService.HintSize="543,208">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <TryCatch DisplayName="Try Publish Symbols" sap:VirtualizedContainerService.HintSize="200,51">
+                          <TryCatch.Try>
+                            <mtbwa:SharedResourceScope DisplayName="Synchronize Access to Symbol Store" sap:VirtualizedContainerService.HintSize="400,146" MaxExecutionTime="[TimeSpan.Zero]" MaxWaitTime="[New TimeSpan(1, 0, 0)]" ResourceName="[SourceAndSymbolServerSettings.SymbolStorePath]">
+                              <mtbwa:PublishSymbols DisplayName="Publish Symbols" FileList="[symbolFiles]" sap:VirtualizedContainerService.HintSize="200,22" ProductName="[BuildDetail.BuildDefinition.Name]" StorePath="[SourceAndSymbolServerSettings.SymbolStorePath]" Version="[BuildDetail.BuildNumber]" />
+                            </mtbwa:SharedResourceScope>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,108">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <mtbwa:WriteBuildError sap:VirtualizedContainerService.HintSize="398,75" Message="[exception.Message]" />
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                      </If.Then>
+                    </If>
+                  </mtbwa:InvokeForReason>
+                </If.Then>
+              </If>
+            </Parallel>
+          </Sequence>
+        </TryCatch.Try>
+      </TryCatch>
+      <TryCatch DisplayName="Try to Unregister COM assemblies" sap:VirtualizedContainerService.HintSize="1611,51">
+        <TryCatch.Try>
+          <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap:VirtualizedContainerService.HintSize="405,347" Values="[COMAssembliesToRegister]">
+            <ActivityAction x:TypeArguments="x:String">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:String" Name="comAssemblyServerPath" />
+              </ActivityAction.Argument>
+              <Sequence sap:VirtualizedContainerService.HintSize="375,241">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="comAssemblyLocalPath" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <mtbwa:ConvertWorkspaceItem DisplayName="Get COM Assembly Local Path" sap:VirtualizedContainerService.HintSize="353,22" Input="[comAssemblyServerPath]" Result="[comAssemblyLocalPath]" Workspace="[Workspace]" />
+                <maba:COMObjectRegistration ApplicationName="{x:Null}" TLB="{x:Null}" COMAssembly="[comAssemblyLocalPath]" DisplayName="Unregister COM Assembly" sap:VirtualizedContainerService.HintSize="200,22" InstallAssembly="False" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+              </Sequence>
+            </ActivityAction>
+          </ForEach>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="409,21">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="403,75" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[String.Format(&quot;Exception occurred unregistering COM assembly: {0}&quot;, exception.ToString())]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <If Condition="[PostBuildCleanup = True]" DisplayName="If PostBuildCleanup= True" sap:VirtualizedContainerService.HintSize="1611,378">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Delete Workspace and Sources Directory" sap:VirtualizedContainerService.HintSize="222,270">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <mtbwa:DeleteDirectory Directory="[BinariesDirectory]" DisplayName="Delete Binaries Directory" sap:VirtualizedContainerService.HintSize="200,22" />
+            <mtbwa:DeleteWorkspace DeleteLocalItems="[True]" DisplayName="Delete Workspace" sap:VirtualizedContainerService.HintSize="200,22" Name="[WorkspaceName]" />
+            <mtbwa:DeleteDirectory Directory="[SourcesDirectory]" DisplayName="Delete Sources Directory" sap:VirtualizedContainerService.HintSize="200,22" />
+          </Sequence>
+        </If.Then>
+      </If>
+    </mtbwa:AgentScope>
+    <mtbwa:InvokeForReason DisplayName="Check In Gated Changes for CheckInShelveset Builds" sap:VirtualizedContainerService.HintSize="1633,146" Reason="CheckInShelveset">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <mtbwa:CheckInGatedChanges DisplayName="Check In Gated Changes" sap:VirtualizedContainerService.HintSize="200,22" />
+    </mtbwa:InvokeForReason>
+    <Sequence DisplayName="Builds To Queue" sap:VirtualizedContainerService.HintSize="1633,51">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ForEach x:TypeArguments="x:String" DisplayName="ForEach Build to Queue" sap:VirtualizedContainerService.HintSize="287,316" Values="[BuildsToQueue]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="buildDef" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Queue build definition" sap:VirtualizedContainerService.HintSize="222,208">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <mtbwa:WriteBuildMessage sap:VirtualizedContainerService.HintSize="200,22" Message="[String.Format(&quot;Queueing Build {0} {1}&quot;, buildDef.Substring(0, buildDef.IndexOf(&quot;\&quot;)), buildDef.Substring(buildDef.IndexOf(&quot;\&quot;)))]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+            <local1:QueueBuild ProcessParameters="{x:Null}" BuildController="[BuildDetail.BuildController()]" BuildDefinition="[BuildDetail.BuildServer.GetBuildDefinition(buildDef.Substring(0, buildDef.IndexOf(&quot;\&quot;)), buildDef.Substring(buildDef.IndexOf(&quot;\&quot;)+1))]" BuildServer="[BuildDetail.BuildServer()]" sap:VirtualizedContainerService.HintSize="200,22" Priority="[Microsoft.TeamFoundation.Build.Client.QueuePriority.Normal]" xmlns:local="clr-namespace:TeamFoundation.Build.ActivityPack;assembly=TeamFoundation.Build.ActivityPack" xmlns:local1="clr-namespace:TfsBuildExtensions.Activities.TeamFoundationServer;assembly=TfsBuildExtensions.Activities" />
+          </Sequence>
+        </ActivityAction>
+      </ForEach>
+    </Sequence>
+  </Sequence>
+</Activity>

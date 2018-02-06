@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceControlConverter>
+<ConverterSpecificSetting>
+     <Source name="VSS">
+          <VSSDatabase name="D:\VSS\Cogent\Customercfg"></VSSDatabase>
+          <UserMap name="D:\VSS\Cogent\CustomerCfg\migrate\Usermap.xml"></UserMap>
+          <SQL Server="tfsmigration"></SQL>
+     </Source>
+     <ProjectMap>
+          <Project Source="$/Algeria" Destination="$/CustomerCfg/Algeria"></Project>
+          <Project Source="$/Argentina" Destination="$/CustomerCfg/Argentina"></Project>
+          <Project Source="$/Arkansas" Destination="$/CustomerCfg/Arkansas"></Project>
+		  <Project Source="$/Belgium" Destination="$/CustomerCfg/Belgium"></Project>
+		  <Project Source="$/Benchmark" Destination="$/CustomerCfg/Benchmark"></Project>
+		  <Project Source="$/Brazil" Destination="$/CustomerCfg/Brazil"></Project>
+		  <Project Source="$/Brunei" Destination="$/CustomerCfg/Brunei"></Project>
+		  <Project Source="$/Bulgaria" Destination="$/CustomerCfg/Bulgaria"></Project>
+		  <Project Source="$/CAL-DOJ" Destination="$/CustomerCfg/CAL-DOJ"></Project>
+		  <Project Source="$/California" Destination="$/CustomerCfg/California"></Project>
+		  <Project Source="$/Cameroon" Destination="$/CustomerCfg/Cameroon"></Project>
+		  <Project Source="$/Canada" Destination="$/CustomerCfg/Canada"></Project>
+		  <Project Source="$/Cayman" Destination="$/CustomerCfg/Cayman"></Project>
+		  <Project Source="$/CBSI" Destination="$/CustomerCfg/CBSI"></Project>
+		  <Project Source="$/Chile" Destination="$/CustomerCfg/Chile"></Project>
+		  <Project Source="$/China" Destination="$/CustomerCfg/China"></Project>
+		  <Project Source="$/Cogent" Destination="$/CustomerCfg/Cogent"></Project>
+		  <Project Source="$/Colorado" Destination="$/CustomerCfg/Colorado"></Project>
+		  <Project Source="$/Connecticut" Destination="$/CustomerCfg/Connecticut"></Project>
+		  <Project Source="$/DoD" Destination="$/CustomerCfg/DoD"></Project>
+		  <Project Source="$/Dunord" Destination="$/CustomerCfg/Dunord"></Project>
+		  <Project Source="$/Ecuador" Destination="$/CustomerCfg/Ecuador"></Project>
+		  <Project Source="$/emergilink" Destination="$/CustomerCfg/emergilink"></Project>
+		  <Project Source="$/England" Destination="$/CustomerCfg/England"></Project>
+		  <Project Source="$/EU-Federal" Destination="$/CustomerCfg/EU-Federal"></Project>
+		  <Project Source="$/Florida" Destination="$/CustomerCfg/Florida"></Project>
+		  <Project Source="$/Georgia" Destination="$/CustomerCfg/Georgia"></Project>
+		  <Project Source="$/Guam" Destination="$/CustomerCfg/Guam"></Project>
+		  <Project Source="$/Guatemala" Destination="$/CustomerCfg/Guatemala"></Project>
+		  <Project Source="$/Haiti" Destination="$/CustomerCfg/Haiti"></Project>
+		  <Project Source="$/Holland" Destination="$/CustomerCfg/Holland"></Project>
+		  <Project Source="$/Honduras" Destination="$/CustomerCfg/Honduras"></Project>
+		  <Project Source="$/Hongkong" Destination="$/CustomerCfg/Hongkong"></Project>
+		  <Project Source="$/India" Destination="$/CustomerCfg/India"></Project>
+		  <Project Source="$/Interpol" Destination="$/CustomerCfg/Interpol"></Project>
+		  <Project Source="$/Ireland" Destination="$/CustomerCfg/Ireland"></Project>
+		  <Project Source="$/Israel" Destination="$/CustomerCfg/Israel"></Project>
+		  <Project Source="$/Italy" Destination="$/CustomerCfg/Italy"></Project>
+		  <Project Source="$/Jamaica" Destination="$/CustomerCfg/Jamaica"></Project>
+		  <Project Source="$/Jordan" Destination="$/CustomerCfg/Jordan"></Project>
+		  <Project Source="$/LosAngeles" Destination="$/CustomerCfg/LosAngeles"></Project>
+		  <Project Source="$/Maryland" Destination="$/CustomerCfg/Maryland"></Project>
+		  <Project Source="$/Mexico" Destination="$/CustomerCfg/Mexico"></Project>
+		  <Project Source="$/MiamiDade" Destination="$/CustomerCfg/MiamiDade"></Project>
+		  <Project Source="$/Michigan" Destination="$/CustomerCfg/Michigan"></Project>
+		  <Project Source="$/Morocco" Destination="$/CustomerCfg/Morocco"></Project>
+		  <Project Source="$/NCIC" Destination="$/CustomerCfg/NCIC"></Project>
+		  <Project Source="$/Nevada" Destination="$/CustomerCfg/Nevada"></Project>
+		  <Project Source="$/NewYork" Destination="$/CustomerCfg/NewYork"></Project>
+		  <Project Source="$/NIST" Destination="$/CustomerCfg/NIST"></Project>
+		  <Project Source="$/Ohio" Destination="$/CustomerCfg/Ohio"></Project>
+		  <Project Source="$/Oregon" Destination="$/CustomerCfg/Oregon"></Project>
+		  <Project Source="$/Paraguay" Destination="$/CustomerCfg/Paraguay"></Project>
+		  <Project Source="$/Pennsylvania" Destination="$/CustomerCfg/Pennsylvania"></Project>
+		  <Project Source="$/Philadelphia" Destination="$/CustomerCfg/Philadelphia"></Project>
+		  <Project Source="$/Philippines" Destination="$/CustomerCfg/Philippines"></Project>
+		  <Project Source="$/PuertoRico" Destination="$/CustomerCfg/PuertoRico"></Project>
+		  <Project Source="$/RhodeIsland" Destination="$/CustomerCfg/RhodeIsland"></Project>
+		  <Project Source="$/Russia" Destination="$/CustomerCfg/Russia"></Project>
+		  <Project Source="$/Rwanda" Destination="$/CustomerCfg/Rwanda"></Project>
+		  <Project Source="$/SierraLeone" Destination="$/CustomerCfg/SierraLeone"></Project>
+		  <Project Source="$/Singapore" Destination="$/CustomerCfg/Singapore"></Project>
+		  <Project Source="$/Slovak" Destination="$/CustomerCfg/Slovak"></Project>
+		  <Project Source="$/South Dakota" Destination="$/CustomerCfg/South Dakota"></Project>
+		  <Project Source="$/SouthAfrica" Destination="$/CustomerCfg/SouthAfrica"></Project>
+		  <Project Source="$/Spain" Destination="$/CustomerCfg/Spain"></Project>
+		  <Project Source="$/Taiwan" Destination="$/CustomerCfg/Taiwan"></Project>
+		  <Project Source="$/Tennessee" Destination="$/CustomerCfg/Tennessee"></Project>
+		  <Project Source="$/Texas" Destination="$/CustomerCfg/Texas"></Project>
+		  <Project Source="$/Thailand" Destination="$/CustomerCfg/Thailand"></Project>
+		  <Project Source="$/Trinidad" Destination="$/CustomerCfg/Trinidad"></Project>
+		  <Project Source="$/Turkey" Destination="$/CustomerCfg/Turkey"></Project>
+		  <Project Source="$/USCIS" Destination="$/CustomerCfg/USCIS"></Project>
+		  <Project Source="$/US-Federal" Destination="$/CustomerCfg/US-Federal"></Project>
+		  <Project Source="$/USSCM" Destination="$/CustomerCfg/USSCM"></Project>
+		  <Project Source="$/Utah" Destination="$/CustomerCfg/Utah"></Project>
+		  <Project Source="$/Venezuela" Destination="$/CustomerCfg/Venezuela"></Project>
+		  <Project Source="$/Versaterm" Destination="$/CustomerCfg/Versaterm"></Project>
+		  <Project Source="$/WIN" Destination="$/CustomerCfg/WIN"></Project>
+     </ProjectMap>
+</ConverterSpecificSetting>
+<Settings>
+     <TeamFoundationServer name="tfsec01.usac.mmm.com" port="8080" protocol="http" collection="tfs/Cogent_Test"></TeamFoundationServer>
+     <Output file="D:\VSS\Cogent\Customercfg\migrate\logs\CogentVSSMigrate.xml"></Output>
+</Settings>
+</SourceControlConverter>

@@ -1,0 +1,281 @@
+
+Provide document with migration schedule.
+	New connection strings, both for VS and for web access.
+	Let Kevin take a look at the web access interface vs. VSO interface.
+	
+Build server:
+	ASP.NET MVC project (+NodeJS) that gets built.
+		Elastic build > BOSS Reader build definition
+		Not concerned with the other one
+	Go to common drop.
+	Just zipped up into package, deliver to client.
+	
+	LPCS and BOSS > code still in SVN
+		Both .NET applications
+	Server using CruiseControl build
+	
+	Approach BOSS and LPCS import from SVN / CruiseControl as Phase 2
+	
+Kevin likes TFS, does not like SVN + CruiseControl.
+	Barracuda will start in TFS, makes sense for new development.
+	Is ROI make sense for LPCS and BOSS conversion to MSBuild worth it?
+	
+Build notes:
+	Phase 1:  	Re-task vm229 or vm230 as psbld01
+				Set up drop location for PS builds
+				Build team to work with Kevin to refactor build templates to support on-premise TFS instance
+				
+	Phase 2:	Research feasibility of using psbld01
+				
+				
+TFSConfig CloudImport /SQLInstance:tfs13sb /SettingsFile:"C:\Temp\Public Safety\settings.ini"
+
+	
+02/06/15:
+	
+	Phase 2 reboot
+	Build psbld02
+	Set up Team Project
+	
+	
+06/03/15:
+
+Import SVN into test project.
+
+06/29/15:
+LPCS
+	Will need builds
+	Need LPCS test cases
+	Explore test case export options
+	LPCS != BOSS
+
+Action items:
+	Set up LPCS eTFS, Scrum
+	AD group setup
+	Asad > Admin
+	US-ETFS-LPCS-
+	Email distribution list
+	Update ETFS SharePoint data
+	
+
+06/30/15:
+
+Sharon - trying to combine Team Projects into 
+
+Remaining PS projects:
+
+LPCS:
+	Import code from SVN.
+	Just branches, no tags
+	Starts at version 271.
+	Two SVN repos
+		Live:		http://us-kxwapp-01.usac.mmm.com:81/svn is the base url
+					http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety/LPC this is our current
+		Archive:
+					http://us-kxwapp-01.usac.mmm.com:81/svn/PIPS/Public Safety/Pagis this the path for archive
+	Work items:
+		Extract from area on ALPR.  Use Shared Query.
+		
+Habanero:
+	Greenfield
+	
+ALPR > new Team Project:
+	BossWeb
+	Serial (fix path)
+	Drops - destroy
+	sandbox - destroy
+	PROEx - destroy
+	Test MVC - destroy
+			
+3M Back Office Portal 1.0:
+	Deleted
+
+Barracuda:
+	Leave alone for now
+	
+BOSS3:
+	Deleted
+	
+DPS:
+	Deleted
+	
+Portal 1.0:
+	Deleted
+	
+TFS Migration:
+	Deleted
+	
+Action items:
+	Delete all Code Review shelvesets.
+	Delete Gated shelvesets
+	Destroy ALPR folders in version control
+	Delete all of Sharon's shelvesets
+	
+
+Mapping:
+
+!!!!!!!!!!!!!!! Team Project Breakdown !!!!!!!!!!!!!!!!!
+
+3rd Party Tools > $/LPCS/3rd Party Tools (SVN)
+
+BOSS > Branches > (Individuals) (SVN) > Exclude
+BOSS > Trunk > Main (SVN) > Exclude
+Testing (exclude)
+
+BOSSWeb (TFS) > Exclude
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    Serial (TFS) > new Team Project
+
+Build Tools > $/LPCS/Build Tools (SVN)
+Documentation > $/LPCS/Documentation (SVN)
+LPC > /Trunk (SVN) > $/LPCS/Main (TFS)
+LPC > /Branches/Dev > $/LPCS/Dev (SVN)
+LPC > /Branches/Release > $/LPCS/Release (SVN)
+
+MLPI > $/LPCS/Archive/MLPI (SVN) > Exclude
+Cruise Control > $/LPCS/Archive/Cruise Control (SVN)
+(Need Hank for more input)
+
+Habanero > Replacing BOSS
+
+
+Migration steps:
+01.	Create Team Project
+02.	Set permissions.  Include everyone in Contributor.
+03.	Clear default iterations
+04.	Undo all pending changes
+05.	Migrate version control and work items
+06.	Remove Everyone from Contributor
+07.	Validate results
+
+Migrating:
+PBIs, Bugs only > Need shortcut for converting PBIs to Features
+Tasks not included, will be left in the archive
+Tags?  No warranty.
+No areas needed, will shift all to \Archive\
+Historical iteration > move all target work items to that iteration (LPCS) (includes PBIs and Bugs)
+Area translation:  \\ALPR\PS\LPCS\v 2.7.2 MER-Argentina > \\LPCS\PS\LPCS\v 2.7.2 MER-Argentina > Post-migration > \\LPCS\PS\LPCS\v 2.7.2 MER-Argentina (move area) \\LPCS\Archive\v2.7.2 MER-Argentina
+Other work items left behind in archived TPC
+Give Kim Cupp access to DMV > Business_Analysis
+
+Initially, leave old TPC online, lock down ALPR
+Historical purposes, take PublicSafety TPC offline, inform Kim Cupp
+
+Round 2:
+Need another Team Project for Serial
+
+Post-Migration:
+ALPR exported work items moved to /LPCS/Archive iteration
+Take PS TPC offline, inform Kim Cupp
+
+Action items:
+Work items first, Kim is on vacation, and I quote, "They can handle it." - 07/31/15 11:50AM EST
+Wednesday - another mtg to review work item results in LPCS_Migration
+Hank will return, do another mtg on version control
+Bring in Asad (not Abdi yet)
+
+Change
+
+
+
+USA & Canada/ 1-866-715-6499     Mobile:  1-866-715-6499,,8683626986#
+
+Participant Code: 868 362 6986 
+
+08/26/15:
+
+Missing branch Release 2.78
+Can /LPCS/PS area be removed?
+Based on Priority, how can Features backlog view be sorted?
+BOSS needs to picked up
+
+Discuss needs for build services
+
+Check in
+CruiseControl
+	Pulls source
+	MSBuild
+	NSIS NullSoft - installer
+	
+
+SVN:
+Shared Libraries > LPCS project
+
+Pull http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety/LPC/build.bat to LPCS root manually
+
+What documentation folders to keep in LPCS project?
+
+PublicSafety Team Project
+
+../PIPS/* > PS Archive
+BOSS > PS/Archive/BOSS
+MLPI > PS/Archive/MLPI
+PIPS > PS/Archive/PIPS > Latest only from ../PublicSafety (SVN)
+
+Shared Libraries > PS/Shared Libraries (PIPS)
+3rd Party Tools > PS/3rd Party Tools
+Build Tools > PS/Build Tools
+CruiseControl > PS/CruiseControl
+Documentation > PS/Documentation
+
+http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety/Shared Libraries/Pips > /Shared Libraries/Pips
+http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety/BOSS > /Archive/BOSS
+http://us-kxwapp-01.usac.mmm.com:81/svn/PublicSafety/MLPI > /Archive/MLPI
+
+
+
+
+Documentation
+3rd Party Tools
+
+09/24/15 - Build discussion:
+
+Hank here until Nov 30
+Need to reproduce
+
+Action:
+Find remaining files to LPCS archive
+SVN final copy > archive
+Find build engineer to work with Hank
+May 15 last release
+
+New Structure:
+
+From SVN ***************************
+
+/3rd Party Tools > /Archive/3rd Party Tools
+/Build Tools > /Archive/Build Too
+/Documentation > /Archive/Documentation
+
+/BOSS > BOSS
+	/BOSS/**/ > /BOSS/Build
+/LPC > LPCS
+	/LPC/**/ > /LPCS/Build
+/MLPI > MLPI
+	/MLPI/**/ > /MLPI/Build
+
+
+/Shared Libraries/PIPS > PIPS > Latest only from ../PublicSafety (SVN)
+
+From archon-tech TFS 2013 (ALPR) ***************************
+
+/BOSSWeb > BOSSWeb
+/Serial > Serial
+/Drops > DO NOT MIGRATE (Need a day to review)
+/ProEx > DO NOT MIGRATE (Need a day to review)
+/Sandbox > DO NOT MIGRATE (Need a day to review)
+/Test MVC > DO NOT MIGRATE (Need a day to review)
+
+
+Work Items (ALPR) **************************
+
+Everything with changeset linkage
+Bugs, Tasks, PBIs, Features
+
+
+USP271653B
+KXWNov2014
+
+\\us-tn-kx-fas1ca\KXW-Common
+
+
+

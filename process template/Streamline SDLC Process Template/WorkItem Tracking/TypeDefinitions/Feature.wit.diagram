@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wITWorkflow dslVersion="12.0.0.0" absoluteBounds="0, 0, 15.75, 8.5" name="Feature">
+  <workItemTypeMoniker Name="/Feature (DRS)" />
+  <nestedChildShapes>
+    <stateShape Id="ed2ff0cc-17f3-449d-9222-710aa840c028" absoluteBounds="2, 0.5, 1.5, 1.5138085937499999">
+      <stateMoniker Name="/Feature (DRS)/Proposed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae97c817-d07f-44d7-97cf-323aaeabf760" absoluteBounds="2.015, 0.76, 1.4700000000000002, 1.15380859375" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </stateShape>
+    <stateShape Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" absoluteBounds="6, 0.5, 1.5, 1.8984114583333334">
+      <stateMoniker Name="/Feature (DRS)/Active" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf6c6236-b567-4f95-9730-41ade0df447e" absoluteBounds="6.015, 0.76, 1.4700000000000002, 1.5384114583333333" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </stateShape>
+    <stateShape Id="fddc8437-6a84-468e-8e28-b92b199d1576" absoluteBounds="10, 1.5, 1.5, 1.5138085937499999">
+      <stateMoniker Name="/Feature (DRS)/Resolved" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4700df40-69a4-471a-92a7-75175c31e8f7" absoluteBounds="10.015, 1.76, 1.4700000000000002, 1.15380859375" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </stateShape>
+    <stateShape Id="3e369a69-485f-4da2-b3ae-60088578c5ce" absoluteBounds="14, 2.5, 1.5, 0.74460286458333336">
+      <stateMoniker Name="/Feature (DRS)/Closed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49623a5b-19b3-4ac6-a809-b5b9a3f73499" absoluteBounds="14.015, 2.76, 1.4700000000000002, 0.38460286458333331" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </stateShape>
+    <transitionShape Id="028a25d6-f1dc-4ef2-929c-ce072ea712ad" isExpanded="false" absoluteBounds="0, 0.75, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/~Proposed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12645389-55c9-48c7-ab6f-05bdd3cceff0" absoluteBounds="0.015, 1.01, 0.97, 0.44169108072916663" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="52cbcb3a-af44-4914-9ed7-526f58309ad4" absoluteBounds="0.015, 1.4616910807291665, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4a796f1b-1a19-4920-9a35-9076a1abddcd" absoluteBounds="0.015, 1.7210807291666668, 0.97, 0.44169108072916663" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="b6a9bbd4-fb65-4720-b0bd-04c27b40edf8" isExpanded="false" absoluteBounds="4, 0.75, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Proposed~Active" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65e0bdd8-f89e-4c01-bc32-61a7efacbb91" absoluteBounds="4.015, 1.01, 0.97, 0.63399251302083326" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="abf8ec2c-3d61-4485-a50c-fa18b0d0c2a9" absoluteBounds="4.015, 1.6539925130208333, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6054e002-4e08-4d77-8499-12ef8200563b" absoluteBounds="4.015, 1.9133821614583333, 0.97, 0.63399251302083326" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="339e21b0-2db6-4360-a006-1a3f7b3691ff" isExpanded="false" absoluteBounds="4, 1.125, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Active~Proposed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b82c1479-3755-493b-8260-73ed6c2e06e0" absoluteBounds="4.015, 1.385, 0.97, 0.63399251302083326" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="00c3f699-845b-4f7f-8cc5-dad3f3ebda24" absoluteBounds="4.015, 2.0289925130208335, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="91500476-9300-43dc-9963-6eccf1440cbb" absoluteBounds="4.015, 2.2883821614583333, 0.97, 0.2493896484375" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="015a3109-9388-44c4-9af3-ed18ce38c5d4" isExpanded="false" absoluteBounds="8, 1.75, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Active~Resolved" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94774b43-d24d-4c2b-9c7e-6c95dd943544" absoluteBounds="8.015, 2.01, 0.97, 0.44169108072916663" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6216220e-1afb-44ae-b2d9-a51433809a8f" absoluteBounds="8.015, 2.4616910807291665, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d3b24ff6-f699-41ca-be84-9d27fb2e4609" absoluteBounds="8.015, 2.7210807291666668, 0.97, 0.63399251302083315" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="252cbb55-03d0-4c34-9786-99dbbbdfcf43" isExpanded="false" absoluteBounds="6, 6.0180143229166667, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Active~Closed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c9ec490-82c3-4d94-b653-5db1eb4e75f3" absoluteBounds="6.015, 6.2780143229166665, 0.97, 0.8262939453125" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9bd502c9-a350-4f71-b51e-8f240ecb4689" absoluteBounds="6.015, 7.1143082682291663, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f7a9dc20-118f-443f-8f18-0d987948c4ca" absoluteBounds="6.015, 7.373697916666667, 0.97, 1.0185953776041663" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="27bf39b2-8456-4abc-a9a4-606c67478c06" isExpanded="false" absoluteBounds="8, 2.125, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Resolved~Active" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca13227d-fd67-4774-a9cd-7084dc909bd3" absoluteBounds="8.015, 2.385, 0.97, 0.44169108072916663" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d46f20de-ef45-4e2a-8899-728811e43251" absoluteBounds="8.015, 2.8366910807291665, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="997f4b3f-d98b-4e6c-8b6d-5562c7c67d49" absoluteBounds="8.015, 3.0960807291666668, 0.97, 0.63399251302083315" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="d7fb8947-9506-417f-ac56-7f19c2b4f27b" isExpanded="false" absoluteBounds="12, 2.75, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Resolved~Closed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="383305db-f2d2-4be9-9889-f770aa79a665" absoluteBounds="12.015, 3.01, 0.97, 0.44169108072916663" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="800198e0-267c-45f8-8d20-16b8a5d7328b" absoluteBounds="12.015, 3.4616910807291665, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e08d7753-af16-4b3f-a80b-bfdf7db5c950" absoluteBounds="12.015, 3.7210807291666668, 0.97, 0.63399251302083315" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="0da1b4a7-c313-4fe2-bf77-bd815dc789ea" isExpanded="false" absoluteBounds="2, 4.6622200520833328, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Proposed~Closed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1e47fb71-db92-470a-8695-58cc4a0e5433" absoluteBounds="2.015, 4.9222200520833326, 0.97, 0.44169108072916663" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9c423482-9e25-4e31-a48e-c8085c9ea4ab" absoluteBounds="2.015, 5.3739111328124993, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0028184c-6f9a-475d-926f-f544676f147d" absoluteBounds="2.015, 5.6333007812499991, 0.97, 1.4031982421875" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionShape Id="06a73a28-e13d-4ad1-980d-c0c7ed21d73b" isExpanded="false" absoluteBounds="14, 3.4946028645833334, 1, 0.25">
+      <transitionMoniker Name="/Feature (DRS)/Closed~Active" />
+      <nestedChildShapes>
+        <elementListCompartment Id="70950d97-0c9d-46c3-847c-75b9cf4d4f3a" absoluteBounds="14.015, 3.7546028645833331, 0.97, 0.63399251302083326" name="Reasons" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b07e62aa-c53d-4cb1-bbd8-d2b6ac286027" absoluteBounds="14.015, 4.3985953776041669, 0.97, 0.2493896484375" name="Actions" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2a432878-2048-4426-904b-c9f2257b5fc8" absoluteBounds="14.015, 4.6579850260416666, 0.97, 0.8262939453125" name="Fields" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </transitionShape>
+    <transitionsToLink edgePoints="[(1 : 0.875); (2 : 0.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="028a25d6-f1dc-4ef2-929c-ce072ea712ad" />
+        <stateShapeMoniker Id="ed2ff0cc-17f3-449d-9222-710aa840c028" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(3.5 : 0.875); (4 : 0.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="ed2ff0cc-17f3-449d-9222-710aa840c028" />
+        <transitionShapeMoniker Id="b6a9bbd4-fb65-4720-b0bd-04c27b40edf8" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(5 : 0.875); (6 : 0.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="b6a9bbd4-fb65-4720-b0bd-04c27b40edf8" />
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(6 : 1.25); (5 : 1.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+        <transitionShapeMoniker Id="339e21b0-2db6-4360-a006-1a3f7b3691ff" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(4 : 1.25); (3.5 : 1.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="339e21b0-2db6-4360-a006-1a3f7b3691ff" />
+        <stateShapeMoniker Id="ed2ff0cc-17f3-449d-9222-710aa840c028" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(7.5 : 1.875); (8 : 1.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+        <transitionShapeMoniker Id="015a3109-9388-44c4-9af3-ed18ce38c5d4" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(9 : 1.875); (10 : 1.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="015a3109-9388-44c4-9af3-ed18ce38c5d4" />
+        <stateShapeMoniker Id="fddc8437-6a84-468e-8e28-b92b199d1576" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(6.5 : 2.39841145833333); (6.5 : 6.01801432291667)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+        <transitionShapeMoniker Id="252cbb55-03d0-4c34-9786-99dbbbdfcf43" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(6.7812525 : 6.01801432291667); (6.7812525 : 3.16045572916667); (14 : 3.16045572916667)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="252cbb55-03d0-4c34-9786-99dbbbdfcf43" />
+        <stateShapeMoniker Id="3e369a69-485f-4da2-b3ae-60088578c5ce" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(10 : 2.25); (9 : 2.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="fddc8437-6a84-468e-8e28-b92b199d1576" />
+        <transitionShapeMoniker Id="27bf39b2-8456-4abc-a9a4-606c67478c06" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(8 : 2.25); (7.5 : 2.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="27bf39b2-8456-4abc-a9a4-606c67478c06" />
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(11.5 : 2.875); (12 : 2.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="fddc8437-6a84-468e-8e28-b92b199d1576" />
+        <transitionShapeMoniker Id="d7fb8947-9506-417f-ac56-7f19c2b4f27b" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(13 : 2.875); (14 : 2.875)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="d7fb8947-9506-417f-ac56-7f19c2b4f27b" />
+        <stateShapeMoniker Id="3e369a69-485f-4da2-b3ae-60088578c5ce" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(2.5 : 2.01380859375); (2.5 : 4.66222005208333)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="ed2ff0cc-17f3-449d-9222-710aa840c028" />
+        <transitionShapeMoniker Id="0da1b4a7-c313-4fe2-bf77-bd815dc789ea" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(2.7812525 : 4.66222005208333); (2.7812525 : 3.19170822916667); (14 : 3.19170822916667)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="0da1b4a7-c313-4fe2-bf77-bd815dc789ea" />
+        <stateShapeMoniker Id="3e369a69-485f-4da2-b3ae-60088578c5ce" />
+      </nodes>
+    </transitionsToLink>
+    <transitionsFromLink edgePoints="[(14.5 : 3.24460286458333); (14.5 : 3.49460286458333)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="230bd7ba-aaaa-4054-889e-782d6cf90109">
+      <nodes>
+        <stateShapeMoniker Id="3e369a69-485f-4da2-b3ae-60088578c5ce" />
+        <transitionShapeMoniker Id="06a73a28-e13d-4ad1-980d-c0c7ed21d73b" />
+      </nodes>
+    </transitionsFromLink>
+    <transitionsToLink edgePoints="[(14 : 3.61960286458333); (7.14062625 : 3.61960286458333); (7.14062625 : 2.39841145833333)]" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c6631552-cd46-4212-bb19-2f30ed9c3550">
+      <nodes>
+        <transitionShapeMoniker Id="06a73a28-e13d-4ad1-980d-c0c7ed21d73b" />
+        <stateShapeMoniker Id="12cd0bdb-60f9-4855-9dae-6d674d2c269c" />
+      </nodes>
+    </transitionsToLink>
+  </nestedChildShapes>
+</wITWorkflow>

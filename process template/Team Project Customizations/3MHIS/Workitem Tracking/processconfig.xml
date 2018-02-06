@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectProcessConfiguration>
+  <BugWorkItems category="Microsoft.BugCategory" pluralName="Bugs" singularName="Bug">
+    <States>
+      <State type="Proposed" value="Backlog" />
+      <State type="InProgress" value="Do" />
+      <State type="InProgress" value="Doing" />
+      <State type="Complete" value="Done" />
+    </States>
+  </BugWorkItems>
+  <FeedbackRequestWorkItems category="Microsoft.FeedbackRequestCategory" pluralName="Feedback Requests" singularName="Feedback Request">
+    <States>
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+    </States>
+  </FeedbackRequestWorkItems>
+  <FeedbackResponseWorkItems category="Microsoft.FeedbackResponseCategory" pluralName="Feedback Responses" singularName="Feedback Response">
+    <States>
+      <State type="InProgress" value="Active" />
+      <State type="Complete" value="Closed" />
+    </States>
+  </FeedbackResponseWorkItems>
+  <PortfolioBacklogs>
+    <PortfolioBacklog category="Microsoft.StrategicInitiativeCategory" pluralName="Strategic Initiatives" singularName="Strategic Initiative" workItemCountLimit="1000">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="Do" />
+        <State type="InProgress" value="Doing" />
+        <State type="Complete" value="Done" />
+      </States>
+    </PortfolioBacklog>
+    <PortfolioBacklog category="Microsoft.InitiativeCategory" parent="Microsoft.StrategicInitiativeCategory" pluralName="Initiatives" singularName="Initiative" workItemCountLimit="1000">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="Do" />
+        <State type="InProgress" value="Doing" />
+        <State type="Complete" value="Done" />
+      </States>
+    </PortfolioBacklog>
+    <PortfolioBacklog category="Microsoft.EpicCategory" parent="Microsoft.InitiativeCategory" pluralName="Epics" singularName="Epic" workItemCountLimit="1000">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Scheduling.Effort" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="Do" />
+        <State type="InProgress" value="Doing" />
+        <State type="Complete" value="Done" />
+      </States>
+    </PortfolioBacklog>
+    <PortfolioBacklog category="Microsoft.FeatureCategory" parent="Microsoft.EpicCategory" pluralName="Features" singularName="Feature" workItemCountLimit="1000">
+      <AddPanel>
+        <Fields>
+          <Field refname="System.Title" />
+        </Fields>
+      </AddPanel>
+      <Columns>
+        <Column width="100" refname="System.WorkItemType" />
+        <Column width="400" refname="System.Title" />
+        <Column width="100" refname="System.State" />
+        <Column width="50" refname="Microsoft.VSTS.Scheduling.Effort" />
+        <Column width="50" refname="Microsoft.VSTS.Common.BusinessValue" />
+        <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+        <Column width="200" refname="System.Tags" />
+      </Columns>
+      <States>
+        <State type="Proposed" value="Do" />
+        <State type="InProgress" value="Doing" />
+        <State type="Complete" value="Done" />
+      </States>
+    </PortfolioBacklog>
+  </PortfolioBacklogs>
+  <RequirementBacklog category="Microsoft.RequirementCategory" parent="Microsoft.FeatureCategory" pluralName="Backlog items" singularName="Backlog item" workItemCountLimit="1000">
+    <AddPanel>
+      <Fields>
+        <Field refname="System.Title" />
+      </Fields>
+    </AddPanel>
+    <Columns>
+      <Column width="100" refname="System.WorkItemType" />
+      <Column width="400" refname="System.Title" />
+      <Column width="100" refname="System.State" />
+      <Column width="50" refname="Microsoft.VSTS.Scheduling.Effort" />
+      <Column width="100" refname="Microsoft.VSTS.Common.ValueArea" />
+      <Column width="200" refname="System.IterationPath" />
+      <Column width="200" refname="System.Tags" />
+    </Columns>
+    <States>
+      <State type="Proposed" value="Backlog" />
+      <State type="InProgress" value="Do" />
+      <State type="InProgress" value="Doing" />
+      <State type="Complete" value="Done" />
+    </States>
+  </RequirementBacklog>
+  <TaskBacklog category="Microsoft.TaskCategory" parent="Microsoft.RequirementCategory" pluralName="Tasks" singularName="Task" workItemCountLimit="1000">
+    <AddPanel>
+      <Fields>
+        <Field refname="System.Title" />
+      </Fields>
+    </AddPanel>
+    <Columns>
+      <Column width="400" refname="System.Title" />
+      <Column width="100" refname="System.State" />
+      <Column width="100" refname="System.AssignedTo" />
+      <Column width="50" refname="Microsoft.VSTS.Scheduling.RemainingWork" />
+    </Columns>
+    <States>
+      <State type="Proposed" value="Do" />
+      <State type="InProgress" value="Doing" />
+      <State type="Complete" value="Done" />
+    </States>
+  </TaskBacklog>
+  <TypeFields>
+    <TypeField refname="Microsoft.VSTS.Common.Activity" type="Activity" />
+    <TypeField refname="Microsoft.VSTS.Common.BacklogPriority" type="Order" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationLaunchInstructions" type="ApplicationLaunchInstructions" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationStartInformation" type="ApplicationStartInformation" />
+    <TypeField refname="Microsoft.VSTS.Feedback.ApplicationType" type="ApplicationType">
+      <TypeFieldValues>
+        <TypeFieldValue type="ClientApp" value="Client application" />
+        <TypeFieldValue type="RemoteMachine" value="Remote machine" />
+        <TypeFieldValue type="WebApp" value="Web application" />
+      </TypeFieldValues>
+    </TypeField>
+    <TypeField refname="Microsoft.VSTS.Scheduling.Effort" type="Effort" />
+    <TypeField format="{0} " refname="Microsoft.VSTS.Scheduling.RemainingWork" type="RemainingWork" />
+    <TypeField refname="System.AreaPath" type="Team" />
+  </TypeFields>
+  <Weekends>
+    <DayOfWeek>Sunday</DayOfWeek>
+    <DayOfWeek>Saturday</DayOfWeek>
+  </Weekends>
+  <Properties>
+    <Property name="BugsBehavior" value="Off" />
+  </Properties>
+  <WorkItemColors>
+    <WorkItemColor primary="FFCC293D" secondary="FFFAEAE5" name="Bug" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Code Review Request" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Code Review Response" />
+    <WorkItemColor primary="FF0000FF" secondary="FF0000FF" name="Epic" />
+    <WorkItemColor primary="FF773B93" secondary="FFEEE2F2" name="Feature" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Feedback Request" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Feedback Response" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Impediment" />
+    <WorkItemColor primary="FFFF6600" secondary="FFFEB380" name="Initiative" />
+    <WorkItemColor primary="FF009CCC" secondary="FFD6ECF2" name="Product Backlog Item" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Shared Parameter" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Shared Steps" />
+    <WorkItemColor primary="FF44FF00" secondary="FF44FF00" name="Sprint" />
+    <WorkItemColor primary="FF996633" secondary="FF996633" name="Strategic Initiative" />
+    <WorkItemColor primary="FFF2CB1D" secondary="FFF6F5D2" name="Task" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Test Case" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Test Plan" />
+    <WorkItemColor primary="FFFF9D00" secondary="FFFCEECF" name="Test Suite" />
+  </WorkItemColors>
+</ProjectProcessConfiguration>

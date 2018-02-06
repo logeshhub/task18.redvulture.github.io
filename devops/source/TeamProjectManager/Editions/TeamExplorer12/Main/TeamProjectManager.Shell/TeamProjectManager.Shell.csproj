@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EFFC5209-CB25-4DAC-93F4-F0D4655F16E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TeamProjectManager.Shell</RootNamespace>
+    <AssemblyName>TeamProjectManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ApplicationManifest>App.exe.manifest</ApplicationManifest>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\TeamProjectManager.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\References\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\References\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\References\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Build.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\References\Microsoft.TeamFoundation.Build.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\References\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\References\Microsoft.TeamFoundation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\References\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Infrastructure\ApplicationVersion.cs" />
+    <Compile Include="Infrastructure\CodePlexClient.cs" />
+    <Compile Include="Infrastructure\HelpContentConverter.cs" />
+    <Compile Include="Infrastructure\IStatusService.cs" />
+    <Compile Include="Infrastructure\Logger.cs" />
+    <Compile Include="Infrastructure\LoggerAdapter.cs" />
+    <Compile Include="InternalConstants.cs" />
+    <Compile Include="InternalConstants.Edition.cs" />
+    <Compile Include="Modules\Logo\LogoModule.cs" />
+    <Compile Include="Modules\Logo\LogoView.xaml.cs">
+      <DependentUpon>LogoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logo\LogoViewModel.cs" />
+    <Compile Include="Modules\StatusPanel\ApplicationTaskViewModel.cs" />
+    <Compile Include="Modules\StatusPanel\StatusPanelModule.cs" />
+    <Compile Include="Modules\StatusPanel\StatusPanelView.xaml.cs">
+      <DependentUpon>StatusPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\StatusPanel\StatusPanelViewModel.cs" />
+    <Compile Include="Modules\TeamProjects\TeamProjectsModule.cs" />
+    <Compile Include="Modules\TeamProjects\TeamProjectsView.xaml.cs">
+      <DependentUpon>TeamProjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\TeamProjects\TeamProjectsViewModel.cs" />
+    <Compile Include="Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShellViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="App.config" />
+    <AppDesigner Include="Properties\" />
+    <None Include="App.exe.manifest" />
+    <Content Include="Files\Transformation - Agile 6.0 to 6.2 - User Story.xdt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation - CMMI 6.0 to 6.2 - Requirement.xdt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation - Scrum 2.0 to 2.2 - Bug and Product Backlog Item.xdt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation - TFS2012.X to TFS2012.2 - Agile Configuration.xdt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Modules\Logo\LogoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\StatusPanel\StatusPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\TeamProjects\TeamProjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamProjectManager.Common\TeamProjectManager.Common.csproj">
+      <Project>{6034E65E-4E00-46FA-B683-65AB8F3C47E7}</Project>
+      <Name>TeamProjectManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.Activity\TeamProjectManager.Modules.Activity.csproj">
+      <Project>{704821E4-5BCF-4053-AFE8-915C52933A31}</Project>
+      <Name>TeamProjectManager.Modules.Activity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.BuildDefinitions\TeamProjectManager.Modules.BuildDefinitions.csproj">
+      <Project>{59B5B1FA-EB79-430B-83CF-C1F9419AF573}</Project>
+      <Name>TeamProjectManager.Modules.BuildDefinitions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.BuildProcessTemplates\TeamProjectManager.Modules.BuildProcessTemplates.csproj">
+      <Project>{BDCA8650-C32C-4131-A622-DDA98C43656C}</Project>
+      <Name>TeamProjectManager.Modules.BuildProcessTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.Security\TeamProjectManager.Modules.Security.csproj">
+      <Project>{412C41B9-CE97-47CA-9607-BBC22418B547}</Project>
+      <Name>TeamProjectManager.Modules.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.SourceControl\TeamProjectManager.Modules.SourceControl.csproj">
+      <Project>{FA594433-69DA-461E-9C57-6483529214EA}</Project>
+      <Name>TeamProjectManager.Modules.SourceControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamProjectManager.Modules.WorkItemConfiguration\TeamProjectManager.Modules.WorkItemConfiguration.csproj">
+      <Project>{9a98f323-3b0d-41c3-9a6c-383da3869fe7}</Project>
+      <Name>TeamProjectManager.Modules.WorkItemConfiguration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\Comparison Source List - TFS Process Templates.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation List - TFS2012.X to TFS2012.2 - Scrum.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation List - TFS2012.X to TFS2012.2 - Agile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Transformation List - TFS2012.X to TFS2012.2 - CMMI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

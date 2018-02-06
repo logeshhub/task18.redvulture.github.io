@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<witd:WITD application="Work item type editor" version="1.0" xmlns:witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="Product Backlog Item">
+    <DESCRIPTION>Tracks an activity the user will be able to perform with the product.</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="Iteration Path" refname="System.IterationPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Iteration ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="External Link Count" refname="System.ExternalLinkCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Team Project" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="Hyperlink Count" refname="System.HyperLinkCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Attached File Count" refname="System.AttachedFileCount" type="Integer" reportable="measure" formula="sum" />
+      <FIELD name="Node Name" refname="System.NodeName" type="String" />
+      <FIELD name="Area Path" refname="System.AreaPath" type="TreePath" reportable="dimension" />
+      <FIELD name="Revised Date" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="Changed Date" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension" />
+      <FIELD name="Area ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="Authorized As" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="Title" refname="System.Title" type="String" reportable="dimension">
+        <REQUIRED />
+      </FIELD>
+      <FIELD name="State" refname="System.State" type="String" reportable="dimension" />
+      <FIELD name="Authorized Date" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="Watermark" refname="System.Watermark" type="Integer" />
+      <FIELD name="Rev" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="Changed By" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Reason" refname="System.Reason" type="String" reportable="dimension" />
+      <FIELD name="Assigned To" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Project Administrators" />
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="USAC\US-HIS-TFS-CRS" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Work Item Type" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="Created Date" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Created By" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="Description" refname="System.Description" type="HTML" />
+      <FIELD name="History" refname="System.History" type="History" />
+      <FIELD name="Related Link Count" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="Tags" refname="System.Tags" type="PlainText" />
+      <FIELD name="Backlog Priority" refname="Microsoft.VSTS.Common.BacklogPriority" type="Double" reportable="detail">
+        <HELPTEXT>Accepts values, but TFS will eventually convert this to an equivalent, but calculated value</HELPTEXT>
+      </FIELD>
+      <FIELD name="Integration Build" refname="Microsoft.VSTS.Build.IntegrationBuild" type="String" reportable="dimension">
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="&lt;None&gt;" />
+        </SUGGESTEDVALUES>
+        <SUGGESTEDVALUES expanditems="true" filteritems="excludegroups">
+          <GLOBALLIST name="Builds - CRS" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="Closed Date" refname="Microsoft.VSTS.Common.ClosedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="Effort" refname="Microsoft.VSTS.Scheduling.Effort" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>1: &lt;4 hrs; 2: &lt;8 hrs; 3: &lt;20 hrs; 5: &lt;40 hrs; 8: &lt;80 hrs; 13: &lt;160 hrs; 21: &gt;160 hrs</HELPTEXT>
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1" />
+          <LISTITEM value="2" />
+          <LISTITEM value="3" />
+          <LISTITEM value="5" />
+          <LISTITEM value="8" />
+          <LISTITEM value="13" />
+          <LISTITEM value="21" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Acceptance Criteria" refname="Microsoft.VSTS.Common.AcceptanceCriteria" type="HTML" />
+      <FIELD name="Closed By" refname="Microsoft.VSTS.Common.ClosedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <HELPTEXT>Person that marked the work item as done</HELPTEXT>
+      </FIELD>
+      <FIELD name="Product Analyst" refname="Mmm.Scrum.ProductAnalyst" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="USAC\US-HIS-TFS-CRS" />
+          <LISTITEM value="Not Applicable" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Quality Analyst" refname="Mmm.Scrum.QualityAnalyst" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="USAC\US-HIS-TFS-CRS" />
+          <LISTITEM value="Not Applicable" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Peer Tester" refname="Mmm.Scrum.PeerTester" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <ALLOWEDVALUES expanditems="true" filteritems="excludegroups">
+          <LISTITEM value="[project]\Project Administrators" />
+          <LISTITEM value="[project]\Contributors" />
+          <LISTITEM value="USAC\US-HIS-TFS-CRS" />
+          <LISTITEM value="Not Applicable" />
+          <LISTITEM value="Unsure" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Peer Test Effort" refname="Mmm.Scrum.PeerTestEffort" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="0 - Not Applicable" />
+          <LISTITEM value="1 - Very Low (~15 minutes)" />
+          <LISTITEM value="2 - Low (~30 minutes)" />
+          <LISTITEM value="4 - High (~2 hours)" />
+          <LISTITEM value="5 - Very High (~4 hours)" />
+          <LISTITEM value="3 - Medium (~1 hour)" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Actual Effort" refname="Mmm.Scrum.ActualEffort" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>1: &lt;4 hrs; 2: &lt;8 hrs; 3: &lt;20 hrs; 5: &lt;40 hrs; 8: &lt;80 hrs; 13: &lt;160 hrs; 21: &lt;160 hrs</HELPTEXT>
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1" />
+          <LISTITEM value="2" />
+          <LISTITEM value="3" />
+          <LISTITEM value="5" />
+          <LISTITEM value="8" />
+          <LISTITEM value="13" />
+          <LISTITEM value="21" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Priority2" refname="Mmm.Scrum.Priority" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="0 - Not Set" />
+          <LISTITEM value="1 - High" />
+          <LISTITEM value="2 - Medium" />
+          <LISTITEM value="3 - Low" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Comments" refname="Microsoft.VSTS.Common.Comments" type="HTML" />
+      <FIELD name="Peer Test Status" refname="Mmm.Scrum.PeerTestStatus" type="String" reportable="dimension">
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="Not Set" />
+          <LISTITEM value="Failed" />
+          <LISTITEM value="Passed" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="Country" refname="Microsoft.VSTS.Common.Country" type="String" reportable="dimension">
+        <DEFAULT from="value" value="All [Core]" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="All [Core]" />
+          <LISTITEM value="United States" />
+          <LISTITEM value="Puerto Rico" />
+          <LISTITEM value="New Zealand" />
+          <LISTITEM value="Italy" />
+          <LISTITEM value="Brazil" />
+          <LISTITEM value="Columbia" />
+          <LISTITEM value="Hong Kong" />
+          <LISTITEM value="Malaysia" />
+          <LISTITEM value="Indonesia" />
+          <LISTITEM value="Germany" />
+          <LISTITEM value="Lithuania" />
+          <LISTITEM value="Switzerland" />
+          <LISTITEM value="All [Core] Intl" />
+          <LISTITEM value="Saudi Arabia" />
+          <LISTITEM value="Australia" />
+          <LISTITEM value="United Kingdom" />
+          <LISTITEM value="Mexico" />
+          <LISTITEM value="Researchers Kit" />
+          <LISTITEM value="All [Core] ICD-10-AM" />
+          <LISTITEM value="Qatar" />
+          <LISTITEM value="Canada" />
+          <LISTITEM value="Tunisia" />
+          <LISTITEM value="Ireland" />
+          <LISTITEM value="Belgium" />
+          <LISTITEM value="Spain" />
+          <LISTITEM value="Portugal MOH" />
+          <LISTITEM value="Singapore" />
+          <LISTITEM value="Chile" />
+          <LISTITEM value="South Africa" />
+          <LISTITEM value="Portugal" />
+          <LISTITEM value="UAE" />
+        </ALLOWEDVALUES>
+        <REQUIRED />
+      </FIELD>
+      <FIELD name="Inform Customers" refname="Mmm.Scrum.InformCustomers" type="String" reportable="dimension">
+        <HELPTEXT>Communication needs to be created for this item. (e.g. eBlast, What's New, Interface communication)</HELPTEXT>
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="None" />
+          <LISTITEM value="Routine" />
+          <LISTITEM value="Urgent/Critical" />
+          <LISTITEM value="Delighters" />
+        </ALLOWEDVALUES>
+        <DEFAULT from="value" value="None" />
+      </FIELD>
+      <FIELD name="TargetRelease" refname="Microsoft.VSTS.Common.TargetRelease" type="String" reportable="dimension">
+        <HELPTEXT>International only field for which release a work item is targeted.</HELPTEXT>
+      </FIELD>
+      <FIELD name="RecordType" refname="Microsoft.VSTS.Common.RecordType" type="String">
+        <HELPTEXT>Record Type for International Use Only</HELPTEXT>
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="MAINTENANCE" />
+          <LISTITEM value="ENHANCEMENT" />
+          <LISTITEM value="MANDATE" />
+        </ALLOWEDVALUES>
+      </FIELD>
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="Reviewed" />
+        <STATE value="PA - Clarifying" />
+        <STATE value="SE - Ready to Start" />
+        <STATE value="SE - In Progress" />
+        <STATE value="SE - Testing" />
+        <STATE value="QA - Testing" />
+        <STATE value="Rejected" />
+        <STATE value="QA - Complete">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <COPY from="field" field="System.ChangedDate" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <COPY from="field" field="System.ChangedBy" />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="Pending" />
+        <STATE value="SuperScoped" />
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="Requires PA input" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA input is needed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA input is needed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA input is needed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA input is needed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Rejected" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="Ready to begin development" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="Ready to begin development" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="Ready to begin development" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="Ready to begin development" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Development has begun" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Development has begun" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Development has begun" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="Development has begun" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE is testing the changes" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE is testing the changes" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE is testing the changes" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE is testing the changes" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="Ready for QA testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="Ready for QA testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="Ready for QA testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="Ready for QA testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA testing is complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA testing is complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA testing is complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA testing is complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA testing is complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Rejected" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Complete" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA input is needed" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="QA - Complete" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Un-Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Rejected" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Complete" to="Reviewed">
+          <REASONS>
+            <DEFAULTREASON value="Reviewed" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA - Clarifying" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA - Clarifying" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="PA - Clarifying">
+          <REASONS>
+            <DEFAULTREASON value="PA - Clarifying" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="SE - Ready to Start" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="SE - Ready to Start" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="SE - Ready to Start">
+          <REASONS>
+            <DEFAULTREASON value="SE - Ready to Start" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="SE - In Progress" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="SE - In Progress" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="SE - In Progress">
+          <REASONS>
+            <DEFAULTREASON value="SE - In Progress" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="SE - Testing">
+          <REASONS>
+            <DEFAULTREASON value="SE - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="QA - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="QA - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="QA - Testing">
+          <REASONS>
+            <DEFAULTREASON value="QA - Testing" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="Rejected">
+          <REASONS>
+            <DEFAULTREASON value="Rejected" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA - Complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Reviewed" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Pending" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA - Complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SuperScoped" to="QA - Complete">
+          <REASONS>
+            <DEFAULTREASON value="QA - Complete" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Rejected" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Complete" to="Pending">
+          <REASONS>
+            <DEFAULTREASON value="Pending" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="PA - Clarifying" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Ready to Start" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - In Progress" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="SE - Testing" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Testing" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="Rejected" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="QA - Complete" to="SuperScoped">
+          <REASONS>
+            <DEFAULTREASON value="SuperScoped" />
+          </REASONS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout HideReadOnlyEmptyFields="true" HideControlBorders="false">
+        <Group>
+          <Column PercentWidth="100">
+            <Control FieldName="System.Title" Type="FieldControl" ControlFontSize="large" EmptyText="&lt;Enter title here&gt;" LabelPosition="Left" Label="Title" LabelFontSize="large" />
+            <Group>
+              <Column FixedWidth="300">
+                <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="Ite&amp;ration" LabelPosition="Left" Margin="(0,0,10,0)" />
+                <Control FieldName="Microsoft.VSTS.Common.TargetRelease" Type="FieldControl" Label="Target Release:" LabelPosition="Left" />
+              </Column>
+              <Column FixedWidth="300">
+                <Control FieldName="System.AreaPath" Type="WorkItemClassificationControl" Label="&amp;Area" LabelPosition="Left" Margin="(0,0,10,0)" />
+                <Control FieldName="Microsoft.VSTS.Common.RecordType" Type="FieldControl" Label="Record Type:" LabelPosition="Left" />
+              </Column>
+              <Column FixedWidth="175">
+                <Control FieldName="Microsoft.VSTS.Common.Country" Type="FieldControl" ControlFontSize="normal" LabelPosition="Left" Label="Country" Margin="(0,0,10,0)" />
+              </Column>
+              <Column FixedWidth="185">
+                <Control FieldName="Mmm.Scrum.InformCustomers" Type="FieldControl" Label="Inform Customers" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <Group>
+          <Column FixedWidth="200">
+            <Group Label="Status">
+              <Column PercentWidth="100">
+                <Control FieldName="System.State" Type="FieldControl" Label="Stat&amp;e" LabelPosition="Left" />
+                <Control FieldName="Mmm.Scrum.Priority" Type="FieldControl" Label="Priority" LabelPosition="Left" />
+                <Control FieldName="Microsoft.VSTS.Scheduling.Effort" Type="FieldControl" Label="Effort" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column FixedWidth="300">
+            <Group Label="Assignments">
+              <Column PercentWidth="100">
+                <Control FieldName="System.AssignedTo" Type="FieldControl" Label="Assigned To" LabelPosition="Left" />
+                <Control FieldName="Mmm.Scrum.ProductAnalyst" Type="FieldControl" Label="Product Analyst" LabelPosition="Left" />
+                <Control FieldName="Mmm.Scrum.QualityAnalyst" Type="FieldControl" Label="Quality Analyst" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+          <Column FixedWidth="300">
+            <Group Label="Peer Testing">
+              <Column PercentWidth="100">
+                <Control Type="FieldControl" LabelPosition="Left" MinimumSize="(0,0)" FieldName="Mmm.Scrum.PeerTester" Label="Peer Tester" />
+                <Control FieldName="Mmm.Scrum.PeerTestEffort" Type="FieldControl" Label="Peer Test Effort" LabelPosition="Left" />
+                <Control FieldName="Mmm.Scrum.PeerTestStatus" Type="FieldControl" Label="Peer Test Status" LabelPosition="Left" />
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="50">
+            <TabGroup>
+              <Tab Label="Description">
+                <Control FieldName="System.Description" Type="HtmlFieldControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Storyboards">
+                <Control Type="LinksControl" Name="StoryboardsControl" LabelPosition="Top">
+                  <LinksControlOptions>
+                    <WorkItemLinkFilters FilterType="excludeAll" />
+                    <ExternalLinkFilters FilterType="include">
+                      <Filter LinkType="Storyboard" />
+                    </ExternalLinkFilters>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Test Cases">
+                <Control Type="LinksControl" Label="" LabelPosition="Top" Name="TestedBy">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="Microsoft.VSTS.Common.TestedBy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Test Case" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Tasks">
+                <Control Type="LinksControl" Name="Hierarchy" Label="" LabelPosition="Top">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="System.LinkTypes.Hierarchy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="Task" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Comments">
+                <Control FieldName="Microsoft.VSTS.Common.Comments" Type="HtmlFieldControl" LabelPosition="Left" />
+              </Tab>
+            </TabGroup>
+          </Column>
+          <Column PercentWidth="50">
+            <TabGroup Margin="(5,0,0,0)">
+              <Tab Label="Acceptance Criteria">
+                <Control FieldName="Microsoft.VSTS.Common.AcceptanceCriteria" Type="HtmlFieldControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="History">
+                <Control FieldName="System.History" Type="WorkItemLogControl" Label="" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="Links">
+                <Control Type="LinksControl" Name="GeneralLinks" LabelPosition="Top">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Id" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="includeAll" />
+                    <ExternalLinkFilters FilterType="includeAll" />
+                    <WorkItemTypeFilters FilterType="includeAll" />
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="Attachments">
+                <Control Type="AttachmentsControl" Label="" LabelPosition="Top" />
+              </Tab>
+            </TabGroup>
+          </Column>
+        </Group>
+      </Layout>
+    </FORM>
+  </WORKITEMTYPE>
+</witd:WITD>

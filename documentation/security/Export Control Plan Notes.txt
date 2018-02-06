@@ -1,0 +1,43 @@
+
+EC Process control group
+
+1st custodian - Everett
+2nd custodian - Mike
+3rd custodian - who is the DTCM - Divsion Technology Control Manager
+
+SOP:
+
+1.  We determine whether the new Team Project data is actually control data.  Need to contact Trade Compliance.
+2.	Everett creates the group, and assign custodians.
+	A.	New groups need to be added to the control plan for next year's security review.
+3.	Everett = 1, Mike = 2.  Third custodian is the DTCM for the division. (or project owner)
+	A.	Third custodian must know the nature of the content.  Loop in Susan Dallas if necessary.
+4.	Everett adds the groups to the EC control plan.
+5.	Everett sends new groups to Chris.
+6.	Chris approves the groups, and adds them to the EC OU.
+	A.	Everett emails the new groups to Chris to add to the OU.
+	B.	Requires 4 hours to sync.
+7.	Going forward, the 3rd custodian adds the users to the EC group.
+8.	Everett and Michael ignore the incoming SE group access request.
+9.	The 3rd custodian approves the group membership since they are the only ones that actually know what is in the data.
+
+
+Exceptions:
+
+If there is no Division DTCM:
+3M FTE goes through Jo Paluch, verifies in HR that this user is a US resident.
+	* Jo has a database that will show you the status of the request
+Contingent workers must go to Susan Dalls for the final word on FTC approval.
+
+Action items:
+Ask Heather...who, specifically has DBA access to the EC database
+Disable reporting.  We could not control cross TPC access with other EC groups.
+
+
+
+
+
+
+
+
+

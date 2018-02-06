@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceControlConverter>
+<ConverterSpecificSetting>
+     <Source name="VSS">
+          <VSSDatabase name="D:\VSS\Cogent\Customercfg"></VSSDatabase>
+          <UserMap name="D:\VSS\Cogent\Customercfg\migrate\Usermap.xml"></UserMap>
+          <SQL Server="tfsmigration"></SQL>
+     </Source>
+     <ProjectMap>
+          <Project Source="$/Algeria"></Project>
+          <Project Source="$/Argentina"></Project>
+          <Project Source="$/Arkansas"></Project>
+		  <Project Source="$/Belgium"></Project>
+		  <Project Source="$/Benchmark"></Project>
+		  <Project Source="$/Brazil"></Project>
+		  <Project Source="$/Brunei"></Project>
+		  <Project Source="$/Bulgaria"></Project>
+		  <Project Source="$/CAL-DOJ"></Project>
+		  <Project Source="$/California"></Project>
+		  <Project Source="$/Cameroon"></Project>
+		  <Project Source="$/Canada"></Project>
+		  <Project Source="$/Cayman"></Project>
+		  <Project Source="$/CBSI"></Project>
+		  <Project Source="$/Chile"></Project>
+		  <Project Source="$/China"></Project>
+		  <Project Source="$/Cogent"></Project>
+		  <Project Source="$/Colorado"></Project>
+		  <Project Source="$/Connecticut"></Project>
+		  <Project Source="$/DoD"></Project>
+		  <Project Source="$/Dunord"></Project>
+		  <Project Source="$/Ecuador"></Project>
+		  <Project Source="$/emergilink"></Project>
+		  <Project Source="$/England"></Project>
+		  <Project Source="$/EU-Federal"></Project>
+		  <Project Source="$/Florida"></Project>
+		  <Project Source="$/Georgia"></Project>
+		  <Project Source="$/Guam"></Project>
+		  <Project Source="$/Guatemala"></Project>
+		  <Project Source="$/Haiti"></Project>
+		  <Project Source="$/Holland"></Project>
+		  <Project Source="$/Honduras"></Project>
+		  <Project Source="$/Hongkong"></Project>
+		  <Project Source="$/India"></Project>
+		  <Project Source="$/Interpol"></Project>
+		  <Project Source="$/Ireland"></Project>
+		  <Project Source="$/Israel"></Project>
+		  <Project Source="$/Italy"></Project>
+		  <Project Source="$/Jamaica"></Project>
+		  <Project Source="$/Jordan"></Project>
+		  <Project Source="$/LosAngeles"></Project>
+		  <Project Source="$/Maryland"></Project>
+		  <Project Source="$/Mexico"></Project>
+		  <Project Source="$/MiamiDade"></Project>
+		  <Project Source="$/Michigan"></Project>
+		  <Project Source="$/Morocco"></Project>
+		  <Project Source="$/NCIC"></Project>
+		  <Project Source="$/Nevada"></Project>
+		  <Project Source="$/NewYork"></Project>
+		  <Project Source="$/NIST"></Project>
+		  <Project Source="$/Ohio"></Project>
+		  <Project Source="$/Oregon"></Project>
+		  <Project Source="$/Paraguay"></Project>
+		  <Project Source="$/Pennsylvania"></Project>
+		  <Project Source="$/Philadelphia"></Project>
+		  <Project Source="$/Philippines"></Project>
+		  <Project Source="$/PuertoRico"></Project>
+		  <Project Source="$/RhodeIsland"></Project>
+		  <Project Source="$/Russia"></Project>
+		  <Project Source="$/Rwanda"></Project>
+		  <Project Source="$/SierraLeone"></Project>
+		  <Project Source="$/Singapore"></Project>
+		  <Project Source="$/Slovak"></Project>
+		  <Project Source="$/South Dakota"></Project>
+		  <Project Source="$/SouthAfrica"></Project>
+		  <Project Source="$/Spain"></Project>
+		  <Project Source="$/Taiwan"></Project>
+		  <Project Source="$/Tennessee"></Project>
+		  <Project Source="$/Texas"></Project>
+		  <Project Source="$/Thailand"></Project>
+		  <Project Source="$/Trinidad"></Project>
+		  <Project Source="$/Turkey"></Project>
+		  <Project Source="$/USCIS"></Project>
+		  <Project Source="$/US-Federal"></Project>
+		  <Project Source="$/USSCM"></Project>
+		  <Project Source="$/Utah"></Project>
+		  <Project Source="$/Venezuela"></Project>
+		  <Project Source="$/Versaterm"></Project>
+		  <Project Source="$/WIN"></Project>
+     </ProjectMap>
+</ConverterSpecificSetting>
+<Settings>
+     <Output file="D:\VSS\Cogent\Customercfg\migrate\logs\CogentVSSAnalyze.xml"></Output>
+</Settings>
+</SourceControlConverter>

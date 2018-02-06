@@ -1,0 +1,3 @@
+The download should already be in the network share.
+If you have network performance issues, download directly to the server here:
+https://www.microsoft.com/en-us/download/details.aspx?id=51186

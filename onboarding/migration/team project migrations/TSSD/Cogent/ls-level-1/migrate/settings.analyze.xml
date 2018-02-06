@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceControlConverter>
+<ConverterSpecificSetting>
+     <Source name="VSS">
+          <VSSDatabase name="D:\VSS\Cogent\ls-level-1.1.v1"></VSSDatabase>
+          <UserMap name="D:\VSS\Cogent\ls-level-1.1.v1\migrate\Usermap.xml"></UserMap>
+          <SQL Server="tfsmigration"></SQL>
+     </Source>
+     <ProjectMap>
+          <Project Source="$/CogentGuiApplications"></Project>
+          <Project Source="$/CogentLiveScan"></Project>
+          <Project Source="$/FoundationComponent"></Project>
+     </ProjectMap>
+</ConverterSpecificSetting>
+<Settings>
+     <Output file="D:\VSS\Cogent\ls-level-1.1.v1\migrate\logs\CogentVSSAnalyze.xml"></Output>
+</Settings>
+</SourceControlConverter>

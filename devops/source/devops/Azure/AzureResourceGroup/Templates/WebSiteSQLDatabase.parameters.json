@@ -1,0 +1,21 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "value": "SEMS"
+    },
+    "administratorLogin": {
+      "value": "a1shdzz@mmm.com"
+    },
+    "administratorLoginPassword": {
+      "value": "Congruent@sems45"
+    },
+    "databaseName": {
+      "value": "SEMSInfa"
+    },
+    "TestName": {
+      "value": "SEMS-Test"
+    }
+  }
+}

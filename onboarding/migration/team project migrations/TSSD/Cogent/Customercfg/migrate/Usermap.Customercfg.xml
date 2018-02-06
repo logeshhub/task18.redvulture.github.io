@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--
+This file is automatically created by VSS Upgrade. You can optionally use the file to map
+a VSS user to a Team Foundation user. For example, <UserMap From="Jane" To="MyDomain\Janep"></UserMap> 
+This mapping causes all actions logged by VSS user “Jane” to be changed to Team
+Foundation user “ MyDomain\Janep ” during migration. 
+-->
+  <UserMap From="Plam" To="" />
+  <UserMap From="Slaw" To="" />
+  <UserMap From="Gyang" To="" />
+  <UserMap From="Jxie" To="" />
+  <UserMap From="Jmwang" To="" />
+  <UserMap From="Smpei" To="" />
+  <UserMap From="Jliu" To="" />
+  <UserMap From="Bli" To="" />
+  <UserMap From="Ayjin" To="" />
+  <UserMap From="Sbai" To="" />
+  <UserMap From="Llam" To="" />
+  <UserMap From="Htu" To="" />
+  <UserMap From="Jcarcamo" To="" />
+  <UserMap From="Kng" To="" />
+  <UserMap From="Pwong" To="" />
+  <UserMap From="Hdong" To="" />
+  <UserMap From="Ghughes" To="" />
+  <UserMap From="Ptsang" To="" />
+  <UserMap From="Kzhao" To="" />
+  <UserMap From="Ptang" To="" />
+  <UserMap From="Bdu" To="" />
+  <UserMap From="Eso" To="" />
+  <UserMap From="Jma" To="" />
+  <UserMap From="Mlee" To="" />
+  <UserMap From="Ayjinux" To="" />
+  <UserMap From="Qliu" To="" />
+  <UserMap From="Kang" To="" />
+  <UserMap From="Mwyang" To="" />
+  <UserMap From="Admin" To="" />
+  <UserMap From="Hnguyen" To="" />
+  <UserMap From="Slin" To="" />
+  <UserMap From="Rjen" To="" />
+  <UserMap From="Gfan" To="" />
+  <UserMap From="Rlee" To="" />
+  <UserMap From="Dfineman" To="" />
+  <UserMap From="Jbromley" To="" />
+  <UserMap From="Dchain" To="" />
+  <UserMap From="Dxiao" To="" />
+  <UserMap From="Rmaris" To="" />
+  <UserMap From="Mngan" To="" />
+  <UserMap From="Pma" To="" />
+  <UserMap From="Tonyng" To="" />
+  <UserMap From="Hquan" To="" />
+  <UserMap From="Pjrhalicky" To="" />
+  <UserMap From="Binzhao" To="" />
+  <UserMap From="Tchang" To="" />
+  <UserMap From="Adomingues" To="" />
+  <UserMap From="Itang" To="" />
+  <UserMap From="Gmassoud" To="" />
+  <UserMap From="Jxiong" To="" />
+  <UserMap From="Fxu" To="" />
+  <UserMap From="Ckopcsak" To="" />
+  <UserMap From="Bchan" To="" />
+  <UserMap From="Blamond" To="" />
+  <UserMap From="Hliu" To="" />
+  <UserMap From="Dkhanaferov" To="" />
+  <UserMap From="Peterwang" To="" />
+  <UserMap From="Jzhou" To="" />
+  <UserMap From="Xwang" To="" />
+  <UserMap From="Mzhu" To="" />
+  <UserMap From="Mxtian" To="" />
+  <UserMap From="Josephliu" To="" />
+  <UserMap From="Ltang" To="" />
+  <UserMap From="Glac" To="" />
+  <UserMap From="Sandrayu" To="" />
+  <UserMap From="Xzhao" To="" />
+  <UserMap From="Amillican" To="" />
+  <UserMap From="Sliao" To="" />
+  <UserMap From="Gzhang" To="" />
+  <UserMap From="Dbircsak" To="" />
+  <UserMap From="Elu" To="" />
+  <UserMap From="Cchiu" To="" />
+  <UserMap From="Jhsiao" To="" />
+  <UserMap From="Sxaymountry" To="" />
+  <UserMap From="Bmallo" To="" />
+  <UserMap From="Mdong" To="" />
+  <UserMap From="Awong" To="" />
+  <UserMap From="Chrisyang" To="" />
+  <UserMap From="Jzhang" To="" />
+  <UserMap From="Hwang" To="" />
+  <UserMap From="Rkhan" To="" />
+  <UserMap From="Cwei" To="" />
+  <UserMap From="Qchen" To="" />
+  <UserMap From="Rchung" To="" />
+  <UserMap From="Tliu" To="" />
+  <UserMap From="Preider" To="" />
+  <UserMap From="Shsu" To="" />
+  <UserMap From="Schen" To="" />
+  <UserMap From="Alee" To="" />
+  <UserMap From="Dsong" To="" />
+</UserMappings>

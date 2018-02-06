@@ -1,0 +1,26 @@
+
+7-zip:
+http://www.7-zip.org/
+
+FileZilla:
+https://filezilla-project.org/
+
+FCIV:
+http://www.microsoft.com/en-us/download/details.aspx?id=11533
+(Copy .exe to C:\Windows)
+
+FTP Server:
+URL:		ftp.3m.com
+Username:	z13vss
+Password:	w1ndyy909@
+
+
+1.	Add folder to archive using .7z format. (Right click on desired folder > 7-Zip > Add to archive)  Create a segmented archive using "Split to volumes, bytes".  A good segment size would be 8128 MB.
+2.	Use password (provided separately) for the encryption.  Leave all other settings to defaults.
+3.	Use FileZilla, connect to 3M FTP server.
+4.	Upload segmented archive files to FTP site.
+5.	Use FCIV to generate hashes for each of the segment files that you uploaded.  Provide the list of generated checksums to me for verfication.
+
+
+
+

@@ -1,0 +1,56 @@
+
+
+Check last backups
+Stop TFS instance, stop Application Pools
+Start a backup:
+(Tfs_3M_MVSS.pre-archive.bak)
+
+Bring TFS instance back online, start Application Pools
+Bring TPC back online
+Detach TPC
+Take another backup:
+(Tfs_3M_MVSS.detached.bak)
+(MVS_Tfs_Procs.pre-archive.bak)
+
+Stop SSRS, stop Application Pools
+Take backup of SSRS encryption key
+
+Start another backup:
+(ReportServer.pre-archive.bak)
+(ReportServerTempDb.pre-archive.bak)
+
+Start up SSRS
+Verify services
+
+Stop all SPS service, stop Application Pools
+Take another backup:
+(All SPS Databases)
+.pre-archive.bak
+Verify services
+
+Test build on vm214
+Take vm214 offline again
+Move to tfsarchive, restore and attach.
+Verify attached TPC
+Detach TPC
+Shut down all services on tfsarchive
+
+7zip Tfs_3M_MVSS.20141115.detached.zip with SPS and SSRS .baks - Ola's password
+xcopy file to \\austbkp\TFS_2010_Archive
+
+Bring original TPC back online
+Delete unwanted Team Projects
+Process data warehouse - rebuild
+
+Clean up SSRS
+Reboot SPS
+Clean up SPS - remove old content databases
+Shrink database files
+
+
+6c9f49264572713a1588510d06df0e1f tfs_2010_common_archive_20141115.zip
+6c9f49264572713a1588510d06df0e1f tfs_2010_common_archive_20141115.zip
+
+
+
+

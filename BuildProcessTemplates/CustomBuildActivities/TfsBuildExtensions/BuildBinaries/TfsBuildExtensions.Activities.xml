@@ -1,0 +1,3615 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TfsBuildExtensions.Activities</name>
+    </assembly>
+    <members>
+        <member name="T:TfsBuildExtensions.Activities.BaseCodeActivity">
+            <summary>
+            Provides a base class to all Activities which support remoting
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Entry point to the Activity. It sets the context and executes InternalExecute which is implemented by derived activities
+            </summary>
+            <param name="context">CodeActivityContext</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.InternalExecute">
+            <summary>
+            InternalExecute method which activities should implement
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.LogBuildError(System.String)">
+            <summary>
+            Logs a message as a build error
+            Also can fail the build if the FailBuildOnError flag is set
+            </summary>
+            <param name="errorMessage">Message to save</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.LogBuildWarning(System.String)">
+            <summary>
+            Logs a message as a build warning
+            </summary>
+            <param name="warningMessage">Message to save</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.LogBuildMessage(System.String,Microsoft.TeamFoundation.Build.Client.BuildMessageImportance)">
+            <summary>
+            Logs a generical build message
+            </summary>
+            <param name="message">The message to save</param>
+            <param name="importance">The verbosity importance of the message</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.LogBuildLink(System.String,System.Uri)">
+            <summary>
+            Logs a link to the build log
+            </summary>
+            <param name="message">Message to save as link name</param>
+            <param name="uri">Uri for link</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.AddTextNode(System.String,Microsoft.TeamFoundation.Build.Client.IBuildInformationNode)">
+            <summary>
+            Add a text node to the build log
+            </summary>
+            <param name="text">Display text</param>
+            <param name="parent">Parent node in the build log</param>
+            <returns>The new node containing the supplied text</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseCodeActivity.AddLinkNode(System.String,System.Uri,Microsoft.TeamFoundation.Build.Client.IBuildInformationNode)">
+            <summary>
+            Add a hyperlink to the
+            </summary>
+            <param name="text">Display text of the hyperlink</param>
+            <param name="uri">Uri of the hyperlink</param>
+            <param name="parent">Parent node in the build log</param>
+            <returns>The new external link containing the supplied hyperlink</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseCodeActivity.FailBuildOnError">
+            <summary>
+            Set to true to fail the build if the activity logs any errors. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseCodeActivity.TreatWarningsAsErrors">
+            <summary>
+            Set to true to fail the build if the activity logs any errors. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseCodeActivity.IgnoreExceptions">
+            <summary>
+            Set to true to ignore any unhandled exceptions thrown by activities. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseCodeActivity.LogExceptionStack">
+            <summary>
+            Set to true to log the entire stack in the event of an exception. Default is true
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseCodeActivity.ActivityContext">
+            <summary>
+            Variable to hold CodeActivityContext
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.BaseRemoteCodeActivity">
+            <summary>
+            Provides a base class to all Activities which support remoting
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.authLevel">
+            <summary>
+            Variable to hold authenticationLevel
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+            <param name="context">CodeActivityContext</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.InternalExecute">
+            <summary>
+            InternalExecute method which activities should implement
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.LogBuildError(System.String)">
+            <summary>
+            Logs a message as a build error
+            Also can fail the build if the FailBuildOnError flag is set
+            </summary>
+            <param name="errorMessage">Message to save</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.LogBuildWarning(System.String)">
+            <summary>
+            Logs a message as a build warning
+            </summary>
+            <param name="warningMessage">Message to save</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.LogBuildMessage(System.String,Microsoft.TeamFoundation.Build.Client.BuildMessageImportance)">
+            <summary>
+            Logs a generical build message
+            </summary>
+            <param name="message">The message to save</param>
+            <param name="importance">The verbosity importance of the message</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.LogBuildLink(System.String,System.Uri)">
+            <summary>
+            Logs a link to the build log
+            </summary>
+            <param name="message">Message to save as link name</param>
+            <param name="uri">Uri for link</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.AddTextNode(System.String,Microsoft.TeamFoundation.Build.Client.IBuildInformationNode)">
+            <summary>
+            Add a text node to the build log
+            </summary>
+            <param name="text">Display text</param>
+            <param name="parent">Parent node in the build log</param>
+            <returns>The new node containing the supplied text</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.AddLinkNode(System.String,System.Uri,Microsoft.TeamFoundation.Build.Client.IBuildInformationNode)">
+            <summary>
+            Add a hyperlink to the
+            </summary>
+            <param name="text">Display text of the hyperlink</param>
+            <param name="uri">Uri of the hyperlink</param>
+            <param name="parent">Parent node in the build log</param>
+            <returns>The new external link containing the supplied hyperlink</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.FailBuildOnError">
+            <summary>
+            Set to true to fail the build if the activity logs any errors. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.TreatWarningsAsErrors">
+            <summary>
+            Set to true to fail the build if the activity logs any errors. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.IgnoreExceptions">
+            <summary>
+            Set to true to ignore any unhandled exceptions thrown by activities. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.LogExceptionStack">
+            <summary>
+            Set to true to log the entire stack in the event of an exception. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.ActivityContext">
+            <summary>
+            Variable to hold CodeActivityContext
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.MachineName">
+            <summary>
+            Sets the MachineName. Defaults to Environment.MachineName
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.UserName">
+            <summary>
+            Sets the UserName
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.UserPassword">
+            <summary>
+            Sets the UserPassword.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.Authority">
+            <summary>
+            Sets the authority to be used to authenticate the specified user.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.BaseRemoteCodeActivity.AuthenticationLevel">
+            <summary>
+            Sets the authentication level to be used to connect to WMI. Default is Default. Also supports: Call, Connect, None, Packet, PacketIntegrity, PacketPrivacy, Unchanged
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics">
+            <summary>
+            Activity for processing code metrics using the Visual Studio Code Metrics PowerTool 10.0
+            (http://www.microsoft.com/downloads/en/details.aspx?FamilyID=edd1dfb0-b9fe-4e90-b6a6-5ed6f6f6e615)
+            <para/>
+            <example>
+            <code lang="xml"><![CDATA[
+            <!-- Run Code Metrics for SampleApp.exe and SampleLibrary.dll -->    
+            <tac:CodeMetrics FailBuildOnError="{x:Null}" TreatWarningsAsErrors="{x:Null}" BinariesDirectory="[BinariesDirectory]" CyclomaticComplexityErrorTreshold="15" CyclomaticComplexityWarningTreshold="10" FilesToProcess="[New List(Of String)(New String() {&quot;SampleApp.exe&quot;, &quot;SampleLibrary.dll&quot;})]" GeneratedFileName="Metrics.xml" LogExceptionStack="True" MaintainabilityIndexErrorTreshold="40" MaintainabilityIndexWarningTreshold="90" />
+            ]]></code>    
+            </example>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.CacheMetadata(System.Activities.CodeActivityMetadata)">
+            <summary>
+            Override for base.CacheMetadata
+            </summary>
+            <param name="metadata">CodeActivityMetadata</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.ProcessMetrics(System.String,System.Collections.Generic.IEnumerable{TfsBuildExtensions.Activities.CodeMetrics.Metric},Microsoft.TeamFoundation.Build.Client.IBuildInformationNode)">
+            <summary>
+            Analyzes the resulting metrics file and compares the Maintainability Index and Cyclomatic Complexity against the threshold values
+            </summary>
+            <param name="member">Name of the member (namespace, module, type...)</param>
+            <param name="metrics">The metrics for this member</param>
+            <param name="parent">The parent node in the build log</param>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.BinariesDirectory">
+            <summary>
+            Path to where the binaries are placed
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.FilesToProcess">
+            <summary>
+            Optional: Which files that should be processed. Can be a list of files or file match patterns. Defaults to *.dll;*.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.GeneratedFileName">
+            <summary>
+            Optional: Name of the generated metrics result file. Should end with .xml
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.SearchGac">
+            <summary>
+            Optional: Enables/Disables searchGac. Default false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.MaintainabilityIndexErrorThreshold">
+            <summary>
+            Threshold value for what Maintainability Index should fail the build
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.MaintainabilityIndexWarningThreshold">
+            <summary>
+            Threshold value for what Maintainability Index should partially fail the build
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.CyclomaticComplexityErrorThreshold">
+            <summary>
+            Threshold value for what Cyclomatic Complexity should fail the build
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.CodeMetrics.CyclomaticComplexityWarningThreshold">
+            <summary>
+            Threshold value for what Cyclomatic Complexity should partially fail the build
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeMetrics.ICodeMetricsLogger">
+            <summary>
+            Interface for logging progress
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.ICodeMetricsLogger.LogError(System.String)">
+            <summary>
+            Logs an error
+            </summary>
+            <param name="msg">Error description</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.ICodeMetricsLogger.LogMessage(System.String)">
+            <summary>
+            Logs information
+            </summary>
+            <param name="msg">Information message</param>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeMetrics.IMetricsLogger">
+            <summary>
+            Interface for logging metric errors back to the build log
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.IMetricsLogger.LogError(System.String)">
+            <summary>
+            Log error message
+            </summary>
+            <param name="msg">Message</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.IMetricsLogger.LogMessage(System.String)">
+            <summary>
+            Log information message
+            </summary>
+            <param name="msg">Message</param>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeMetrics.MetricsInvoker">
+            <summary>
+            Class that wraps the call to Metrics.exe
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.MetricsInvoker.Create(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,TfsBuildExtensions.Activities.CodeMetrics.IMetricsLogger)">
+            <summary>
+            Creates an instance of MetricsInvoker
+            </summary>
+            <param name="filesToProcess">Which files to process, Can be wildcards or explicit file names</param>
+            <param name="rootPath">Root path where to look for binaries</param>
+            <param name="output">The resulting output from metrics.exe</param>
+            <param name="logger">Instance of IMetricsLogger</param>
+            <returns>A MetricsInvoker instance </returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.MetricsInvoker.Invoke">
+            <summary>
+            Calls metrics.exe
+            </summary>
+            <returns>True if the exit code from metrics.exe was 0 (zero)</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeMetrics.MetricsInvoker.Argument">
+            <summary>
+            Argument to Metrics.exe. 
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeMetrics.MetricsLogger">
+            <summary>
+            Implements IMetricLogger
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.MetricsLogger.#ctor(TfsBuildExtensions.Activities.CodeMetrics.ICodeMetricsLogger)">
+            <summary>
+            Initializes a new instance of the MetricsLogger class
+            </summary>
+            <param name="activity">Interface to activity</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.MetricsLogger.LogError(System.String)">
+            <summary>
+            Logs error message back to the calling activity
+            </summary>
+            <param name="msg">Message</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.MetricsLogger.LogMessage(System.String)">
+            <summary>
+            Logs information message back to activity
+            </summary>
+            <param name="msg">Message</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport.Serialize">
+            <summary>
+            Serializes current CodeMetricsReport object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an CodeMetricsReport object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output CodeMetricsReport object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current CodeMetricsReport object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.CodeMetricsReport@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an CodeMetricsReport object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output CodeMetricsReport object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Target.Serialize">
+            <summary>
+            Serializes current Target object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Target.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Target@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Target object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Target object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Target.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Target object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Target.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Target@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Target object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Target object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Module.Serialize">
+            <summary>
+            Serializes current Module object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Module.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Module@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Module object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Module object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Module.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Module object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Module.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Module@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Module object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Module object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metric.Serialize">
+            <summary>
+            Serializes current Metric object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metric.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Metric@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Metric object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Metric object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metric.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Metric object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metric.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Metric@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Metric object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Metric object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespace.Serialize">
+            <summary>
+            Serializes current Namespace object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespace.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Namespace@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Namespace object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Namespace object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespace.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Namespace object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespace.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Namespace@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Namespace object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Namespace object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Type.Serialize">
+            <summary>
+            Serializes current Type object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Type.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Type@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Type object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Type object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Type.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Type object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Type.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Type@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Type object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Type object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Member.Serialize">
+            <summary>
+            Serializes current Member object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Member.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Member@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Member object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Member object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Member.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Member object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Member.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Member@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Member object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Member object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Targets.Serialize">
+            <summary>
+            Serializes current Targets object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Targets.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Targets@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Targets object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Targets object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Targets.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Targets object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Targets.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Targets@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Targets object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Targets object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Modules.Serialize">
+            <summary>
+            Serializes current Modules object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Modules.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Modules@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Modules object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Modules object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Modules.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Modules object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Modules.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Modules@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Modules object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Modules object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespaces.Serialize">
+            <summary>
+            Serializes current Namespaces object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespaces.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Namespaces@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Namespaces object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Namespaces object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespaces.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Namespaces object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Namespaces.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Namespaces@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Namespaces object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Namespaces object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Types.Serialize">
+            <summary>
+            Serializes current Types object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Types.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Types@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Types object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Types object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Types.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Types object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Types.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Types@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Types object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Types object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Members.Serialize">
+            <summary>
+            Serializes current Members object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Members.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Members@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Members object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Members object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Members.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Members object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Members.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Members@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Members object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Members object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metrics.Serialize">
+            <summary>
+            Serializes current Metrics object into an XML document
+            </summary>
+            <returns>string XML value</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metrics.Deserialize(System.String,TfsBuildExtensions.Activities.CodeMetrics.Metrics@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Metrics object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output Metrics object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metrics.SaveToFile(System.String,System.Exception@)">
+            <summary>
+            Serializes current Metrics object into file
+            </summary>
+            <param name="fileName">full path of outupt xml file</param>
+            <param name="exception">output Exception value if failed</param>
+            <returns>true if can serialize and save into file; otherwise, false</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeMetrics.Metrics.LoadFromFile(System.String,TfsBuildExtensions.Activities.CodeMetrics.Metrics@,System.Exception@)">
+            <summary>
+            Deserializes xml markup from file into an Metrics object
+            </summary>
+            <param name="fileName">string xml file to load and deserialize</param>
+            <param name="obj">Output Metrics object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeQuality.NUnit">
+            <summary>
+            Executes Test Cases using NUnit (Tested using v2.5.7)
+            <example>
+            <code lang="xml"><![CDATA[
+            <!-- Run NUnit on all binaries (*.dll) for the the current configuration/platform-->    
+            <Sequence>
+            <Sequence.Variables>
+            <Variable x:TypeArguments="scg2:IEnumerable(x:String)" Name="NUnitTestAssemblies" />
+             <Variable x:TypeArguments="x:Int32" Name="Total" />
+            <Variable x:TypeArguments="x:Int32" Name="Errors" />
+            </Sequence.Variables>
+            <mtbwa:FindMatchingFiles DisplayName="Find NUnitTest assemblies" MatchPattern="[String.Format(&quot;{0}\\**.dll&quot;, BinariesDirectory)]" Result="[NUnitTestAssemblies]" />
+            <tan:NUnit PublishTestResults="True" Flavor="[platformConfiguration.Configuration]" Platform="[platformConfiguration.Platform]" Configuration="{x:Null}" Domain="{x:Null}" ErrorOutputFile="{x:Null}" ExcludeCategory="{x:Null}" FailBuildOnError="{x:Null}" Failures="{x:Null}" Framework="{x:Null}" Ignored="{x:Null}" IncludeCategory="{x:Null}" Inconclusive="{x:Null}" Invalid="{x:Null}" Labels="{x:Null}" NoShadow="{x:Null}" NoThread="{x:Null}" NotRun="{x:Null}" OutputFile="{x:Null}" Process="{x:Null}" Run="{x:Null}" Skipped="{x:Null}" TestTimeout="{x:Null}" TimeTaken="{x:Null}" TreatWarningsAsErrors="{x:Null}" Use32Bit="{x:Null}" Assemblies="[NUnitTestAssemblies]" Errors="[Errors]" LogExceptionStack="True" OutputXmlFile="NUnitResults.xml" ToolPath="C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0\" Total="[Total]" Version="2.5.7" />
+            </Sequence>
+            ]]></code>    
+            </example>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.NUnit.#ctor">
+            <summary>
+            Initializes a new instance of the NUnit class
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.NUnit.InternalExecute">
+            <summary>
+            Executes the logic for this custom activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Version">
+            <summary>
+            The version of NUnit to run. Default is 2.5.7
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.ToolPath">
+            <summary>
+            Gets or sets the ToolPath (defaults to %ProgramFiles%\Nunit {version}\bin\nunit-console[-86].exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Assemblies">
+            <summary>
+            The assemblies to process.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.PublishTestResults">
+            <summary>
+            Set to true to publish test results back to TFS
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Platform">
+            <summary>
+            Which platform to publish test results for (ex. Any CPU)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Flavor">
+            <summary>
+            Which flavor to publish test results for (ex. Debug)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Use32Bit">
+            <summary>
+            Set to true to run nunit-console-x86.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.IncludeCategory">
+            <summary>
+            Comma separated list of categories to include.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.ExcludeCategory">
+            <summary>
+            Comma separated list of categories to exclude.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.OutputXmlFile">
+            <summary>
+            Sets the OutputXmlFile name
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.ErrorOutputFile">
+            <summary>
+            Sets the File to receive test error output
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.OutputFile">
+            <summary>
+            File to receive test output
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.NoThread">
+            <summary>
+            Disable use of a separate thread for tests. Default is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Failures">
+            <summary>
+            Gets the Failures count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.NotRun">
+            <summary>
+            Gets the NotRun count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Total">
+            <summary>
+            Gets the Total count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Errors">
+            <summary>
+            Gets the Errors count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Inconclusive">
+            <summary>
+            Gets the Inconclusive count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Ignored">
+            <summary>
+            Gets the Ignored count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Skipped">
+            <summary>
+            Gets the Skipped count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Invalid">
+            <summary>
+            Gets the Invalid count
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.NoShadow">
+            <summary>
+            Disable shadow copy when running in separate domain. Default is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Configuration">
+            <summary>
+            Sets the Project configuration (e.g.: Debug) to load
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.TimeTaken">
+            <summary>
+            Gets the Time taken to run the tests
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Process">
+            <summary>
+            Process model for tests. Supports Single, Separate, Multiple. Single is the Default
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Domain">
+            <summary>
+            AppDomain Usage for tests. Supports None, Single, Multiple. The default is to use multiple domains if multiple assemblies are listed on the command line. Otherwise a single domain is used.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Framework">
+            <summary>
+            Framework version to be used for tests
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.TestTimeout">
+            <summary>
+            Set timeout for each test case in milliseconds
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Labels">
+            <summary>
+            Label each test in stdOut. Default is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.NUnit.Run">
+            <summary>
+            Name of the test case(s), fixture(s) or namespace(s) to run
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder">
+            <summary>
+            Helper class for generating command line arguments
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the SimpleCommandLineBuilder class
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.AppendFileNamesIfNotNull(System.String[],System.String)">
+            <summary>
+            Append a list of file names to the argument
+            </summary>
+            <param name="fileNames">File names</param>
+            <param name="delimiter">Delimiter</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.AppendSwitch(System.String)">
+            <summary>
+            Append a switch to the arguments
+            </summary>
+            <param name="switchName">Name of the switch</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.AppendSwitchIfNotNull(System.String,System.String)">
+            <summary>
+            Append a switch to the arguments, if the parameter is not null
+            </summary>
+            <param name="switchName">Name of the switch</param>
+            <param name="parameter">parameter</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.AppendSwitchIfNotNull(System.String,System.String[],System.String)">
+            <summary>
+            Append a switch to the arguments, if the parameter is not null
+            </summary>
+            <param name="switchName">Name of the switch</param>
+            <param name="parameters">List of parameters</param>
+            <param name="delimiter">Delimiter</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.Extended.SimpleCommandLineBuilder.ToString">
+            <summary>
+            Overrides to string to generate command line
+            </summary>
+            <returns>Command line arguments</returns>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeQuality.StatLight">
+            <summary>
+            TODO: Update summary.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.StatLight.InternalExecute">
+            <summary>
+            Executes the logic for this custom activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.TestAssembly">
+            <summary>
+            The assemblies to process.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.ToolPath">
+            <summary>
+            Gets or sets the ToolPath. Defaults to %ProgramFiles%\StatLight\StatLight.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.PublishTestResults">
+            <summary>
+            Set to true to publish test results back to TFS
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.Platform">
+            <summary>
+            Which platform to publish test results for (ex. Any CPU)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.Flavor">
+            <summary>
+            Which flavor to publish test results for (ex. Debug)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.StatLight.OutputXmlFile">
+            <summary>
+            Sets the OutputXmlFile name for the test result
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.CodeQuality.FxCop">
+            <summary>
+            The FxCop activity provides a basic wrapper over FxCopCmd.exe. See http://msdn.microsoft.com/en-gb/library/bb429449(VS.80).aspx for more details.
+            <para/>
+            <b>Required: </b> Project and / or Files, OutputFile <b>Optional: </b>DependencyDirectories, Imports, Rules, ShowSummary, UpdateProject, Verbose, UpdateProject, LogToConsole, Types, FxCopPath, ReportXsl, OutputFile, ConsoleXsl, Project, SearchGac, IgnoreInvalidTargets, Quiet, ForceOutput, AspNetOnly, IgnoreGeneratedCode, OverrideRuleVisibilities, FailOnMissingRules, SuccessFile, Dictionary, Ruleset, RulesetDirectory <b>Output: </b>AnalysisFailed, OutputText, ExitCode<para/>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <tac3:FxCop AnalysisFailed="{x:Null}" AspNetOnly="{x:Null}" ConsoleXsl="{x:Null}" DependencyDirectories="{x:Null}" Dictionary="{x:Null}" ExitCode="{x:Null}" FailBuildOnError="{x:Null}" FailOnMissingRules="{x:Null}" ForceOutput="{x:Null}" IgnoreExceptions="{x:Null}" IgnoreGeneratedCode="{x:Null}" IgnoreInvalidTargets="{x:Null}" Imports="{x:Null}" OutputText="{x:Null}" OverrideRuleVisibilities="{x:Null}" Project="{x:Null}" Quiet="{x:Null}" ReportXsl="{x:Null}" Ruleset="{x:Null}" RulesetDirectory="{x:Null}" SearchGac="{x:Null}" SuccessFile="{x:Null}" Timeout="{x:Null}" TreatWarningsAsErrors="{x:Null}" Types="{x:Null}" UpdateProject="{x:Null}" Verbose="{x:Null}" Files="[New String() {&quot;C:\FxCopFailTest.dll&quot;}]" FxCopPath="D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe" sap:VirtualizedContainerService.HintSize="526,22" LogExceptionStack="True" LogToConsole="True" OutputFile="D:\a\tfsfail.txt" Rules="[New String() {&quot;+D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\Rules\DesignRules.dll&quot;}]" ShowSummary="True" />
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.CodeQuality.FxCop.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Files">
+            <summary>
+            Sets the Item Collection of assemblies to analyse (/file option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.DependencyDirectories">
+            <summary>
+            Sets the DependencyDirectories :(/directory option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Imports">
+            <summary>
+            Sets the name of an analysis report or project file to import (/import option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Rules">
+            <summary>
+            Sets the location of rule libraries to load (/rule option). Prefix the Rules path with ! to treat warnings as errors
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.ShowSummary">
+            <summary>
+            Set to true to display a summary (/summary option). Default is true
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.SearchGac">
+            <summary>
+            Set to true to search the GAC for missing assembly references (/gac option). Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.SuccessFile">
+            <summary>
+            Set to true to create .lastcodeanalysissucceeded file in output report directory if no build-breaking messages occur during analysis. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.OverrideRuleVisibilities">
+            <summary>
+            Set to true to run all overridable rules against all targets. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Timeout">
+            <summary>
+            Set the override timeout for analysis deadlock detection. Analysis will be aborted when analysis of a single item by a single rule exceeds the specified amount of time. Default is 0 to disable deadlock detection.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.FailOnMissingRules">
+            <summary>
+            Set to true to treat missing rules or rule sets as an error and halt execution. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.IgnoreGeneratedCode">
+            <summary>
+            Set to true to suppress analysis results against generated code. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.AspNetOnly">
+            <summary>
+            Set to true to analyze only ASP.NET-generated binaries and honor global suppressions in App_Code.dll for all assemblies under analysis. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.IgnoreInvalidTargets">
+            <summary>
+            Set to true to silently ignore invalid target files. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Quiet">
+            <summary>
+            Set to true to suppress all console output other than the reporting implied by /console or /consolexsl. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.ForceOutput">
+            <summary>
+            Set to true to write output XML and project files even in the case where no violations occurred. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Verbose">
+            <summary>
+            Set to true to output verbose information during analysis (/verbose option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.UpdateProject">
+            <summary>
+            Saves the results of the analysis in the project file. This option is ignored if the /project option is not specified (/update option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.LogToConsole">
+            <summary>
+            Set to true to direct analysis output to the console (/console option). Default is true
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Types">
+            <summary>
+            Specifies the types to analyze
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.RulesetDirectory">
+            <summary>
+            Specifies the directory to search for rule set files that are specified by the Ruleset switch or are included by one of the specified rule sets.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Ruleset">
+            <summary>
+            Specifies the Rule set to be used for the analysis. It can be a file path to the rule set file or the file name of 
+            a built-in rule set. '+' enables all rules in the rule set; '-' disables all rules in the rule set; '=' sets rules 
+            to match the rule set and disables all rules that are not enabled in the rule set
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.FxCopPath">
+            <summary>
+            Sets the path to FxCopCmd.exe. Default is [Program Files]\Microsoft FxCop 1.36\FxCopCmd.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.ReportXsl">
+            <summary>
+            Sets the ReportXsl (/outXsl: option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.OutputFile">
+            <summary>
+            Set the name of the file for the analysis report
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.ConsoleXsl">
+            <summary>
+            Sets the ConsoleXsl (/consoleXsl option)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Dictionary">
+            <summary>
+            Sets the custom dictionary used by spelling rules.Default is no custom dictionary
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.Project">
+            <summary>
+            Set the name of the .fxcop project to use
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.AnalysisFailed">
+            <summary>
+            Gets AnalysisFailed. True if FxCop logged Code Analysis errors to the Output file.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.ExitCode">
+            <summary>
+            The exit code returned from FxCop
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.CodeQuality.FxCop.OutputText">
+            <summary>
+            Gets the OutputText emitted during analysis
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Communication.EmailAction">
+            <summary>
+            EmailAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Communication.EmailAction.Send">
+            <summary>
+            Send
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Communication.Email">
+            <summary>
+            <b>Valid Actions are:</b>
+            <para><i>Send</i> (<b>Required: </b> SmtpServer, MailFrom, MailTo, Subject  <b>Optional: </b> Priority, Body, Format, Attachments, UseDefaultCredentials, UserName, UserPassword, Port, EnableSsl)</para>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions Email Sequence" sap:VirtualizedContainerService.HintSize="818,146">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Default="YOUREMAILFROMADDRESS" Name="EmailFrom" />
+                <Variable x:TypeArguments="s:String[]" Default="[New String() {&quot;YOUREMAILTOADDRESSES&quot;}]" Name="EmailTo" />
+                <Variable x:TypeArguments="x:String" Name="variable1" />
+              </Sequence.Variables>
+              <tac2:Email Attachments="{x:Null}" Body="{x:Null}" FailBuildOnError="{x:Null}" Format="{x:Null}" LogExceptionStack="{x:Null}" Priority="{x:Null}" TreatWarningsAsErrors="{x:Null}" UseDefaultCredentials="{x:Null}" Action="Send" EnableSsl="True" sap:VirtualizedContainerService.HintSize="200,22" MailFrom="[EmailFrom]" MailTo="[EmailTo]" Port="0" SmtpServer="" Subject="YOURSUBJECT" UserName="" UserPassword="" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Communication.Email.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Action">
+            <summary>
+            Specifies the action to perform. Default is Send.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.SmtpServer">
+            <summary>
+            The SMTP server to use to send the email.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Port">
+            <summary>
+            Sets the port to use. Ignored if not specified.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.EnableSsl">
+            <summary>
+            Sets whether to EnableSsl
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.MailFrom">
+            <summary>
+            The email address to send the email from.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.MailTo">
+            <summary>
+            Sets the Item Collection of email address to send the email to.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Subject">
+            <summary>
+            The subject of the email.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Priority">
+            <summary>
+            The priority of the email. Default is Normal
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Body">
+            <summary>
+            The body of the email.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Format">
+            <summary>
+            Sets the format of the email. Default is HTML
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.UserName">
+            <summary>
+            Sets the UserName if SmtpClient requires credentials
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.UserPassword">
+            <summary>
+            Sets the UserPassword if SmtpClient requires credentials
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.UseDefaultCredentials">
+            <summary>
+            Gets or sets a Boolean value that controls whether the DefaultCredentials are sent with requests. DefaultCredentials represents the system credentials for the current security context in which the application is running. Default is true.
+            <para>If UserName and UserPassword is supplied, this is set to false. If UserName and UserPassword are not supplied and this is set to false then mail is sent to the server anonymously.</para>
+            <para><b>If you provide credentials for basic authentication, they are sent to the server in clear text. This can present a security issue because your credentials can be seen, and then used by others.</b></para>
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Email.Attachments">
+            <summary>
+            An Item Collection of full paths of files to attach to the email.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Communication.Twitter">
+            <summary>
+            <b>Tweet on Twitter</b>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions Twitter Sequence" sap:VirtualizedContainerService.HintSize="818,146">
+            <tac2:Twitter FailBuildOnError="{x:Null}" IgnoreExceptions="{x:Null}" TreatWarningsAsErrors="{x:Null}" AccessToken="yourAccessToken" AccessTokenSecret="yourAccessTokenSecret" ConsumerKey="yourConsumerKey" ConsumerSecret="yourConsumerSecret" sap:VirtualizedContainerService.HintSize="504,22" LogExceptionStack="True" Message="Hello from your twitter app" TwitterUrl="http://api.twitter.com/1/statuses/update.json" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Communication.Twitter.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.TwitterUrl">
+            <summary>
+            Sets the Twitter URL to post to. Defaults to http://api.twitter.com/1/statuses/update.json
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.Message">
+            <summary>
+            Sets the message to send to Twitter
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.ConsumerKey">
+            <summary>
+            Sets the ConsumerKey
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.AccessToken">
+            <summary>
+            Sets the AccessToken (oauth_token)
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.ConsumerSecret">
+            <summary>
+            Sets the ConsumerSecret
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Communication.Twitter.AccessTokenSecret">
+            <summary>
+            Sets the AccessTokenSecret
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Compression.ZipAction">
+            <summary>
+            ZipAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Compression.ZipAction.AddFiles">
+            <summary>
+            AddFiles
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Compression.ZipAction.Create">
+            <summary>
+            Create
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Compression.ZipAction.Extract">
+            <summary>
+            Extract
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Compression.Zip">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>AddFiles</i> (<b>Required: </b> ZipFileName, CompressFiles or Path <b>Optional: </b>CompressionLevel, Password; RemoveRoot) Existing files will be updated</para>
+            <para><i>Create</i> (<b>Required: </b> ZipFileName, CompressFiles or Path <b>Optional: </b>CompressionLevel, Password; RemoveRoot)</para>
+            <para><i>Extract</i> (<b>Required: </b> ZipFileName, ExtractPath <b>Optional:</b> Password)</para>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions Zip Sequence" sap:VirtualizedContainerService.HintSize="1178,146">
+            <tac:Zip ExtractPath="{x:Null}" Files="{x:Null}" LogExceptionStack="{x:Null}" Password="{x:Null}" RemoveRoot="{x:Null}" TreatWarningsAsErrors="{x:Null}" Action="Create" CompressPath="[BinariesDirectory]" CompressionLevel="Default" FailBuildOnError="True" sap:VirtualizedContainerService.HintSize="200,22" ZipFileName="[BinariesDirectory + &quot;\\&quot; + &quot;MyBuild&quot; + &quot;.zip&quot;]" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Compression.Zip.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.RemoveRoot">
+            <summary>
+            Sets the root to remove from the zip path. Note that this should be part of the file to compress path, not the target path of the ZipFileName
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.Files">
+            <summary>
+            Sets the files to Compress
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.CompressPath">
+            <summary>
+            Sets the Path to Zip.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.ZipFileName">
+            <summary>
+            Sets the name of the Zip File
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.ExtractPath">
+            <summary>
+            Path to extract the zip file to
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.Password">
+            <summary>
+            Sets the Password to be used
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.CompressionLevel">
+            <summary>
+            Sets the CompressionLevel to use. Default is Default, also supports BestSpeed and BestCompression
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Compression.Zip.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.FileSystem.FileAction">
+            <summary>
+            FileAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.AddAttributes">
+            <summary>
+            AddAttributes
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.GetChecksum">
+            <summary>
+            GetChecksum
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.GetTempFileName">
+            <summary>
+            GetTempFileName
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.Move">
+            <summary>
+            Move
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.RemoveAttributes">
+            <summary>
+            RemoveAttributes
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.SetAttributes">
+            <summary>
+            SetAttributes
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.Replace">
+            <summary>
+            Replace
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.Touch">
+            <summary>
+            Touch
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.FileAction.Delete">
+            <summary>
+            Delete
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.FileSystem.File">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>AddAttributes</i> (<b>Required: </b>Attributes, Files)</para>
+            <para><i>GetChecksum</i> (<b>Required: </b>Path <b>Output: </b>Checksum)</para>
+            <para><i>GetTempFileName</i> (<b>Output: </b>Path)</para>
+            <para><i>Move</i> (<b>Required: </b>Path, TargetPath)</para>
+            <para><i>RemoveAttributes</i> (<b>Required: </b>Attributes, Files)</para>
+            <para><i>Replace</i> (<b>Required: </b>RegexPattern <b>Optional: </b>Replacement, Path, TextEncoding, Files)</para>
+            <para><i>SetAttributes</i> (<b>Required: </b>Attributes, Files)</para>
+            <para><i>Touch</i> (<b>Required: </b>Files <b>Optional: </b>Force, Time)</para>
+            <para><i>Delete</i> (<b>Required:</b> Files <b>Optional: </b>Force)</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.FileSystem.File.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.RegexPattern">
+            <summary>
+            Sets the regex pattern.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Replacement">
+            <summary>
+            The replacement text to use. Default is string.Empty
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Path">
+            <summary>
+            A path to process or get. Use * for recursive folder processing. For the GetChecksum TaskAction, this indicates the path to the file to create a checksum for.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.TextEncoding">
+            <summary>
+            The file encoding to write the new file in. The task will attempt to default to the current file encoding.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Attributes">
+            <summary>
+            The File attributes
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Files">
+            <summary>
+            An ItemList of files to process. If calling SetAttributes, RemoveAttributes or AddAttributes, include the attributes in an Attributes metadata tag, separated by a semicolon.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.TargetPath">
+            <summary>
+            Sets the TargetPath for a renamed file
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Checksum">
+            <summary>
+            Gets the file checksum
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Force">
+            <summary>
+            Forces the action on read only files.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.File.Time">
+            <summary>
+            Date and time to use for touch. If not specify, the activity will use the current date and time.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.FileSystem.RoboCopyAction">
+            <summary>
+            RoboCopyAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.FileSystem.RoboCopyAction.Copy">
+            <summary>
+            Copy
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.FileSystem.RoboCopy">
+            <summary>
+            <para>This activity wraps RoboCopy. Successful non-zero exit codes from Robocopy. Use the ReturnCode property to access the exit code from Robocopy</para>
+            <b>Valid Action values are:</b>
+            <para><i>Copy</i></para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.FileSystem.RoboCopy.InternalExecute">
+            <summary> 
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.Source">
+            <summary>
+            Source Directory (drive:\path or \\server\share\path).
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.Destination">
+            <summary>
+            Destination Dir  (drive:\path or \\server\share\path).
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.Files">
+            <summary>
+            File(s) to copy  (names/wildcards: default is "*.*").
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.ReturnCode">
+            <summary>
+            Gets the Return Code from RoboCopy
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.Options">
+            <summary>
+            Type 'robocopy.exe /?' at the command prompt for all available options
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.LogToBuild">
+            <summary>
+            Set to true to log output to the build progress screen. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.FileSystem.RoboCopy.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo">
+            <summary>
+            Updates content of AssemblyInfo files.
+            </summary>
+            <remarks>
+                <para>The <see cref="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.Files"/> property is <b>required</b>.</para>
+                <para>Setting a property to null will disable updating the associated attribute.</para>
+                <para>
+                The following tokens are supported for replacement (all tokens are not supported by every property, see properties remarks for the list of supported tokens):
+                <list type="table">
+                    <listheader>
+                        <term>Token</term>
+                        <description>Description</description>
+                    </listheader>
+                    <item>
+                        <term>$(current)</term>
+                        <description>Uses the current value.</description>
+                    </item>
+                    <item>
+                        <term>$(increment)</term>
+                        <description>Increments the current value.</description>
+                    </item>
+                    <item>
+                        <term>$(date:&lt;format&gt;)</term>
+                        <description>Uses the current date formatted with the specified &lt;format&gt;.</description>
+                    </item>
+                    <item>
+                        <term>$(version)</term>
+                        <description>The updated AssemblyVersion value.</description>
+                    </item>
+                    <item>
+                        <term>$(fileversion)</term>
+                        <description>The updated AssemblyFileVersion value.</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+            <example>
+                <code lang="xml"><![CDATA[
+                <Sequence DisplayName="TFSBuildExtensions AssemblyInfo Sequence" sap:VirtualizedContainerService.HintSize="818,146">
+                    <Sequence.Variables>
+                        <Variable x:TypeArguments="s:String[]" Name="AssemblyInfoFiles" />
+                    </Sequence.Variables>
+                    <taf:AssemblyInfo FailBuildOnError="{x:Null}" IgnoreExceptions="{x:Null}" TreatWarningsAsErrors="{x:Null}" AssemblyCompany="{x:Null}" AssemblyConfiguration="{x:Null}" AssemblyCopyright="{x:Null}" AssemblyCulture="{x:Null}" AssemblyDelaySign="{x:Null}" AssemblyDescription="{x:Null}" AssemblyFileVersion="$(current).$(current).$(increment).0" AssemblyInformationalVersion="$(fileversion)" AssemblyKeyFile="{x:Null}" AssemblyKeyName="{x:Null}" AssemblyProduct="{x:Null}" AssemblyTitle="{x:Null}" AssemblyTrademark="{x:Null}" AssemblyVersion="$(current).$(current).0.0" CLSCompliant="[False]" ComVisible="{x:Null}" Files="[AssemblyInfoFiles]" Guid="{x:Null}" LogExceptionStack="True" MaxAssemblyFileVersion="{x:Null}" MaxAssemblyInformationalVersion="{x:Null}" MaxAssemblyVersion="{x:Null}" />
+                </Sequence>
+                ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.AssemblyInfo.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.Files">
+            <summary>
+            Sets the AssemblyInfo files to update.
+            </summary>
+            <remarks>
+            This property is <b>required.</b>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyVersion">
+            <summary>
+            Sets the assembly version.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(current)</description>
+                    </item>
+                    <item>
+                        <description>$(increment)</description>
+                   </item>
+                   <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                   </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyFileVersion">
+            <summary>
+            Sets the assembly file version.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                   <item>
+                        <description>$(current)</description>
+                   </item>
+                   <item>
+                       <description>$(increment)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                   </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyInformationalVersion">
+            <summary>
+            Sets the assembly informational version.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                    <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyCompany">
+            <summary>
+            Sets the company name.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyConfiguration">
+            <summary>
+            Sets the assembly configuration.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyCopyright">
+            <summary>
+            Sets the assembly copyright.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyCulture">
+            <summary>
+            Sets the assembly culture.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyDelaySign">
+            <summary>
+            Set to <b>true</b> to mark the assembly for delay signing.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyDescription">
+            <summary>
+            Sets the assembly description.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.Guid">
+            <summary>
+            Sets the assembly GUID.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyKeyFile">
+            <summary>
+            Sets the key file to use to sign the assembly.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyKeyName">
+            <summary>
+            Sets the name of a key container within the CSP containing the key pair used to generate a strong name.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyProduct">
+            <summary>
+            Sets the assembly product.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyTitle">
+            <summary>
+            Sets the assembly title.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.AssemblyTrademark">
+            <summary>
+            Sets the assembly trademark.
+            </summary>
+            <remarks>
+                <para>Setting the value to null will disable updating this attribute.</para>
+                <para>
+                The following tokens are supported (see <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfo"/> remarks for a description of those tokens):
+                <list type="bullet">
+                    <item>
+                        <description>$(version)</description>
+                    </item>
+                    <item>
+                        <description>$(fileversion)</description>
+                    </item>
+                    <item>
+                        <description>$(date:&lt;format&gt;)</description>
+                    </item>
+                </list>
+                </para>
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.CLSCompliant">
+            <summary>
+            Set to <b>true</b> to mark the assembly CLS compliant.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.ComVisible">
+            <summary>
+            Set to <b>true</b> to make the assembly visible to COM.
+            </summary>
+            <remarks>
+            Setting the value to null will disable updating this attribute.
+            </remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.MaxAssemblyVersion">
+            <summary>
+            Gets the max updated assembly version.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.MaxAssemblyFileVersion">
+            <summary>
+            Gets the max updated assembly file version.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfo.MaxAssemblyInformationalVersion">
+            <summary>
+            Gets the max updated assembly informational version.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.AssemblyInfoFile">
+            <summary>
+            Represents a parsed AssemblyInfo file.
+            </summary>
+            <remarks>
+            To correctly parse multiline comments, it must start at the beginning of a line.
+            </remarks>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.AssemblyInfoFile.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TfsBuildExtensions.Activities.Framework.AssemblyInfoFile"/> class with the specified AssemblyInfo file.
+            </summary>
+            <param name="path">
+            The AssemblyInfo file to parse.
+            </param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.AssemblyInfoFile.Write(System.IO.TextWriter)">
+            <summary>
+            Writes the updated AssemblyInfo file to the specified <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="writer">
+            The <see cref="T:System.IO.TextWriter"/> to write to.
+            </param>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.AssemblyInfoFile.Item(System.String)">
+            <summary>
+            Gets or sets the attribute value.
+            </summary>
+            <param name="attributeName">
+            The attribute name.
+            </param>
+            <value>
+            The attribute value. If the attribute is not declared returns <see langword="null"/>.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The attribute <paramref name="attributeName"/> is not declared in the parsed file and cannot be set.
+            </exception>
+            <returns>string</returns>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.DateAndTimeAction">
+            <summary>
+            DateAndTimeAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.Get">
+            <summary>
+            Get
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.GetElapsed">
+            <summary>
+            GetElapsed
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.CheckLater">
+            <summary>
+            CheckLater
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.CheckBetween">
+            <summary>
+            CheckBetween
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddDays">
+            <summary>
+            AddDays
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddHours">
+            <summary>
+            AddHours
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddMilliseconds">
+            <summary>
+            AddMilliseconds
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddMinutes">
+            <summary>
+            AddMinutes
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddMonths">
+            <summary>
+            AddMonths
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddSeconds">
+            <summary>
+            AddSeconds
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddTicks">
+            <summary>
+            AddTicks
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.DateAndTimeAction.AddYears">
+            <summary>
+            AddYears
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.DateAndTime">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>AddDays</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddHours</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddMilliseconds</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddMinutes</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddMonths</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddSeconds</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddTicks</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>AddYears</i> - <b>Required: </b>Format, Value <b>Optional: </b>Start <b>Output: </b> Result</para>
+            <para><i>CheckBetween</i> - <b>Required: </b>Start, End <b>Optional:</b> UseUtc <b>Output: </b> BoolResult</para>
+            <para><i>CheckLater</i> - <b>Required: </b>Start <b>Optional:</b> UseUtc <b>Output: </b> BoolResult</para>
+            <para><i>Get</i> - <b>Required: </b>Format <b>Optional:</b> UseUtc <b>Output: </b> Result</para>
+            <para><i>GetElapsed</i> - <b>Required: </b>Format, Start <b>Optional: </b>End, UseUtc <b>Output: </b> Result</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.DateAndTime.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.Action">
+            <summary>
+            Specifies the action to perform. Default is Get.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.Start">
+            <summary>
+            The start time to use
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.End">
+            <summary>
+            The end time to use for GetElapsed. Default is DateTime.Now
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.Format">
+            <summary>
+            Format to apply to the Result. For GetTime, Format can be any valid DateTime format. For GetElapsed, Format can be Milliseconds, Seconds, Minutes, Hours, Days or Total. Total returns dd:hh:mm:ss
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.Value">
+            <summary>
+            The Value to use in calculations
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.Result">
+            <summary>
+            The output Result
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.BoolResult">
+            <summary>
+            The output boolean result.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.DateAndTime.UseUtc">
+            <summary>
+            Set to true to use UTC Date / Time for the Action. Default is false.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.GuidAction">
+            <summary>
+            GuidAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.GuidAction.Create">
+            <summary>
+            Send
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Framework.GuidAction.CreateCrypto">
+            <summary>
+            CreateCrypto
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Framework.Guid">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>Create</i> - <b>Output: </b> GuidString, FormattedGuidString</para>
+            <para><i>CreateCrypto</i> - <b>Output: </b> GuidString, FormattedGuidString</para>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions Guid Sequence" sap:VirtualizedContainerService.HintSize="633,208">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="MyGuid" />
+              <Variable x:TypeArguments="x:String" Name="MyFormattedGuid" />
+            </Sequence.Variables>
+            <taf:Guid FailBuildOnError="{x:Null}" LogExceptionStack="{x:Null}" TreatWarningsAsErrors="{x:Null}" Action="Create" DisplayName="Guid (Create)" FormattedGuidString="[MyFormattedGuid]" GuidString="[MyGuid]" sap:VirtualizedContainerService.HintSize="200,22" />
+            <mtbwa:WriteBuildMessage DisplayName="Write Guid Result" sap:VirtualizedContainerService.HintSize="200,22" Importance="[Microsoft.TeamFoundation.Build.Client.BuildMessageImportance.High]" Message="[&quot;MyGuid: &quot; + MyGuid + &quot;. MyFormattedGuid: &quot; + MyFormattedGuid]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.Guid.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.Guid.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Framework.Guid.GetCrypto">
+            <summary>
+            Gets the crypto.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.Guid.Action">
+            <summary>
+            Specifies the action to perform. Default is Create.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.Guid.GuidString">
+            <summary>
+            The Guid result:  32 digits: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Framework.Guid.FormattedGuidString">
+            <summary>
+            The Formatted Guid result: 32 digits separated by hyphens: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Management.WmiAction">
+            <summary>
+            WmiAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Management.WmiAction.Execute">
+            <summary>
+            Execute
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Management.Wmi">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>Execute</i> (<b>Required: </b> Class, Namespace, Method <b> Optional: </b>Instance, MethodParameters <b>Output: </b>ReturnValue)</para>
+            <para><b>Remote Execution Support:</b> Yes</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Management.Wmi.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.Namespace">
+            <summary>
+            Sets the namespace.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.Class">
+            <summary>
+            Sets the WMI class.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.ReturnValue">
+            <summary>
+            Gets the ReturnValue for Execute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.Method">
+            <summary>
+            Sets the Method used in Execute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.MethodParameters">
+            <summary>
+            Sets the MethodParameters. Use #~# separate name and value.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Management.Wmi.Instance">
+            <summary>
+            Sets the Wmi Instance used in Execute
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.SqlServer.Extended.SqlScriptLoader">
+            <summary>
+            SqlScriptLoader
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.SqlServer.Extended.SqlScriptLoader.#ctor(System.IO.StreamReader)">
+            <summary>
+            Initializes a new instance of the SqlScriptLoader class
+            </summary>
+            <param name="reader">reader</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.SqlServer.Extended.SqlScriptLoader.ReadToEnd">
+            <summary>
+            ReadToEnd
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.SqlServer.SqlExecuteAction">
+            <summary>
+            SqlExecuteAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.SqlServer.SqlExecuteAction.Execute">
+            <summary>
+            Execute
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.SqlServer.SqlExecuteAction.ExecuteScalar">
+            <summary>
+            Execute
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.SqlServer.SqlExecuteAction.ExecuteRawReader">
+            <summary>
+            Execute
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.SqlServer.SqlExecute">
+            <summary>
+            <b>Valid Actions are:</b>
+            <para><i>Execute</i> (<b>Required: </b> ConnectionString, Sql or Files <b>Optional:</b> CommandTimeout, Parameters, Retry, UseTransaction)</para>
+            <para><i>ExecuteRawReader</i> (<b>Required: </b> ConnectionString, Sql <b>Optional:</b> CommandTimeout, Parameters, Retry, UseTransaction <b>Output: </b> RawReaderResult)</para>
+            <para><i>ExecuteScalar</i> (<b>Required: </b> ConnectionString, Sql <b>Optional:</b> CommandTimeout, Parameters, Retry, UseTransaction <b>Output: </b> ScalarResult)</para>
+            <para><b>Remote Execution Support:</b> NA</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.SqlServer.SqlExecute.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.ConnectionString">
+            <summary>
+            Sets the connection string to use for executing the Sql or Files
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.CommandTimeout">
+            <summary>
+            Sets the timeout in seconds. Default is 30
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.Files">
+            <summary>
+            Sets the files to execute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.Sql">
+            <summary>
+            Sets the Sql to execute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.Parameters">
+            <summary>
+            Sets the parameters to substitute at execution time
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.Retry">
+            <summary>
+            Specifies whether files should be re-executed if they initially fail
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.UseTransaction">
+            <summary>
+            Set to true to run the sql within a transaction
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.ScalarResult">
+            <summary>
+            Gets the scalar result
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.RawReaderResult">
+            <summary>
+            Gets the raw output from the reader
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.SqlServer.SqlExecute.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReportAction">
+            <summary>
+                BuildReportAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReportAction.Generate">
+            <summary>
+            Generate
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport">
+            <summary>
+            <b>Valid Action values are:</b> Generate
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.ReportFileName">
+            <summary>
+            Sets the Build Report file name. Defaults to BuildReport.txt
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.FilePath">
+            <summary>
+            Sets the Build Report file path. Defaults to the build DropLocation
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.XslTransformFile">
+            <summary>
+            Sets the Xsl File to transform the Xml report. An embbeded Xsl file is used by default.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.SmtpServer">
+            <summary>
+            The SMTP server to use to send the email.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Port">
+            <summary>
+            Sets the port to use. Ignored if not specified.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.EmailReport">
+            <summary>
+            Sets whether to email the report. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.EnableSsl">
+            <summary>
+            Sets whether to EnableSsl
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.SkipFiles">
+            <summary>
+            Sets whether to skip the reporting of all files in the DropLocation. Default is false;
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.MailFrom">
+            <summary>
+            The email address to send the email from.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.MailTo">
+            <summary>
+            Sets the Item Collection of email address to send the email to.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Subject">
+            <summary>
+            The subject of the email. Defaults to "Build Report: BUILDNAME (BUILDNUMBER)"
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Priority">
+            <summary>
+            The priority of the email. Default is Normal
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Format">
+            <summary>
+            Sets the format of the email. Default is Text
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.UserName">
+            <summary>
+            Sets the UserName if SmtpClient requires credentials
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.UserPassword">
+            <summary>
+            Sets the UserPassword if SmtpClient requires credentials
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.UseDefaultCredentials">
+            <summary>
+            Gets or sets a Boolean value that controls whether the DefaultCredentials are sent with requests. DefaultCredentials represents the system credentials for the current security context in which the application is running. Default is true.
+            <para>If UserName and UserPassword is supplied, this is set to false. If UserName and UserPassword are not supplied and this is set to false then mail is sent to the server anonymously.</para>
+            <para><b>If you provide credentials for basic authentication, they are sent to the server in clear text. This can present a security issue because your credentials can be seen, and then used by others.</b></para>
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.Attachments">
+            <summary>
+            An Item Collection of full paths of files to attach to the email.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildReport.AssociatedChangesets">
+            <summary>
+            Sets the changesets associated with the build
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspaceAction">
+            <summary>
+            BuildWorkspaceAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspaceAction.Add">
+            <summary>
+            Add
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspaceAction.Remove">
+            <summary>
+            Remove
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspaceAction.Clear">
+            <summary>
+            Clear
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace">
+            <summary>
+            Modifies the workspace associated with a Team Foundation Build
+            <b>Valid Action values are:</b>
+            <para><i>Add</i> - <b>Required: </b>BuildDefinition, LocalItem, ServerItem</para>
+            <para><i>ClearAll</i> - <b>Required: </b>BuildDefinition</para>
+            <para><i>Remove</i> - <b>Required: </b>BuildDefinition, LocalItem <i>or</i> ServerItem</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace.InternalExecute">
+            <summary>
+            Internal Execute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace.Action">
+            <summary>
+            Specifies the action to perform. Default is Add.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace.BuildDefinition">
+            <summary>
+            The build definition that will be modified by the activity.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace.LocalItem">
+            <summary>
+            Local path for the build definition workspace. Use $(SourceDir)[\Path] to use the build agent's default.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.BuildWorkspace.ServerItem">
+            <summary>
+            Server (source control) path that will be mapped to the workspace
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildController">
+            <summary>
+            Workflow activity that gets an <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildController"/>
+            based on the Build Server and controller name provided.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildController.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+            <param name="context">The workflow context.</param>
+            <returns>The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildController"/>
+            that is specified.</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildController.BuildControllerName">
+            <summary>
+            The build controller's name that exists on the TFS server.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildController.BuildServer">
+            <summary>
+            The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildServer"/>
+            object for the Team Foundation Server and Team
+            Project Collection to use that contains the build controller.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildDefinition">
+            <summary>
+            Workflow activity that gets an <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildDefinition"/>
+            based on the Build Server and build definition name provided.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildDefinition.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+            <param name="context">The workflow context.</param>
+            <returns>The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildDefinition"/>
+            that is specified.</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildDefinition.TeamProjectName">
+            <summary>
+            The name of the team project where the build definition exists.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildDefinition.BuildDefinitionName">
+            <summary>
+            The name of the build definition to return.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildDefinition.BuildServer">
+            <summary>
+            The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildServer"/>
+            object for the Team Foundation Server and Team
+            Project Collection to use that contains the build definition.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildServer">
+            <summary>
+            Workflow activity that gets an <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildServer"/>
+            based on the Team Foundation Server URL that is provided.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildServer.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+            <param name="context">The workflow context.</param>
+            <returns>The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildServer"/>
+            that is specified.</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetBuildServer.TeamFoundationServerUrl">
+            <summary>
+            The URL for the Team Foundation Server to use.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrlAction">
+            <summary>
+            GuidAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrlAction.BuildDetails">
+            <summary>
+            BuildDetails
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrlAction.WorkItemEditor">
+            <summary>
+            WorkItemEditor
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl">
+            <summary>
+            <b>Valid Action values are:</b>
+            <para><i>BuildDetails</i> - <b>Required: </b>TeamProjectCollection, ItemId <b>Output: </b> Result</para>
+            <para><i>WorkItemEditor</i> - <b>Required: </b>TeamProjectCollection, ItemUri <b>Output: </b> Result</para>
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TFBaseCodeActivity">
+            <summary>
+            Base class for TFS Activities that require a TeamProjectCollection
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.TFBaseCodeActivity.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Entry point to the Activity. This validates that the TeamProjectCollection is not null and calls the base Execute
+            </summary>
+            <param name="context">CodeActivityContext</param>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TFBaseCodeActivity.TeamProjectCollection">
+            <summary>
+            Team Project Collection for this activity. 
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TFBaseCodeActivity.ProjectCollection">
+            <summary>
+            Protected; value of the TeamProjectCollection InArgument
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl.Action">
+            <summary>
+            Specifies the action to perform. Default is BuildDetails.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl.ItemUri">
+            <summary>
+            Team Foundation Uri for specific items
+            <list type="bullet">
+                <listheader>
+                <description>Used for:</description>
+                </listheader>
+                <item>
+                    <description>BuildDetails - Uri for the build.</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl.ItemId">
+            <summary>
+            Team Foundation ID for the linked item
+            <list type="bullet">
+                <listheader>
+                <description>Used for:</description>
+                </listheader>
+                <item>
+                    <description>WorkItemEditor - the work item id.</description>
+                </item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.GetWebAccessUrl.Result">
+            <summary>
+            Result Url for the item in TFS Web Access.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild">
+            <summary>
+            Workflow activity that queues a new build with the specified build definition
+            and TFS Build Server.
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+            <param name="context">The workflow context.</param>
+            <returns>The <see cref="T:Microsoft.TeamFoundation.Build.Client.IQueuedBuild"/>
+            object that is returned after queueing the new build.</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.BuildServer">
+            <summary>
+            The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildServer"/>
+            object for the Team Foundation Server and Team
+            Project Collection to use that contains the build definition.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.BuildDefinition">
+            <summary>
+            The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildDefinition"/>
+            object to use to queue a new build.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.Priority">
+            <summary>
+            The build priority to use when placing the new build request on the queue.
+            </summary>
+            <remarks>The default value is <see cref="F:Microsoft.TeamFoundation.Build.Client.QueuePriority.Normal"/>.</remarks>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.ProcessParameters">
+            <summary>
+            The process parameters to use whenever queuing a new build if you would like to change any
+            of the parameters from their default values specified in the build definition or in the process
+            template file.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.QueueBuild.BuildController">
+            <summary>
+            The <see cref="T:Microsoft.TeamFoundation.Build.Client.IBuildController"/>
+            object to use to queue a new build if different from the default build controller
+            as specified in the build definition.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction">
+            <summary>
+            TF action to perform
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.Add">
+            <summary>
+            Add item(s)
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.Checkin">
+            <summary>
+            Checkin item(s)
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.Checkout">
+            <summary>
+            Checkout item(s)
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.Delete">
+            <summary>
+            Delete item(s)
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.Undelete">
+            <summary>
+            Undelete item(s)
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsAction.UndoCheckout">
+            <summary>
+            Undo checked out item(s)
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource">
+            <summary>
+            Activity to wrap TF.exe commands for simple integration in the build process.
+            <para />
+            <b>Valid Action values are:</b>
+            <para><i>Add</i> - Add an item</para>
+            <para><i>Checkin</i> - Checkin pending changes</para>
+            <para><i>Checkout</i> - Checkout an item</para>
+            <para><i>Delete</i> - Delete an item</para>
+            <para><i>Undelete</i> - Undelete a deleted item</para>
+            <para><i>UndoCheckout</i> - Undo a checked out item</para>
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions TfsSource Sequence">
+            <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Default="C:\Builds\1\Tailspin Toys\Tailspin Toys - Iteration 2 - Extension\Sources\Development\Iteration 2\VB6\Class1.cls" Name="ItemSpec" />
+                <Variable x:TypeArguments="x:String" Default="C:\Builds\1\Tailspin Toys\Tailspin Toys - Iteration 2 - Extension\Sources\Development\Iteration 2\VB6" Name="WorkingDirectory" />
+                <Variable x:TypeArguments="x:String" Default="A checkin comment" Name="CheckinComment" />
+                <Variable x:TypeArguments="x:String" Default="A policy override reason" Name="OverrideReason" />
+                <Variable x:TypeArguments="x:String" Default="DefaultCollection" Name="ProjectCollection" />
+            </Sequence.Variables>
+            <!-- Add item to version control -->
+            <tat:TfsSource 
+                DisplayName="Add file" 
+                Action="[TfsAction.Add]" 
+                Itemspec="[ItemSpec]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Checkin pending changes with comment -->
+            <tat:TfsSource 
+                DisplayName="Checkin" 
+                Action="[TfsAction.Checkin]" 
+                Collection="[ProjectCollection]" 
+                Comments="[CheckinComment]" 
+                OverrideReason="{x:Null}" 
+                Notes="{x:Null}" 
+                Recursive="{x:Null}" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Checkin pending changes with policy override -->
+            <tat:TfsSource 
+                DisplayName="Checkin" 
+                Action="[TfsAction.Checkin]" 
+                Collection="[ProjectCollection]" 
+                OverrideReason="[OverrideReason]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Checkout item from version control -->
+            <tat:TfsSource 
+                DisplayName="Checkout" 
+                Action="[TfsAction.Checkout]" 
+                Itemspec="[ItemSpec]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Delete item from version control -->
+            <tat:TfsSource 
+                DisplayName="Delete file" 
+                Action="[TfsAction.Delete]" 
+                Collection="[ProjectCollection]" 
+                Itemspec="[ItemSpec]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Undelete delete from version control -->
+            <tat:TfsSource 
+                DisplayName="Undelete file" 
+                Action="[TfsAction.Undelete]" 
+                Itemspec="[ItemSpec]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            <!-- Undo Checkout -->
+            <tat:TfsSource 
+                DisplayName="Undo Checkout" 
+                Action="[TfsAction.UndoCheckout]" 
+                Collection="[ProjectCollection]" 
+                Itemspec="[ItemSpec]" 
+                WorkingDirectory="[WorkingDirectory]" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.InternalExecute">
+            <summary> 
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Action">
+            <summary>
+            The action to perform
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Itemspec">
+            <summary>
+            Item to operate on
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.ToolPath">
+            <summary>
+            Path to TF.exe. Defaults to %VS100COMNTOOLS%\..\IDE\tf.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.WorkingDirectory">
+            <summary>
+            Working directory used when executing command
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Comments">
+            <summary>
+            Optional checkin comment
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Notes">
+            <summary>
+            Optional checkin notes
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.OverrideReason">
+            <summary>
+            Optional checkin policy override reason
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Collection">
+            <summary>
+            TFS collection to perform action on
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Login">
+            <summary>
+            Optional login information, format: username [, password]
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.Recursive">
+            <summary>
+            Performs the operation recursively. Defaults to true
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsSource.ReturnCode">
+            <summary>
+            Gets the Return Code from TF checkout
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction">
+            <summary>
+            WorkItemTrackingAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction.GetById">
+            <summary>
+            GetById
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction.Save">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction.Reset">
+            <summary>
+            Reset
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction.GetFieldValue">
+            <summary>
+            GetFieldValue
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTrackingAction.SetFieldValue">
+            <summary>
+            SetFieldValue
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking">
+            <summary>
+            Performs operations on Team Foundation Work Items
+            <b>Valid Action values are:</b>
+            <para><i>GetById</i> - Returns a work item by id. <b>Required: </b>TeamProjectCollection, WorkItemId <b>Output: </b>WorkItem</para>
+            <para><i>Save</i> - Saves a work item to the work item store. <b>Required: </b>TeamProjectCollection, WorkItem </para>
+            <para><i>Resets</i> - Discards all changes and resets to current version. <b>Required: </b>TeamProjectCollection, WorkItem</para>
+            <para><i>GetFieldValue</i> - Gets the value of a work item field. <b>Required: </b>TeamProjectCollection, WorkItem, FieldName <b>Output: </b> FieldValue</para>
+            <para><i>SetFieldValue</i> - Sets the value of a work item field. <b>Required: </b>TeamProjectCollection, WorkItem, FieldName, FieldValue</para>
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.InternalExecute">
+            <summary>
+            InternalExecute
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.Action">
+            <summary>
+            Specifies the action to perform. Default is Create.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.WorkItem">
+            <summary>
+            Target work item or returned work item.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.WorkItemId">
+            <summary>
+            Target work item id or the returned work item id.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.ItemValue">
+            <summary>
+            The value to set for a field/link or the returned field value.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.WorkItemTracking.FieldName">
+            <summary>
+            The name of the field to set.
+            </summary>
+        </member>
+        <member name="T:CodeActivitySamples.Hello">
+            <summary>
+            Hello sample
+            </summary>
+        </member>
+        <member name="M:CodeActivitySamples.Hello.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="context">context</param>
+            <returns>string</returns>
+        </member>
+        <member name="P:CodeActivitySamples.Hello.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="P:CodeActivitySamples.Hello.Message2">
+            <summary>
+            Message2
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand">
+            <summary>
+            A command to invoke powershell scripts on a build agent
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand.ResolveScript(System.Activities.CodeActivityContext)">
+            <summary>
+            Resolves the provided script parameter to either a server stored 
+            PS file or an inline script for direct execution.
+            </summary>
+            <param name="context">The activity context</param>
+            <returns>An executable powershell script</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            When implemented in a derived class, performs the execution of the activity.
+            </summary>
+            <param name="context">The execution environment under which the activity executes.</param>
+            <returns>PSObject array</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand.Script">
+            <summary>
+            Gets or sets the powershell command script to execute.
+            </summary>
+            <value>The command script in string form</value>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand.Arguments">
+            <summary>
+            Gets or sets any arguments to be provided to the script
+            <value>An arguments list for the command as a string</value>
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Scripting.InvokePowerShellCommand.BuildWorkspace">
+            <summary>
+            Gets or sets the build workspace. This is used to obtain
+            a powershell script from a source control path
+            </summary>
+            <value>The workspace used by the current build</value>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.ActivityResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.ActivityResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.ActivityResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.ActivityResources.BeginActionMessage">
+            <summary>
+              Looks up a localized string similar to {0} has started.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.ActivityResources.CompleteActionMessage">
+            <summary>
+              Looks up a localized string similar to {0} has completed.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionAction">
+            <summary>
+            TfsVersionAction
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionAction.GetVersion">
+            <summary>
+            GetVersion
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionAction.SetVersion">
+            <summary>
+            SetVersion
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionAction.GetAndSetVersion">
+            <summary>
+            GetAndSetVersion
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionVersionFormat">
+            <summary>
+            TfsVersionVersionFormat
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionVersionFormat.DateTime">
+            <summary>
+            DateTime
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersionVersionFormat.Elapsed">
+            <summary>
+            Elapsed
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion">
+            <summary>
+            TfsVersion
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.SetFileEncoding">
+            <summary>
+            Sets the file encoding.
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.SetAssemblyDescription">
+            <summary>
+            Set to True to set the AssemblyDescription when calling SetVersion. Default is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Action">
+            <summary>
+            Specifies the action to perform
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.SetAssemblyVersion">
+            <summary>
+            Set to True to set the AssemblyVersion when calling SetVersion. Default is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.UseUtcDate">
+            <summary>
+            Set to True to get the elapsed calculation using UTC Date Time. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.SetAssemblyFileVersion">
+            <summary>
+            Set to True to set the AssemblyFileVersion when calling SetVersion. Default is true.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.ForceSetVersion">
+            <summary>
+            Set to true to force SetVersion action to update files that do not have AssemblyVersion | AssemblyFileVersion 
+            | AssemblyDescription present.  Default is false.  ForceSetVersion does not affect AssemblyVersion when 
+            SetAssemblyVersion is false or AssemblyDescription when SetAssemblyDescription is false.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.TextEncoding">
+            <summary>
+            Sets the file encoding. Default is UTF8
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Files">
+            <summary>
+            Sets the files to version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Version">
+            <summary>
+            Gets or Sets the Version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.AssemblyDescription">
+            <summary>
+            Gets or Sets the AssemblyDescription.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.AssemblyVersion">
+            <summary>
+            Sets the AssemblyVersion. Defaults to Version if not set.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.PaddingCount">
+            <summary>
+            Sets the number of padding digits to use, e.g. 4
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.PaddingDigit">
+            <summary>
+            Sets the padding digit to use, e.g. 0
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.StartDate">
+            <summary>
+            Sets the start date to use when using VersionFormat="Elapsed"
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.DateFormat">
+            <summary>
+            Sets the date format to use when using VersionFormat="DateTime". e.g. MMdd
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.VersionFormat">
+            <summary>
+            Sets the Version Format. Valid VersionFormats are Elapsed, DateTime. Default is DateTime
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Minor">
+            <summary>
+            Sets the minor version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Major">
+            <summary>
+            Sets the major version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Build">
+            <summary>
+            Gets or Sets the Build version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Revision">
+            <summary>
+            Gets or Sets the Revision version
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.CombineBuildAndRevision">
+            <summary>
+            Sets whether to make the revision a combination of the Build and Revision.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.Delimiter">
+            <summary>
+            Sets the Delimiter to use in the version number. Default is .
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.TeamFoundationServer.TfsVersion.VersionTemplateFormat">
+            <summary>
+            Specify the format of the build number. A format for each part must be specified or left blank, e.g. "00.000.00.000", "..0000.0"
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.GetServiceObject(System.Management.ManagementScope,System.String)">
+            <summary>
+            Common utility function to get a service object
+            </summary>
+            <param name="scope">The scope, in effect the HyperV server</param>
+            <param name="serviceName">The name of the VM</param>
+            <returns>A service object</returns>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRole.Default">
+            <summary>
+            Value role state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRole.Minimum">
+            <summary>
+            Value role state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRole.Maximum">
+            <summary>
+            Value role state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRole.Increment">
+            <summary>
+            Value role state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRange.Default">
+            <summary>
+            Value range state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRange.Minimum">
+            <summary>
+            Value range state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRange.Maximum">
+            <summary>
+            Value range state
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.Utilities.Utility.ValueRange.Increment">
+            <summary>
+            Value range state
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Virtualization.HyperVAction">
+            <summary>
+             Possible action for the activity
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Start">
+            <summary>
+            Starts the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Shutdown">
+            <summary>
+            Shutdown the VM Guest OS
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Turnoff">
+            <summary>
+            Stwich off the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Pause">
+            <summary>
+            Pause the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Suspend">
+            <summary>
+            Save the state of the VM to disk
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Restart">
+            <summary>
+            Restarts the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.Snapshot">
+            <summary>
+            Takes a snapshot of the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.ApplyLastSnapshot">
+            <summary>
+            Restores last snapshot of the VM
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperVAction.ApplyNamedSnapshot">
+            <summary>
+            Restores named snapshot of the VM
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Virtualization.HyperV">
+            <summary>
+            An activity to perform HyperV operations within a TFS 2010 build<para/>
+            <b>Valid Action values are:</b>
+            <para><i>Start</i></para>
+            <para><i>Shutdown</i></para>
+            <para><i>Turnoff</i></para>
+            <para><i>Pause</i></para>
+            <para><i>Suspend</i></para>
+            <para><i>Restart</i></para>
+            <para><i>Snapshot</i></para>
+            <para><i>ApplyLastSnapshot</i></para>
+            <para><i>ApplyNamedSnapshot</i></para>
+            </summary>
+        </member>
+        <member name="F:TfsBuildExtensions.Activities.Virtualization.HyperV.action">
+            <summary>
+            The action to perform
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.InternalExecute">
+            <summary>
+            Calls the actual method
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.GetVm(System.Management.ManagementScope,System.String)">
+            <summary>
+            Gets the requested VM
+            </summary>
+            <param name="scope">The HyperV Server scope</param>
+            <param name="vmname">The name of the target VM</param>
+            <returns>The VM management object</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.RequestShutdown">
+            <summary>
+            Shutdown the names guest VM
+            </summary>
+            <returns>True if succeeds</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.GetScope">
+            <summary>
+            Gets the scope of the target HyperV server 
+            </summary>
+            <returns>A hyperV server scope</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.RequestStateChange">
+            <summary>
+            Requests that the state of the running VM is changed, these are HyperV operations
+            </summary>
+            <returns>True if the action was completed</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.CreateVirtualSystemSnapshot">
+            <summary>
+            Creates a new snapshot of the named VM
+            </summary>
+            <returns>True if completed without error</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.GetLastVirtualSystemSnapshot(System.Management.ManagementObject)">
+            <summary>
+            Gets the last snapshot of the named VM snapshot tree
+            </summary>
+            <param name="vm">The current management object for the VM</param>
+            <returns>The object containing the details of the snapshot</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.ApplyNamedVirtualSystemSnapshot">
+            <summary>
+            Reverts the VM to the previous snapshop
+            </summary>
+            <returns>True of operation completed without error</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.ApplyLastVirtualSystemSnapshot">
+            <summary>
+            Reverts the VM to the previous shapshop
+            </summary>
+            <returns>True of operation completed without error</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.HyperV.ApplyVirtualSystemSnapshot(System.Management.ManagementObject,System.Management.ManagementObject)">
+            <summary>
+            Reverts the VM to the previous shapshop
+            </summary>
+            <param name="vm">The vm to apply the snapstop to</param>
+            <param name="snapshot">The snapshot image</param>
+            <returns>True of operation completed without error</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Virtualization.HyperV.ServerName">
+            <summary>
+            The name of the server host the VM. '.' can be used for the localhost.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Virtualization.HyperV.VMName">
+            <summary>
+            The name of the VM to perform operations on.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Virtualization.HyperV.SnapshotName">
+            <summary>
+            The name of the snapshot to restore to the VM 
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Virtualization.HyperV.Action">
+            <summary>
+            The task to perform.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.Virtualization.HyperV.Succeeded">
+            <summary>
+            Gets whether the action succeeded.
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.Virtualization.Extended.HyperVException">
+            <summary>
+            HyperV Activity exception handler
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.Extended.HyperVException.#ctor">
+            <summary>
+            Initializes a new instance of the HyperVException class
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.Extended.HyperVException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the HyperVException class
+            </summary>
+            <param name="message">Message to send</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.Extended.HyperVException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the HyperVException class
+            </summary>
+            <param name="message">Message to send</param>
+            <param name="innerException">Inner exception details</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.Virtualization.Extended.HyperVException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the HyperVException class
+            </summary>
+            <param name="info">Serialization information for the exception</param>
+            <param name="context">The streaming context for the exception</param>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.VisualStudio.VB6">
+            <summary>
+            This activity wraps the VB6 compiler. 
+            </summary>
+            <example>
+            <code lang="xml"><![CDATA[
+            <Sequence DisplayName="TFSBuildExtensions VB6 Compile Sequence">
+            <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Default="[SourcesDirectory + &quot;\Development\Iteration 2\VB6\AComponent.vbp&quot;]" Name="ProjectToCompile" />
+            </Sequence.Variables>
+            <!-- Compile a VB6 project using default settings -->    
+            <tav:VB6 
+                DisplayName="Compile VB6 for Project" 
+                ProjectFile="[ProjectToCompile]" />
+            <!-- Compile a VB6 project, change project properties  -->    
+            <tav:VB6 
+                DisplayName="Compile VB6 for Project" 
+                ProjectFile="[ProjectToCompile]" 
+                ChangeProperty="RevisionVer=4;CompatibleMode=0" />
+            </Sequence>
+            ]]></code>    
+            </example>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VB6.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.ProjectFile">
+            <summary>
+            Name of VB6 project to compile
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.OutDir">
+            <summary>
+            Output directory. Default is build drop location + vb project directory
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.LogFile">
+            <summary>
+            Logfile for compilation output. Default is build drop location + vb project filename + .log
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.ToolPath">
+            <summary>
+            Path to VB6 compiler. Default is C:\Program Files\Microsoft Visual Studio\VB98\VB6.exe
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.WorkingDirectory">
+            <summary>
+            Working directory used when compiling
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.ChangeProperty">
+            <summary>
+            Project properties to change at build time. Specify properties to change as key=value;key=value
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VB6.ReturnCode">
+            <summary>
+            Gets the Return Code from the VB6 compile activity
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.VisualStudio.VBPProject">
+            <summary>
+            Internal class to wrap a VB6 project file
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VBPProject.#ctor">
+            <summary>
+            Initializes a new instance of the VBPProject class. Wrapper class to parse and edit a VB6 project file
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VBPProject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the VBPProject class. Wrapper class to parse and edit a VB6 project file
+            </summary>
+            <param name="projectFileExt">Project filename</param>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VBPProject.Load">
+            <summary>
+            Method to load a VB6 project file
+            </summary>
+            <returns>True if project was loaded successfully, false otherwise</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VBPProject.Save">
+            <summary>
+            Method to save a VB6 project file
+            </summary>
+            <returns>True if project was loaded successfully, false otherwise</returns>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VBPProject.SetProjectProperty(System.String,System.String,System.Boolean)">
+            <summary>
+            Sets a VB6 project property
+            </summary>
+            <param name="name">Name of property to set</param>
+            <param name="value">Value to set</param>
+            <param name="addProp">True if property should be created</param>
+            <returns>bool</returns>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VBPProject.ProjectFile">
+            <summary>
+            VB6 project file
+            </summary>
+        </member>
+        <member name="T:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv">
+            <summary>
+            VSDevEnv
+            </summary>
+        </member>
+        <member name="M:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.InternalExecute">
+            <summary>
+            Executes the logic for this workflow activity
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.FilePath">
+            <summary>
+            The Path to the solution or Project to build
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.Configuration">
+            <summary>
+            The Configuration to Build.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.DevEnvPath">
+            <summary>
+            The path to DevEnv.exe. Default is DevEnv.exe, so the path should be in your Path Environment Variable.
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.Rebuild">
+            <summary>
+            Specifies whether Clean and then build the solution or project with the specified configuration. Default is false
+            </summary>
+        </member>
+        <member name="P:TfsBuildExtensions.Activities.VisualStudio.VSDevEnv.OutputFile">
+            <summary>
+            Specifies the File to log all output to.
+            </summary>
+        </member>
+    </members>
+</doc>
